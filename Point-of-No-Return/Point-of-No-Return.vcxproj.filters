@@ -1,17 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ソース ファイル">
+    <Filter Include="Engine">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="ヘッダー ファイル">
+    <Filter Include="Scene">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="リソース ファイル">
+    <Filter Include="Feature">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Feature\RPG">
+      <UniqueIdentifier>{01398bbb-f031-45c6-9559-b146dfe52129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feature\横スクロール">
+      <UniqueIdentifier>{c8408ca0-c940-4e49-9c5c-e1c6e7ad308d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Title.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Help.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Result.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Ending.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapchip.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Feature</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Title.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Help.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Result.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Ending.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapchip.h">
+      <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Feature</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
