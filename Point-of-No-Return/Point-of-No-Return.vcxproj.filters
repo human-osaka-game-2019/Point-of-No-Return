@@ -30,9 +30,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Result.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="Ending.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -55,9 +52,6 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Result.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Ending.h">
