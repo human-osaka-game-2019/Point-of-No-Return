@@ -43,6 +43,9 @@
       <Filter>Feature</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Load.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Title.h">
@@ -67,5 +70,8 @@
       <Filter>Feature</Filter>
     </ClInclude>
     <ClInclude Include="Main.h" />
+    <ClInclude Include="Load.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
