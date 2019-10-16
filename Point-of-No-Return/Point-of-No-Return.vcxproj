@@ -144,6 +144,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mapchip.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Save.cpp" />
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +156,7 @@
     <ClInclude Include="Main.h" />
     <ClInclude Include="Mapchip.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Save.h" />
     <ClInclude Include="Title.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -46,6 +46,9 @@
     <ClCompile Include="Load.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Save.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Title.h">
@@ -72,6 +75,9 @@
     <ClInclude Include="Main.h" />
     <ClInclude Include="Load.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Save.h">
+      <Filter>Feature\横スクロール</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
