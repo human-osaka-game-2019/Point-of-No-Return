@@ -19,6 +19,9 @@
     <Filter Include="Feature\横スクロール">
       <UniqueIdentifier>{c8408ca0-c940-4e49-9c5c-e1c6e7ad308d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{cea1f81a-8264-4361-ab38-a34eb0da80c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Title.cpp">
@@ -49,6 +52,9 @@
     <ClCompile Include="Save.cpp">
       <Filter>Feature\横スクロール</Filter>
     </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Title.h">
@@ -78,6 +84,9 @@
     </ClInclude>
     <ClInclude Include="Save.h">
       <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
