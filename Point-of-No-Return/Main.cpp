@@ -1,8 +1,19 @@
 ﻿#include "Main.h"
+#include "Scene.h"
+#include "Title.h"
+#include "Game.h"
+#include "Load.h"
+#include "Help.h"
+#include "Ending.h"
+
 
 #pragma comment(lib,"../Point-of-No-Return/Lib/DirectX.lib")
 
-DirectX dx;
+
+Scene* scene;
+
+int switching_scene = TitleID;
+int save_scene = switching_scene;
 
 INT WINAPI WinMain(
 	_In_ HINSTANCE hInstance,
@@ -10,6 +21,8 @@ INT WINAPI WinMain(
 	_In_ LPSTR CmdLine,
 	_In_ INT nCmdShow)
 {
+	DX::DirectX& dx = DX::DirectX::GetInstance();
+
 	const TCHAR AppName[] = _T("Point of No Return");
 
 	MSG msg;
@@ -53,6 +66,9 @@ INT WINAPI WinMain(
 
 	timeBeginPeriod(1);
 
+	dx.LoadTexture("brick.png", "Tex");
+
+
 	while (msg.message != WM_QUIT)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -67,7 +83,27 @@ INT WINAPI WinMain(
 			{
 				dx.BeginScene();
 
+				dx.Draw(0,0,1920,1080,0,0,0,"Tex");
 
+				//
+				////シーン分け
+				//switch (switching_scene)
+				//{
+				//case TitleID:
+				//	scene = new Title();
+				//case HelpID:
+				//	scene = new Help();
+				//case GameID:
+				//	scene = new Game();
+				//case EndingID:
+				//	scene = new Ending();
+			 //  	}
+				//
+				//if (save_scene != switching_scene)
+				//{
+				//	ReleaseScene(scene);
+				//}
+				//save_scene = switching_scene;
 
 				dx.EndScene();
 			}
