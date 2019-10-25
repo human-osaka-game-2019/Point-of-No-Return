@@ -9,14 +9,15 @@ class Ending : public BaseScene
 private:
 	
 public:
+
 	Ending()
 	{
-
+		void Load();
 	}
 
 	~Ending()
 	{
-
+		void Release();
 	}
 
 	void Load();
@@ -25,7 +26,10 @@ public:
 
 	void Draw();
 
-	void Release() ;
+	void Release();
+
+	void CreateLoadThread(HANDLE thread);
+
 };
 
 

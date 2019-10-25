@@ -7,6 +7,16 @@ class Help : public BaseScene
 {
 public:
 
+	Help()
+	{
+		Load();
+	}
+
+	~Help()
+	{
+		Release();
+	}
+
 	void Load();
 
 	void Update();
@@ -14,6 +24,9 @@ public:
 	void Draw();
 
 	void Release();
+
+	void CreateLoadThread(HANDLE thread);
+
 };
 
 

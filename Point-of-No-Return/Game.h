@@ -5,6 +5,18 @@
 
 class Game : public BaseScene
 {
+public:
+	Game()
+	{
+		Load();
+	};
+
+	~Game()
+	{
+		Release();
+	};
+
+
 
 	void Load();
 
@@ -13,6 +25,9 @@ class Game : public BaseScene
 	void Draw();
 
 	void Release();
+
+	void CreateLoadThread(HANDLE thread);
+
 };
 
 

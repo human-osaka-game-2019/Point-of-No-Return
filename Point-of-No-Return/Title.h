@@ -6,6 +6,18 @@
 class Title : public BaseScene
 {
 public:
+
+	Title()
+	{
+		Load();
+	}
+
+	~Title()
+	{
+		Release();
+	}
+
+
 	void Load();
 
 	void Update();
@@ -13,6 +25,8 @@ public:
 	void Draw();
 
 	void Release();
+
+	void CreateLoadThread(HANDLE thread);
 
 };
 

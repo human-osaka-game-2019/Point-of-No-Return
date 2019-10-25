@@ -1,19 +1,21 @@
 ﻿#ifndef SCENE_H_
 #define SCENE_H_
 
-
+#include <windows.h>
 
 class BaseScene
 {
 public:
 
-	virtual void Load() = 0;
+	virtual void Load();
 
 	virtual void Update() = 0;
 
 	virtual void Draw() = 0;
 
 	virtual void Release() = 0;
+
+	virtual void CreateLoadThread(HANDLE thread) = 0;
 };
 
 
@@ -37,7 +39,7 @@ public:
 
 	static void MakeSnece(SceneID sceneID);
 
-	static void Initialize();
+	static void Initialize(SceneID sceneID);
 
 	static void ChangeScene();
 
@@ -53,12 +55,14 @@ public:
 
 	static bool Changed();
 
+	
 private:
 	static SceneID sceneID;
 	static SceneID save_sceneID;
 	static BaseScene* basescene;
 
-	inline void SetSaveScene(){
+	inline static void SetSaveScene()
+	{
 		save_sceneID = sceneID;
 	}
 };
