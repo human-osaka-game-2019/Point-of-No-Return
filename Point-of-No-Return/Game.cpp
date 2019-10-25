@@ -2,11 +2,6 @@
 #include "Game.h"
 
 
-void Game::Load()
-{
-
-}
-
 void Game::Update()
 {
 

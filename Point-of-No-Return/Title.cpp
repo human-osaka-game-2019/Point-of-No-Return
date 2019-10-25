@@ -1,12 +1,6 @@
 ﻿#include "Title.h"
 #include "Load.h"
 
-void Title::Load()
-{
-
-
-
-}
 
 void Title::Update()
 {

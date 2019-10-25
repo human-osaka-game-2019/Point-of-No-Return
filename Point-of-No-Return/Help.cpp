@@ -3,11 +3,6 @@
 
 
 
-void Help::Load()
-{
-
-}
-
 void Help::Update()
 {
 

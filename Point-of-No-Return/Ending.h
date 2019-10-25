@@ -12,15 +12,14 @@ public:
 
 	Ending()
 	{
-		void Load();
+		Load();
 	}
 
 	~Ending()
 	{
-		void Release();
+		Release();
 	}
 
-	void Load();
 
 	void Update();
 

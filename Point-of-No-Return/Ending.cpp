@@ -2,10 +2,6 @@
 #include "Load.h"
 
 
-void Ending::Load() 
-{
-
-}
 
 void Ending::Update()
 {

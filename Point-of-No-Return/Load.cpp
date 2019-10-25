@@ -3,8 +3,6 @@
 
 
 
-
-
 //スレッド関数
 DWORD WINAPI TitleThread(HWND hWnd, LPVOID* data)
 {
@@ -21,6 +19,7 @@ DWORD WINAPI GameThread(HWND hWnd, LPVOID* data)
 	//Load中に裏でしたい処理
 
 	dx.LoadTexture("world_bg_仮.jpg","world_bg");
+	dx.LoadTexture("Chip.png", "Map");
 
 	ExitThread(0);
 }

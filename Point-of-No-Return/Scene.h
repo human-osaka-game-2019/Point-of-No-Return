@@ -7,7 +7,7 @@ class BaseScene
 {
 public:
 
-	virtual void Load();
+	/*virtual*/ void Load();
 
 	virtual void Update() = 0;
 
@@ -55,7 +55,8 @@ public:
 
 	static bool Changed();
 
-	
+	static void CallCreateLoadThread(HANDLE thread);
+
 private:
 	static SceneID sceneID;
 	static SceneID save_sceneID;

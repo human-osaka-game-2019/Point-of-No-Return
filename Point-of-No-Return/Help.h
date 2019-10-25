@@ -17,7 +17,6 @@ public:
 		Release();
 	}
 
-	void Load();
 
 	void Update();
 
