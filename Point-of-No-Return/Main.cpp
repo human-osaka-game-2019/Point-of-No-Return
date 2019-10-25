@@ -9,11 +9,7 @@
 
 #pragma comment(lib,"../Point-of-No-Return/Lib/DirectX.lib")
 
-
-Scene* scene;
-
-int switching_scene = TitleID;
-int save_scene = switching_scene;
+BaseScene* SceneManager::basescene = nullptr;
 
 INT WINAPI WinMain(
 	_In_ HINSTANCE hInstance,
@@ -51,8 +47,8 @@ INT WINAPI WinMain(
 		WS_OVERLAPPEDWINDOW | WS_VISIBLE,
 		0,
 		0,
-		DISPLAY_WIDTH,
-		DISPLAY_HEIGHT,
+		static_cast<int>(Display::DISPLAY_WIDTH),
+		static_cast<int>(Display::DISPLAY_HEIGHT),
 		NULL,
 		NULL,
 		hInstance,
@@ -62,12 +58,14 @@ INT WINAPI WinMain(
 	ShowWindow(hWnd, SW_SHOW);
 	UpdateWindow(hWnd);
 
-	dx.InitDirectX(hWnd, DISPLAY_WIDTH, DISPLAY_HEIGHT);
+	dx.InitDirectX(hWnd, Display::DISPLAY_WIDTH, Display::DISPLAY_HEIGHT);
 
 	timeBeginPeriod(1);
 
 	dx.LoadTexture("brick.png", "Tex");
 
+
+	SceneManager::Initialize();
 
 	while (msg.message != WM_QUIT)
 	{
@@ -83,27 +81,9 @@ INT WINAPI WinMain(
 			{
 				dx.BeginScene();
 
-				dx.Draw(0,0,1920,1080,0,0,0,"Tex");
 
-				//
-				////シーン分け
-				//switch (switching_scene)
-				//{
-				//case TitleID:
-				//	scene = new Title();
-				//case HelpID:
-				//	scene = new Help();
-				//case GameID:
-				//	scene = new Game();
-				//case EndingID:
-				//	scene = new Ending();
-			 //  	}
-				//
-				//if (save_scene != switching_scene)
-				//{
-				//	ReleaseScene(scene);
-				//}
-				//save_scene = switching_scene;
+				SceneManager::ChangeScene();
+
 
 				dx.EndScene();
 			}
@@ -119,15 +99,19 @@ INT WINAPI WinMain(
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 {
+	DirectX& dx = DirectX::GetInstance();
+
 	switch (msg)
 	{
 	case WM_DESTROY:
+		dx.AllRelease();
 		PostQuitMessage(0);
 		break;
 	case WM_SYSKEYDOWN:
 		switch (wp)
 		{
 		case VK_RETURN:
+			dx.ChangeDisplayMode(hWnd, Display::DisplayRect);
 			return 0;
 		case VK_F4:
 			PostMessage(hWnd, WM_CLOSE, 0, 0);

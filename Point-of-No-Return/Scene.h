@@ -1,28 +1,66 @@
 ﻿#ifndef SCENE_H_
 #define SCENE_H_
 
-class Scene
+
+
+class BaseScene
 {
 public:
-private:
 
-	virtual void Loading();
+	virtual void Load() = 0;
 
-	virtual void Process();
+	virtual void Update() = 0;
 
-	virtual void Release();
+	virtual void Draw() = 0;
 
+	virtual void Release() = 0;
 };
 
-void ReleaseScene(Scene* secne);
 
-enum SceneID
+class SceneManager
 {
-	TitleID,
-	GameID,
-	HelpID,
-	LoadID,
-   	EndingID,
+public:
+
+	enum SceneID
+	{
+		TitleID,
+		GameID,
+		HelpID,
+		LoadID,
+		EndingID,
+	};
+
+	inline static void DeleteScene()
+	{
+		delete basescene;
+	}
+
+	static void MakeSnece(SceneID sceneID);
+
+	static void Initialize();
+
+	static void ChangeScene();
+
+	inline static void Update()
+	{
+		basescene->Update();
+	}
+
+	inline static void Draw()
+	{
+		basescene->Draw();
+	}
+
+	static bool Changed();
+
+private:
+	static SceneID sceneID;
+	static SceneID save_sceneID;
+	static BaseScene* basescene;
+
+	inline void SetSaveScene(){
+		save_sceneID = sceneID;
+	}
 };
 
 
