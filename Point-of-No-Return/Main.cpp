@@ -17,7 +17,7 @@ INT WINAPI WinMain(
 	_In_ LPSTR CmdLine,
 	_In_ INT nCmdShow)
 {
-	DX::DirectX& dx = DX::DirectX::GetInstance();
+	//DX::DirectX& dx = DX::DirectX::GetInstance();
 
 	const TCHAR AppName[] = _T("Point of No Return");
 
@@ -65,7 +65,8 @@ INT WINAPI WinMain(
 	dx.LoadTexture("brick.png", "Tex");
 
 
-	SceneManager::Initialize();
+	// 後でTitleIDに変更する
+	SceneManager::Initialize(SceneManager::GameID);
 
 	while (msg.message != WM_QUIT)
 	{

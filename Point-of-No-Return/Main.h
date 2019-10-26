@@ -5,6 +5,8 @@
 
 using DX::DirectX;
 
+DX::DirectX& dx = DX::DirectX::GetInstance();
+
 namespace Display
 {
 	const float DISPLAY_WIDTH = 1920;

@@ -4,15 +4,13 @@
 #include "Scene.h"
 #include "Main.h"
 
-DX::DirectX& dx = DX::DirectX::GetInstance();
+//DX::DirectX& dx = DX::DirectX::GetInstance();
 
 class Thread
 {
 public:
 
 	void Load();
-
-	void 
 
 };
 
