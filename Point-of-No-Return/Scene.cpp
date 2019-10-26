@@ -56,7 +56,7 @@ bool SceneManager::Changed()
 
 void BaseScene::Load()
 {
-	HANDLE th;
+	HANDLE th = NULL;
 
 	this->CreateLoadThread(th);
 
