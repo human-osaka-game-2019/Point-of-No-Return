@@ -16,8 +16,8 @@ public:
 	virtual void Release() = 0;
 
 	virtual void CreateLoadThread(HANDLE thread) = 0;
-};
 
+};
 
 class SceneManager
 {
@@ -32,16 +32,7 @@ public:
 		EndingID,
 	};
 
-	inline static void DeleteScene()
-	{
-		delete basescene;
-	}
-
-	static void MakeSnece(SceneID sceneID);
-
 	static void Initialize(SceneID sceneID);
-
-	static void ChangeScene();
 
 	inline static void Update()
 	{
@@ -53,20 +44,20 @@ public:
 		basescene->Draw();
 	}
 
-	static bool Changed();
-
+	static void ChangeScene(SceneID sceneID);
 	
 private:
-	static SceneID sceneID;
-	static SceneID save_sceneID;
 	static BaseScene* basescene;
 
-	inline static void SetSaveScene()
+	static void MakeSnece(SceneID sceneID);
+
+	inline static void DeleteScene()
 	{
-		save_sceneID = sceneID;
+		delete basescene;
 	}
+
 };
 
 
 
-#endif // !SCENE_H_
+#endif //! SCENE_H_

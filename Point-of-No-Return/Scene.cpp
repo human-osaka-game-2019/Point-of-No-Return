@@ -25,34 +25,16 @@ void SceneManager::MakeSnece(SceneID sceneID)
 	}
 }
 
-void SceneManager::Initialize(SceneID sceneID_)
+void SceneManager::Initialize(SceneID scene_id)
 {
-	sceneID = sceneID_;
-	save_sceneID = sceneID_;
-	SceneManager::MakeSnece(sceneID_);
+	SceneManager::MakeSnece(scene_id);
 }
 
-void SceneManager::ChangeScene()
+void SceneManager::ChangeScene(SceneID scene_id)
 {
-	if (SceneManager::Changed())
-	{
-		SceneManager::DeleteScene();
-		SceneManager::MakeSnece(SceneManager::sceneID);
-	}
-	SetSaveScene();
+	SceneManager::DeleteScene();
+	SceneManager::MakeSnece(scene_id);
 }
-
-bool SceneManager::Changed()
-{
-	if (sceneID != save_sceneID)
-	{
-			return true;
-	}
-	return false;
-}
-
-
-
 
 void BaseScene::Load()
 {

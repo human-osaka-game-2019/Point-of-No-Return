@@ -5,12 +5,9 @@
 #include<iostream>
 #include<stdio.h>
 
-const int map_size_width_pos = 8;
-const int map_size_height_pos = 15;
-
 // ブロックの数
-const int world_size_width_pos = 480;
-const int world_size_height_pos = 16;
+const int world_size_width = 480;
+const int world_size_height = 16;
 // マップてチップ1つの大きさ
 const int chip_size_ = 64;
 // テクスチャの大きさ
@@ -29,7 +26,11 @@ public:
 
 	void TexturePrint(int drawpos_x, int drawpos_y, int mapcip_width, int mapchip_height, float chip_pos_x, float chip_pos_y, float width_num, float height_num, int texture);
 
-	int map[map_size_width_pos][map_size_height_pos];
+	void InitMap();
+
+	int map[world_size_width][world_size_height] = {};
+
+private: 
 
 };
 

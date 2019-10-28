@@ -1,6 +1,7 @@
 ﻿#include "MapChip.h"
 #include "Main.h"
 
+
 void DRAWMAP::DrawMapChip(int map_size_width, int map_size_height, float texture_width, float texture_height, float mapchip_width, float mapchip_height, float draw_width, float draw_height, float draw_pos_x, float draw_pos_y, int texture, int** map)
 {
 	for (int i = 0; i < map_size_height; i++)
@@ -38,6 +39,25 @@ void DRAWMAP::DrawMapChip(int map_size_width, int map_size_height, float texture
 //マップチップ描画
 void DRAWMAP::TexturePrint(int drawpos_x, int drawpos_y, int mapcip_width, int mapchip_height, float chip_pos_x, float chip_pos_y, float width_num, float height_num, int texture) 
 {
-	dx.Draw(drawpos_x, drawpos_y, 0xffffffff, chip_pos_x, chip_pos_y, mapcip_width, mapchip_height, width_num, height_num, texture, 0);
+	DirectX& dx = DirectX::GetInstance();
 
+	dx.DrawEx(drawpos_x, drawpos_y,0, mapcip_width, mapchip_height,0,1.f,0,"blocks", chip_pos_x, chip_pos_y,  width_num, height_num);
 }
+
+
+void DRAWMAP::InitMap()
+{
+	for (int i = 0; i < world_size_height; i++)
+	{
+		for (int j = 0; j < world_size_width; j++)
+		{
+			if (i == 7 || i == 8)
+			{
+				map[i][j] = 1;
+			}
+		}
+	}
+}
+
+
+
