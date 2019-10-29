@@ -2,6 +2,7 @@
 #define GAME_H_
 
 #include "Scene.h"
+#include "Mapchip.h"
 
 class Game : public BaseScene
 {
@@ -27,6 +28,10 @@ public:
 	void Release();
 
 	HANDLE CreateLoadThread();
+private:
+	DRAWMAP drawmap;
+
+
 
 };
 
