@@ -24,7 +24,7 @@ void Help::Draw()
 
 void Help::Release()
 {
-
+	dx.ReleaseTexture("help_back");
 }
 
 HANDLE Help::CreateLoadThread()

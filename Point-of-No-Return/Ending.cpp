@@ -23,7 +23,7 @@ void Ending::Draw()
 
 void Ending::Release()
 {
-
+	dx.ReleaseTexture("ending_back");
 }
 
 HANDLE Ending::CreateLoadThread()

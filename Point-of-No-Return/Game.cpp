@@ -23,7 +23,7 @@ void Game::Draw()
 
 void Game::Release()
 {
-
+	dx.ReleaseTexture("game_back");
 }
 
 HANDLE Game::CreateLoadThread()

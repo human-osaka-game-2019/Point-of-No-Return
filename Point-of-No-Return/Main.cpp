@@ -78,7 +78,6 @@ INT WINAPI WinMain(
 	);
 
 
-	dx.LoadTexture("仮Load.png", "load");
 
 
 	ShowWindow(hWnd, SW_SHOW);

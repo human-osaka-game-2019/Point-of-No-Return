@@ -15,11 +15,7 @@ void Title::Update()
 		SceneManager::ChangeScene(SceneManager::GameID);
 
 	}
-	/*if (dx.GetKeyState(DIK_RETURN) == dx.PUSH)
-	{
-		SceneManager::ChangeScene(SceneManager::HelpID);
-
-	}*/
+	
 
 
 }
@@ -32,7 +28,7 @@ void Title::Draw()
 void Title::Release()
 {
 
-
+	dx.ReleaseTexture("title_back");
 
 }
 
