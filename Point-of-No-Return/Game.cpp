@@ -4,17 +4,21 @@
 
 void Game::Load()
 {
-
+	BaseScene::Load();
 }
 
 void Game::Update()
 {
+	if (dx.GetKeyState(DIK_SPACE) == dx.PUSH)
+	{
+		SceneManager::ChangeScene(SceneManager::EndingID);
 
+	}
 }
 
 void Game::Draw()
 {
-
+	dx.DrawEx(0, 0, 0, 1920, 1080, 0, 1, 0, "game_back", 0, 0, 1/16, 1);
 }
 
 void Game::Release()
@@ -22,7 +26,7 @@ void Game::Release()
 
 }
 
-void Game::CreateLoadThread(HANDLE thread)
+HANDLE Game::CreateLoadThread()
 {
-	thread = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)GameThread, NULL, 0, NULL);
+	return CreateThread(0, 0, (LPTHREAD_START_ROUTINE)GameThread, NULL, 0, NULL);
 }

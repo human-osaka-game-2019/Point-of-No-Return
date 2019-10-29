@@ -26,7 +26,7 @@ public:
 
 	void Release();
 
-	void CreateLoadThread(HANDLE thread);
+	HANDLE CreateLoadThread();
 
 };
 

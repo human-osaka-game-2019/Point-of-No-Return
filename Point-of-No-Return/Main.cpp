@@ -77,6 +77,10 @@ INT WINAPI WinMain(
 		NULL
 	);
 
+
+	dx.LoadTexture("仮Load.png", "load");
+
+
 	ShowWindow(hWnd, SW_SHOW);
 	UpdateWindow(hWnd);
 
@@ -85,7 +89,7 @@ INT WINAPI WinMain(
 	timeBeginPeriod(1);
 
 	// 後でTitleIDに変更する
-	SceneManager::Initialize(SceneManager::GameID);
+	SceneManager::Initialize(SceneManager::TitleID);
 
 	while (msg.message != WM_QUIT)
 	{

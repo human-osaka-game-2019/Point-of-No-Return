@@ -10,7 +10,7 @@ DWORD WINAPI TitleThread(HWND hWnd, LPVOID* data)
 
 	//Load中に裏でしたい処理
 
-	//dx.LoadTexture();
+	dx.LoadTexture("仮Title_Back.png", "title_back");
 
 	ExitThread(0);
 }
@@ -23,7 +23,7 @@ DWORD WINAPI GameThread(HWND hWnd, LPVOID* data)
 
 	//Load中に裏でしたい処理
 
-	dx.LoadTexture("world_bg_仮.jpg","world_bg");
+	dx.LoadTexture("仮Game_Back.jpg","game_back");
 	dx.LoadTexture("unified_block.png", "blocks");
 	ExitThread(0);
 }
@@ -35,7 +35,7 @@ DWORD WINAPI HelpThread(HWND hWnd, LPVOID* data)
 
 	//Load中に裏でしたい処理
 
-	//dx.LoadTexture();
+	dx.LoadTexture("仮Help_Back.jpg", "help_back");
 
 	ExitThread(0);
 }
@@ -47,7 +47,7 @@ DWORD WINAPI EndingThread(HWND hWnd, LPVOID* data)
 
 	//Load中に裏でしたい処理
 
-	//dx.LoadTexture();
+	dx.LoadTexture("仮Ending_Back.png", "ending_back");
 
 	ExitThread(0);
 }

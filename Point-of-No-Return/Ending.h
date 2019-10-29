@@ -12,12 +12,12 @@ public:
 
 	Ending()
 	{
-		void Load();
+		Load();
 	}
 
 	~Ending()
 	{
-		void Release();
+		Release();
 	}
 
 	void Load();
@@ -28,7 +28,7 @@ public:
 
 	void Release();
 
-	void CreateLoadThread(HANDLE thread);
+	HANDLE CreateLoadThread();
 
 };
 

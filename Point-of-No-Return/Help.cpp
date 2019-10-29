@@ -5,17 +5,21 @@
 
 void Help::Load()
 {
-
+	BaseScene::Load();
 }
 
 void Help::Update()
 {
+	if (dx.GetKeyState(DIK_SPACE) == dx.PUSH)
+	{
+		SceneManager::ChangeScene(SceneManager::TitleID);
 
+	}
 }
 
 void Help::Draw()
 {
-
+	dx.DrawEx(0, 0, 0, 1920, 1080, 0, 1, 0, "help_back", 0, 0, 1, 1);
 }
 
 void Help::Release()
@@ -23,8 +27,8 @@ void Help::Release()
 
 }
 
-void Help::CreateLoadThread(HANDLE thread)
+HANDLE Help::CreateLoadThread()
 {
-	thread = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)HelpThread, NULL, 0, NULL);
+	return CreateThread(0, 0, (LPTHREAD_START_ROUTINE)HelpThread, NULL, 0, NULL);
 }
 

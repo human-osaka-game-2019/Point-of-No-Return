@@ -38,9 +38,10 @@ void SceneManager::ChangeScene(SceneID scene_id)
 
 void BaseScene::Load()
 {
+
 	HANDLE th = NULL;
 
-	this->CreateLoadThread(th);
+	th = this->CreateLoadThread();
 
 	
 	if (th == NULL)
@@ -53,6 +54,7 @@ void BaseScene::Load()
 
 	DWORD result;
 
+
 	timeBeginPeriod(1);
 
 	//Thread関数が処理している間のループ
@@ -62,6 +64,7 @@ void BaseScene::Load()
 		if (Curr - Prev >= 1000 / 60) {
 
 
+			dx.DrawEx(100, 100, 0, 200, 200, 0, 1, 0, "load", 0, 0, 1, 0.25);
 
 
 

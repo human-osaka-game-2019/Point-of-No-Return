@@ -1,13 +1,14 @@
 ﻿#ifndef SCENE_H_
 #define SCENE_H_
 
+#include "Main.h"
 #include <windows.h>
 
 class BaseScene
 {
 public:
 
-	virtual void Load();
+	void Load();
 
 	virtual void Update() = 0;
 
@@ -15,7 +16,9 @@ public:
 
 	virtual void Release() = 0;
 
-	virtual void CreateLoadThread(HANDLE thread) = 0;
+	virtual HANDLE CreateLoadThread() = 0;
+protected:
+	DirectX& dx = DirectX::GetInstance();
 
 };
 
