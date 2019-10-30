@@ -25,7 +25,7 @@ void Mapchip::DrawMapchip(int map_size_width, int map_size_height, float texture
 			float chip_pos_x = (float)(chip_id % width_num) * mapchip_width;
 			float chip_pos_y = (float)(chip_id / height_num) * mapchip_height;
 
-			Mapchip::TexturePrint(draw_pos_x + draw_width * j, draw_pos_y + draw_height * i, draw_width, draw_height, chip_pos_x / texture_width, chip_pos_y / texture_height, mapchip_width / texture_width, mapchip_height / texture_height, texturename);
+			TexturePrint(draw_pos_x + draw_width * j, draw_pos_y + draw_height * i, draw_width, draw_height, chip_pos_x / texture_width, chip_pos_y / texture_height, mapchip_width / texture_width, mapchip_height / texture_height, texturename);
 		}
 	}
 }
