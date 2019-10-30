@@ -5,7 +5,7 @@
 
 void Help::Load()
 {
-	BaseScene::Load();
+	SceneBase::Load();
 }
 
 void Help::Update()

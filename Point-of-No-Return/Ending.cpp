@@ -4,7 +4,7 @@
 
 void Ending::Load() 
 {
-	BaseScene::Load();
+	SceneBase::Load();
 }
 
 void Ending::Update()

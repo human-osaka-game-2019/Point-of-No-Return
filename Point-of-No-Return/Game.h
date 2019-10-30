@@ -4,7 +4,7 @@
 #include "Scene.h"
 #include "Mapchip.h"
 
-class Game : public BaseScene
+class Game : public SceneBase
 {
 public:
 	Game()

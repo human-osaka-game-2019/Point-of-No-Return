@@ -3,7 +3,7 @@
 
 #include "Scene.h"
 
-class Title : public BaseScene
+class Title : public SceneBase
 {
 public:
 

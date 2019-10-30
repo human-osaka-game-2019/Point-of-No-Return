@@ -36,7 +36,7 @@ void SceneManager::ChangeScene(SceneID scene_id)
 	SceneManager::CreateScene(scene_id);
 }
 
-void BaseScene::Load()
+void SceneBase::Load()
 {
 
 	HANDLE th = nullptr;

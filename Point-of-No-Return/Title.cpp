@@ -4,7 +4,7 @@
 void Title::Load()
 {
 
-	BaseScene::Load();
+	SceneBase::Load();
 
 }
 

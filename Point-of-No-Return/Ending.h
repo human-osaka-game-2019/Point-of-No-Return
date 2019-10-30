@@ -3,7 +3,7 @@
 
 #include "Scene.h"
 
-class Ending : public BaseScene
+class Ending : public SceneBase
 {
 
 private:

@@ -3,7 +3,7 @@
 
 void Game::Load()
 {
-	BaseScene::Load();
+	SceneBase::Load();
 	mapchip.InitMap();
 }
 

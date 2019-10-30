@@ -4,7 +4,7 @@
 #include "Main.h"
 #include <windows.h>
 
-class BaseScene
+class SceneBase
 {
 public:
 
@@ -50,7 +50,7 @@ public:
 	static void ChangeScene(SceneID sceneID);
 	
 private:
-	static BaseScene* basescene;
+	static SceneBase* basescene;
 
 	static void CreateScene(SceneID sceneID);
 

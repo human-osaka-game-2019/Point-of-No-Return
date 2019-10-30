@@ -28,7 +28,7 @@ namespace Display
 
 
 
-BaseScene* SceneManager::basescene = nullptr;
+SceneBase* SceneManager::basescene = nullptr;
 
 
 INT WINAPI WinMain(
