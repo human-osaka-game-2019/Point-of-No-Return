@@ -5,7 +5,7 @@
 #include "Help.h"
 #include "Ending.h"
 
-void SceneManager::MakeSnece(SceneID sceneID)
+void SceneManager::CreateScene(SceneID sceneID)
 {
 	//シーン分け
 	switch (sceneID)
@@ -27,13 +27,13 @@ void SceneManager::MakeSnece(SceneID sceneID)
 
 void SceneManager::Initialize(SceneID scene_id)
 {
-	SceneManager::MakeSnece(scene_id);
+	SceneManager::CreateScene(scene_id);
 }
 
 void SceneManager::ChangeScene(SceneID scene_id)
 {
 	SceneManager::DeleteScene();
-	SceneManager::MakeSnece(scene_id);
+	SceneManager::CreateScene(scene_id);
 }
 
 void BaseScene::Load()

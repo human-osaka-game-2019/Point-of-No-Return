@@ -52,7 +52,7 @@ public:
 private:
 	static BaseScene* basescene;
 
-	static void MakeSnece(SceneID sceneID);
+	static void CreateScene(SceneID sceneID);
 
 	inline static void DeleteScene()
 	{
