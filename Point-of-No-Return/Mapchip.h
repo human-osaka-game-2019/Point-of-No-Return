@@ -28,11 +28,11 @@ public:
 
 	void InitMap();
 
-	int map[world_size_height][world_size_width] = {};
 
 	int* map_[world_size_height];
 
 private:
+	int map[world_size_height][world_size_width] = {};
 
 };
 
