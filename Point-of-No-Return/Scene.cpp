@@ -40,7 +40,7 @@ void SceneManager::ChangeScene(SceneID scene_id)
 void SceneBase::Load()
 {
 
-	HANDLE th = nullptr;
+	HANDLE th = CreateLoadThread();
 
 	th = this->CreateLoadThread();
 
