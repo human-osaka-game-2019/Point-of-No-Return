@@ -4,7 +4,7 @@
 void Game::Load()
 {
 	BaseScene::Load();
-	drawmap.InitMap();
+	mapchip.InitMap();
 }
 
 void Game::Update()
@@ -23,7 +23,7 @@ void Game::Update()
 void Game::Draw()
 {
 	dx.DrawEx(0, 0, 0, 1920, 1080, 0, 1, 0, "game_back", 0, 0, 1 / 16, 1);
-	drawmap.DrawMapChip(world_size_width, world_size_height, texture_width, texture_height, chip_width_num, chip_height_num, chip_size_, chip_size_, 0, 0, "blocks", drawmap.map_);
+	mapchip.DrawMapchip(world_size_width, world_size_height, texture_width, texture_height, chip_width_num, chip_height_num, chip_size_, chip_size_, 0, 0, "blocks", mapchip.map_);
 }
 
 void Game::Release()
