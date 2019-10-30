@@ -29,7 +29,7 @@ public:
 
 	HANDLE CreateLoadThread();
 private:
-	DRAWMAP drawmap;
+	Mapchip mapchip;
 
 
 
