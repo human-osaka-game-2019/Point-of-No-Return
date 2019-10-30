@@ -39,12 +39,12 @@ void SceneManager::ChangeScene(SceneID scene_id)
 void BaseScene::Load()
 {
 
-	HANDLE th = NULL;
+	HANDLE th = nullptr;
 
 	th = this->CreateLoadThread();
 
 	
-	if (th == NULL)
+	if (th == nullptr)
 	{
 		return;
 	}
