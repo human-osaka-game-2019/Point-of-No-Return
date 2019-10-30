@@ -39,24 +39,24 @@ public:
 
 	inline static void Update()
 	{
-		basescene->Update();
+		sceneBase->Update();
 	}
 
 	inline static void Draw()
 	{
-		basescene->Draw();
+		sceneBase->Draw();
 	}
 
 	static void ChangeScene(SceneID sceneID);
 	
 private:
-	static SceneBase* basescene;
+	static SceneBase* sceneBase;
 
 	static void CreateScene(SceneID sceneID);
 
 	inline static void DeleteScene()
 	{
-		delete basescene;
+		delete sceneBase;
 	}
 
 };
