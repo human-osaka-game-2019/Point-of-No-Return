@@ -7,21 +7,21 @@
 
 void SceneManager::CreateScene(SceneID sceneID)
 {
-	SceneManager::sceneBase = nullptr;
+	SceneManager::scene = nullptr;
 	//シーン分け
 	switch (sceneID)
 	{
 	case SceneManager::TitleID:
-		SceneManager::sceneBase = new Title();
+		SceneManager::scene = new Title();
 		break;
 	case SceneManager::HelpID:
-		SceneManager::sceneBase = new Help();
+		SceneManager::scene = new Help();
 		break;
 	case SceneManager::GameID:
-		SceneManager::sceneBase = new Game();
+		SceneManager::scene = new Game();
 		break;
 	case SceneManager::EndingID:
-		SceneManager::sceneBase = new Ending();
+		SceneManager::scene = new Ending();
 		break;
 	}
 }
