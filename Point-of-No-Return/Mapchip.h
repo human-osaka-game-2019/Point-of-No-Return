@@ -36,4 +36,4 @@ private:
 
 };
 
-#endif // !CHARCTER_H_
+#endif // !MAPCHIP_H_
