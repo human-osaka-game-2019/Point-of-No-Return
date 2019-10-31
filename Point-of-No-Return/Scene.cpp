@@ -40,12 +40,12 @@ void SceneManager::ChangeScene(SceneID scene_id)
 void SceneBase::Load()
 {
 
-	HANDLE th = CreateLoadThread();
+	HANDLE thread = CreateLoadThread();
 
-	th = this->CreateLoadThread();
+	thread = this->CreateLoadThread();
 
 	
-	if (th == nullptr)
+	if (thread == nullptr)
 	{
 		return;
 	}
@@ -75,12 +75,12 @@ void SceneBase::Load()
 			
 
 			//スレッドが終わったかチェック
-			GetExitCodeThread(th, &result);
+			GetExitCodeThread(thread, &result);
 			//終わったかどうか返す関数
 			if (STILL_ACTIVE != result && framecount == 60*5)
 			{
 				//closehandleで閉じる。
-				CloseHandle(th);
+				CloseHandle(thread);
 				//ループを抜ける。
 				break;
 			}
