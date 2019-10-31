@@ -7,7 +7,6 @@
 
 void SceneManager::CreateScene(SceneID sceneID)
 {
-	SceneManager::scene = nullptr;
 	//シーン分け
 	switch (sceneID)
 	{

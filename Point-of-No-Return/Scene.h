@@ -57,6 +57,7 @@ private:
 	inline static void DeleteScene()
 	{
 		delete scene;
+		SceneManager::scene = nullptr;
 	}
 
 };
