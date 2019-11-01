@@ -2,8 +2,9 @@
 #define GAME_H_
 
 #include "Scene.h"
+#include "Mapchip.h"
 
-class Game : public BaseScene
+class Game : public SceneBase
 {
 public:
 	Game()
@@ -23,7 +24,11 @@ public:
 
 	void Release();
 
-	void CreateLoadThread(HANDLE thread);
+	HANDLE CreateLoadThread();
+private:
+	Mapchip mapchip;
+
+
 
 };
 

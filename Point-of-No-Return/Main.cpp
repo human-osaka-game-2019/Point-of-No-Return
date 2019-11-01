@@ -5,11 +5,31 @@
 #include "Load.h"
 #include "Help.h"
 #include "Ending.h"
-
+#include "Mapchip.h"
 
 #pragma comment(lib,"../Point-of-No-Return/Lib/DirectX.lib")
 
-BaseScene* SceneManager::basescene = nullptr;
+namespace Display
+{
+	const float DISPLAY_WIDTH = 1920;
+	const float DISPLAY_HEIGHT = 1080;
+
+	RECT DisplayRect
+	{ 0,
+	  0,
+	  DISPLAY_WIDTH,
+	  DISPLAY_HEIGHT
+	};
+
+
+}
+
+
+
+
+
+SceneBase* SceneManager::scene = nullptr;
+
 
 INT WINAPI WinMain(
 	_In_ HINSTANCE hInstance,
@@ -17,7 +37,9 @@ INT WINAPI WinMain(
 	_In_ LPSTR CmdLine,
 	_In_ INT nCmdShow)
 {
-	DX::DirectX& dx = DX::DirectX::GetInstance();
+
+	DirectX& dx = DirectX::GetInstance();
+
 
 	const TCHAR AppName[] = _T("Point of No Return");
 
@@ -55,6 +77,9 @@ INT WINAPI WinMain(
 		NULL
 	);
 
+
+
+
 	ShowWindow(hWnd, SW_SHOW);
 	UpdateWindow(hWnd);
 
@@ -62,10 +87,8 @@ INT WINAPI WinMain(
 
 	timeBeginPeriod(1);
 
-	dx.LoadTexture("brick.png", "Tex");
-
-
-	SceneManager::Initialize();
+	// 後でTitleIDに変更する
+	SceneManager::Initialize(SceneManager::TitleID);
 
 	while (msg.message != WM_QUIT)
 	{
@@ -82,7 +105,9 @@ INT WINAPI WinMain(
 				dx.BeginScene();
 
 
-				SceneManager::ChangeScene();
+				SceneManager::Update();
+				SceneManager::Draw();
+
 
 
 				dx.EndScene();

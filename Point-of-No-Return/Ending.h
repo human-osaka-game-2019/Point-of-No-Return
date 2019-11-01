@@ -3,7 +3,7 @@
 
 #include "Scene.h"
 
-class Ending : public BaseScene
+class Ending : public SceneBase
 {
 
 private:
@@ -27,7 +27,7 @@ public:
 
 	void Release();
 
-	void CreateLoadThread(HANDLE thread);
+	HANDLE CreateLoadThread();
 
 };
 

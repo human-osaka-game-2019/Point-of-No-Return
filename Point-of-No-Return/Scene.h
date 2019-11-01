@@ -1,23 +1,26 @@
 ﻿#ifndef SCENE_H_
 #define SCENE_H_
 
+#include "Main.h"
 #include <windows.h>
 
-class BaseScene
+class SceneBase
 {
 public:
 
-	/*virtual*/ void Load();
-
+	void Load();
+  
 	virtual void Update() = 0;
 
 	virtual void Draw() = 0;
 
 	virtual void Release() = 0;
 
-	virtual void CreateLoadThread(HANDLE thread) = 0;
-};
+	virtual HANDLE CreateLoadThread() = 0;
+protected:
+	DirectX& dx = DirectX::GetInstance();
 
+};
 
 class SceneManager
 {
@@ -32,42 +35,33 @@ public:
 		EndingID,
 	};
 
-	inline static void DeleteScene()
-	{
-		delete basescene;
-	}
-
-	static void MakeSnece(SceneID sceneID);
-
 	static void Initialize(SceneID sceneID);
-
-	static void ChangeScene();
 
 	inline static void Update()
 	{
-		basescene->Update();
+		scene->Update();
 	}
 
 	inline static void Draw()
 	{
-		basescene->Draw();
+		scene->Draw();
 	}
 
-	static bool Changed();
-
-	static void CallCreateLoadThread(HANDLE thread);
-
+	static void ChangeScene(SceneID sceneID);
+	
 private:
-	static SceneID sceneID;
-	static SceneID save_sceneID;
-	static BaseScene* basescene;
+	static SceneBase* scene;
 
-	inline static void SetSaveScene()
+	static void CreateScene(SceneID sceneID);
+
+	inline static void DeleteScene()
 	{
-		save_sceneID = sceneID;
+		delete scene;
+		SceneManager::scene = nullptr;
 	}
+
 };
 
 
 
-#endif // !SCENE_H_
+#endif //! SCENE_H_

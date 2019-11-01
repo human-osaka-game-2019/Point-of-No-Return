@@ -6,6 +6,8 @@
 #include <vector>
 #include <string>
 
+
+
 //X座標
 class VertexX
 {
@@ -121,24 +123,7 @@ private:
 class Object
 {
 public:
-
-	DX::DirectX directx;
-
-	Object()
-	{
-
-	};
-
-	Object(Object& object)
-	{
-
-	};
-
-	~Object()
-	{
 	
-	};
-
 	/*
 	virtual directx.Draw()
 	{
@@ -166,48 +151,6 @@ protected:
 };
 
 
-
-//キャラクタークラス
-class Character :public Object
-{
-
-};
-//UIクラス
-class UI:public Object
-{
-
-};
-//スクロールステージクラス
-class ScrollStage:public Object
-{
-
-};
-//ステージクラス
-class Stage :public Object
-{
-
-};
-
-
-
-
-//主人公クラス
-class Hero :public Character
-{
-
-};
-
-//NPCクラス
-class NPC :public Character
-{
-
-};
-
-//敵クラス
-class Enemy :public Character
-{
-
-};
 
 
 

@@ -5,63 +5,43 @@
 #include "Help.h"
 #include "Ending.h"
 
-void SceneManager::MakeSnece(SceneID sceneID)
+void SceneManager::CreateScene(SceneID sceneID)
 {
+	SceneManager::DeleteScene();
 	//シーン分け
 	switch (sceneID)
 	{
 	case SceneManager::TitleID:
-		SceneManager::basescene = new Title();
+		SceneManager::scene = new Title();
 		break;
 	case SceneManager::HelpID:
-		SceneManager::basescene = new Help();
+		SceneManager::scene = new Help();
 		break;
 	case SceneManager::GameID:
-		SceneManager::basescene = new Game();
+		SceneManager::scene = new Game();
 		break;
 	case SceneManager::EndingID:
-		SceneManager::basescene = new Ending();
+		SceneManager::scene = new Ending();
 		break;
 	}
 }
 
-void SceneManager::Initialize(SceneID sceneID_)
+void SceneManager::Initialize(SceneID scene_id)
 {
-	sceneID = sceneID_;
-	save_sceneID = sceneID_;
-	SceneManager::MakeSnece(sceneID_);
+	SceneManager::CreateScene(scene_id);
 }
 
-void SceneManager::ChangeScene()
+void SceneManager::ChangeScene(SceneID scene_id)
 {
-	if (SceneManager::Changed())
-	{
-		SceneManager::DeleteScene();
-		SceneManager::MakeSnece(SceneManager::sceneID);
-	}
-	SetSaveScene();
+	SceneManager::CreateScene(scene_id);
 }
 
-bool SceneManager::Changed()
+void SceneBase::Load()
 {
-	if (sceneID != save_sceneID)
-	{
-			return true;
-	}
-	return false;
-}
 
-
-
-
-void BaseScene::Load()
-{
-	HANDLE th;
-
-	this->CreateLoadThread(th);
-
+	HANDLE thread = CreateLoadThread();
 	
-	if (th == NULL)
+	if (thread == nullptr)
 	{
 		return;
 	}
@@ -71,32 +51,41 @@ void BaseScene::Load()
 
 	DWORD result;
 
+	int framecount = 0;
+
 	timeBeginPeriod(1);
+	dx.LoadTexture("仮Load.png", "load");
 
 	//Thread関数が処理している間のループ
 	while (true)
 	{
 		Curr = timeGetTime();
 		if (Curr - Prev >= 1000 / 60) {
+			dx.BeginScene();
+			
+			framecount++;
+			dx.DrawEx(100, 100, 0, 200, 200, 0, 1, 0, "load", 0, 0, 1, 0.25);
+			
 
-
-
-
+			
+			
 
 			//スレッドが終わったかチェック
-			GetExitCodeThread(th, &result);
+			GetExitCodeThread(thread, &result);
 			//終わったかどうか返す関数
-			if (STILL_ACTIVE != result)
+			if (STILL_ACTIVE != result && framecount == 60*5)
 			{
 				//closehandleで閉じる。
-				CloseHandle(th);
+				CloseHandle(thread);
 				//ループを抜ける。
 				break;
 			}
+			dx.EndScene();
 			Prev = Curr;
 		}
 		Sleep(1);
 	}
+	dx.ReleaseTexture("load");
 	timeEndPeriod(1);
 }
 
