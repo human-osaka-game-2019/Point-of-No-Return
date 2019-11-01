@@ -7,6 +7,7 @@
 
 void SceneManager::CreateScene(SceneID sceneID)
 {
+	SceneManager::DeleteScene();
 	//シーン分け
 	switch (sceneID)
 	{
@@ -32,7 +33,6 @@ void SceneManager::Initialize(SceneID scene_id)
 
 void SceneManager::ChangeScene(SceneID scene_id)
 {
-	SceneManager::DeleteScene();
 	SceneManager::CreateScene(scene_id);
 }
 
