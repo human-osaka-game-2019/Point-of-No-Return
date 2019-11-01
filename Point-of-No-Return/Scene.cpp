@@ -40,9 +40,6 @@ void SceneBase::Load()
 {
 
 	HANDLE thread = CreateLoadThread();
-
-	thread = this->CreateLoadThread();
-
 	
 	if (thread == nullptr)
 	{
