@@ -18,8 +18,6 @@ public:
 	}
 
 
-	void Load();
-
 	void Update();
 
 	void Draw();

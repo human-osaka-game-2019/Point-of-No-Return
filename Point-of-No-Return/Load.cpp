@@ -1,8 +1,6 @@
 ﻿#include "Main.h"
 #include "Load.h"
 
-
-
 //スレッド関数
 DWORD WINAPI TitleThread(HWND hWnd, LPVOID* data)
 {

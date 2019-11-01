@@ -1,22 +1,22 @@
-﻿#ifndef MAPCHIP_H_
+#ifndef MAPCHIP_H_
 #define MAPCHIP_H_
 
 
 #include<iostream>
 #include<stdio.h>
 
-// ブロックの数
+// ãã­ãã¯ã®æ°
 const int world_size_width = 480;
 const int world_size_height = 16;
-// マップてチップ1つの大きさ
+// ãããã¦ããã1ã¤ã®å¤§ãã
 const int chip_size_ = 64;
-// テクスチャの大きさ
+// ãã¯ã¹ãã£ã®å¤§ãã
 const int texture_width = 256;
 const int texture_height = 256;
-// 切り取った画像の大きさ
+// åãåã£ãç»åã®å¤§ãã
 const int chip_width_num = texture_width / 4;
 const int chip_height_num = texture_height / 4;
-// 描画サイズ
+// æç»ãµã¤ãº
 // const int draw_size = 64;
 
 class Mapchip {

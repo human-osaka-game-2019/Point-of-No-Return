@@ -1,4 +1,4 @@
-﻿#include "Load.h"
+#include "Load.h"
 #include "Game.h"
 
 void Game::Load()

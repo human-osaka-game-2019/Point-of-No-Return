@@ -1,4 +1,4 @@
-﻿#include "Ending.h"
+#include "Ending.h"
 #include "Load.h"
 
 
@@ -6,6 +6,7 @@ void Ending::Load()
 {
 	SceneBase::Load();
 }
+
 
 void Ending::Update()
 {
