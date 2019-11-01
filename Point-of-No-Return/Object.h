@@ -11,26 +11,26 @@
 //X座標
 class VertexX
 {
-private:
-	float x;
+public:
+	float var;
 };
 //Y座標
 class VertexY
 {
-private:
-	float y;
+public:
+	float var;
 };
 //TU座標
 class VertexTU
 {
 private:
-	float tu;
+	float var;
 };
 //TV座標
 class VertexTV
 {
 private:
-	float tv;
+	float var;
 };
 //Color座標
 class VertexColor
@@ -38,78 +38,88 @@ class VertexColor
 private:
 	unsigned long color;
 };
+class Width
+{
+public:
+	float var;
+};
 
+class Height
+{
+public:
+	float var;
+};
 
 //ヒットポイント
 class HP
 {
 private:
-	int hp;
+	int var;
 };
 //マジックポイント
 class MP
 {
 private:
-	int mp;
+	int var;
 };
 //イマジナリーポイント/想像力
 class IP
 {
 private:
-	int IP;
+	int var;
 };
 //攻撃力
 class Attack
 {
 private:
-	int attack;
+	int var;
 };
 //防御力
 class Defense
 {
 private:
-	int defense;
+	int var;
 };
 //素早さ
 class Speed
 {
 private:
-	int speed;
+	int var;
 };
 //魔法攻撃力
 class MagicAttack
 {
 private:
-	int magic_attack;
+	int var;
 };
 //運
 class Luck
 {
 private:
-	int luck;
+	int var;
 };
 //愛情
 class Love
 {
-	int love;
+	int var;
 };
 //時間
 class Timer
 {
 private:
-	float time;
+	float var;
 };
 //お金
 class Gold
 {
 private:
-	int gold;
+	int var;
 };
 //年齢
 class Age
 {
 private:
-	int age;
+	int var;
 };
 //名前
 class Name
@@ -137,6 +147,8 @@ protected:
 	{
 		VertexX x;
 		VertexY y;
+		Width width;
+		Height height;
 		VertexColor color;
 		VertexTU tu;
 		VertexTV tv;
