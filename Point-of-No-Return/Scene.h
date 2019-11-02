@@ -9,7 +9,7 @@ class SceneBase
 public:
 
 	void Load();
-  
+
 	virtual void Update() = 0;
 
 	virtual void Draw() = 0;
@@ -17,9 +17,13 @@ public:
 	virtual void Release() = 0;
 
 	virtual HANDLE CreateLoadThread() = 0;
+
+	SceneBase() {}
+
+	virtual ~SceneBase() {}
+
 protected:
 	DirectX& dx = DirectX::GetInstance();
-
 };
 
 class SceneManager
@@ -59,6 +63,8 @@ private:
 		delete scene;
 		SceneManager::scene = nullptr;
 	}
+
+	SceneManager();
 
 };
 
