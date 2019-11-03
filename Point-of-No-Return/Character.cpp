@@ -27,7 +27,7 @@ class Stage :public Object
 //主人公クラス
 class Hero :public Character
 {
-
+	CustomVertex hero;
 };
 
 //NPCクラス
