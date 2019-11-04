@@ -69,33 +69,104 @@ void Collision::CoordinateCorrection(Hero hero,int** map)
 	{
 		if (TopLeftHasHit(hero, map) == true)
 		{
-
+			hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_) * chip_size_ - hero.customVertex.height.var;
 		}
 
 		if (BottomRightHasHit(hero, map) == true)
 		{
-
+			hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_) * chip_size_ + chip_size_;
 		}
 		
 		if (TopRightHasHit(hero, map) == true)
 		{
-
+			if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, UPRIGHT) == DOWN)
+			{
+				hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_) * chip_size_ - hero.customVertex.height.var;
+			}
+			else
+			{
+				hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_) * chip_size_ + chip_size_;
+			}
 		}
 
 
 	}
 	else if (save_char_move_direction[X] == RIGHT && save_char_move_direction[Y] == DOWN)
 	{
+		if (TopRightHasHit(hero, map) == true)
+		{
+			hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_) * chip_size_ + chip_size_;
+		}
+
+		if (BottomLeftHasHit(hero, map) == true)
+		{
+			hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_) * chip_size_ + chip_size_;
+		}
+
+		if (BottomRightHasHit(hero, map) == true)
+		{
+			if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, DOWNRIGHT) == UP)
+			{
+				hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_) * chip_size_ + chip_size_;
+			}
+			else
+			{
+				hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_) * chip_size_ + chip_size_;
+			}
+
+		}
+
 
 	}
 
 	if (save_char_move_direction[X] == LEFT && save_char_move_direction[Y] == UP)
 	{
+		if (TopRightHasHit(hero, map) == true)
+		{
+			hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_) * chip_size_ - hero.customVertex.height.var;
+		}
 
+		if (BottomLeftHasHit(hero, map) == true)
+		{
+			hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_) * chip_size_ - hero.customVertex.width.var;
+		}
+
+		if (TopLeftHasHit(hero, map) == true)
+		{
+			if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, UPLEFT) == DOWN)
+			{
+				hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_) * chip_size_ - hero.customVertex.height.var;
+			}
+			else
+			{
+				hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_) * chip_size_ - hero.customVertex.width.var;
+			}
+		}
 	}
 	else if (save_char_move_direction[X] == LEFT && save_char_move_direction[Y] == DOWN)
 	{
 
+		if (BottomLeftHasHit(hero, map) == true)
+		{
+			hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_) * chip_size_ + chip_size_;
+		}
+
+		if (TopLeftHasHit(hero, map) == true)
+		{
+			hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_) * chip_size_ - hero.customVertex.width.var;
+		}
+		
+		if (BottomRightHasHit(hero, map) == true)
+		{
+			if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, DOWNLEFT) == UP)
+			{
+				hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_) * chip_size_ + chip_size_;
+			}
+			else
+			{
+				hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_) * chip_size_ - hero.customVertex.width.var;
+			}
+		}
 	}
 
 	if (save_char_move_direction[X] == RIGHT)
@@ -156,6 +227,82 @@ bool Collision::BottomLeftHasHit(Hero hero, int** map)
 	}
 
 	return false;
+}
+
+int Collision::HitVectorJudge(int X, int Y, int move_deflection)
+{
+	float x, y;
+
+	map_x = (X / chip_size_) * chip_size_;
+	map_y = (Y / chip_size_) * chip_size_;
+
+	switch (move_deflection)
+	{
+	case UPRIGHT:
+
+		x = ((X - map_x ) / X) * 100;
+		y = ((Y - (map_y - chip_size_)) / Y) * 100;
+
+		if (x < y)
+		{
+			return LEFT;
+		}
+		if (x > y)
+		{
+			return DOWN;
+		}
+
+		return NoHit;
+
+	case UPLEFT:
+
+		x = (((map_x + 64) - X) / X) * 100;
+		y = ((Y - (map_y - 64)) / Y) * 100;
+
+		if (x < y)
+		{
+			return RIGHT;
+		}
+		if (x > y)
+		{
+			return DOWN;
+		}
+
+		return NoHit;
+
+
+	case DOWNRIGHT:
+
+		x = ((X - map_x) / X) * 100;
+		y = ((Y - map_y) / Y) * 100;
+
+		if (x < y)
+		{
+			return LEFT;
+		}
+		if (x > y)
+		{
+			return UP;
+		}
+
+		return NoHit;
+
+	case DOWNLEFT:
+
+		x = (((map_x + 64) - X) / X) * 100;
+		y = ((Y - map_y) / Y) * 100;
+
+		if (x < y)
+		{
+			return RIGHT;
+		}
+		if (x > y)
+		{
+			return UP;
+		}
+
+		return NoHit;
+	}
 }
 
 
