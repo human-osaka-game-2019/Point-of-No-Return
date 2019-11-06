@@ -6,22 +6,21 @@
 
 enum Direction
 {
-	STOP,
-	UP,
-	DOWN,
-	RIGHT,
-	LEFT,
-	UPRIGHT,
-	UPLEFT,
-	DOWNRIGHT,
-	DOWNLEFT
-	
+	Stop,
+	Up,
+	Down,
+	Right,
+	Left,
+	UpRight,
+	UpLeft,
+	DownRight,
+	DownLeft
 };
 
 enum 
 { 
-	AIR,
-	ROAD,
+	Air,
+	Road,
 
 };
 
@@ -64,6 +63,7 @@ public:
 
 	// Xの方向を算出する関数
 	Direction VerticalDirectionCheck(Hero hero);
+
 	// Yの方向を算出する関数
 	Direction HorizontalDirectionCheck(Hero hero);
 
