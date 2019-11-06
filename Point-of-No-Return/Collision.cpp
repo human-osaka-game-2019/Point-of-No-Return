@@ -14,11 +14,11 @@ Direction Collision::VerticalDirectionCheck(Hero hero)
 
 	if (vec_x < 0)
 	{
-		return RIGHT;
+		return Direction::RIGHT;
 	}
 	else if (vec_x > 0)
 	{
-		return LEFT;
+		return Direction::LEFT;
 	}
 }
 
@@ -29,11 +29,11 @@ Direction Collision::VerticalDirectionCheck(Hero hero)
 
 	 if (vec_y < 0)
 	 {
-		 return DOWN;
+		 return Direction::DOWN;
 	 }
 	 else if (vec_y > 0)
 	 {
-		 return UP;
+		 return Direction::UP;
 	 }
  }
  
@@ -86,6 +86,10 @@ void Collision::DirectionCheck(Hero hero,int** map)
 			{
 				CoordinateCorrection(hero, LEFT);
 			}
+			else if(HitVectorJudge(hero.customVertex.x.var,hero.customVertex.y.var,UPRIGHT) == UPRIGHT)
+			{
+				CoordinateCorrection(hero, UPRIGHT);
+			}
 		}
 
 
@@ -111,6 +115,10 @@ void Collision::DirectionCheck(Hero hero,int** map)
 			else if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, DOWNRIGHT) == LEFT)
 			{
 				CoordinateCorrection(hero, LEFT);
+			}
+			else if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, DOWNRIGHT) == DOWNRIGHT)
+			{
+				CoordinateCorrection(hero, DOWNRIGHT);
 			}
 
 		}
@@ -140,6 +148,10 @@ void Collision::DirectionCheck(Hero hero,int** map)
 			{
 				CoordinateCorrection(hero, RIGHT);
 			}
+			else if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, UPLEFT) == UPLEFT)
+			{
+				CoordinateCorrection(hero,UPLEFT);
+			}
 		}
 	}
 	else if (save_char_move_direction[X] == LEFT && save_char_move_direction[Y] == DOWN)
@@ -164,6 +176,10 @@ void Collision::DirectionCheck(Hero hero,int** map)
 			else if(HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, DOWNLEFT) == RIGHT)
 			{
 				CoordinateCorrection(hero, RIGHT);
+			}
+			else if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, DOWNLEFT) == DOWNLEFT)
+			{
+				CoordinateCorrection(hero, DOWNLEFT);
 			}
 		}
 	}
@@ -213,6 +229,35 @@ void Collision::CoordinateCorrection(Hero hero, int char_move_direction)
 	case LEFT: // 当たり判定はブロックのRight
 
 		hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_) * chip_size_ + chip_size_;
+
+		break;
+
+	case UPRIGHT:
+
+		//							元の座標 / チップサイズ * チップサイズ - キャラテクスチャの幅
+		hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_ ) * chip_size_;
+		hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_ + 1) * chip_size_;
+
+		break;
+
+	case UPLEFT:
+
+		hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_ + 1) * chip_size_;
+		hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_ + 1) * chip_size_;
+
+		break;
+
+	case DOWNRIGHT:
+
+		hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_) * chip_size_;
+		hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_) * chip_size_;
+
+		break;
+
+	case DOWNLEFT:
+		
+		hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_ + 1) * chip_size_;
+		hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_) * chip_size_;
 
 		break;
 	}
@@ -285,15 +330,16 @@ int Collision::HitVectorJudge(int X, int Y, int move_deflection)
 		}
 		if (x == y)
 		{
-			//処理書く
+			// ひとまず同じ方向を返す
+			return UPRIGHT;
 		}
 
 		return NoHit;
 
 	case UPLEFT:
 
-		x = (((map_x + 64) - X) / X) * 100;
-		y = ((Y - (map_y - 64)) / Y) * 100;
+		x = (((map_x + chip_size_) - X) / X) * 100;
+		y = ((Y - (map_y - chip_size_)) / Y) * 100;
 
 		if (x < y)
 		{
@@ -305,7 +351,8 @@ int Collision::HitVectorJudge(int X, int Y, int move_deflection)
 		}
 		if (x == y)
 		{
-			//処理書く
+			// ひとまず同じ方向を返す
+			return UPLEFT;
 		}
 
 		return NoHit;
@@ -326,14 +373,15 @@ int Collision::HitVectorJudge(int X, int Y, int move_deflection)
 		}
 		if (x == y)
 		{
-			//処理書く
+			// ひとまず同じ方向を返す
+			return DOWNRIGHT;
 		}
 
 		return NoHit;
 
 	case DOWNLEFT:
 
-		x = (((map_x + 64) - X) / X) * 100;
+		x = (((map_x + chip_size_) - X) / X) * 100;
 		y = ((Y - map_y) / Y) * 100;
 
 		if (x < y)
@@ -346,7 +394,8 @@ int Collision::HitVectorJudge(int X, int Y, int move_deflection)
 		}
 		if (x == y)
 		{
-			//処理書く
+			// ひとまず同じ方向を返す
+			return DOWNLEFT;
 		}
 
 		return NoHit;

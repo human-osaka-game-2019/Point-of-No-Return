@@ -11,6 +11,10 @@ enum Direction
 	DOWN,
 	RIGHT,
 	LEFT,
+	UPRIGHT,
+	UPLEFT,
+	DOWNRIGHT,
+	DOWNLEFT
 	
 };
 
@@ -37,13 +41,7 @@ enum HitPoint
 
 };
 
-enum
-{
-	UPRIGHT,
-	UPLEFT,
-	DOWNRIGHT,
-	DOWNLEFT
-};
+
 
 class Collision
 {
