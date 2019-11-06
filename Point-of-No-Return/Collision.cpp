@@ -7,10 +7,10 @@ int Collision::CheckMapNumber(int x, int y, int** map)
 	
 }
 
-Direction Collision::VerticalDirectionCheck(Hero hero)
+Direction Collision::VerticalDirectionCheck(int x,int before_x)
 {
 	// Xの移動量
-	vec_x = hero.customVertex.x.var - hero.before_x.var;
+	vec_x = x - before_x;
 
 	if (vec_x < 0)
 	{
@@ -22,10 +22,10 @@ Direction Collision::VerticalDirectionCheck(Hero hero)
 	}
 }
 
- Direction Collision::HorizontalDirectionCheck(Hero hero)
+ Direction Collision::HorizontalDirectionCheck(int y, int before_y)
  {
 	 // Yの移動量
-	 vec_y = hero.customVertex.y.var - hero.before_y.var;
+	 vec_y = y - before_y;
 
 	 if (vec_y < 0)
 	 {
@@ -37,19 +37,19 @@ Direction Collision::VerticalDirectionCheck(Hero hero)
 	 }
  }
  
-void Collision::HeroAndBlock(Hero hero, int** map)
+void Collision::ブロックとの(int x, int x_size, int y, int y_size, int before_x, int before_y, int** map)
 {
-	if (HitPointCheck(hero, map) == true)
+	if (HitPointCheck(x,x_size,y,y_size, map) == true)
 	{
-		DirectionCheck(hero,map);
+		DirectionCheck(x,x_size,y,y_size,before_x,before_y,map);
 	}
 
 }
 
-bool Collision::HitPointCheck(Hero hero,int** map)
+bool Collision::HitPointCheck(int x,int x_size,int y , int y_size,int** map)
 {
 	//	右上 左上 右下 左下
-	if (TopRightHasHit(hero,map) == true || TopLeftHasHit(hero,map) == true || BottomRightHasHit(hero, map) == true || BottomLeftHasHit(hero, map) == true)
+	if (TopRightHasHit(x, x_size, y, map) == true || TopLeftHasHit(x,y,map) == true || BottomRightHasHit(x, x_size, y, y_size, map) == true || BottomLeftHasHit(x, y, y_size, map) == true)
 	{	
 		return true;
 	}
@@ -58,37 +58,37 @@ bool Collision::HitPointCheck(Hero hero,int** map)
 
 }
 
-void Collision::DirectionCheck(Hero hero,int** map)
+void Collision::DirectionCheck(int x,int x_size,int y,int y_size,int before_x,int before_y,int** map)
 {
 
-	save_char_move_direction[X] = VerticalDirectionCheck(hero);
-	save_char_move_direction[Y] = HorizontalDirectionCheck(hero);
+	save_char_move_direction[X] = VerticalDirectionCheck(x,before_x);
+	save_char_move_direction[Y] = HorizontalDirectionCheck(y,before_y);
 
 	if (save_char_move_direction[X] == Right && save_char_move_direction[Y] == Up)
 	{
-		if (TopLeftHasHit(hero, map) == true)
+		if (TopLeftHasHit(x,y, map) == true)
 		{
-			CoordinateCorrection(hero, Down);
+			CoordinateCorrection(x, x_size, y, y_size, Down);
 		}
 
-		if (BottomRightHasHit(hero, map) == true)
+		if (BottomRightHasHit(x,x_size,y,y_size, map) == true)
 		{
-			CoordinateCorrection(hero, Left);
+			CoordinateCorrection(x, x_size, y, y_size, Left);
 		}
 		
-		if (TopRightHasHit(hero, map) == true)
+		if (TopRightHasHit(x,x_size,y, map) == true)
 		{
-			if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, UpRight) == Down)
+			if (HitVectorJudge(x, y, UpRight) == Down)
 			{
-				CoordinateCorrection(hero, Down);
+				CoordinateCorrection(x, x_size, y, y_size, Down);
 			}
-			else if(HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, UpRight) == Left)
+			else if(HitVectorJudge(x,y, UpRight) == Left)
 			{
-				CoordinateCorrection(hero, Left);
+				CoordinateCorrection(x, x_size, y, y_size, Left);
 			}
-			else if(HitVectorJudge(hero.customVertex.x.var,hero.customVertex.y.var,UpRight) == UpRight)
+			else if(HitVectorJudge(x,y,UpRight) == UpRight)
 			{
-				CoordinateCorrection(hero, UpRight);
+				CoordinateCorrection(x, x_size, y, y_size, UpRight);
 			}
 		}
 
@@ -96,29 +96,29 @@ void Collision::DirectionCheck(Hero hero,int** map)
 	}
 	else if (save_char_move_direction[X] == Right && save_char_move_direction[Y] == Down)
 	{
-		if (TopRightHasHit(hero, map) == true)
+		if (TopRightHasHit(x,x_size,y, map) == true)
 		{
-			CoordinateCorrection(hero, Left);
+			CoordinateCorrection(x, x_size, y, y_size, Left);
 		}
 
-		if (BottomLeftHasHit(hero, map) == true)
+		if (BottomLeftHasHit(x, y, y_size, map) == true)
 		{
-			CoordinateCorrection(hero, Up);
+			CoordinateCorrection(x, x_size, y, y_size, Up);
 		}
 
-		if (BottomRightHasHit(hero, map) == true)
+		if (BottomRightHasHit(x, x_size, y, y_size, map) == true)
 		{
-			if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, DownRight) == Up)
+			if (HitVectorJudge(x,y, DownRight) == Up)
 			{
-				CoordinateCorrection(hero, Up);
+				CoordinateCorrection(x, x_size, y, y_size, Up);
 			}
-			else if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, DownRight) == Left)
+			else if (HitVectorJudge(x,y, DownRight) == Left)
 			{
-				CoordinateCorrection(hero, Left);
+				CoordinateCorrection(x, x_size, y, y_size, Left);
 			}
-			else if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, DownRight) == DownRight)
+			else if (HitVectorJudge(x,y, DownRight) == DownRight)
 			{
-				CoordinateCorrection(hero, DownRight);
+				CoordinateCorrection(x, x_size, y, y_size, DownRight);
 			}
 
 		}
@@ -128,136 +128,136 @@ void Collision::DirectionCheck(Hero hero,int** map)
 
 	if (save_char_move_direction[X] == Left && save_char_move_direction[Y] == Up)
 	{
-		if (TopRightHasHit(hero, map) == true)
+		if (TopRightHasHit(x,x_size,y, map) == true)
 		{
-			CoordinateCorrection(hero, Down);
+			CoordinateCorrection(x, x_size, y, y_size, Down);
 		}
 
-		if (BottomLeftHasHit(hero, map) == true)
+		if (BottomLeftHasHit(x, y, y_size, map) == true)
 		{
-			CoordinateCorrection(hero, Right);
+			CoordinateCorrection(x, x_size, y, y_size, Right);
 		}
 
-		if (TopLeftHasHit(hero, map) == true)
+		if (TopLeftHasHit(x,y, map) == true)
 		{
-			if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, UpLeft) == Down)
+			if (HitVectorJudge(x,y, UpLeft) == Down)
 			{
-				CoordinateCorrection(hero, Down);
+				CoordinateCorrection(x, x_size, y, y_size, Down);
 			}
-			else if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, UpLeft) == Right)
+			else if (HitVectorJudge(x,y, UpLeft) == Right)
 			{
-				CoordinateCorrection(hero, Right);
+				CoordinateCorrection(x, x_size, y, y_size, Right);
 			}
-			else if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, UpLeft) == UpLeft)
+			else if (HitVectorJudge(x, y, UpLeft) == UpLeft)
 			{
-				CoordinateCorrection(hero,UpLeft);
+				CoordinateCorrection(x, x_size, y, y_size,UpLeft);
 			}
 		}
 	}
 	else if (save_char_move_direction[X] == Left && save_char_move_direction[Y] == Down)
 	{
 
-		if (BottomRightHasHit(hero, map) == true)
+		if (BottomRightHasHit(x, x_size, y, y_size, map) == true)
 		{
-			CoordinateCorrection(hero, Up);
+			CoordinateCorrection(x, x_size, y, y_size, Up);
 		}
 
-		if (TopLeftHasHit(hero, map) == true)
+		if (TopLeftHasHit(x,y, map) == true)
 		{
-			CoordinateCorrection(hero, Right);
+			CoordinateCorrection(x, x_size, y, y_size, Right);
 		}
 		
-		if (BottomLeftHasHit(hero, map) == true)
+		if (BottomLeftHasHit(x,y,y_size, map) == true)
 		{
-			if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, DownLeft) == Up)
+			if (HitVectorJudge(x,y, DownLeft) == Up)
 			{
-				CoordinateCorrection(hero, Up);
+				CoordinateCorrection(x, x_size, y, y_size, Up);
 			}
-			else if(HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, DownLeft) == Right)
+			else if(HitVectorJudge(x,y, DownLeft) == Right)
 			{
-				CoordinateCorrection(hero, Right);
+				CoordinateCorrection(x, x_size, y, y_size, Right);
 			}
-			else if (HitVectorJudge(hero.customVertex.x.var, hero.customVertex.y.var, DownLeft) == DownLeft)
+			else if (HitVectorJudge(x,y, DownLeft) == DownLeft)
 			{
-				CoordinateCorrection(hero, DownLeft);
+				CoordinateCorrection(x, x_size, y, y_size, DownLeft);
 			}
 		}
 	}
 
 	if (save_char_move_direction[X] == Right)
 	{
-		CoordinateCorrection(hero, Right);
+		CoordinateCorrection(x, x_size, y, y_size, Right);
 	}
 	else if (save_char_move_direction[X] == Left)
 	{
-		CoordinateCorrection(hero, Left);
+		CoordinateCorrection(x, x_size, y, y_size, Left);
 	}
 
 	if (save_char_move_direction[Y] == Up)
 	{
-		CoordinateCorrection(hero, Up);
+		CoordinateCorrection(x, x_size, y, y_size, Up);
 	}
 	else if (save_char_move_direction[Y] == Down)
 	{
-		CoordinateCorrection(hero, Down);
+		CoordinateCorrection(x,x_size,y,y_size, Down);
 	}
 
 }
 
-void Collision::CoordinateCorrection(Hero hero, int char_move_direction)
+void Collision::CoordinateCorrection(int x,int x_size,int y,int y_size, int char_move_direction)
 {
 	switch (char_move_direction)
 	{
 	case Up: // 当たり判定はブロックのBottom
 
-		hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_) * chip_size_ + chip_size_;
+		y = (y / chip_size_) * chip_size_ + chip_size_;
 
 		break;
 
 	case Down:// 当たり判定はブロックのTop
 
-		hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_) * chip_size_ - hero.customVertex.height.var;
+		y = (y / chip_size_) * chip_size_ - y_size;
 
 		break;
 
 	case Right: // 当たり判定はブロックのLeft
 
-		hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_) * chip_size_ - hero.customVertex.width.var;
+		x = (x / chip_size_) * chip_size_ - x_size;
 
 		break;
 
 	case Left: // 当たり判定はブロックのRight
 
-		hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_) * chip_size_ + chip_size_;
+		x = (x / chip_size_) * chip_size_ + chip_size_;
 
 		break;
 
 	case UpRight:
 
 		//							元の座標 / チップサイズ * チップサイズ - キャラテクスチャの幅
-		hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_ ) * chip_size_;
-		hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_ + 1) * chip_size_;
+		x = (x / chip_size_ ) * chip_size_;
+		y = (y / chip_size_ + 1) * chip_size_;
 
 		break;
 
 	case UpLeft:
 
-		hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_ + 1) * chip_size_;
-		hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_ + 1) * chip_size_;
+		x = (x / chip_size_ + 1) * chip_size_;
+		y = (y / chip_size_ + 1) * chip_size_;
 
 		break;
 
 	case DownRight:
 
-		hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_) * chip_size_;
-		hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_) * chip_size_;
+		x = (x / chip_size_) * chip_size_;
+		y = (y / chip_size_) * chip_size_;
 
 		break;
 
 	case DownLeft:
 		
-		hero.customVertex.x.var = (hero.customVertex.x.var / chip_size_ + 1) * chip_size_;
-		hero.customVertex.y.var = (hero.customVertex.y.var / chip_size_) * chip_size_;
+		x = (x / chip_size_ + 1) * chip_size_;
+		y = (y / chip_size_) * chip_size_;
 
 		break;
 	}
@@ -266,9 +266,9 @@ void Collision::CoordinateCorrection(Hero hero, int char_move_direction)
 };
 
 
-bool Collision::TopRightHasHit(Hero hero, int** map)
+bool Collision::TopRightHasHit(int x,int x_size,int y, int** map)
 {
-	if (CheckMapNumber((int)(hero.customVertex.x.var + hero.customVertex.width.var), hero.customVertex.y.var, map) == Road)
+	if (CheckMapNumber((x + x_size), y, map) == Road)
 	{
 		return true;
 	}
@@ -276,9 +276,9 @@ bool Collision::TopRightHasHit(Hero hero, int** map)
 	return false;
 }
 
-bool Collision::TopLeftHasHit(Hero hero, int** map)
+bool Collision::TopLeftHasHit(int x,int y, int** map)
 {
-	if (CheckMapNumber(hero.customVertex.x.var, hero.customVertex.y.var, map) == Road)
+	if (CheckMapNumber(x, y, map) == Road)
 	{
 		return true;
 	}
@@ -286,9 +286,9 @@ bool Collision::TopLeftHasHit(Hero hero, int** map)
 	return false;
 }
 
-bool Collision::BottomRightHasHit(Hero hero, int** map)
+bool Collision::BottomRightHasHit(int x,int x_size,int y,int y_size, int** map)
 {
-	if (CheckMapNumber((int)(hero.customVertex.x.var + hero.customVertex.width.var), (int)(hero.customVertex.y.var + hero.customVertex.height.var), map) == Road)
+	if (CheckMapNumber((x + x_size), (y + y_size), map) == Road)
 	{
 		return true;
 	}
@@ -296,9 +296,9 @@ bool Collision::BottomRightHasHit(Hero hero, int** map)
 	return false;
 }
 
-bool Collision::BottomLeftHasHit(Hero hero, int** map)
+bool Collision::BottomLeftHasHit(int x,int y,int y_size, int** map)
 {
-	if (CheckMapNumber(hero.customVertex.x.var, (int)(hero.customVertex.y.var + hero.customVertex.height.var), map) == Road)
+	if (CheckMapNumber(x,(y + y_size), map) == Road)
 	{
 		return true;
 	}
