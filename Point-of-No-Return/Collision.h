@@ -65,9 +65,9 @@ public:
 	
 
 	// Xの方向を算出する関数
-	Direction DirectionCheckX(Hero hero);
+	Direction VerticalDirectionCheck(Hero hero);
 	// Yの方向を算出する関数
-	Direction DirectionCheckY(Hero hero);
+	Direction HorizontalDirectionCheck(Hero hero);
 
 	// 当たり判定関数
 	void HeroAndBlock(Hero hero, int** map);
@@ -76,9 +76,12 @@ public:
 	// 当たっていればtureを、当たっていなければ false を返す
 	bool HitPointCheck(Hero hero,int** map);
 
-	// ブロックにめり込んでいた場合、座標を修正する関数
-	void CoordinateCorrection(Hero hero,int** map);
+	// ブロックにめり込んでいた場合、
+	void DirectionCheck(Hero hero,int** map);
 
+	// 座標を修正する関数
+	void CoordinateCorrection(Hero hero,int direction);
+	
 	// 右上の頂点がブロックにあたっているかどうか
 	bool TopRightHasHit(Hero hero, int** map);
 
