@@ -55,6 +55,12 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGraund.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Title.h">
@@ -87,6 +93,12 @@
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGraund.h">
+      <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>Feature\横スクロール</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
