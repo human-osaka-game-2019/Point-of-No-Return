@@ -15,8 +15,8 @@ namespace Display
 	RECT DisplayRect
 	{ 0,
 	  0,
-	  DISPLAY_WIDTH,
-	  DISPLAY_HEIGHT
+	  static_cast<long>(DISPLAY_WIDTH),
+	  static_cast<long>(DISPLAY_HEIGHT)
 	};
 
 }

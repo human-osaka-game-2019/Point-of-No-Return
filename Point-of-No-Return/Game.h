@@ -3,6 +3,7 @@
 
 #include "Scene.h"
 #include "Mapchip.h"
+#include "Character.h"
 
 class Game : public SceneBase
 {
@@ -28,9 +29,7 @@ public:
 	HANDLE CreateLoadThread();
 private:
 	Mapchip mapchip;
-
-
-
+	Hero hero{ "Player" };
 };
 
 

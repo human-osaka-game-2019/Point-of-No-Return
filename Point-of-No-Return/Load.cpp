@@ -22,6 +22,7 @@ DWORD WINAPI GameThread(HWND hWnd, LPVOID* data)
 	//Load中に裏でしたい処理
 
 	dx.LoadTexture("仮Game_Back.jpg","game_back");
+	dx.LoadTexture("Player.png", "Player");
 	dx.LoadTexture("unified_block.png", "blocks");
 	ExitThread(0);
 }

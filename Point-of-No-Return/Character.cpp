@@ -1,43 +1,21 @@
-﻿#include "Object.h"
+﻿#include "Character.h"
 
-//キャラクタークラス
-class Character :public Object
-{
+void Hero::Initialize() {
+	vec = { 500.f, 500.f };
+	size = { 100.f,100.f };
+	uv = { 0.0f,0.0f };
+	texture_size = { 1.0f, 1.0f };
+	texture_name = {"Player"};
+	degree = 0;
+	zoom = 1.0;
+	is_reverse = false;
+}
 
-};
-//UIクラス
-class UI :public Object
-{
-
-};
-//スクロールステージクラス
-class ScrollStage :public Object
-{
-
-};
-//ステージクラス
-class Stage :public Object
-{
-
-};
-
-
-
-
-//主人公クラス
-class Hero :public Character
-{
-	CustomVertex hero;
-};
-
-//NPCクラス
-class NPC :public Character
-{
-
-};
-
-//敵クラス
-class Enemy :public Character
-{
-
-};
+void Hero::Update() {
+	if (dx.GetKeyState(DIK_D) == dx.ON) {
+		vec.x.value += 1.0f;
+	}
+	if (dx.GetKeyState(DIK_A) == dx.ON) {
+		vec.x.value -= 1.0f;
+	}
+}
