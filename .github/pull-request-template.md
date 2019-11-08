@@ -1,11 +1,3 @@
----
-name: Pull Request Template
-about: Pull request のtemplate です。
-title: ''
-labels: ''
-assignees: ''
-
----
 
 ## 概要
 
