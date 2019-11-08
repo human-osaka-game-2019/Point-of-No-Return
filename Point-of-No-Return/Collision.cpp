@@ -1,43 +1,50 @@
 ﻿#include "Collision.h"
 
-int Collision::CheckMapNumber(int x, int y, int** map)
+int Collision::CheckMapNumber(float* x, float* y, int** map)
 {
-		
-	return map[y / chip_size_][x / chip_size_];
+	int X = *x / chip_size_;
+	int Y = *y / chip_size_;
+	
+	int map_number = map[Y][X];
+	return map_number;
 	
 }
 
-Direction Collision::VerticalDirectionCheck(int x,int before_x)
+Direction Collision::VerticalDirectionCheck(float* x,int before_x)
 {
 	// Xの移動量
-	vec_x = x - before_x;
+	vec_x = *x - before_x;
 
 	if (vec_x < 0)
 	{
-		return Direction::Right;
+		return Direction::Left;
 	}
 	else if (vec_x > 0)
 	{
-		return Direction::Left;
+		return Direction::Right;
 	}
+
+	return Direction::Stop;
 }
 
- Direction Collision::HorizontalDirectionCheck(int y, int before_y)
+ Direction Collision::HorizontalDirectionCheck(float* y, int before_y)
  {
 	 // Yの移動量
-	 vec_y = y - before_y;
+	 vec_y = *y - before_y;
 
 	 if (vec_y < 0)
 	 {
-		 return Direction::Down;
+		 return Direction::Up;
 	 }
 	 else if (vec_y > 0)
 	 {
-		 return Direction::Up;
+		 return Direction::Down;
 	 }
+	 
+	 return Direction::Stop;
  }
  
-void Collision::ブロックとの(int x, int x_size, int y, int y_size, int before_x, int before_y, int** map)
+void Collision::ブロックとの(float* x, float* x_size, float* y, float* y_size, float before_x, float before_y, int** map)
 {
 	if (HitPointCheck(x,x_size,y,y_size, map) == true)
 	{
@@ -46,7 +53,7 @@ void Collision::ブロックとの(int x, int x_size, int y, int y_size, int bef
 
 }
 
-bool Collision::HitPointCheck(int x,int x_size,int y , int y_size,int** map)
+bool Collision::HitPointCheck(float* x, float* x_size, float* y , float* y_size,int** map)
 {
 	//	右上 左上 右下 左下
 	if (TopRightHasHit(x, x_size, y, map) == true || TopLeftHasHit(x,y,map) == true || BottomRightHasHit(x, x_size, y, y_size, map) == true || BottomLeftHasHit(x, y, y_size, map) == true)
@@ -58,7 +65,7 @@ bool Collision::HitPointCheck(int x,int x_size,int y , int y_size,int** map)
 
 }
 
-void Collision::DirectionCheck(int x,int x_size,int y,int y_size,int before_x,int before_y,int** map)
+void Collision::DirectionCheck(float* x, float* x_size, float* y, float* y_size, float before_x, float before_y, int** map)
 {
 
 	save_char_move_direction[X] = VerticalDirectionCheck(x,before_x);
@@ -68,196 +75,209 @@ void Collision::DirectionCheck(int x,int x_size,int y,int y_size,int before_x,in
 	{
 		if (TopLeftHasHit(x,y, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Down);
+			CoordinateCorrection(x, x_size, y, y_size, Up);
 		}
 
 		if (BottomRightHasHit(x,x_size,y,y_size, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Left);
+			CoordinateCorrection(x, x_size, y, y_size, Right);
 		}
 		
 		if (TopRightHasHit(x,x_size,y, map) == true)
 		{
-			if (HitVectorJudge(x, y, UpRight) == Down)
+			if (HitVectorJudge(x, y,x_size,y_size,UpRight) == Down)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Down);
+				CoordinateCorrection(x, x_size, y, y_size, Up);
 			}
-			else if(HitVectorJudge(x,y, UpRight) == Left)
+			else if(HitVectorJudge(x,y, x_size, y_size, UpRight) == Left)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Left);
+				CoordinateCorrection(x, x_size, y, y_size, Right);
 			}
-			else if(HitVectorJudge(x,y,UpRight) == UpRight)
+			else if(HitVectorJudge(x,y, x_size, y_size, UpRight) == UpRight)
 			{
 				CoordinateCorrection(x, x_size, y, y_size, UpRight);
 			}
 		}
 
-
+		//return true;
 	}
 	else if (save_char_move_direction[X] == Right && save_char_move_direction[Y] == Down)
 	{
 		if (TopRightHasHit(x,x_size,y, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Left);
+			CoordinateCorrection(x, x_size, y, y_size, Right);
 		}
 
 		if (BottomLeftHasHit(x, y, y_size, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Up);
+			CoordinateCorrection(x, x_size, y, y_size, Down);
 		}
 
 		if (BottomRightHasHit(x, x_size, y, y_size, map) == true)
 		{
-			if (HitVectorJudge(x,y, DownRight) == Up)
+			if (HitVectorJudge(x,y, x_size, y_size, DownRight) == Up)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Up);
+				CoordinateCorrection(x, x_size, y, y_size, Down);
 			}
-			else if (HitVectorJudge(x,y, DownRight) == Left)
+			else if (HitVectorJudge(x,y, x_size, y_size, DownRight) == Left)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Left);
+				CoordinateCorrection(x, x_size, y, y_size, Right);
 			}
-			else if (HitVectorJudge(x,y, DownRight) == DownRight)
+			else if (HitVectorJudge(x,y, x_size, y_size, DownRight) == DownRight)
 			{
 				CoordinateCorrection(x, x_size, y, y_size, DownRight);
 			}
 
 		}
 
-
+		//return true;
 	}
 
 	if (save_char_move_direction[X] == Left && save_char_move_direction[Y] == Up)
 	{
 		if (TopRightHasHit(x,x_size,y, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Down);
+			CoordinateCorrection(x, x_size, y, y_size, Up);
 		}
 
 		if (BottomLeftHasHit(x, y, y_size, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Right);
+			CoordinateCorrection(x, x_size, y, y_size, Left);
 		}
 
 		if (TopLeftHasHit(x,y, map) == true)
 		{
-			if (HitVectorJudge(x,y, UpLeft) == Down)
+			if (HitVectorJudge(x,y, x_size, y_size, UpLeft) == Down)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Down);
+				CoordinateCorrection(x, x_size, y, y_size, Up);
 			}
-			else if (HitVectorJudge(x,y, UpLeft) == Right)
+			else if (HitVectorJudge(x,y, x_size, y_size, UpLeft) == Right)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Right);
+				CoordinateCorrection(x, x_size, y, y_size, Left);
 			}
-			else if (HitVectorJudge(x, y, UpLeft) == UpLeft)
+			else if (HitVectorJudge(x, y, x_size, y_size, UpLeft) == UpLeft)
 			{
 				CoordinateCorrection(x, x_size, y, y_size,UpLeft);
 			}
 		}
+
+		//return true;
 	}
 	else if (save_char_move_direction[X] == Left && save_char_move_direction[Y] == Down)
 	{
 
 		if (BottomRightHasHit(x, x_size, y, y_size, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Up);
+			CoordinateCorrection(x, x_size, y, y_size, Down);
 		}
 
 		if (TopLeftHasHit(x,y, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Right);
+			CoordinateCorrection(x, x_size, y, y_size, Left);
 		}
 		
 		if (BottomLeftHasHit(x,y,y_size, map) == true)
 		{
-			if (HitVectorJudge(x,y, DownLeft) == Up)
+			if (HitVectorJudge(x,y, x_size, y_size, DownLeft) == Up)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Up);
+				CoordinateCorrection(x, x_size, y, y_size, Down);
 			}
-			else if(HitVectorJudge(x,y, DownLeft) == Right)
+			else if(HitVectorJudge(x,y, x_size, y_size, DownLeft) == Right)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Right);
+				CoordinateCorrection(x, x_size, y, y_size, Left);
 			}
-			else if (HitVectorJudge(x,y, DownLeft) == DownLeft)
+			else if (HitVectorJudge(x,y, x_size, y_size, DownLeft) == DownLeft)
 			{
 				CoordinateCorrection(x, x_size, y, y_size, DownLeft);
 			}
 		}
+		//return true;
 	}
 
 	if (save_char_move_direction[X] == Right)
 	{
 		CoordinateCorrection(x, x_size, y, y_size, Right);
+
+		//return true;
 	}
 	else if (save_char_move_direction[X] == Left)
 	{
 		CoordinateCorrection(x, x_size, y, y_size, Left);
+
+		//return true;
 	}
 
 	if (save_char_move_direction[Y] == Up)
 	{
 		CoordinateCorrection(x, x_size, y, y_size, Up);
+
+		//return true;
 	}
 	else if (save_char_move_direction[Y] == Down)
 	{
 		CoordinateCorrection(x,x_size,y,y_size, Down);
+
+		//return true;
 	}
 
+
+	//return false;
 }
 
-void Collision::CoordinateCorrection(int x,int x_size,int y,int y_size, int char_move_direction)
+void Collision::CoordinateCorrection(float* x, float* x_size, float* y, float* y_size, int char_move_direction)
 {
 	switch (char_move_direction)
 	{
 	case Up: // 当たり判定はブロックのBottom
 
-		y = (y / chip_size_) * chip_size_ + chip_size_;
+		*y = ((int)*y / chip_size_) * chip_size_ + chip_size_;
 
 		break;
 
 	case Down:// 当たり判定はブロックのTop
 
-		y = (y / chip_size_) * chip_size_ - y_size;
+		*y = ((int)(*y + *y_size) / chip_size_) * chip_size_ - *y_size;
 
 		break;
 
 	case Right: // 当たり判定はブロックのLeft
 
-		x = (x / chip_size_) * chip_size_ - x_size;
+		*x = ((int)(*x + *x_size)/ chip_size_) * chip_size_ - *x_size;
 
 		break;
 
 	case Left: // 当たり判定はブロックのRight
 
-		x = (x / chip_size_) * chip_size_ + chip_size_;
+		*x = ((int)*x / chip_size_) * chip_size_ + chip_size_;
 
 		break;
 
 	case UpRight:
 
 		//							元の座標 / チップサイズ * チップサイズ - キャラテクスチャの幅
-		x = (x / chip_size_ ) * chip_size_;
-		y = (y / chip_size_ + 1) * chip_size_;
+		*x = (*x / chip_size_) * chip_size_;
+		*y = (*y / chip_size_ + 1) * chip_size_;
 
 		break;
 
 	case UpLeft:
 
-		x = (x / chip_size_ + 1) * chip_size_;
-		y = (y / chip_size_ + 1) * chip_size_;
+		*x = (*x / chip_size_ + 1) * chip_size_;
+		*y = (*y / chip_size_ + 1) * chip_size_;
 
 		break;
 
 	case DownRight:
 
-		x = (x / chip_size_) * chip_size_;
-		y = (y / chip_size_) * chip_size_;
+		*x = (*x / chip_size_) * chip_size_;
+		*y = (*y / chip_size_) * chip_size_;
 
 		break;
 
 	case DownLeft:
 		
-		x = (x / chip_size_ + 1) * chip_size_;
-		y = (y / chip_size_) * chip_size_;
+		*x = (*x / chip_size_ + 1) * chip_size_;
+		*y = (*y / chip_size_) * chip_size_;
 
 		break;
 	}
@@ -266,9 +286,11 @@ void Collision::CoordinateCorrection(int x,int x_size,int y,int y_size, int char
 };
 
 
-bool Collision::TopRightHasHit(int x,int x_size,int y, int** map)
+bool Collision::TopRightHasHit(float* x, float* x_size, float* y, int** map)
 {
-	if (CheckMapNumber((x + x_size), y, map) == Road)
+	float X = *x + *x_size - 1;
+
+	if (CheckMapNumber(&X, y, map) == Road)
 	{
 		return true;
 	}
@@ -276,8 +298,9 @@ bool Collision::TopRightHasHit(int x,int x_size,int y, int** map)
 	return false;
 }
 
-bool Collision::TopLeftHasHit(int x,int y, int** map)
+bool Collision::TopLeftHasHit(float* x,float* y, int** map)
 {
+
 	if (CheckMapNumber(x, y, map) == Road)
 	{
 		return true;
@@ -286,9 +309,12 @@ bool Collision::TopLeftHasHit(int x,int y, int** map)
 	return false;
 }
 
-bool Collision::BottomRightHasHit(int x,int x_size,int y,int y_size, int** map)
+bool Collision::BottomRightHasHit(float* x,float* x_size,float* y,float* y_size, int** map)
 {
-	if (CheckMapNumber((x + x_size), (y + y_size), map) == Road)
+	float X = *x + *x_size - 1;
+	float Y = *y + *y_size - 1;
+
+	if (CheckMapNumber(&X, &Y, map) == Road)
 	{
 		return true;
 	}
@@ -296,9 +322,11 @@ bool Collision::BottomRightHasHit(int x,int x_size,int y,int y_size, int** map)
 	return false;
 }
 
-bool Collision::BottomLeftHasHit(int x,int y,int y_size, int** map)
+bool Collision::BottomLeftHasHit(float* x,float* y,float* y_size, int** map)
 {
-	if (CheckMapNumber(x,(y + y_size), map) == Road)
+	float Y = *y + *y_size - 1;
+
+	if (CheckMapNumber(x,&Y, map) == Road)
 	{
 		return true;
 	}
@@ -306,19 +334,19 @@ bool Collision::BottomLeftHasHit(int x,int y,int y_size, int** map)
 	return false;
 }
 
-int Collision::HitVectorJudge(int X, int Y, int move_deflection)
+int Collision::HitVectorJudge(float* X, float* Y,float* X_size, float* Y_size, int move_deflection)
 {
 	float x, y;
 
-	map_x = (X / chip_size_) * chip_size_;
-	map_y = (Y / chip_size_) * chip_size_;
+	map_x = ((int)*X / chip_size_) * chip_size_;
+	map_y = ((int)*Y / chip_size_) * chip_size_;
 
 	switch (move_deflection)
 	{
 	case UpRight:
 
-		x = ((X - map_x ) / X) * 100;
-		y = ((Y - (map_y - chip_size_)) / Y) * 100;
+		x = ((*X - map_x) / *X_size) * 100;
+		y = ((*Y - (map_y - chip_size_)) / *Y_size) * 100;
 
 		if (x < y)
 		{
@@ -338,8 +366,8 @@ int Collision::HitVectorJudge(int X, int Y, int move_deflection)
 
 	case UpLeft:
 
-		x = (((map_x + chip_size_) - X) / X) * 100;
-		y = ((Y - (map_y - chip_size_)) / Y) * 100;
+		x = (((map_x + chip_size_) - *X) / *X_size) * 100;
+		y = ((*Y - (map_y - chip_size_)) / *Y_size) * 100;
 
 		if (x < y)
 		{
@@ -360,8 +388,8 @@ int Collision::HitVectorJudge(int X, int Y, int move_deflection)
 
 	case DownRight:
 
-		x = ((X - map_x) / X) * 100;
-		y = ((Y - map_y) / Y) * 100;
+		x = ((*X - map_x) / *X_size) * 100;
+		y = ((*Y - map_y) / *Y_size) * 100;
 
 		if (x < y)
 		{
@@ -381,8 +409,8 @@ int Collision::HitVectorJudge(int X, int Y, int move_deflection)
 
 	case DownLeft:
 
-		x = (((map_x + chip_size_) - X) / X) * 100;
-		y = ((Y - map_y) / Y) * 100;
+		x = (((map_x + chip_size_) - *X) / *X_size) * 100;
+		y = ((*Y - map_y) / *Y_size) * 100;
 
 		if (x < y)
 		{
