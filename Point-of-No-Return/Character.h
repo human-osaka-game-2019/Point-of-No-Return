@@ -35,12 +35,28 @@ class Hero :public Character
 {
 public:
 	CustomVertex customVertex;
-	VertexX before_x;
-	VertexX before_y;
+	float before_x;
+	float before_y;
 
 	// 仮置き
-	int x_move_speed;
-	int y_move_speed;
+	float x_move_speed;
+	float y_move_speed;
+
+	float x = 0;
+	float y = 0;
+	float x_size = 100;
+	float y_size = 120;
+
+	float tu = 0;
+	float tu_size  =1;
+	float tv = 0;
+	float tv_size = 1;
+
+	float gravity =0;
+
+	void InputBefore();
+
+
 
 };
 

@@ -7,7 +7,7 @@
 
 // ãã­ãã¯ã®æ°
 const int world_size_width = 480;
-const int world_size_height = 16;
+const int world_size_height = 17;
 // ãããã¦ããã1ã¤ã®å¤§ãã
 const int chip_size_ = 64;
 // ãã¯ã¹ãã£ã®å¤§ãã
