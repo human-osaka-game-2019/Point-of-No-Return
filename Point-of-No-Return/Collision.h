@@ -84,6 +84,10 @@ public:
 	 */
 	Direction HorizontalDirectionCheck(float* y, int before_y);
 
+	Direction DirectionCheck(float* y,float * x,int before_x,int before_y);
+
+
+
 	/**
 	 * ブロックとの当たり判定の関数
 	 * @param 対象のX座標
@@ -114,7 +118,7 @@ public:
 　　 * @param 対象のY軸の描画サイズ
 	 * @param mapのアドレス
 	 */
-	void DirectionCheck(float* x, float* x_size, float* y, float* y_size, float before_x, float before_y,int** map);
+	bool 値の修正呼出し(float* x, float* x_size, float* y, float* y_size, float before_x, float before_y,int** map);
 
 	/**
 	 * 座標を修正する関数

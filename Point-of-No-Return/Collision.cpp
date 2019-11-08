@@ -6,6 +6,7 @@ int Collision::CheckMapNumber(float* x, float* y, int** map)
 	int Y = *y / chip_size_;
 	
 	int map_number = map[Y][X];
+
 	return map_number;
 	
 }
@@ -43,12 +44,57 @@ Direction Collision::VerticalDirectionCheck(float* x,int before_x)
 	 
 	 return Direction::Stop;
  }
- 
+
+ Direction Collision::DirectionCheck(float* x, float* y, int before_x, int before_y)
+ {
+	 save_char_move_direction[X] = VerticalDirectionCheck(x, before_x);
+	 save_char_move_direction[Y] = HorizontalDirectionCheck(y, before_y);
+
+	 if (save_char_move_direction[X] == Right && save_char_move_direction[Y] == Up)
+	 {
+		 return Direction::UpRight;
+	 }
+	 else if (save_char_move_direction[X] == Right && save_char_move_direction[Y] == Down)
+	 {
+		 return Direction::DownRight;
+	 }
+
+	 if (save_char_move_direction[X] == Left && save_char_move_direction[Y] == Up)
+	 {
+		 return Direction::UpLeft;
+	 }
+	 else if (save_char_move_direction[X] == Left && save_char_move_direction[Y] == Down)
+	 {
+		 return Direction::DownLeft;
+	 }
+
+	 if (save_char_move_direction[X] == Left)
+	 {
+		 return Direction::Left;
+	 }
+	 else if (save_char_move_direction[X] == Right)
+	 {
+		 return Direction::DownRight;
+	 }
+
+	 if (save_char_move_direction[Y] == Up)
+	 {
+		 return Direction::Up;
+	 }
+	 else if (save_char_move_direction[Y] == Down)
+	 {
+		 return Direction::Down;
+	 }
+
+
+	 return Direction::Stop;
+ }
+
 void Collision::ブロックとの(float* x, float* x_size, float* y, float* y_size, float before_x, float before_y, int** map)
 {
 	if (HitPointCheck(x,x_size,y,y_size, map) == true)
 	{
-		DirectionCheck(x,x_size,y,y_size,before_x,before_y,map);
+		値の修正呼出し(x,x_size,y,y_size,before_x,before_y,map);
 	}
 
 }
@@ -65,43 +111,39 @@ bool Collision::HitPointCheck(float* x, float* x_size, float* y , float* y_size,
 
 }
 
-void Collision::DirectionCheck(float* x, float* x_size, float* y, float* y_size, float before_x, float before_y, int** map)
+bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* y_size, float before_x, float before_y, int** map)
 {
-
-	save_char_move_direction[X] = VerticalDirectionCheck(x,before_x);
-	save_char_move_direction[Y] = HorizontalDirectionCheck(y,before_y);
-
-	if (save_char_move_direction[X] == Right && save_char_move_direction[Y] == Up)
+	if (DirectionCheck(x, y, before_x, before_y) == UpRight)
 	{
-		if (TopLeftHasHit(x,y, map) == true)
+		if (TopLeftHasHit(x, y, map) == true)
 		{
 			CoordinateCorrection(x, x_size, y, y_size, Up);
 		}
 
-		if (BottomRightHasHit(x,x_size,y,y_size, map) == true)
+		if (BottomRightHasHit(x, x_size, y, y_size, map) == true)
 		{
 			CoordinateCorrection(x, x_size, y, y_size, Right);
 		}
-		
-		if (TopRightHasHit(x,x_size,y, map) == true)
+
+		if (TopRightHasHit(x, x_size, y, map) == true)
 		{
-			if (HitVectorJudge(x, y,x_size,y_size,UpRight) == Down)
+			if (HitVectorJudge(x, y, x_size, y_size, UpRight) == Down)
 			{
 				CoordinateCorrection(x, x_size, y, y_size, Up);
 			}
-			else if(HitVectorJudge(x,y, x_size, y_size, UpRight) == Left)
+			else if (HitVectorJudge(x, y, x_size, y_size, UpRight) == Left)
 			{
 				CoordinateCorrection(x, x_size, y, y_size, Right);
 			}
-			else if(HitVectorJudge(x,y, x_size, y_size, UpRight) == UpRight)
+			else if (HitVectorJudge(x, y, x_size, y_size, UpRight) == UpRight)
 			{
 				CoordinateCorrection(x, x_size, y, y_size, UpRight);
 			}
 		}
 
-		//return true;
-	}
-	else if (save_char_move_direction[X] == Right && save_char_move_direction[Y] == Down)
+		return true;
+
+	} else if (DirectionCheck(x, y, before_x, before_y) == DownRight)
 	{
 		if (TopRightHasHit(x,x_size,y, map) == true)
 		{
@@ -130,10 +172,10 @@ void Collision::DirectionCheck(float* x, float* x_size, float* y, float* y_size,
 
 		}
 
-		//return true;
+		return true;
 	}
 
-	if (save_char_move_direction[X] == Left && save_char_move_direction[Y] == Up)
+	if (DirectionCheck(x, y, before_x, before_y) == UpLeft)
 	{
 		if (TopRightHasHit(x,x_size,y, map) == true)
 		{
@@ -161,9 +203,9 @@ void Collision::DirectionCheck(float* x, float* x_size, float* y, float* y_size,
 			}
 		}
 
-		//return true;
+		return true;
 	}
-	else if (save_char_move_direction[X] == Left && save_char_move_direction[Y] == Down)
+	else if (DirectionCheck(x, y, before_x, before_y) == DownLeft)
 	{
 
 		if (BottomRightHasHit(x, x_size, y, y_size, map) == true)
@@ -191,37 +233,37 @@ void Collision::DirectionCheck(float* x, float* x_size, float* y, float* y_size,
 				CoordinateCorrection(x, x_size, y, y_size, DownLeft);
 			}
 		}
-		//return true;
+		return true;
 	}
 
-	if (save_char_move_direction[X] == Right)
+	if (DirectionCheck(x, y, before_x, before_y) == Right)
 	{
 		CoordinateCorrection(x, x_size, y, y_size, Right);
 
-		//return true;
+		return true;
 	}
-	else if (save_char_move_direction[X] == Left)
+	else if (DirectionCheck(x, y, before_x, before_y) == Left)
 	{
 		CoordinateCorrection(x, x_size, y, y_size, Left);
 
-		//return true;
+		return true;
 	}
 
-	if (save_char_move_direction[Y] == Up)
+	if (DirectionCheck(x, y, before_x, before_y) == Up)
 	{
 		CoordinateCorrection(x, x_size, y, y_size, Up);
 
-		//return true;
+		return true;
 	}
-	else if (save_char_move_direction[Y] == Down)
+	else if (DirectionCheck(x, y, before_x, before_y) == Down)
 	{
 		CoordinateCorrection(x,x_size,y,y_size, Down);
 
-		//return true;
+		return true;
 	}
 
 
-	//return false;
+	return false;
 }
 
 void Collision::CoordinateCorrection(float* x, float* x_size, float* y, float* y_size, int char_move_direction)
