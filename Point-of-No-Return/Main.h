@@ -1,7 +1,8 @@
 ﻿#ifndef MAIN_H
 #define MAIN_H
 
-#include "../Point-of-No-Return/Include/DirectX.h"
+#include "Include/DirectX.h"
+#include "Include/LogExporter.h"
 
 using DX::DirectX;
 

@@ -14,12 +14,6 @@
 *.userprefs
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
@@ -80,6 +74,9 @@ StyleCopReport.xml
 *.tmp
 *.tmp_proj
 *_wpftmp.csproj
+*.tlog
+*.idb
+*.exe
 *.log
 *.vspscc
 *.vssscc

@@ -7,8 +7,6 @@
 #include "Ending.h"
 #include "Mapchip.h"
 
-#pragma comment(lib,"../Point-of-No-Return/Lib/DirectX.lib")
-
 namespace Display
 {
 	const float DISPLAY_WIDTH = 1920;
@@ -21,12 +19,7 @@ namespace Display
 	  DISPLAY_HEIGHT
 	};
 
-
 }
-
-
-
-
 
 SceneBase* SceneManager::scene = nullptr;
 
