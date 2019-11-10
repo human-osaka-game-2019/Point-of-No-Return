@@ -74,7 +74,7 @@ public:
 	 * @param 対象の1フレーム前のX座標
 	 * @return Direction型の Right Left
 	 */
-	Direction VerticalDirectionCheck(float* x, int before_x);
+	Direction VerticalDirectionCheck(float* x, int previous_x);
 
 	/**
 	 * Y軸の動きの方向を算出する関数
@@ -82,9 +82,9 @@ public:
 	 * @param 対象の1フレーム前のY座標
 	 * @return Direction型の Up Down
 	 */
-	Direction HorizontalDirectionCheck(float* y, int before_y);
+	Direction HorizontalDirectionCheck(float* y, int previous_y);
 
-	Direction DirectionCheck(float* y,float * x,int before_x,int before_y);
+	Direction DirectionCheck(float* y,float * x,int previous_x,int previous_y);
 
 
 
@@ -98,7 +98,7 @@ public:
 	 * @param 対象の1フレーム前のY座標
 	 * @param mapのアドレス
 	 */
-	void ブロックとの(float* x, float* x_size, float* y, float* y_size, float before_x, float before_y, int** map);
+	void ブロックとの(float* x, float* x_size, float* y, float* y_size, float previous_x, float previous_y, int** map);
 
 	/**
 	 * 各頂点を見て当たっているかどうかの確認関数
@@ -118,7 +118,7 @@ public:
 　　 * @param 対象のY軸の描画サイズ
 	 * @param mapのアドレス
 	 */
-	bool 値の修正呼出し(float* x, float* x_size, float* y, float* y_size, float before_x, float before_y,int** map);
+	bool 値の修正呼出し(float* x, float* x_size, float* y, float* y_size, float previous_x, float previous_y,int** map);
 
 	/**
 	 * 座標を修正する関数

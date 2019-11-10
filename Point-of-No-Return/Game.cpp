@@ -41,7 +41,7 @@ void Game::Update()
 		hero.x = 0;
 		hero.y = 0;
 	}
-	collision.ブロックとの(&hero.x,&hero.x_size,&hero.y,&hero.y_size,hero.before_x,hero.before_y,mapchip.map_);
+	collision.ブロックとの(&hero.x,&hero.x_size,&hero.y,&hero.y_size,hero.previous_x,hero.previous_y,mapchip.map_);
 	
 	int a;
 	mapchip.map_[a / 64][2];

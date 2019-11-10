@@ -35,8 +35,8 @@ class Hero :public Character
 {
 public:
 	CustomVertex customVertex;
-	float before_x;
-	float before_y;
+	float previous_x;
+	float previous_y;
 
 	// 仮置き
 	float x_move_speed;

@@ -11,10 +11,10 @@ int Collision::CheckMapNumber(float* x, float* y, int** map)
 	
 }
 
-Direction Collision::VerticalDirectionCheck(float* x,int before_x)
+Direction Collision::VerticalDirectionCheck(float* x,int previous_x)
 {
 	// Xの移動量
-	vec_x = *x - before_x;
+	vec_x = *x - previous_x;
 
 	if (vec_x < 0)
 	{
@@ -28,10 +28,10 @@ Direction Collision::VerticalDirectionCheck(float* x,int before_x)
 	return Direction::Stop;
 }
 
- Direction Collision::HorizontalDirectionCheck(float* y, int before_y)
+ Direction Collision::HorizontalDirectionCheck(float* y, int previous_y)
  {
 	 // Yの移動量
-	 vec_y = *y - before_y;
+	 vec_y = *y - previous_y;
 
 	 if (vec_y < 0)
 	 {
@@ -45,10 +45,10 @@ Direction Collision::VerticalDirectionCheck(float* x,int before_x)
 	 return Direction::Stop;
  }
 
- Direction Collision::DirectionCheck(float* x, float* y, int before_x, int before_y)
+ Direction Collision::DirectionCheck(float* x, float* y, int previous_x, int previous_y)
  {
-	 save_char_move_direction[X] = VerticalDirectionCheck(x, before_x);
-	 save_char_move_direction[Y] = HorizontalDirectionCheck(y, before_y);
+	 save_char_move_direction[X] = VerticalDirectionCheck(x, previous_x);
+	 save_char_move_direction[Y] = HorizontalDirectionCheck(y, previous_y);
 
 	 if (save_char_move_direction[X] == Right && save_char_move_direction[Y] == Up)
 	 {
@@ -90,11 +90,11 @@ Direction Collision::VerticalDirectionCheck(float* x,int before_x)
 	 return Direction::Stop;
  }
 
-void Collision::ブロックとの(float* x, float* x_size, float* y, float* y_size, float before_x, float before_y, int** map)
+void Collision::ブロックとの(float* x, float* x_size, float* y, float* y_size, float previous_x, float previous_y, int** map)
 {
 	if (HitPointCheck(x,x_size,y,y_size, map) == true)
 	{
-		値の修正呼出し(x,x_size,y,y_size,before_x,before_y,map);
+		値の修正呼出し(x,x_size,y,y_size,previous_x,previous_y,map);
 	}
 
 }
@@ -111,9 +111,9 @@ bool Collision::HitPointCheck(float* x, float* x_size, float* y , float* y_size,
 
 }
 
-bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* y_size, float before_x, float before_y, int** map)
+bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* y_size, float previous_x, float previous_y, int** map)
 {
-	if (DirectionCheck(x, y, before_x, before_y) == UpRight)
+	if (DirectionCheck(x, y, previous_x, previous_y) == UpRight)
 	{
 		if (TopLeftHasHit(x, y, map) == true)
 		{
@@ -143,7 +143,7 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 
 		return true;
 
-	} else if (DirectionCheck(x, y, before_x, before_y) == DownRight)
+	} else if (DirectionCheck(x, y, previous_x, previous_y) == DownRight)
 	{
 		if (TopRightHasHit(x,x_size,y, map) == true)
 		{
@@ -175,7 +175,7 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 		return true;
 	}
 
-	if (DirectionCheck(x, y, before_x, before_y) == UpLeft)
+	if (DirectionCheck(x, y, previous_x, previous_y) == UpLeft)
 	{
 		if (TopRightHasHit(x,x_size,y, map) == true)
 		{
@@ -205,7 +205,7 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 
 		return true;
 	}
-	else if (DirectionCheck(x, y, before_x, before_y) == DownLeft)
+	else if (DirectionCheck(x, y, previous_x, previous_y) == DownLeft)
 	{
 
 		if (BottomRightHasHit(x, x_size, y, y_size, map) == true)
@@ -236,26 +236,26 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 		return true;
 	}
 
-	if (DirectionCheck(x, y, before_x, before_y) == Right)
+	if (DirectionCheck(x, y, previous_x, previous_y) == Right)
 	{
 		CoordinateCorrection(x, x_size, y, y_size, Right);
 
 		return true;
 	}
-	else if (DirectionCheck(x, y, before_x, before_y) == Left)
+	else if (DirectionCheck(x, y, previous_x, previous_y) == Left)
 	{
 		CoordinateCorrection(x, x_size, y, y_size, Left);
 
 		return true;
 	}
 
-	if (DirectionCheck(x, y, before_x, before_y) == Up)
+	if (DirectionCheck(x, y, previous_x, previous_y) == Up)
 	{
 		CoordinateCorrection(x, x_size, y, y_size, Up);
 
 		return true;
 	}
-	else if (DirectionCheck(x, y, before_x, before_y) == Down)
+	else if (DirectionCheck(x, y, previous_x, previous_y) == Down)
 	{
 		CoordinateCorrection(x,x_size,y,y_size, Down);
 

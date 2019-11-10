@@ -2,7 +2,7 @@
 
 void Hero::InputBefore()
 {
-	before_x = x;
-	before_y = y;
+	previous_x = x;
+	previous_y = y;
 
 }
