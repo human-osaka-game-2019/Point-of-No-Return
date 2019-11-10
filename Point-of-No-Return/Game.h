@@ -4,8 +4,8 @@
 #include "Scene.h"
 #include "Mapchip.h"
 #include "Help.h"
-#include"Character.h"
-#include"Collision.h"
+#include "Character.h"
+#include "Collision.h"
 
 class Game : public SceneBase
 {

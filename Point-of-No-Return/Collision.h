@@ -1,8 +1,8 @@
 ﻿#ifndef COLLISION
 #define COLLISION
 
-#include"Mapchip.h"
-#include"Character.h"
+#include "Mapchip.h"
+#include "Character.h"
 
 enum Direction
 {
@@ -100,6 +100,11 @@ public:
 	 */
 	void ブロックとの(float* x, float* x_size, float* y, float* y_size, float previous_x, float previous_y, int** map);
 
+	void CoordinateCorrectionWhenMoveUpRight(float* x, float* y, float* x_size, float* y_size, int** map);
+
+
+
+
 	/**
 	 * 各頂点を見て当たっているかどうかの確認関数
 	 * @param 対象のX座標
@@ -108,7 +113,7 @@ public:
 　　 * @param 対象のY軸の描画サイズ
 	 * @param mapのアドレス
 	 */
-	bool HitPointCheck(float* x, float* x_size, float* y, float* y_size, int** map);
+	bool HitPointCheck(float* x, float* x_size, float* y, float* y_size, float before_x, float before_y,int** map);
 
 	/**
 	 * どの方向に動いているかを判別する関数
@@ -137,7 +142,7 @@ public:
 	 * @param 対象のY座標
 	 * @return 当たっていたら true を返す
 	 */
-	bool TopRightHasHit(float* x, float* x_size, float* y, int** map);
+	bool TopRightHasHit(float* x, float* x_size, float* y, int** map,int Direction);
 
 	/**
 	 * 左上の頂点がブロックにあたっているかどうかを判別する関数
@@ -145,7 +150,7 @@ public:
 	 * @param 対象のY座標
 	 * @return 当たっていたら true を返す
 	 */
-	bool TopLeftHasHit(float* x, float* y, int** map);
+	bool TopLeftHasHit(float* x, float* y, int** map, int Direction);
 
 	/**
 	 * 右下の頂点がブロックにあたっているかどうかを判別する関数
@@ -156,7 +161,7 @@ public:
 	 * @param mapのアドレス
 	 * @return 当たっていたら true を返す
 	 */
-	bool BottomRightHasHit(float* x, float* x_size, float* y, float* y_size, int** map);
+	bool BottomRightHasHit(float* x, float* x_size, float* y, float* y_size, int** map, int Direction);
 
 
 	/**
@@ -167,7 +172,7 @@ public:
 	 * @param mapのアドレス
 	 * @return 当たっていたら true を返す
 	 */
-	bool BottomLeftHasHit(float* x, float* y, float* y_size,int** map);
+	bool BottomLeftHasHit(float* x, float* y,float* x_size, float* y_size,int** map, int Direction);
 
 
 	/**

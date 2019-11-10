@@ -74,7 +74,6 @@ Direction Collision::VerticalDirectionCheck(float* x,int previous_x)
 	 }
 	 else if (save_char_move_direction[X] == Right)
 	 {
-		 return Direction::DownRight;
 	 }
 
 	 if (save_char_move_direction[Y] == Up)
@@ -92,19 +91,86 @@ Direction Collision::VerticalDirectionCheck(float* x,int previous_x)
 
 void Collision::ブロックとの(float* x, float* x_size, float* y, float* y_size, float previous_x, float previous_y, int** map)
 {
-	if (HitPointCheck(x,x_size,y,y_size, map) == true)
 	{
 		値の修正呼出し(x,x_size,y,y_size,previous_x,previous_y,map);
 	}
 
 }
 
-bool Collision::HitPointCheck(float* x, float* x_size, float* y , float* y_size,int** map)
 {
-	//	右上 左上 右下 左下
-	if (TopRightHasHit(x, x_size, y, map) == true || TopLeftHasHit(x,y,map) == true || BottomRightHasHit(x, x_size, y, y_size, map) == true || BottomLeftHasHit(x, y, y_size, map) == true)
-	{	
-		return true;
+	switch (DirectionCheck(x,y,previous_x,previous_y))
+	{
+	case Up:
+
+		if (TopRightHasHit(x, x_size, y, map,Up) == true || TopLeftHasHit(x, y, map,Up) == true)
+		{
+			return true;
+		}
+
+		break;
+
+	case Down:
+		
+		if (BottomRightHasHit(x, x_size, y, y_size, map,Down) == true || BottomLeftHasHit(x, y,x_size, y_size, map,Down) == true)
+		{
+			return true;
+		}
+
+		break;
+	
+	case Right:
+
+		if (BottomRightHasHit(x, x_size, y, y_size, map,Right) == true || TopRightHasHit(x, x_size, y, map,Right) == true)
+		{
+			return true;
+		}
+
+		break;
+
+	case Left:
+
+		if (TopLeftHasHit(x, y, map,Left) == true || BottomLeftHasHit(x, y,x_size, y_size, map,Left) == true)
+		{
+			return true;
+		}
+
+		break;
+
+	case UpRight:
+
+		if (TopLeftHasHit(x, y, map,Up) == true || BottomRightHasHit(x, x_size, y, y_size, map,Right) == true || TopRightHasHit(x, x_size, y, map,UpRight) == true)
+		{
+			return true;
+		}
+
+		break;
+
+	case DownRight:
+
+		if (TopRightHasHit(x, x_size, y, map,Right) == true || BottomLeftHasHit(x, y, x_size, y_size, map,Down) == true || BottomRightHasHit(x, x_size, y, y_size, map,DownRight) == true)
+		{
+			return true;
+		}
+
+		break;
+
+	case UpLeft:
+
+		if (TopRightHasHit(x, x_size, y, map,Up) == true || BottomLeftHasHit(x, y, x_size, y_size, map,Left) == true || TopLeftHasHit(x, y, map,UpLeft) == true)
+		{
+			return true;
+		}
+
+		break;
+
+	case DownLeft:
+
+		if (BottomRightHasHit(x, x_size, y, y_size, map,Down) == true || TopLeftHasHit(x, y, map,Left) == true || BottomLeftHasHit(x, y, x_size, y_size, map,DownLeft) == true)
+		{
+			return true;
+		}
+
+		break;
 	}
     
 	return false;
@@ -115,17 +181,14 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 {
 	if (DirectionCheck(x, y, previous_x, previous_y) == UpRight)
 	{
-		if (TopLeftHasHit(x, y, map) == true)
 		{
 			CoordinateCorrect(x, x_size, y, y_size, Up);
 		}
 
-		if (BottomRightHasHit(x, x_size, y, y_size, map) == true)
 		{
 			CoordinateCorrect(x, x_size, y, y_size, Right);
 		}
 
-		if (TopRightHasHit(x, x_size, y, map) == true)
 		{
 			if (HitVectorJudge(x, y, x_size, y_size, UpRight) == Down)
 			{
@@ -145,27 +208,21 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 
 	} else if (DirectionCheck(x, y, previous_x, previous_y) == DownRight)
 	{
-		if (TopRightHasHit(x,x_size,y, map) == true)
 		{
 			CoordinateCorrect(x, x_size, y, y_size, Right);
 		}
 
-		if (BottomLeftHasHit(x, y, y_size, map) == true)
 		{
 			CoordinateCorrect(x, x_size, y, y_size, Down);
 		}
 
-		if (BottomRightHasHit(x, x_size, y, y_size, map) == true)
 		{
-			if (HitVectorJudge(x,y, x_size, y_size, DownRight) == Up)
 			{
 				CoordinateCorrect(x, x_size, y, y_size, Down);
 			}
-			else if (HitVectorJudge(x,y, x_size, y_size, DownRight) == Left)
 			{
 				CoordinateCorrect(x, x_size, y, y_size, Right);
 			}
-			else if (HitVectorJudge(x,y, x_size, y_size, DownRight) == DownRight)
 			{
 				CoordinateCorrect(x, x_size, y, y_size, DownRight);
 			}
@@ -173,27 +230,21 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 		}
 
 		return true;
-	}
 
 	if (DirectionCheck(x, y, previous_x, previous_y) == UpLeft)
 	{
-		if (TopRightHasHit(x,x_size,y, map) == true)
 		{
 			CoordinateCorrect(x, x_size, y, y_size, Up);
 		}
 
-		if (BottomLeftHasHit(x, y, y_size, map) == true)
 		{
 			CoordinateCorrect(x, x_size, y, y_size, Left);
 		}
 
-		if (TopLeftHasHit(x,y, map) == true)
 		{
-			if (HitVectorJudge(x,y, x_size, y_size, UpLeft) == Down)
 			{
 				CoordinateCorrect(x, x_size, y, y_size, Up);
 			}
-			else if (HitVectorJudge(x,y, x_size, y_size, UpLeft) == Right)
 			{
 				CoordinateCorrect(x, x_size, y, y_size, Left);
 			}
@@ -208,33 +259,26 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 	else if (DirectionCheck(x, y, previous_x, previous_y) == DownLeft)
 	{
 
-		if (BottomRightHasHit(x, x_size, y, y_size, map) == true)
 		{
 			CoordinateCorrect(x, x_size, y, y_size, Down);
 		}
 
-		if (TopLeftHasHit(x,y, map) == true)
 		{
 			CoordinateCorrect(x, x_size, y, y_size, Left);
 		}
 		
-		if (BottomLeftHasHit(x,y,y_size, map) == true)
 		{
-			if (HitVectorJudge(x,y, x_size, y_size, DownLeft) == Up)
 			{
 				CoordinateCorrect(x, x_size, y, y_size, Down);
 			}
-			else if(HitVectorJudge(x,y, x_size, y_size, DownLeft) == Right)
 			{
 				CoordinateCorrect(x, x_size, y, y_size, Left);
 			}
-			else if (HitVectorJudge(x,y, x_size, y_size, DownLeft) == DownLeft)
 			{
 				CoordinateCorrect(x, x_size, y, y_size, DownLeft);
 			}
 		}
 		return true;
-	}
 
 	if (DirectionCheck(x, y, previous_x, previous_y) == Right)
 	{
@@ -247,7 +291,6 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 		CoordinateCorrect(x, x_size, y, y_size, Left);
 
 		return true;
-	}
 
 	if (DirectionCheck(x, y, previous_x, previous_y) == Up)
 	{
@@ -328,51 +371,36 @@ void Collision::CoordinateCorrect(float* x, float* x_size, float* y, float* y_si
 };
 
 
-bool Collision::TopRightHasHit(float* x, float* x_size, float* y, int** map)
 {
-	float X = *x + *x_size - 1;
 
-	if (CheckMapNumber(&X, y, map) == Road)
 	{
-		return true;
+
+		break;
 	}
 
 	return false;
 }
 
-bool Collision::TopLeftHasHit(float* x,float* y, int** map)
 {
 
-	if (CheckMapNumber(x, y, map) == Road)
 	{
-		return true;
 	}
 
 	return false;
 }
 
-bool Collision::BottomRightHasHit(float* x,float* x_size,float* y,float* y_size, int** map)
 {
-	float X = *x + *x_size - 1;
-	float Y = *y + *y_size - 1;
 
-	if (CheckMapNumber(&X, &Y, map) == Road)
 	{
-		return true;
 	}
 
 	return false;
 }
 
-bool Collision::BottomLeftHasHit(float* x,float* y,float* y_size, int** map)
 {
-	float Y = *y + *y_size - 1;
 
-	if (CheckMapNumber(x,&Y, map) == Road)
 	{
-		return true;
 	}
-
 	return false;
 }
 
@@ -380,15 +408,11 @@ int Collision::HitVectorJudge(float* X, float* Y,float* X_size, float* Y_size, i
 {
 	float x, y;
 
-	map_x = ((int)*X / chip_size_) * chip_size_;
-	map_y = ((int)*Y / chip_size_) * chip_size_;
 
 	switch (move_deflection)
 	{
 	case UpRight:
 
-		x = ((*X - map_x) / *X_size) * 100;
-		y = ((*Y - (map_y - chip_size_)) / *Y_size) * 100;
 
 		if (x < y)
 		{
@@ -409,7 +433,6 @@ int Collision::HitVectorJudge(float* X, float* Y,float* X_size, float* Y_size, i
 	case UpLeft:
 
 		x = (((map_x + chip_size_) - *X) / *X_size) * 100;
-		y = ((*Y - (map_y - chip_size_)) / *Y_size) * 100;
 
 		if (x < y)
 		{
@@ -430,8 +453,6 @@ int Collision::HitVectorJudge(float* X, float* Y,float* X_size, float* Y_size, i
 
 	case DownRight:
 
-		x = ((*X - map_x) / *X_size) * 100;
-		y = ((*Y - map_y) / *Y_size) * 100;
 
 		if (x < y)
 		{
@@ -452,7 +473,6 @@ int Collision::HitVectorJudge(float* X, float* Y,float* X_size, float* Y_size, i
 	case DownLeft:
 
 		x = (((map_x + chip_size_) - *X) / *X_size) * 100;
-		y = ((*Y - map_y) / *Y_size) * 100;
 
 		if (x < y)
 		{
