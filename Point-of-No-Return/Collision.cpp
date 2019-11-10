@@ -117,27 +117,27 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 	{
 		if (TopLeftHasHit(x, y, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Up);
+			CoordinateCorrect(x, x_size, y, y_size, Up);
 		}
 
 		if (BottomRightHasHit(x, x_size, y, y_size, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Right);
+			CoordinateCorrect(x, x_size, y, y_size, Right);
 		}
 
 		if (TopRightHasHit(x, x_size, y, map) == true)
 		{
 			if (HitVectorJudge(x, y, x_size, y_size, UpRight) == Down)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Up);
+				CoordinateCorrect(x, x_size, y, y_size, Up);
 			}
 			else if (HitVectorJudge(x, y, x_size, y_size, UpRight) == Left)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Right);
+				CoordinateCorrect(x, x_size, y, y_size, Right);
 			}
 			else if (HitVectorJudge(x, y, x_size, y_size, UpRight) == UpRight)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, UpRight);
+				CoordinateCorrect(x, x_size, y, y_size, UpRight);
 			}
 		}
 
@@ -147,27 +147,27 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 	{
 		if (TopRightHasHit(x,x_size,y, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Right);
+			CoordinateCorrect(x, x_size, y, y_size, Right);
 		}
 
 		if (BottomLeftHasHit(x, y, y_size, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Down);
+			CoordinateCorrect(x, x_size, y, y_size, Down);
 		}
 
 		if (BottomRightHasHit(x, x_size, y, y_size, map) == true)
 		{
 			if (HitVectorJudge(x,y, x_size, y_size, DownRight) == Up)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Down);
+				CoordinateCorrect(x, x_size, y, y_size, Down);
 			}
 			else if (HitVectorJudge(x,y, x_size, y_size, DownRight) == Left)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Right);
+				CoordinateCorrect(x, x_size, y, y_size, Right);
 			}
 			else if (HitVectorJudge(x,y, x_size, y_size, DownRight) == DownRight)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, DownRight);
+				CoordinateCorrect(x, x_size, y, y_size, DownRight);
 			}
 
 		}
@@ -179,27 +179,27 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 	{
 		if (TopRightHasHit(x,x_size,y, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Up);
+			CoordinateCorrect(x, x_size, y, y_size, Up);
 		}
 
 		if (BottomLeftHasHit(x, y, y_size, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Left);
+			CoordinateCorrect(x, x_size, y, y_size, Left);
 		}
 
 		if (TopLeftHasHit(x,y, map) == true)
 		{
 			if (HitVectorJudge(x,y, x_size, y_size, UpLeft) == Down)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Up);
+				CoordinateCorrect(x, x_size, y, y_size, Up);
 			}
 			else if (HitVectorJudge(x,y, x_size, y_size, UpLeft) == Right)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Left);
+				CoordinateCorrect(x, x_size, y, y_size, Left);
 			}
 			else if (HitVectorJudge(x, y, x_size, y_size, UpLeft) == UpLeft)
 			{
-				CoordinateCorrection(x, x_size, y, y_size,UpLeft);
+				CoordinateCorrect(x, x_size, y, y_size,UpLeft);
 			}
 		}
 
@@ -210,27 +210,27 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 
 		if (BottomRightHasHit(x, x_size, y, y_size, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Down);
+			CoordinateCorrect(x, x_size, y, y_size, Down);
 		}
 
 		if (TopLeftHasHit(x,y, map) == true)
 		{
-			CoordinateCorrection(x, x_size, y, y_size, Left);
+			CoordinateCorrect(x, x_size, y, y_size, Left);
 		}
 		
 		if (BottomLeftHasHit(x,y,y_size, map) == true)
 		{
 			if (HitVectorJudge(x,y, x_size, y_size, DownLeft) == Up)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Down);
+				CoordinateCorrect(x, x_size, y, y_size, Down);
 			}
 			else if(HitVectorJudge(x,y, x_size, y_size, DownLeft) == Right)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, Left);
+				CoordinateCorrect(x, x_size, y, y_size, Left);
 			}
 			else if (HitVectorJudge(x,y, x_size, y_size, DownLeft) == DownLeft)
 			{
-				CoordinateCorrection(x, x_size, y, y_size, DownLeft);
+				CoordinateCorrect(x, x_size, y, y_size, DownLeft);
 			}
 		}
 		return true;
@@ -238,26 +238,26 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 
 	if (DirectionCheck(x, y, previous_x, previous_y) == Right)
 	{
-		CoordinateCorrection(x, x_size, y, y_size, Right);
+		CoordinateCorrect(x, x_size, y, y_size, Right);
 
 		return true;
 	}
 	else if (DirectionCheck(x, y, previous_x, previous_y) == Left)
 	{
-		CoordinateCorrection(x, x_size, y, y_size, Left);
+		CoordinateCorrect(x, x_size, y, y_size, Left);
 
 		return true;
 	}
 
 	if (DirectionCheck(x, y, previous_x, previous_y) == Up)
 	{
-		CoordinateCorrection(x, x_size, y, y_size, Up);
+		CoordinateCorrect(x, x_size, y, y_size, Up);
 
 		return true;
 	}
 	else if (DirectionCheck(x, y, previous_x, previous_y) == Down)
 	{
-		CoordinateCorrection(x,x_size,y,y_size, Down);
+		CoordinateCorrect(x,x_size,y,y_size, Down);
 
 		return true;
 	}
@@ -266,7 +266,7 @@ bool Collision::値の修正呼出し(float* x, float* x_size, float* y, float* 
 	return false;
 }
 
-void Collision::CoordinateCorrection(float* x, float* x_size, float* y, float* y_size, int char_move_direction)
+void Collision::CoordinateCorrect(float* x, float* x_size, float* y, float* y_size, int char_move_direction)
 {
 	switch (char_move_direction)
 	{

@@ -128,7 +128,7 @@ public:
 　　 * @param 対象のY軸の描画サイズ
      * @param 対象の動いている方向
 	 */
-	void CoordinateCorrection(float* x, float* x_size, float* y, float* y_size,int direction);
+	void CoordinateCorrect(float* x, float* x_size, float* y, float* y_size,int direction);
 	
 	/**
 	 * 右上の頂点がブロックにあたっているかどうかを判別する関数
