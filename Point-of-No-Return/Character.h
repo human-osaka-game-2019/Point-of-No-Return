@@ -44,8 +44,8 @@ public:
 
 	float x = 0;
 	float y = 0;
-	float x_size = 100;
-	float y_size = 120;
+	float x_size = 64;
+	float y_size = 128;
 
 	float tu = 0;
 	float tu_size  =1;
