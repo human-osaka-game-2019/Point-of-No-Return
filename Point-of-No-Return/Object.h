@@ -154,17 +154,17 @@ protected:
 		VertexTV tv;
 	};
 
-	struct Vec2
-	{
-		VertexX x;
-		VertexY y;	
-	};
+	
 
 };
 
 
 
-
+struct Vec2
+{
+	VertexX x;
+	VertexY y;
+};
 
 #endif
 

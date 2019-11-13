@@ -1,4 +1,4 @@
-#include "Load.h"
+ï»¿#include "Load.h"
 #include "Game.h"
 
 void Game::Load()
@@ -41,10 +41,11 @@ void Game::Update()
 		hero.x = 0;
 		hero.y = 0;
 	}
-	collision.ƒuƒƒbƒN‚Æ‚Ì(&hero.x,&hero.x_size,&hero.y,&hero.y_size,hero.previous_x,hero.previous_y,mapchip.map_);
+	//collision.ï¿½uï¿½ï¿½ï¿½bï¿½Nï¿½Æ‚ï¿½(&hero.x,&hero.x_size,&hero.y,&hero.y_size,hero.previous_x,hero.previous_y,mapchip.map_);
 	
-	int a;
-	mapchip.map_[a / 64][2];
+	
+	hero.HitBlock(&hero, collision.SearchBlock(hero, mapchip.map_));
+	
 
 	if (dx.GetKeyState(DIK_SPACE) == dx.PUSH)
 	{

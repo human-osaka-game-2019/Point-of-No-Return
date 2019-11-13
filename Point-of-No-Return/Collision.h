@@ -44,7 +44,7 @@ enum HitPoint
 
 class Collision
 {
-private:
+private:				
 
 	int vec_x;
 	int vec_y;
@@ -67,6 +67,15 @@ private:
 	int CheckMapNumber(float* x, float* y, int** map);
 
 public:
+
+	/**
+	 * 主人公周りのブロックで当たりア判定があるかどうか探す
+	 * @param hero
+	 * @param map
+	 * @param map情報のアドレス
+	 * @return　マップチップの二次元配列の中身
+	 */
+	std::vector<Vec2> SearchBlock(Hero hero, int** map);
 
 	/**
 	 * X軸の動きの方向を算出する関数
@@ -113,7 +122,7 @@ public:
 　　 * @param 対象のY軸の描画サイズ
 	 * @param mapのアドレス
 	 */
-	bool HitPointCheck(float* x, float* x_size, float* y, float* y_size, float before_x, float before_y,int** map);
+	bool HitPointCheck(float* x, float* x_size, float* y, float* y_size, float previous_x, float previous_y,int** map);
 
 	/**
 	 * どの方向に動いているかを判別する関数

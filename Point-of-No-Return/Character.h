@@ -56,6 +56,7 @@ public:
 
 	void InputBefore();
 
+	void HitBlock(Hero* hero, std::vector<Vec2> vec2);
 
 
 };

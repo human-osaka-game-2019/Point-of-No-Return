@@ -28,6 +28,7 @@ public:
 
 	void InitMap();
 
+	int CheckMapNumber(int x, int y, int** map);
 
 	int* map_[world_size_height];
 
