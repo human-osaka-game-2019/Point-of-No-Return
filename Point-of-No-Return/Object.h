@@ -239,6 +239,7 @@ public:
 	Object& operator =(const Object&&);
 
 protected:
+
 	DX::DirectX& dx = DX::DirectX::GetInstance();
 	Vec2 vec = { 0,0 };
 	Size size = { 0,0 };

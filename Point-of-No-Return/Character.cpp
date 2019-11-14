@@ -13,10 +13,10 @@ void Hero::Initialize() {
 	is_reverse = false;
 }
 
-void Hero::InputBefore()
+void Hero::InputBefore(Hero* hero)
 {
-	previous_x = x;
-	previous_y = y;
+	previous_x = hero->vec.x.value;
+	previous_y = hero->vec.y.value;
 }
 
 
@@ -32,37 +32,37 @@ void Hero::Update() {
 void Hero::HitBlock(Hero* hero, std::vector<Vec2> vec2)
 {	
     int number = 0;
-	float vector_x = hero->previous_x - hero->x;
-	float vector_y = hero->previous_y - hero->y;
+	float vector_x = hero->previous_x - hero->vec.x.value;
+	float vector_y = hero->previous_y - hero->vec.y.value;
 
 	for (auto i = vec2.begin(); i != vec2.end(); i++) 
 	{
 		//
-		if ((vec2[number].x.value < hero->x + hero->x_size) &&
-			(hero->x < vec2[number].x.value + chip_size) &&
-			(vec2[number].y.value < hero->y + hero->y_size) &&
-			(hero->y < vec2[number].y.value + chip_size))
+		if ((vec2[number].x.value < hero->vec.x.value + hero->size.width.value) &&
+			(hero->vec.x.value < vec2[number].x.value + chip_size) &&
+			(vec2[number].y.value < hero->vec.y.value + hero->size.height.value) &&
+			(hero->vec.y.value < vec2[number].y.value + chip_size))
 		{
-			if ((hero->previous_y + hero->y_size <= vec2[number].y.value) || (hero->previous_y >= vec2[number].y.value + chip_size))
+			if ((hero->previous_y + hero->size.height.value <= vec2[number].y.value) || (hero->previous_y >= vec2[number].y.value + chip_size))
 			{
 				if (vector_y < 0)
 				{
-					hero->y = vec2[number].y.value - hero->y_size;
+					hero->vec.y.value = vec2[number].y.value - hero->size.height.value;
 				}
 				else if (vector_y > 0)
 				{
-					hero->y = vec2[number].y.value + chip_size;
+					hero->vec.y.value = vec2[number].y.value + chip_size;
 				}
 			}
 			else
 			{
 				if (vector_x < 0)
 				{
-					hero->x = vec2[number].x.value - hero->x_size;
+					hero->vec.x.value = vec2[number].x.value - hero->size.width.value;
 				}
 				else if (vector_x > 0)
 				{
-					hero->x = vec2[number].x.value + chip_size;
+					hero->vec.x.value = vec2[number].x.value + chip_size;
 				}
 			}
 		}
