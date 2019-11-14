@@ -4,44 +4,6 @@
 #include "Mapchip.h"
 #include "Character.h"
 
-enum Direction
-{
-	Stop,
-	Up,
-	Down,
-	Right,
-	Left,
-	UpRight,
-	UpLeft,
-	DownRight,
-	DownLeft
-};
-
-enum 
-{ 
-	Air,
-	Road,
-
-};
-
-enum
-{
-	X,
-	Y
-};
-
-enum HitPoint
-{
-	TopRight,
-	TopLeft,
-	BottomRight,
-	BottomLeft,
-	NoHit,
-
-};
-
-
-
 class Collision
 {
 private:				
