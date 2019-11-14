@@ -157,6 +157,7 @@ struct Name
 	std::string value;
 };
 
+
 struct TextureName
 {
 	TextureName(const std::string value) :value(value) {}
@@ -182,7 +183,6 @@ struct Size
 struct TextureUV
 {
 	TextureUV(const TextureU tu,const TextureV tv) : tu(tu), tv(tv) {};
-
 	TextureU tu;
 	TextureV tv;
 };

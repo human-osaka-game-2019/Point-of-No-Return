@@ -3,7 +3,9 @@
 
 #include "Scene.h"
 #include "Mapchip.h"
+#include "Help.h"
 #include "Character.h"
+#include "Collision.h"
 
 class Game : public SceneBase
 {
@@ -27,9 +29,14 @@ public:
 	void Release();
 
 	HANDLE CreateLoadThread();
+
 private:
+
 	Mapchip mapchip;
+
 	Hero hero{ "Player" };
+
+	Collision collision;
 };
 
 

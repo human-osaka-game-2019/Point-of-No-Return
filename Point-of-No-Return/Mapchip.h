@@ -7,7 +7,7 @@
 
 // ワールドのサイズ
 const int world_size_width = 480;
-const int world_size_height = 16;
+const int world_size_height = 17;
 // 一つのチップのサイズ
 const int chip_size = 64;
 // テクスチャのサイズ
@@ -28,6 +28,7 @@ public:
 
 	void InitMap();
 
+	int CheckMapNumber(int x, int y, int** map);
 
 	int* map_[world_size_height];
 

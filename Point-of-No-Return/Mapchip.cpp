@@ -61,3 +61,7 @@ void Mapchip::InitMap()
 
 
 
+int Mapchip::CheckMapNumber(int x ,int y,int** map)
+{
+	return map[(x / chip_size)* chip_size][(y / chip_size)* chip_size];
+}
