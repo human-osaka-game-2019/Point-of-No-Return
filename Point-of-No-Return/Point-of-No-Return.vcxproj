@@ -145,6 +145,7 @@
     <ClCompile Include="BackGraund.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Ending.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Help.cpp" />
     <ClCompile Include="Load.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Save.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="State.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
@@ -160,6 +162,7 @@
     <ClInclude Include="BackGraund.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Ending.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Help.h" />
     <ClInclude Include="Load.h" />
@@ -168,6 +171,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Save.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="State.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="UI.h" />
   </ItemGroup>

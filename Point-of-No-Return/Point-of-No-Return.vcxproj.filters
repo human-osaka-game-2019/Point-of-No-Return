@@ -22,6 +22,9 @@
     <Filter Include="Manager">
       <UniqueIdentifier>{cea1f81a-8264-4361-ab38-a34eb0da80c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AI">
+      <UniqueIdentifier>{6002bb16-7aff-4237-986b-177e67343698}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Title.cpp">
@@ -61,6 +64,12 @@
     <ClCompile Include="BackGraund.cpp">
       <Filter>Feature\横スクロール</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Title.h">
@@ -99,6 +108,12 @@
     </ClInclude>
     <ClInclude Include="UI.h">
       <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>AI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
