@@ -48,6 +48,18 @@ struct TextureV
 	float value;
 };
 
+struct Col
+{
+	Col(const float value) :value(value) {}
+	int value;
+};
+
+struct Row
+{
+	Row(const float value) :value(value) {}
+	int value;
+};
+
 struct Degree 
 {
 	Degree(const float value) :value(value) {}
@@ -172,6 +184,13 @@ struct Vec2
 	CoordinateY y;
 };
 
+struct Matrix
+{
+	Matrix(const Col col, const Row row) : col(col), row(row) {};
+	Col col;
+	Row row;
+};
+
 struct Size
 {
 	Size(const Width width,const Height height) : width(width), height(height) {};
@@ -237,6 +256,17 @@ public:
 	Object& operator =(const Object&);
 	Object(const Object&&);
 	Object& operator =(const Object&&);
+
+	Vec2 GetPos()
+	{
+		return vec;
+	}
+
+	Size GetSize()
+	{
+		return size;
+	}
+
 
 protected:
 

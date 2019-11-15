@@ -16,14 +16,13 @@ private:
 class Hero :public Character
 {
 public:
-	float previous_x;
-	float previous_y;
+	
 
 	float gravity =0;
 
-	void InputBefore(Hero* hero);
+	void InputBefore();
 
-	void HitBlock(Hero* hero, std::vector<Vec2> vec2);
+	void HitBlock(std::vector<Vec2> vec2);
 
 	Hero(const std::string& name):Character(name)
 	{
@@ -31,6 +30,9 @@ public:
 	}
 
 	void Update();
+
+	
+
 
 private:
 
@@ -40,6 +42,10 @@ private:
 	Hero& operator=(const Hero&);
 	Hero(const Hero&&);
 	Hero& operator=(const Hero&&);
+
+protected:
+	Vec2 previous = {0,0};
+
 
 };
 

@@ -9,38 +9,14 @@ void Game::Load()
 
 void Game::Update()
 {
+
+	hero.InputBefore();
+
 	hero.Update();
 
-	hero.InputBefore(&hero);
-
-	//if (dx.GetKeyState(DIK_D) == dx.ON) 
-	//{
-	//	hero.x += 3.0f;
-	//}
 	
-	//if (dx.GetKeyState(DIK_A) == dx.ON)
-	//{
-	//	hero.x -= 3.0f;
-	//}
 
-	//if (dx.GetKeyState(DIK_W) == dx.ON)
-	//{
-	//	hero.y -= 3.0f;
-	//}
-
-	//if (dx.GetKeyState(DIK_S) == dx.ON)
-	//{
-	//	hero.y += 3.0f;
-
-	//}
-
-	//if (dx.GetKeyState(DIK_R) == dx.ON)
-	//{
-	//	hero.x = 0;
-	//	hero.y = 0;
-	//}
-
-	hero.HitBlock(&hero, collision.SearchBlock(hero, mapchip.map_));
+	hero.HitBlock(collision.SearchBlock(hero.GetPos(),hero.GetSize(), mapchip.map_));
 	
 
 	if (dx.GetKeyState(DIK_SPACE) == dx.PUSH)
