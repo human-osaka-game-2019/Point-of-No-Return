@@ -4,13 +4,8 @@
 #include "Mapchip.h"
 #include "Character.h"
 
-class Collision
+namespace Collision
 {
-private:				
-
-
-public:
-
 	/**
 	 * 主人公周りのブロックで当たりア判定があるかどうか探す
 	 * @param hero
@@ -20,7 +15,6 @@ public:
 	 */
 	std::vector<Vec2> SearchBlock(const Vec2& vec, const Size& size, int** map);
 
-};
-
+}
 
 #endif

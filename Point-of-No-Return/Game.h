@@ -35,8 +35,6 @@ private:
 	Mapchip mapchip;
 
 	Hero hero{ "Player" };
-
-	Collision collision;
 };
 
 
