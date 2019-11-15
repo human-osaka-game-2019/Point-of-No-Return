@@ -18,10 +18,9 @@ public:
 	 * @param map情報のアドレス
 	 * @return　マップチップの二次元配列の中身
 	 */
-	std::vector<Vec2> SearchBlock(const Hero& hero, int** map);
+	std::vector<Vec2> SearchBlock(const Vec2& vec, const Size& size, int** map);
 
 };
-
 
 
 #endif

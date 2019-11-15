@@ -4,13 +4,13 @@
 
 
 
-std::vector<Vec2> Collision::SearchBlock(const Hero& hero,int** map)
+std::vector<Vec2> Collision::SearchBlock(const Vec2& vec,const Size& size,int** map)
 {
 	Vec2 vec2(0,0);
 	std::vector<Vec2>mapdata;
 
-	int row = (hero.x + hero.x_size / 2) / chip_size - 2;
-	int col = (hero.y + hero.y_size / 2) / chip_size - 2;
+	int row = (vec.x.value + size.width.value / 2) / chip_size - 2;
+	int col = (vec.y.value + size.height.value / 2) / chip_size - 2;
 
 	for (int i = 0; i < 5;i++)
 	{
