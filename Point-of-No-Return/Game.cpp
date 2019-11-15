@@ -14,10 +14,7 @@ void Game::Update()
 
 	hero.Update();
 
-	
-
-	hero.HitBlock(Collision::SearchBlock(hero.GetPos(),hero.GetSize(), mapchip.map_));
-	
+	Collision::BlockCheck(hero,hero.GetPrevious(), hero.GetPos(), hero.GetSize(), Collision::SearchBlock(hero.GetPos(), hero.GetSize(), mapchip.map_));
 
 	if (dx.GetKeyState(DIK_SPACE) == dx.PUSH)
 	{

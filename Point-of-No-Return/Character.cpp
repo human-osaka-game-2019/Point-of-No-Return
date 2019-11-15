@@ -49,42 +49,71 @@ void Hero::Update() {
 	}
 }
 
-void Hero::HitBlock(std::vector<Vec2> vec2)
-{	
-	float vector_x = previous.x.value - vec.x.value;
-	float vector_y = previous.y.value - vec.y.value;
+//void Hero::HitBlock(std::vector<Vec2> vec2)
+//{	
+//	float vector_x = previous.x.value - vec.x.value;
+//	float vector_y = previous.y.value - vec.y.value;
+//
+//	for (int i = 0; i < vec2.size(); i++) 
+//	{
+//		//
+//		if ((vec2[i].x.value < vec.x.value + size.width.value) &&
+//			(vec.x.value < vec2[i].x.value + chip_size) &&
+//			(vec2[i].y.value < vec.y.value + size.height.value) &&
+//			(vec.y.value < vec2[i].y.value + chip_size))
+//		{
+//			if ((previous.y.value + size.height.value <= vec2[i].y.value) || (previous.y.value >= vec2[i].y.value + chip_size))
+//			{
+//				if (vector_y < 0)
+//				{
+//					vec.y.value = vec2[i].y.value - size.height.value;
+//				}
+//				else if (vector_y > 0)
+//				{
+//					vec.y.value = vec2[i].y.value + chip_size;
+//				}
+//			}
+//			else
+//			{
+//				if (vector_x < 0)
+//				{
+//					vec.x.value = vec2[i].x.value - size.width.value;
+//				}
+//				else if (vector_x > 0)
+//				{
+//					vec.x.value = vec2[i].x.value + chip_size;
+//				}
+//			}
+//		}
+//	}
+//}
 
-	for (int i = 0; i < vec2.size(); i++) 
+
+
+void Hero::CrrectCodinate(int Direction, std::vector<Vec2> vec2, int i)
+{
+	switch (Direction)
 	{
-		//
-		if ((vec2[i].x.value < vec.x.value + size.width.value) &&
-			(vec.x.value < vec2[i].x.value + chip_size) &&
-			(vec2[i].y.value < vec.y.value + size.height.value) &&
-			(vec.y.value < vec2[i].y.value + chip_size))
-		{
-			if ((previous.y.value + size.height.value <= vec2[i].y.value) || (previous.y.value >= vec2[i].y.value + chip_size))
-			{
-				if (vector_y < 0)
-				{
-					vec.y.value = vec2[i].y.value - size.height.value;
-				}
-				else if (vector_y > 0)
-				{
-					vec.y.value = vec2[i].y.value + chip_size;
-				}
-			}
-			else
-			{
-				if (vector_x < 0)
-				{
-					vec.x.value = vec2[i].x.value - size.width.value;
-				}
-				else if (vector_x > 0)
-				{
-					vec.x.value = vec2[i].x.value + chip_size;
-				}
-			}
-		}
+	default:
+
+		break;
+	case 1:
+		vec.y.value = vec2[i].y.value - size.height.value;
+		break;			  
+	case 2:				  
+		vec.y.value = vec2[i].y.value + chip_size;
+		break;			  
+	case 3:				  
+		vec.x.value = vec2[i].x.value - size.width.value;
+		break;			  
+	case 4:				  
+		vec.x.value = vec2[i].x.value + chip_size;
+		break;
 	}
+
 }
 
+Vec2 Hero::GetPrevious()
+{
+	return previous;
+}

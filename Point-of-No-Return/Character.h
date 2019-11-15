@@ -22,7 +22,7 @@ public:
 
 	void InputBefore();
 
-	void HitBlock(std::vector<Vec2> vec2);
+	// void HitBlock(std::vector<Vec2> vec2);
 
 	Hero(const std::string& name):Character(name)
 	{
@@ -31,8 +31,9 @@ public:
 
 	void Update();
 
-	
+	void CrrectCodinate(int Direction, std::vector<Vec2> vec2, int i);
 
+	Vec2 GetPrevious();
 
 private:
 

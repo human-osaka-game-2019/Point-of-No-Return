@@ -40,4 +40,56 @@ std::vector<Vec2> Collision::SearchBlock(const Vec2& vec,const Size& size,int** 
 }
 
 
+void Collision::BlockCheck(Hero& hero, Vec2 previous, Vec2 vec, Size size, std::vector<Vec2> vec2)
+{
+	Vec2 vector =
+	{
+		previous.x.value - vec.x.value,
+		previous.y.value - vec.y.value
+	};
+
+	for (int i = 0; i < vec2.size(); i++)
+	{
+		//
+		if ((vec2[i].x.value < vec.x.value + size.width.value) &&
+			(vec.x.value < vec2[i].x.value + chip_size) &&
+			(vec2[i].y.value < vec.y.value + size.height.value) &&
+			(vec.y.value < vec2[i].y.value + chip_size))
+		{
+			HitChecEdgek(hero, previous, size, vector, vec2, i);
+		}
+	}
+}
+
+void Collision::HitChecEdgek(Hero& hero, Vec2 previous, Size size, Vec2 vector, std::vector<Vec2> vec2, int i)
+{
+	int direction;
+
+	if ((previous.y.value + size.height.value <= vec2[i].y.value) || (previous.y.value >= vec2[i].y.value + chip_size))
+	{
+		if (vector.y.value < 0)
+		{
+			direction = 1;
+			hero.CrrectCodinate(direction, vec2, i);
+		}
+		else if (vector.y.value > 0)
+		{
+			direction = 2;
+			hero.CrrectCodinate(direction, vec2, i);
+		}
+	}
+	else
+	{
+		if (vector.x.value < 0)
+		{
+			direction = 3;
+			hero.CrrectCodinate(direction, vec2, i);
+		}
+		else if (vector.x.value > 0)
+		{
+			direction = 4;
+			hero.CrrectCodinate(direction, vec2, i);
+		}
+	}
+}
 
