@@ -17,7 +17,7 @@ void Game::Update()
 	//{
 	//	hero.x += 3.0f;
 	//}
-	//
+	
 	//if (dx.GetKeyState(DIK_A) == dx.ON)
 	//{
 	//	hero.x -= 3.0f;
@@ -40,7 +40,6 @@ void Game::Update()
 	//	hero.y = 0;
 	//}
 
-	//collision.�u���b�N�Ƃ�(&hero.x,&hero.x_size,&hero.y,&hero.y_size,hero.previous_x,hero.previous_y,mapchip.map_);
 	hero.HitBlock(&hero, collision.SearchBlock(hero, mapchip.map_));
 	
 
@@ -57,7 +56,8 @@ void Game::Draw()
 	mapchip.DrawMapchip(world_size_width, world_size_height, texture_width, texture_height, chip_width_num, chip_height_num, chip_size, chip_size, 0, 0, "blocks", mapchip.map_);
 	hero.Draw();
 
-	// -----------
+	// ----------- 当たり判定の為の仮置き --------------
+	// TODO : 検証後削除
 	mapchip.map_[11][10] = 1;
 	mapchip.map_[11][11] = 1;
 	mapchip.map_[10][10] = 1;
@@ -66,7 +66,7 @@ void Game::Draw()
 	mapchip.map_[3][13] = 1;
 	mapchip.map_[4][12] = 1;
 	mapchip.map_[5][11] = 1;
-	// -----------
+	// ---------------------------
 
 }
 
