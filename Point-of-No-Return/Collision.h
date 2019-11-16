@@ -7,33 +7,36 @@
 namespace Collision
 {
 	/**
-	 * 主人公周りのブロックで当たりア判定があるかどうか探す
-	 * @param hero
-	 * @param map
-	 * @param map情報のアドレス
-	 * @return　マップチップの二次元配列の中身
+	 * @brief 主人公周りのブロックで当たり判定があるかどうか探す
+	 * @param  vec  キャラクターの位置
+	 * @param  size キャラクターのサイズ
+	 * @param  map  マップの情報のアドレス
+	 * @return 当たり判定をとるブロックの座標の集まり
+	 * @details 
 	 */
 	std::vector<Vec2> SearchBlock(const Vec2& vec, const Size& size, int** map);
 
 
 	/**
-	 * ブロックに当たっているかどうかの確認関数
-	 * @param hero
-	 * @param previous
-	 * @param vec
-	 * @param size
-	 * @param vec2
+	 * @brief ブロックに当たっているかどうかの確認関数
+	 * @param hero     主人公の情報
+	 * @param previous キャラクターの前の位置
+	 * @param size     キャラクターのサイズ
+	 * @param vec      キャラクターの移動量や方向
+	 * @param vec2     当たり判定をとるブロックの座標の集まり
+	 * @details 
 	 */
-	void CheckBlock(Hero& hero, Vec2 previous, Vec2 vec, Size size, std::vector<Vec2> vec2);
+	void CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::vector<Vec2> vec2);
 
 	/**
-     * どの辺で当たっているのかの確認関数
-     * @param hero
-     * @param previous
-     * @param size
-	 * @param vector
-     * @param vec2
-	 * @param i 
+     * @brief どの辺で当たっているのかの確認関数
+     * @param hero     主人公の情報
+     * @param previous キャラクターの前の位置
+     * @param size     キャラクターのサイズ
+	 * @param vector   キャラクターの移動量や方向
+     * @param vec2     当たり判定をとるブロックの座標の集まり
+	 * @param i        当たり判定をとるブロックを判断する
+	 * @details 
      */
 	void HitCheckEdge(Hero& hero, Vec2 previous, Size size, Vec2 vector, std::vector<Vec2> vec2, int i);
 }

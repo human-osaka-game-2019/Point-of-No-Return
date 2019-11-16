@@ -12,7 +12,7 @@ void Game::Update()
 
 	hero.Update();
 
-	Collision::CheckBlock(hero,hero.GetPrevious(), hero.GetPos(), hero.GetSize(), Collision::SearchBlock(hero.GetPos(), hero.GetSize(), mapchip.map_));
+	Collision::CheckBlock(hero,hero.GetPrevious(), hero.GetSize(), hero.GetPos(),  Collision::SearchBlock(hero.GetPos(), hero.GetSize(), mapchip.map_));
 
 	if (dx.GetKeyState(DIK_SPACE) == dx.PUSH)
 	{

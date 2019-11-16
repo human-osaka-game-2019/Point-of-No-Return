@@ -27,12 +27,6 @@ void Hero::Update()
 
 	UpdatePreviousVertex();
 
-	if (dx.GetKeyState(DIK_D) == dx.ON) {
-		//vec.x.value += 1.0f;
-	}
-	if (dx.GetKeyState(DIK_A) == dx.ON) {
-		//vec.x.value -= 1.0f;
-	}
 	if (dx.GetKeyState(DIK_D) == dx.ON)
 	{
 		vec.x.value += 10.0f;
@@ -94,7 +88,7 @@ void Hero::Update()
 //	}
 //}
 
-void Hero::CorrectCoodinate(Direction correction, std::vector<Vec2> vec2, int i)
+void Hero::CorrectCoordinate(Direction correction, std::vector<Vec2> vec2, int i)
 {
 	switch (correction)
 	{

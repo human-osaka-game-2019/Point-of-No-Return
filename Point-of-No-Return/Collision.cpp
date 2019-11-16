@@ -39,7 +39,7 @@ std::vector<Vec2> Collision::SearchBlock(const Vec2& vec,const Size& size,int** 
 	return mapdata;
 }
 
-void Collision::CheckBlock(Hero& hero, Vec2 previous, Vec2 vec, Size size, std::vector<Vec2> vec2)
+void Collision::CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::vector<Vec2> vec2)
 {
 	Vec2 vector =
 	{
@@ -49,7 +49,6 @@ void Collision::CheckBlock(Hero& hero, Vec2 previous, Vec2 vec, Size size, std::
 
 	for (int i = 0; i < vec2.size(); i++)
 	{
-		//
 		if ((vec2[i].x.value < vec.x.value + size.width.value) &&
 			(vec.x.value < vec2[i].x.value + chip_size) &&
 			(vec2[i].y.value < vec.y.value + size.height.value) &&
@@ -70,12 +69,12 @@ void Collision::HitCheckEdge(Hero& hero, Vec2 previous, Size size, Vec2 vector, 
 		if (vector.y.value < 0)
 		{
 			correction = Direction::Up;
-			hero.CorrectCoodinate(correction, vec2, i);
+			hero.CorrectCoordinate(correction, vec2, i);
 		}
 		else if (vector.y.value > 0)
 		{
 			correction = Direction::Down;
-			hero.CorrectCoodinate(correction, vec2, i);
+			hero.CorrectCoordinate(correction, vec2, i);
 		}
 	}
 	else
@@ -83,12 +82,12 @@ void Collision::HitCheckEdge(Hero& hero, Vec2 previous, Size size, Vec2 vector, 
 		if (vector.x.value < 0)
 		{
 			correction = Direction::Left;
-			hero.CorrectCoodinate(correction, vec2, i);
+			hero.CorrectCoordinate(correction, vec2, i);
 		}
 		else if (vector.x.value > 0)
 		{
 			correction = Direction::Right;
-			hero.CorrectCoodinate(correction, vec2, i);
+			hero.CorrectCoordinate(correction, vec2, i);
 		}
 	}
 }
