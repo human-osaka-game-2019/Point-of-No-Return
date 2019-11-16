@@ -1,9 +1,9 @@
 ﻿#ifndef MAPCHIP_H_
 #define MAPCHIP_H_
 
-
 #include<iostream>
 #include<stdio.h>
+
 namespace
 {
 	// ワールドのサイズ
@@ -18,40 +18,41 @@ namespace
 	const int chip_width_num = texture_width / 4;
 	const int chip_height_num = texture_height / 4;
 }
+
+// TODO: 引数などを修正したいので、doxygenコメントはリファクタリング時に記入する
 class Mapchip {
 public:
-//引数などを修正したいのでリファクタリング時
-/**
-* @brief  マップチップを描画する関数
-* @param  
-* @param  
-* @param  
-* @details 
-*/
+	/**
+	 * @brief  マップチップを描画する関数
+	 * @param  
+	 * @param  
+	 * @param  
+	 * @details 
+	 */
 	void DrawMapchip(int map_size_width, int map_size_height, float texture_width, float texture_height, float mapchip_width, float mapchip_height, float draw_width, float draw_height, float draw_pos_x, float draw_pos_y, std::string texturename, int** map);
 
-/**
-* @brief  
-* @param  
-* @param  
-* @param  
-* @details 
-*/
+	/**
+	 * @brief  
+	 * @param  
+	 * @param  
+	 * @param  
+	 * @details 
+	 */
 	void TexturePrint(int drawpos_x, int drawpos_y, int mapcip_width, int mapchip_height, float chip_pos_x, float chip_pos_y, float width_num, float height_num, std::string texturename);
 
-/**
-* @brief  マップの初期化
-* @details Gameのコンストラクタで呼ぶ
-*/
+	/**
+	 * @brief  マップの初期化
+	 * @details Gameのコンストラクタで呼ぶ
+	 */
 	void InitMap();
 
-/**
-* @brief  マップの位置を割り出す関数
-* @param  割り出したいX座標の位置
-* @param  割り出したいY座標の位置
-* @param  マップのポインタの配列
-* @details 
-*/
+	/**
+	 * @brief  マップの位置を割り出す関数
+	 * @param  割り出したいX座標の位置
+	 * @param  割り出したいY座標の位置
+	 * @param  マップのポインタの配列
+	 * @details 
+	 */
 	int CheckMapNumber(int x, int y, int** map);
 
 	//! マップの情報を保存するポインタ配列
