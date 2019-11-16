@@ -1,8 +1,8 @@
 ﻿#ifndef COLLISION
 #define COLLISION
 
-#include "Mapchip.h"
 #include "Character.h"
+#include "Mapchip.h"
 
 namespace Collision
 {
@@ -24,7 +24,7 @@ namespace Collision
 	 * @param size
 	 * @param vec2
 	 */
-	void BlockCheck(Hero& hero, Vec2 previous, Vec2 vec, Size size, std::vector<Vec2> vec2);
+	void CheckBlock(Hero& hero, Vec2 previous, Vec2 vec, Size size, std::vector<Vec2> vec2);
 
 	/**
      * どの辺で当たっているのかの確認関数
@@ -35,7 +35,7 @@ namespace Collision
      * @param vec2
 	 * @param i 
      */
-	void HitChecEdgek(Hero& hero, Vec2 previous, Size size, Vec2 vector, std::vector<Vec2> vec2, int i);
+	void HitCheckEdge(Hero& hero, Vec2 previous, Size size, Vec2 vector, std::vector<Vec2> vec2, int i);
 }
 
 #endif

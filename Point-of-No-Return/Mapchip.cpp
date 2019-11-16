@@ -1,4 +1,6 @@
 ﻿#include "MapChip.h"
+
+#include "Character.h"
 #include "Main.h"
 #include "string"
 
@@ -61,7 +63,13 @@ void Mapchip::InitMap()
 
 
 
-int Mapchip::CheckMapNumber(int x ,int y,int** map)
+int Mapchip::CheckMapNumber(int x,int y,int** map)
 {
-	return map[(x / chip_size)* chip_size][(y / chip_size)* chip_size];
+	Matrix matrix = 
+	{
+		static_cast<Col>((x / chip_size) * chip_size),
+		static_cast<Row>((y / chip_size) * chip_size) 
+	};
+
+	return map[matrix.row.value][matrix.col.value];
 }

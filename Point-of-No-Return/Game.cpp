@@ -10,11 +10,9 @@ void Game::Load()
 void Game::Update()
 {
 
-	hero.InputBefore();
-
 	hero.Update();
 
-	Collision::BlockCheck(hero,hero.GetPrevious(), hero.GetPos(), hero.GetSize(), Collision::SearchBlock(hero.GetPos(), hero.GetSize(), mapchip.map_));
+	Collision::CheckBlock(hero,hero.GetPrevious(), hero.GetPos(), hero.GetSize(), Collision::SearchBlock(hero.GetPos(), hero.GetSize(), mapchip.map_));
 
 	if (dx.GetKeyState(DIK_SPACE) == dx.PUSH)
 	{

@@ -1,8 +1,11 @@
 ﻿#include "Character.h"
+
 #include <vector>
+
 #include "Mapchip.h"
 
-void Hero::Initialize() {
+void Hero::Initialize() 
+{
 	vec = { 500.f, 500.f };
 	size = { 64.f,128.f };
 	uv = { 0.0f,0.0f };
@@ -13,38 +16,41 @@ void Hero::Initialize() {
 	is_reverse = false;
 }
 
-void Hero::InputBefore()
+void Hero::UpdatePreviousVertex()
 {
 	previous.x.value = vec.x.value;
 	previous.y.value = vec.y.value;
 }
 
+void Hero::Update() 
+{
 
-void Hero::Update() {
+	UpdatePreviousVertex();
+
 	if (dx.GetKeyState(DIK_D) == dx.ON) {
-		vec.x.value += 1.0f;
+		//vec.x.value += 1.0f;
 	}
 	if (dx.GetKeyState(DIK_A) == dx.ON) {
-		vec.x.value -= 1.0f;
+		//vec.x.value -= 1.0f;
 	}
 	if (dx.GetKeyState(DIK_D) == dx.ON)
 	{
-		vec.x.value += 3.0f;
+		vec.x.value += 10.0f;
 	}
 
 	if (dx.GetKeyState(DIK_A) == dx.ON)
 	{
-		vec.x.value -= 3.0f;
+		vec.x.value -= 10.0f;
 	}
 
 	if (dx.GetKeyState(DIK_W) == dx.ON)
 	{
-		vec.y.value -= 3.0f;
+		vec.y.value -= 10.0f;
 	}
 
 	if (dx.GetKeyState(DIK_S) == dx.ON)
 	{
-		vec.y.value += 3.0f;
+		vec.y.value += 10.0f;
 
 	}
 }
@@ -88,32 +94,25 @@ void Hero::Update() {
 //	}
 //}
 
-
-
-void Hero::CrrectCodinate(int Direction, std::vector<Vec2> vec2, int i)
+void Hero::CorrectCoodinate(Direction correction, std::vector<Vec2> vec2, int i)
 {
-	switch (Direction)
+	switch (correction)
 	{
+	case Direction::Up:
+		vec.y.value = vec2[i].y.value - size.height.value;
+		break;			  
+	case Direction::Down:
+		vec.y.value = vec2[i].y.value + chip_size;
+		break;			  
+	case Direction::Left:
+		vec.x.value = vec2[i].x.value - size.width.value;
+		break;			  
+	case Direction::Right:
+		vec.x.value = vec2[i].x.value + chip_size;
+		break;
 	default:
 
 		break;
-	case 1:
-		vec.y.value = vec2[i].y.value - size.height.value;
-		break;			  
-	case 2:				  
-		vec.y.value = vec2[i].y.value + chip_size;
-		break;			  
-	case 3:				  
-		vec.x.value = vec2[i].x.value - size.width.value;
-		break;			  
-	case 4:				  
-		vec.x.value = vec2[i].x.value + chip_size;
-		break;
 	}
-
 }
 
-Vec2 Hero::GetPrevious()
-{
-	return previous;
-}
