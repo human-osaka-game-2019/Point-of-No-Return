@@ -41,13 +41,6 @@ private:
 class Hero :public Character
 {
 public:
-	
-	/**
-	 * @brief  主人公の前の座標を更新する
-	 * @details キャラクターを移動させる前にcallする
-	 */
-	void UpdatePreviousVertex();
-
 	// void HitBlock(std::vector<Vec2> vec2);
 
 	/**

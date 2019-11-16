@@ -16,16 +16,9 @@ void Hero::Initialize()
 	is_reverse = false;
 }
 
-void Hero::UpdatePreviousVertex()
-{
-	previous.x.value = vec.x.value;
-	previous.y.value = vec.y.value;
-}
-
 void Hero::Update() 
 {
-
-	UpdatePreviousVertex();
+	previous = vec;
 
 	if (dx.GetKeyState(DIK_D) == dx.ON)
 	{
