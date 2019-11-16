@@ -26,7 +26,7 @@ public:
 * @param  
 * @param  
 * @param  
-* @detail 
+* @details 
 */
 	void DrawMapchip(int map_size_width, int map_size_height, float texture_width, float texture_height, float mapchip_width, float mapchip_height, float draw_width, float draw_height, float draw_pos_x, float draw_pos_y, std::string texturename, int** map);
 
@@ -35,13 +35,13 @@ public:
 * @param  
 * @param  
 * @param  
-* @detail 
+* @details 
 */
 	void TexturePrint(int drawpos_x, int drawpos_y, int mapcip_width, int mapchip_height, float chip_pos_x, float chip_pos_y, float width_num, float height_num, std::string texturename);
 
 /**
 * @brief  マップの初期化
-* @detail Gameのコンストラクタで呼ぶ
+* @details Gameのコンストラクタで呼ぶ
 */
 	void InitMap();
 
@@ -50,7 +50,7 @@ public:
 * @param  割り出したいX座標の位置
 * @param  割り出したいY座標の位置
 * @param  マップのポインタの配列
-* @detail 
+* @details 
 */
 	int CheckMapNumber(int x, int y, int** map);
 

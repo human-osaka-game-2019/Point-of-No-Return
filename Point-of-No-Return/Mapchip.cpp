@@ -63,7 +63,7 @@ void Mapchip::InitMap()
 
 
 
-int Mapchip::CheckMapNumber(int x,int y,int** map)
+int Mapchip::CheckMapNumber(int x, int y, int** map)
 {
 	Matrix matrix = 
 	{

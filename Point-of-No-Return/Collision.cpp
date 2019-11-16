@@ -61,17 +61,17 @@ void Collision::CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::
 
 void Collision::HitCheckEdge(Hero& hero, Vec2 previous, Size size, Vec2 vector, std::vector<Vec2> vec2, int i)
 {
-	//! 修正する方向を入れる変数
+//! 修正する方向を入れる変数
 	Direction correction;
 
 	if ((previous.y.value + size.height.value <= vec2[i].y.value) || (previous.y.value >= vec2[i].y.value + chip_size))
 	{
-		if (vector.y.value < 0)
+		if (vector.y < 0)
 		{
 			correction = Direction::Up;
 			hero.CorrectCoordinate(correction, vec2, i);
 		}
-		else if (vector.y.value > 0)
+		else if (vector.y > 0)
 		{
 			correction = Direction::Down;
 			hero.CorrectCoordinate(correction, vec2, i);
@@ -79,12 +79,12 @@ void Collision::HitCheckEdge(Hero& hero, Vec2 previous, Size size, Vec2 vector, 
 	}
 	else
 	{
-		if (vector.x.value < 0)
+		if (vector.x < 0)
 		{
 			correction = Direction::Left;
 			hero.CorrectCoordinate(correction, vec2, i);
 		}
-		else if (vector.x.value > 0)
+		else if (vector.x > 0)
 		{
 			correction = Direction::Right;
 			hero.CorrectCoordinate(correction, vec2, i);
