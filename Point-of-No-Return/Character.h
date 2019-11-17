@@ -21,8 +21,8 @@ enum class Direction
 
 /**
 * @brief キャラクタークラス
-* @details 
-*/class Character :public Object
+*/
+class Character :public Object
 {
 public:
 	/**
@@ -54,7 +54,6 @@ public:
 	
 	/**
 	 * @brief  主人公の情報を更新する
-	 * @details 
 	 */
 	void Update();
 
@@ -96,32 +95,43 @@ protected:
 };
 
 
-
-//UIクラス
+/**
+* @brief UIクラス
+*/
 class UI :public Object
 {
 
 };
 
-//スクロールステージクラス
+/**
+*@brief スクロールステージクラス
+*/
 class ScrollStage :public Object
 {
 
 };
 
-//ステージクラス
+/**
+* @brief ステージクラス
+*/
 class Stage :public Object
 {
 
 };
 
-//NPCクラス
+
+/**
+* @brief NPCクラス
+*/
 class NPC :public Character
 {
 
 };
 
-//敵クラス
+
+/**
+* @brief 敵クラス
+*/
 class Enemy :public Character
 {
 

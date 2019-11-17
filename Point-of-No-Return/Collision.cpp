@@ -4,13 +4,13 @@
 
 #include "Object.h"
 
-std::vector<Vec2> Collision::SearchBlock(const Vec2& vec,const Size& size,int** map)
+std::vector<Vec2> Collision::SearchBlock(const Vec2& character_pos,const Size& size,int** map)
 {
 	Vec2 vec2(0,0);
 	std::vector<Vec2> mapdata;
 
-	int center_x = vec.x.value + size.width.value / 2;
-	int center_y = vec.y.value + size.height.value / 2;
+	int center_x = character_pos.x.value + size.width.value / 2;
+	int center_y = character_pos.y.value + size.height.value / 2;
 
 	Matrix search_start = 
 	{
@@ -39,6 +39,7 @@ std::vector<Vec2> Collision::SearchBlock(const Vec2& vec,const Size& size,int** 
 	return mapdata;
 }
 
+
 void Collision::CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::vector<Vec2> vec2)
 {
 	Vec2 vector =
@@ -54,14 +55,18 @@ void Collision::CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::
 			(vec2[i].y.value < vec.y.value + size.height.value) &&
 			(vec.y.value < vec2[i].y.value + chip_size))
 		{
+			
 			HitCheckEdge(hero, previous, size, vector, vec2, i);
+		
 		}
 	}
+
 }
 
 void Collision::HitCheckEdge(Hero& hero, Vec2 previous, Size size, Vec2 vector, std::vector<Vec2> vec2, int i)
 {
-//! 修正する方向を入れる変数
+
+	// 修正する方向を入れる変数
 	Direction correction;
 
 	if ((previous.y.value + size.height.value <= vec2[i].y.value) || (previous.y.value >= vec2[i].y.value + chip_size))
@@ -90,5 +95,5 @@ void Collision::HitCheckEdge(Hero& hero, Vec2 previous, Size size, Vec2 vector, 
 			hero.CorrectCoordinate(correction, vec2, i);
 		}
 	}
-}
 
+}
