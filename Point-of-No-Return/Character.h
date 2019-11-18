@@ -60,12 +60,11 @@ public:
 
 	/**
 	 * @brief	座標を修正する
-	 * @param	correction	座標修正する方向
-	 * @param	vec2		当たっているブロックの座標
-	 * @param	i			当たり判定をとるブロックを判断する
+	 * @param	direction		座標修正する方向
+	 * @param	blockPosition	当たっているブロックの座標
 	 * @details	HitCheckの中で呼び出す
 	 */
-	void CorrectCoordinate(Direction correction, std::vector<Vec2> vec2, int i);
+	void CorrectCoordinate(Direction direction, const Vec2& blockPosition);
 
 	/**
 	 * @brief previousを取得する

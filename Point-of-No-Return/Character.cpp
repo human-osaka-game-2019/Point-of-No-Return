@@ -81,21 +81,21 @@ void Hero::Update()
 //	}
 //}
 
-void Hero::CorrectCoordinate(Direction correction, std::vector<Vec2> vec2, int i)
+void Hero::CorrectCoordinate(Direction direction, const Vec2& blockPosition)
 {
-	switch (correction)
+	switch (direction)
 	{
 	case Direction::Up:
-		vec.y.value = vec2[i].y.value - size.height.value;
+		vec.y.value = blockPosition.y.value - size.height.value;
 		break;			  
 	case Direction::Down:
-		vec.y.value = vec2[i].y.value + chip_size;
+		vec.y.value = blockPosition.y.value + chip_size;
 		break;			  
 	case Direction::Left:
-		vec.x.value = vec2[i].x.value - size.width.value;
+		vec.x.value = blockPosition.x.value - size.width.value;
 		break;			  
 	case Direction::Right:
-		vec.x.value = vec2[i].x.value + chip_size;
+		vec.x.value = blockPosition.x.value + chip_size;
 		break;
 	default:
 

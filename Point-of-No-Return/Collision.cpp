@@ -74,12 +74,12 @@ void Collision::HitCheckEdge(Hero& hero, Vec2 previous, Size size, Vec2 vector, 
 		if (vector.y < CoordinateY(0.0f))
 		{
 			correction = Direction::Up;
-			hero.CorrectCoordinate(correction, vec2, i);
+			hero.CorrectCoordinate(correction, vec2[i]);
 		}
 		else if (CoordinateY(0.0f) < vector.y)
 		{
 			correction = Direction::Down;
-			hero.CorrectCoordinate(correction, vec2, i);
+			hero.CorrectCoordinate(correction, vec2[i]);
 		}
 	}
 	else
@@ -87,12 +87,12 @@ void Collision::HitCheckEdge(Hero& hero, Vec2 previous, Size size, Vec2 vector, 
 		if (vector.x < CoordinateX(0.0f))
 		{
 			correction = Direction::Left;
-			hero.CorrectCoordinate(correction, vec2, i);
+			hero.CorrectCoordinate(correction, vec2[i]);
 		}
 		else if (CoordinateX(0.0f) < vector.x)
 		{
 			correction = Direction::Right;
-			hero.CorrectCoordinate(correction, vec2, i);
+			hero.CorrectCoordinate(correction, vec2[i]);
 		}
 	}
 
