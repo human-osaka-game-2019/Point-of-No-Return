@@ -5,8 +5,8 @@
 #include "Mapchip.h"
 
 /**
-* @brief 当たり判定をする関数
-*/
+ * @brief 当たり判定をする関数を纏めた名前空間
+ */
 namespace Collision
 {
 	/**
@@ -40,8 +40,6 @@ namespace Collision
 	 * @param i        当たり判定をとるブロックを判断する
 	 */
 	void HitCheckEdge(Hero& hero, Vec2 previous, Size size, Vec2 vector, std::vector<Vec2> vec2, int i);
-
-	
 }
 
 #endif

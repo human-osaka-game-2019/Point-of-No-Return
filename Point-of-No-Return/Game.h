@@ -7,9 +7,13 @@
 #include "Character.h"
 #include "Collision.h"
 
+/**
+ * @brief ゲームシーン
+ */
 class Game : public SceneBase
 {
 public:
+	
 	Game()
 	{
 		Load();

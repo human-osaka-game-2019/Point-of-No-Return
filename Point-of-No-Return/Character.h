@@ -4,8 +4,7 @@
 #include "Object.h"
 
 /**
- * @enum Direction
- * 方向
+ * @brief 方向
  */
 enum class Direction
 {
@@ -20,13 +19,14 @@ enum class Direction
 };
 
 /**
-* @brief キャラクタークラス
-*/
-class Character :public Object
+ * @brief キャラクタークラス
+ */
+class Character : public Object
 {
 public:
 	/**
-	 * @brief メンバ変数のnameに文字列の代入
+	 * @brief コンストラクタ
+	 * @param name キャラクターの名前
 	 */
 	explicit Character(const std::string& name):name(name) {}
 private:
@@ -35,16 +35,17 @@ private:
 };
 
 /**
-* @brief 主人公クラス
-* @details コピーコンストラクタと演算子オーバーロードの隠蔽
-*/
-class Hero :public Character
+ * @brief 主人公クラス
+ * @details コピーコンストラクタと演算子オーバーロードの隠蔽
+ */
+class Hero : public Character
 {
 public:
 	// void HitBlock(std::vector<Vec2> vec2);
 
 	/**
-	 * @brief 主人公の名前を代入、主人公の初期化
+	 * @brief コンストラクタ
+	 * @param name 主人公の名前
 	 */
 	Hero(const std::string& name):Character(name)
 	{
@@ -58,16 +59,16 @@ public:
 	void Update();
 
 	/**
-	 * @brief  座標を修正する関数
-	 * @param  座標修正する方向
-	 * @param  当たっているブロックの座標
-	 * @param  当たり判定をとるブロックを判断する
-	 * @details HitCheckの中で呼び出す
+	 * @brief	座標を修正する
+	 * @param	correction	座標修正する方向
+	 * @param	vec2		当たっているブロックの座標
+	 * @param	i			当たり判定をとるブロックを判断する
+	 * @details	HitCheckの中で呼び出す
 	 */
 	void CorrectCoordinate(Direction correction, std::vector<Vec2> vec2, int i);
 
 	/**
-	 * @brief previousをとってくる関数
+	 * @brief previousを取得する
 	 */
 	inline Vec2 GetPrevious()
 	{
@@ -88,7 +89,7 @@ private:
 	Hero& operator=(const Hero&&);
 
 protected:
-	//! 前の座標を保存する変数
+	//! 前の座標を保存する
 	Vec2 previous = {0,0};
 	// TODO: あとでprimitive型wrapします
 	float gravity = 0;
@@ -96,47 +97,43 @@ protected:
 
 
 /**
-* @brief UIクラス
-*/
-class UI :public Object
+ * @brief UIクラス
+ */
+class UI : public Object
 {
 
 };
 
 /**
-*@brief スクロールステージクラス
-*/
-class ScrollStage :public Object
+ * @brief スクロールステージクラス
+ */
+class ScrollStage : public Object
 {
 
 };
 
 /**
-* @brief ステージクラス
-*/
-class Stage :public Object
+ * @brief ステージクラス
+ */
+class Stage : public Object
 {
 
 };
-
 
 /**
-* @brief NPCクラス
-*/
-class NPC :public Character
+ * @brief NPCクラス
+ */
+class NPC : public Character
 {
 
 };
-
 
 /**
-* @brief 敵クラス
-*/
-class Enemy :public Character
+ * @brief 敵クラス
+ */
+class Enemy : public Character
 {
 
 };
-
-
 
 #endif // !CHARCTER_H_

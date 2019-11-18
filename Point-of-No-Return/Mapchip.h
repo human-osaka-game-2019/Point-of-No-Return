@@ -41,17 +41,17 @@ public:
 	void TexturePrint(int drawpos_x, int drawpos_y, int mapcip_width, int mapchip_height, float chip_pos_x, float chip_pos_y, float width_num, float height_num, std::string texturename);
 
 	/**
-	 * @brief  マップの初期化
-	 * @details Gameのコンストラクタで呼ぶ
+	 * @brief	マップの初期化
+	 * @details	Gameのコンストラクタで呼ぶ
 	 */
 	void InitMap();
 
 	/**
-	 * @brief  マップの位置を割り出す関数
-	 * @param  割り出したいX座標の位置
-	 * @param  割り出したいY座標の位置
-	 * @param  マップのポインタの配列
-	 * @details 
+	 * @brief		マップの位置を割り出す関数
+	 * @param	x	割り出したいX座標の位置
+	 * @param	y	割り出したいY座標の位置
+	 * @param	map	マップのポインタの配列
+	 * @return		
 	 */
 	int CheckMapNumber(int x, int y, int** map);
 
