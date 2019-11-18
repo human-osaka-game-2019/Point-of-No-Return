@@ -41,50 +41,7 @@ namespace Collision
 	 */
 	void HitCheckEdge(Hero& hero, Vec2 previous, Size size, Vec2 vector, std::vector<Vec2> vec2, int i);
 
-
-	/**
-	 * @brief 自身のX座標の値と引数の値を比べる　
-	 * @param lhs 自身のX座標
-	 * @param rhs 比べる値
-	 * return 引数の値が大きかったらtureを返す
-	 */
-	inline bool operator <(const CoordinateX& lhs, const float& rhs)
-	{
-		return lhs.value <= rhs;
-	}
-
-	/**
-     * @brief 自身のX座標の値と引数の値を比べる　
-     * @param lhs 自身のX座標
-     * @param rhs 比べる値
-     * return 自身の値が大きかったらtureを返す
-     */
-	inline bool operator >(const CoordinateX& lhs, const float& rhs)
-	{
-		return lhs.value >= rhs;
-	}
-
-	/**
-　　 * @brief 自身のX座標の値と引数の値を比べる　
-　　 * @param lhs 自身のY座標
-　　 * @param rhs 比べる値
-　　 * return 引数の値が大きかったらtureを返す
-　　 */
-	inline bool operator <(const CoordinateY& lhs, const float& rhs)
-	{
-		return lhs.value <= rhs;
-	}
-
-	/**
-　　 * @brief 自身のX座標の値と引数の値を比べる　
-　　 * @param lhs 自身のY座標
-　　 * @param rhs 比べる値
-　　 * return 自身の値が大きかったらtureを返す
-　　 */
-	inline bool operator >(const CoordinateY& lhs, const float& rhs)
-	{
-		return lhs.value >= rhs;
-	}
+	
 }
 
 #endif

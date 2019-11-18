@@ -1,10 +1,8 @@
 #include "pch.h"
 
-#include "../Point-of-No-Return/Collision.h"
+#include "../Point-of-No-Return/Object.h"
 
-using Collision::operator<;
-
-TEST(CollisionTest, LessThan_1) {
+TEST(ObjectTest, LessThan_1) {
 	// Arrange
 	CoordinateX x(0.5f);
 
@@ -15,7 +13,7 @@ TEST(CollisionTest, LessThan_1) {
 	EXPECT_TRUE(result);
 }
 
-TEST(CollisionTest, LessThan_2) {
+TEST(ObjectTest, LessThan_2) {
 	// Arrange
 	CoordinateX x(0.5f);
 
@@ -26,7 +24,7 @@ TEST(CollisionTest, LessThan_2) {
 	EXPECT_FALSE(result);
 }
 
-TEST(CollisionTest, LessThan_3) {
+TEST(ObjectTest, LessThan_3) {
 	// Arrange
 	CoordinateX x(0.5f);
 
