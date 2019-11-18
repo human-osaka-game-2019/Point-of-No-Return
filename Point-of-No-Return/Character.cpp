@@ -6,7 +6,7 @@
 
 void Hero::Initialize() 
 {
-	vec = { 500.f, 500.f };
+	position = { 500.f, 500.f };
 	size = { 64.f,128.f };
 	uv = { 0.0f,0.0f };
 	texture_size = { 1.0f, 1.0f };
@@ -18,26 +18,26 @@ void Hero::Initialize()
 
 void Hero::Update() 
 {
-	previous = vec;
+	previous = position;
 
 	if (dx.GetKeyState(DIK_D) == dx.ON)
 	{
-		vec.x.value += 10.0f;
+		position.x.value += 10.0f;
 	}
 
 	if (dx.GetKeyState(DIK_A) == dx.ON)
 	{
-		vec.x.value -= 10.0f;
+		position.x.value -= 10.0f;
 	}
 
 	if (dx.GetKeyState(DIK_W) == dx.ON)
 	{
-		vec.y.value -= 10.0f;
+		position.y.value -= 10.0f;
 	}
 
 	if (dx.GetKeyState(DIK_S) == dx.ON)
 	{
-		vec.y.value += 10.0f;
+		position.y.value += 10.0f;
 
 	}
 }
@@ -86,16 +86,16 @@ void Hero::CorrectCoordinate(Direction direction, const Vec2& blockPosition)
 	switch (direction)
 	{
 	case Direction::Up:
-		vec.y.value = blockPosition.y.value - size.height.value;
+		position.y.value = blockPosition.y.value - size.height.value;
 		break;			  
 	case Direction::Down:
-		vec.y.value = blockPosition.y.value + chip_size;
+		position.y.value = blockPosition.y.value + chip_size;
 		break;			  
 	case Direction::Left:
-		vec.x.value = blockPosition.x.value - size.width.value;
+		position.x.value = blockPosition.x.value - size.width.value;
 		break;			  
 	case Direction::Right:
-		vec.x.value = blockPosition.x.value + chip_size;
+		position.x.value = blockPosition.x.value + chip_size;
 		break;
 	default:
 

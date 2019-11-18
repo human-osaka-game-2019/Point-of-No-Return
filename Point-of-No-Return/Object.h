@@ -281,7 +281,7 @@ public:
 
 	Vec2 GetPos()
 	{
-		return vec;
+		return position;
 	}
 
 	Size GetSize()
@@ -293,7 +293,7 @@ public:
 protected:
 
 	DX::DirectX& dx = DX::DirectX::GetInstance();
-	Vec2 vec = { 0,0 };
+	Vec2 position = { 0,0 };
 	Size size = { 0,0 };
 	TextureUV uv = {0, 0};
 	TextureSize texture_size = { 0,0 };
