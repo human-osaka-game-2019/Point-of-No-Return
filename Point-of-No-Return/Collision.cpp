@@ -48,14 +48,14 @@ void Collision::CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::
 		previous.y.value - vec.y.value
 	};
 
-	for (int i = 0; i < vec2.size(); i++)
+	for (auto i:vec2)
 	{
-		if ((vec2[i].x.value < vec.x.value + size.width.value) &&
-			(vec.x.value < vec2[i].x.value + chip_size) &&
-			(vec2[i].y.value < vec.y.value + size.height.value) &&
-			(vec.y.value < vec2[i].y.value + chip_size))
+		if ((i.x.value < vec.x.value + size.width.value) &&
+			(vec.x.value < i.x.value + chip_size) &&
+			(i.y.value < vec.y.value + size.height.value) &&
+			(vec.y.value < i.y.value + chip_size))
 		{
-			HitCheckEdge(hero, previous, size, vector, vec2[i]);
+			HitCheckEdge(hero, previous, size, vector, i);
 		}
 	}
 
