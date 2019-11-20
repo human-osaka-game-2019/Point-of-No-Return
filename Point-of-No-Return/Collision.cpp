@@ -40,7 +40,7 @@ std::vector<Vec2> Collision::SearchBlock(const Vec2& character_pos,const Size& s
 }
 
 
-void Collision::CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::vector<Vec2> vec2)
+void Collision::CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::vector<Vec2> blocksPosition)
 {
 	Vec2 vector =
 	{
@@ -48,50 +48,47 @@ void Collision::CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::
 		previous.y.value - vec.y.value
 	};
 
-	for (auto i:vec2)
+	// 修正する方向を入れる変数
+
+	for (auto blockPosition: blocksPosition)
 	{
-		if ((i.x.value < vec.x.value + size.width.value) &&
-			(vec.x.value < i.x.value + chip_size) &&
-			(i.y.value < vec.y.value + size.height.value) &&
-			(vec.y.value < i.y.value + chip_size))
+		if ((blockPosition.x.value < vec.x.value + size.width.value) &&
+			(vec.x.value < blockPosition.x.value + chip_size) &&
+			(blockPosition.y.value < vec.y.value + size.height.value) &&
+			(vec.y.value < blockPosition.y.value + chip_size))
 		{
-			HitCheckEdge(hero, previous, size, vector, i);
+			Direction correction;
+
+			if (HitCheckEdge(&correction,previous, size, vector, blockPosition))
+			{
+				hero.CorrectCoordinate(correction, blockPosition);
+			}
 		}
 	}
 
 }
 
-void Collision::HitCheckEdge(Hero& hero, Vec2 previous, Size size, Vec2 vector, const Vec2& blockPosition)
+bool Collision::HitCheckEdge(Direction* direction, Vec2 previous, Size size, Vec2 vector, const Vec2& blockPosition)
 {
-
-	// 修正する方向を入れる変数
-	Direction correction;
-
 	if ((previous.y.value + size.height.value <= blockPosition.y.value) || (previous.y.value >= blockPosition.y.value + chip_size))
 	{
-		if (vector.y < CoordinateY(0.0f))
+		if (vector.y == CoordinateY(0))
 		{
-			correction = Direction::Up;
-			hero.CorrectCoordinate(correction, blockPosition);
+			return false;
 		}
-		else if (CoordinateY(0.0f) < vector.y)
-		{
-			correction = Direction::Down;
-			hero.CorrectCoordinate(correction, blockPosition);
-		}
+		
+		*direction = (vector.y < CoordinateY(0)) ? Direction::Up : Direction::Down;
+	
+		return true;
 	}
-	else
+	
+	if (vector.x == CoordinateX(0))
 	{
-		if (vector.x < CoordinateX(0.0f))
-		{
-			correction = Direction::Left;
-			hero.CorrectCoordinate(correction, blockPosition);
-		}
-		else if (CoordinateX(0.0f) < vector.x)
-		{
-			correction = Direction::Right;
-			hero.CorrectCoordinate(correction, blockPosition);
-		}
+		return false;
 	}
+	
+	*direction = (vector.x < CoordinateX(0)) ? Direction::Left : Direction::Right;
 
+	return true;
+	
 }

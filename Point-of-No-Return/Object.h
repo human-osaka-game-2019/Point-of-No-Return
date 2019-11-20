@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 
+
 //! X座標
 struct CoordinateX
 {
@@ -33,6 +34,17 @@ inline bool operator <(const CoordinateX& lhs, const CoordinateX& rhs)
 
 /**
  * @brief		自身のX座標の値と引数の値を比べる
+ * @param	lhs	自身のX座標
+ * @param	rhs	比べる値
+ * @return		引数の値が大きかったらtrueを返す
+ */
+inline bool operator ==(const CoordinateX& lhs, const CoordinateX& rhs)
+{
+	return lhs.value == rhs.value;
+}
+
+/**
+ * @brief		自身のX座標の値と引数の値を比べる
  * @param	lhs	自身のY座標
  * @param	rhs	比べる値
  * @return		引数の値が大きかったらtrueを返す
@@ -40,6 +52,17 @@ inline bool operator <(const CoordinateX& lhs, const CoordinateX& rhs)
 inline bool operator <(const CoordinateY& lhs, const CoordinateY& rhs)
 {
 	return lhs.value < rhs.value;
+}
+
+/**
+ * @brief		自身のX座標の値と引数の値を比べる
+ * @param	lhs	自身のY座標
+ * @param	rhs	比べる値
+ * @return		引数の値が大きかったらtrueを返す
+ */
+inline bool operator ==(const CoordinateY& lhs, const CoordinateY& rhs)
+{
+	return lhs.value == rhs.value;
 }
 
 //! 横幅

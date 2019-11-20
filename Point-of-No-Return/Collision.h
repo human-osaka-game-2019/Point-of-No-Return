@@ -38,7 +38,7 @@ namespace Collision
 	 * @param	vector			キャラクターの移動量や方向
 	 * @param	blockPosition	当たり判定をとるブロックの座標
 	 */
-	void HitCheckEdge(Hero& hero, Vec2 previous, Size size, Vec2 vector, const Vec2& blockPosition);
+	bool HitCheckEdge(Direction* direction, Vec2 previous, Size size, Vec2 vector, const Vec2& blockPosition);
 }
 
 #endif
