@@ -4,7 +4,7 @@
 #include<iostream>
 #include<stdio.h>
 
-namespace
+namespace MapChipInfo
 {
 	// ワールドのサイズ
 	const int world_size_width = 480;
@@ -56,11 +56,11 @@ public:
 	int CheckMapNumber(int x, int y, int** map);
 
 	//! マップの情報を保存するポインタ配列
-	int* map_[world_size_height];
+	int* map_[MapChipInfo::world_size_height];
 
 private:
 	//! マップの二重配列
-	int map[world_size_height][world_size_width] = {};
+	int map[MapChipInfo::world_size_height][MapChipInfo::world_size_width] = {};
 
 };
 

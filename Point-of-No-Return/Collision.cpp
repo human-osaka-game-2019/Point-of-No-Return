@@ -14,8 +14,8 @@ std::vector<Vec2> Collision::SearchBlock(const Vec2& character_pos,const Size& s
 
 	Matrix search_start = 
 	{
-		static_cast<Col>(center_x / chip_size - 2),
-		static_cast<Row>(center_y / chip_size - 2) 
+		static_cast<Col>(center_x / MapChipInfo::chip_size - 2),
+		static_cast<Row>(center_y / MapChipInfo::chip_size - 2)
 	};
 	
 	for (int i = 0; i < 5;i++)
@@ -30,8 +30,8 @@ std::vector<Vec2> Collision::SearchBlock(const Vec2& character_pos,const Size& s
 
 			if (map[current.row.value][current.col.value] != 0)
 			{
-				vec2.x.value = current.col.value * chip_size;
-				vec2.y.value = current.row.value * chip_size;
+				vec2.x.value = current.col.value * MapChipInfo::chip_size;
+				vec2.y.value = current.row.value * MapChipInfo::chip_size;
 				mapdata.push_back(vec2);
 			}
 		}
@@ -53,9 +53,9 @@ void Collision::CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::
 	for (auto blockPosition: blocksPosition)
 	{
 		if ((blockPosition.x.value < vec.x.value + size.width.value) &&
-			(vec.x.value < blockPosition.x.value + chip_size) &&
+			(vec.x.value < blockPosition.x.value + MapChipInfo::chip_size) &&
 			(blockPosition.y.value < vec.y.value + size.height.value) &&
-			(vec.y.value < blockPosition.y.value + chip_size))
+			(vec.y.value < blockPosition.y.value + MapChipInfo::chip_size))
 		{
 			Direction correction;
 
@@ -70,7 +70,7 @@ void Collision::CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::
 
 bool Collision::HitCheckEdge(Direction* direction, Vec2 previous, Size size, Vec2 vector, const Vec2& blockPosition)
 {
-	if ((previous.y.value + size.height.value <= blockPosition.y.value) || (previous.y.value >= blockPosition.y.value + chip_size))
+	if ((previous.y.value + size.height.value <= blockPosition.y.value) || (previous.y.value >= blockPosition.y.value + MapChipInfo::chip_size))
 	{
 		if (vector.y == CoordinateY(0))
 		{
