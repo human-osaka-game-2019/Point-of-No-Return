@@ -22,16 +22,13 @@ std::vector<Vec2> Collision::SearchBlock(const Vec2& character_pos,const Size& s
 	{
 		for (int j = 0;j < 5;j++)
 		{
-			Matrix current = 
-			{
-				static_cast<Col>(search_start.col.value + j),
-				static_cast<Row>(search_start.row.value + i)
-			};
+			int current_col = search_start.col.value + j;
+			int current_row = search_start.row.value + i;
 
-			if (map[current.row.value][current.col.value] != 0)
+			if (map[current_row][current_col] != 0)
 			{
-				vec2.x.value = current.col.value * MapChipInfo::chip_size;
-				vec2.y.value = current.row.value * MapChipInfo::chip_size;
+				vec2.x.value = current_col * MapChipInfo::chip_size;
+				vec2.y.value = current_row * MapChipInfo::chip_size;
 				mapdata.push_back(vec2);
 			}
 		}
@@ -39,27 +36,38 @@ std::vector<Vec2> Collision::SearchBlock(const Vec2& character_pos,const Size& s
 	return mapdata;
 }
 
-
-void Collision::CheckBlock(Character& character, Vec2 previous, Size size, Vec2 vec, std::vector<Vec2> blocksPosition)
+//
+void Collision::CheckBlock(Character& character, Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, std::vector<Vec2> blockPositions)
 {
 	Vec2 vector =
 	{
-		previous.x.value - vec.x.value,
-		previous.y.value - vec.y.value
+		characterPrevious.x.value - characterPosition.x.value,
+		characterPrevious.y.value - characterPosition.y.value
 	};
 
 	// 修正する方向を入れる変数
 
-	for (auto blockPosition: blocksPosition)
+	for (auto blockPosition: blockPositions)
 	{
-		if ((blockPosition.x.value < vec.x.value + size.width.value) &&
-			(vec.x.value < blockPosition.x.value + MapChipInfo::chip_size) &&
-			(blockPosition.y.value < vec.y.value + size.height.value) &&
-			(vec.y.value < blockPosition.y.value + MapChipInfo::chip_size))
+		float characterLeft = characterPosition.x.value;
+		float characterRight = characterPosition.x.value + characterSize.width.value;
+		float characterTop = characterPosition.y.value;
+		float characterBottom = characterPosition.y.value + characterSize.height.value;
+	
+		float blockLeft = blockPosition.x.value;
+		float blockRight = blockPosition.x.value + MapChipInfo::chip_size;
+		float blockTop = blockPosition.y.value;
+		float blockBottom = blockPosition.y.value + MapChipInfo::chip_size;
+
+
+		if ((blockLeft < characterRight) &&
+			(characterLeft < blockRight) &&
+			(blockTop < characterBottom) &&
+			(characterTop < blockBottom))
 		{
 			Direction correction;
 
-			if (HitCheckEdge(&correction,previous, size, vector, blockPosition))
+			if (HitCheckEdge(&correction, characterPrevious, characterSize, vector, blockPosition))
 			{
 				character.CorrectCoordinate(correction, blockPosition);
 			}
@@ -68,10 +76,10 @@ void Collision::CheckBlock(Character& character, Vec2 previous, Size size, Vec2 
 
 }
 
-bool Collision::HitCheckEdge(Direction* direction, Vec2 previous, Size size, Vec2 vector, const Vec2& blockPosition)
+bool Collision::HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size characterSize, Vec2 vector, const Vec2& blockPosition)
 {
-	float characterTop = previous.y.value;
-	float characterBottom = characterTop + size.height.value;
+	float characterTop = characterPrevious.y.value;
+	float characterBottom = characterTop + characterSize.height.value;
 	float blockTop = blockPosition.y.value;
 	float blockBottom = blockTop + MapChipInfo::chip_size;
 

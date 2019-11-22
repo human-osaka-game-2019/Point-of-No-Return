@@ -20,10 +20,6 @@ void Mapchip::DrawMapchip(int map_size_width, int map_size_height, float texture
 				continue;
 			}
 
-			
-		
-
-		
 			float chip_pos_x = (float)(chip_id % width_num) * mapchip_width;
 			float chip_pos_y = (float)(chip_id / height_num) * mapchip_height;
 
@@ -65,11 +61,8 @@ void Mapchip::InitMap()
 
 int Mapchip::CheckMapNumber(int x, int y, int** map)
 {
-	Matrix matrix = 
-	{
-		static_cast<Col>((x / MapChipInfo::chip_size) * MapChipInfo::chip_size),
-		static_cast<Row>((y / MapChipInfo::chip_size) * MapChipInfo::chip_size)
-	};
-
-	return map[matrix.row.value][matrix.col.value];
+	int col = (x / MapChipInfo::chip_size) * MapChipInfo::chip_size;
+	int row = (y / MapChipInfo::chip_size) * MapChipInfo::chip_size;
+	
+	return map[row][col];
 }

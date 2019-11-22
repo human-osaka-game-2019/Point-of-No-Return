@@ -37,10 +37,15 @@ public:
 	 * @details	HitCheckの中で呼び出す
 	 */
 	virtual void CorrectCoordinate(Direction direction, const Vec2& blockPosition) {};
-
+protected:
+	//! 前の座標を保存する
+	Vec2 previous = { 0,0 };
+	// TODO: あとでprimitive型wrapします
+	float gravity = 0;
 private:
 	//! キャラクターの名前
 	Name name = { "None" };
+	
 };
 
 /**
@@ -97,10 +102,7 @@ private:
 	Hero& operator=(const Hero&&);
 
 protected:
-	//! 前の座標を保存する
-	Vec2 previous = {0,0};
-	// TODO: あとでprimitive型wrapします
-	float gravity = 0;
+
 };
 
 
