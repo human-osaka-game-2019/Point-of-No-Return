@@ -38,11 +38,15 @@ public:
 	 */
 	virtual void CorrectCoordinate(Direction direction, const Vec2& blockPosition) {};
 protected:
+
 	//! 前の座標を保存する
 	Vec2 previous = { 0,0 };
+
 	// TODO: あとでprimitive型wrapします
 	float gravity = 0;
+
 private:
+
 	//! キャラクターの名前
 	Name name = { "None" };
 };
@@ -77,7 +81,7 @@ public:
 	 * @param	blockPosition　当たっているブロックの座標
 	 * @details	HitCheckの中で呼び出す
 	 */
-	void CorrectCoordinate(Direction direction, const Vec2& blockPosition);
+	void CorrectCoordinate(Direction direction, const Vec2& blockPosition) override;
 
 	/**
 	 * @brief	previousを取得する
@@ -88,6 +92,7 @@ public:
 	};
 
 private:
+
 	/**
 	 * @brief  主人公の初期化
 	 * @details コンストラクタで呼び出す

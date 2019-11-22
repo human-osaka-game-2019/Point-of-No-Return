@@ -95,13 +95,13 @@ struct TextureV
 
 struct Col
 {
-	Col(const float value) :value(value) {}
+	Col(const int value) :value(value) {}
 	int value;
 };
 
 struct Row
 {
-	Row(const float value) :value(value) {}
+	Row(const int value) :value(value) {}
 	int value;
 };
 

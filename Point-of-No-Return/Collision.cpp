@@ -14,8 +14,8 @@ std::vector<Vec2> Collision::SearchBlock(const Vec2& character_pos,const Size& s
 
 	Matrix search_start = 
 	{
-		static_cast<Col>(center_x / MapChipInfo::chip_size - 2),
-		static_cast<Row>(center_y / MapChipInfo::chip_size - 2)
+		Col(center_x / MapChipInfo::chip_size - 2),
+		Row(center_y / MapChipInfo::chip_size - 2)
 	};
 	
 	for (int i = 0; i < 5;i++)
@@ -36,7 +36,7 @@ std::vector<Vec2> Collision::SearchBlock(const Vec2& character_pos,const Size& s
 	return mapdata;
 }
 
-//
+
 void Collision::CheckBlock(Character& character, Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, std::vector<Vec2> blockPositions)
 {
 	Vec2 vector =
@@ -68,7 +68,7 @@ bool Collision::HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size 
 	float blockTop = blockPosition.y.value;
 	float blockBottom = blockTop + MapChipInfo::chip_size;
 
-	// キャラクターとブロックがY軸方向に重なっているとき
+	// キャラクターが前のフレームでブロックの上下にいるとき
 	if ((characterBottom <= blockTop) || (characterTop >= blockBottom))
 	{
 		if (vector.y == CoordinateY(0))
@@ -95,14 +95,14 @@ bool Collision::HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size 
 bool Collision::HitCheck(Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, const Vec2& blockPosition)
 {
 	float characterLeft = characterPosition.x.value;
-	float characterRight = characterPosition.x.value + characterSize.width.value;
+	float characterRight = characterLeft + characterSize.width.value;
 	float characterTop = characterPosition.y.value;
-	float characterBottom = characterPosition.y.value + characterSize.height.value;
+	float characterBottom = characterTop + characterSize.height.value;
 
 	float blockLeft = blockPosition.x.value;
-	float blockRight = blockPosition.x.value + MapChipInfo::chip_size;
+	float blockRight = blockLeft + MapChipInfo::chip_size;
 	float blockTop = blockPosition.y.value;
-	float blockBottom = blockPosition.y.value + MapChipInfo::chip_size;
+	float blockBottom = blockTop + MapChipInfo::chip_size;
 	
 	return (blockLeft < characterRight) &&
 		(characterLeft < blockRight) &&
