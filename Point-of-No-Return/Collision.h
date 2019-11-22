@@ -27,7 +27,7 @@ namespace Collision
 	 * @param	vec      キャラクターの移動量や方向
 	 * @param	vec2     当たり判定をとるブロックの座標の集まり
 	 */
-	void CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::vector<Vec2> vec2);
+	void CheckBlock(Character& character, Vec2 previous, Size size, Vec2 vec, std::vector<Vec2> vec2);
 
 	// TODO: collision引数Hero修正しないといけない
 	/**

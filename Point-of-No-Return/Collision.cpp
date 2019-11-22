@@ -40,7 +40,7 @@ std::vector<Vec2> Collision::SearchBlock(const Vec2& character_pos,const Size& s
 }
 
 
-void Collision::CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::vector<Vec2> blocksPosition)
+void Collision::CheckBlock(Character& character, Vec2 previous, Size size, Vec2 vec, std::vector<Vec2> blocksPosition)
 {
 	Vec2 vector =
 	{
@@ -61,7 +61,7 @@ void Collision::CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::
 
 			if (HitCheckEdge(&correction,previous, size, vector, blockPosition))
 			{
-				hero.CorrectCoordinate(correction, blockPosition);
+				character.CorrectCoordinate(correction, blockPosition);
 			}
 		}
 	}

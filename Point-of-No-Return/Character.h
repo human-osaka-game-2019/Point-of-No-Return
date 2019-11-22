@@ -29,6 +29,15 @@ public:
 	 * @param name キャラクターの名前
 	 */
 	explicit Character(const std::string& name):name(name) {}
+
+	/**
+	 * @brief	座標を修正する
+	 * @param	direction		座標修正する方向
+	 * @param	blockPosition	当たっているブロックの座標
+	 * @details	HitCheckの中で呼び出す
+	 */
+	virtual void CorrectCoordinate(Direction direction, const Vec2& blockPosition) {};
+
 private:
 	//! キャラクターの名前
 	Name name = { "None" };
