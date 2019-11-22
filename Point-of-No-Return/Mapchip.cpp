@@ -59,7 +59,7 @@ void Mapchip::InitMap()
 
 
 
-int Mapchip::CalcMapNumber(int x, int y, int** map)
+int Mapchip::CalcMapNumber(int x, int y)
 {
 	int col = (x / MapChipInfo::chip_size) * MapChipInfo::chip_size;
 	int row = (y / MapChipInfo::chip_size) * MapChipInfo::chip_size;

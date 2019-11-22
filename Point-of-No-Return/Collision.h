@@ -37,7 +37,7 @@ void CheckBlock(Character& character, Vec2 characterPrevious, Size characterSize
  * @param	characterSize     キャラクターのサイズ
  * @param	vector            キャラクターの移動量や方向
  * @param	blockPosition     当たり判定をとるブロックの座標
- * @return 当たっているかどうか
+ * @return キャラクターが動いているか
  */
 bool HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size characterSize, Vec2 vector, const Vec2& blockPosition);
 
@@ -48,7 +48,7 @@ bool HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size characterSi
  * @param	blockPosition     当たり判定をとるブロックの座標
  * @return 当たっているかどうか
  */
-bool  HitCheck(Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, const Vec2& blockPosition);
+bool  isHItBlock(Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, const Vec2& blockPosition);
 
 }
 

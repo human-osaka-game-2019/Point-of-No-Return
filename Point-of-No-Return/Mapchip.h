@@ -53,7 +53,7 @@ public:
 	 * @param	map	マップのポインタの配列
 	 * @return		
 	 */
-	int CalcMapNumber(int x, int y, int** map);
+	int CalcMapNumber(int x, int y);
 
 	//! マップの情報を保存するポインタ配列
 	int* map_[MapChipInfo::world_size_height];

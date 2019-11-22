@@ -49,7 +49,7 @@ void Collision::CheckBlock(Character& character, Vec2 characterPrevious, Size ch
 
 	for (auto blockPosition: blockPositions)
 	{
-		if (HitCheck(characterPrevious,characterSize,characterPosition,blockPosition))
+		if (isHItBlock(characterPrevious,characterSize,characterPosition,blockPosition))
 		{
 			Direction correction;
 
@@ -71,6 +71,7 @@ bool Collision::HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size 
 	// キャラクターが前のフレームでブロックの上下にいるとき
 	if ((characterBottom <= blockTop) || (characterTop >= blockBottom))
 	{
+		//キャラクターがy方向に動いていないとき
 		if (vector.y == CoordinateY(0))
 		{
 			return false;
@@ -80,7 +81,8 @@ bool Collision::HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size 
 	
 		return true;
 	}
-	
+
+	//キャラクターがx方向に動いていないとき
 	if (vector.x == CoordinateX(0))
 	{
 		return false;
@@ -92,7 +94,7 @@ bool Collision::HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size 
 	
 }
 
-bool Collision::HitCheck(Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, const Vec2& blockPosition)
+bool Collision::isHItBlock(Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, const Vec2& blockPosition)
 {
 	float characterLeft = characterPosition.x.value;
 	float characterRight = characterLeft + characterSize.width.value;
