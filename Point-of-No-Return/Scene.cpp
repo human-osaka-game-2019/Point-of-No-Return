@@ -38,7 +38,7 @@ void SceneManager::ChangeScene(SceneID scene_id)
 
 void SceneBase::Load()
 {
-
+	dx.LoadTexture("仮Load.png", "load");
 	HANDLE thread = CreateLoadThread();
 	
 	if (thread == nullptr)
@@ -54,7 +54,7 @@ void SceneBase::Load()
 	int framecount = 0;
 
 	timeBeginPeriod(1);
-	dx.LoadTexture("仮Load.png", "load");
+
 
 	//Thread関数が処理している間のループ
 	while (true)
