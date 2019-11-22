@@ -70,7 +70,13 @@ void Collision::CheckBlock(Hero& hero, Vec2 previous, Size size, Vec2 vec, std::
 
 bool Collision::HitCheckEdge(Direction* direction, Vec2 previous, Size size, Vec2 vector, const Vec2& blockPosition)
 {
-	if ((previous.y.value + size.height.value <= blockPosition.y.value) || (previous.y.value >= blockPosition.y.value + MapChipInfo::chip_size))
+	float characterTop = previous.y.value;
+	float characterBottom = characterTop + size.height.value;
+	float blockTop = blockPosition.y.value;
+	float blockBottom = blockTop + MapChipInfo::chip_size;
+
+	// キャラクターとブロックがY軸方向に重なっているとき
+	if ((characterBottom <= blockTop) || (characterTop >= blockBottom))
 	{
 		if (vector.y == CoordinateY(0))
 		{
