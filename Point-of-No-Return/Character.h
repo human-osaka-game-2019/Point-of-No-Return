@@ -32,8 +32,8 @@ public:
 
 	/**
 	 * @brief	座標を修正する
-	 * @param	direction		座標修正する方向
-	 * @param	blockPosition	当たっているブロックの座標
+	 * @param	direction　　　座標修正する方向
+	 * @param	blockPosition　当たっているブロックの座標
 	 * @details	HitCheckの中で呼び出す
 	 */
 	virtual void CorrectCoordinate(Direction direction, const Vec2& blockPosition) {};
@@ -45,7 +45,6 @@ protected:
 private:
 	//! キャラクターの名前
 	Name name = { "None" };
-	
 };
 
 /**
@@ -74,14 +73,14 @@ public:
 
 	/**
 	 * @brief	座標を修正する
-	 * @param	direction		座標修正する方向
-	 * @param	blockPosition	当たっているブロックの座標
+	 * @param	direction　　　座標修正する方向
+	 * @param	blockPosition　当たっているブロックの座標
 	 * @details	HitCheckの中で呼び出す
 	 */
 	void CorrectCoordinate(Direction direction, const Vec2& blockPosition);
 
 	/**
-	 * @brief previousを取得する
+	 * @brief	previousを取得する
 	 */
 	inline Vec2 GetPrevious()
 	{
@@ -100,9 +99,6 @@ private:
 	Hero& operator=(const Hero&);
 	Hero(const Hero&&);
 	Hero& operator=(const Hero&&);
-
-protected:
-
 };
 
 

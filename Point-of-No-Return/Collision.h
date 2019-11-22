@@ -21,10 +21,10 @@ namespace Collision
 	// TODO: collision引数Hero修正しないといけない
 	/**
 	 * @brief	ブロックに当たっているかどうかの確認関数
-	 * @param	hero     主人公の情報
-	 * @param	previous キャラクターの前の位置
-	 * @param	size     キャラクターのサイズ
-	 * @param	vec      キャラクターの移動量や方向
+	 * @param	character              キャラクター情報
+	 * @param	characterPrevious      キャラクターの前の位置
+	 * @param	characterSize          キャラクターのサイズ
+	 * @param	characterPosition      キャラクターの位置
 	 * @param	vec2     当たり判定をとるブロックの座標の集まり
 	 */
 	void CheckBlock(Character& character, Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, std::vector<Vec2> blockPositions);
@@ -32,13 +32,26 @@ namespace Collision
 	// TODO: collision引数Hero修正しないといけない
 	/**
 	 * @brief	どの辺で当たっているのかの確認関数
-	 * @param	hero			主人公の情報
-	 * @param	previous		キャラクターの前の位置
-	 * @param	size			キャラクターのサイズ
-	 * @param	vector			キャラクターの移動量や方向
-	 * @param	blockPosition	当たり判定をとるブロックの座標
+	 * @param	character         キャラクター情報
+	 * @param	characterPrevious キャラクターの前の位置
+	 * @param	characterSize     キャラクターのサイズ
+	 * @param	vector            キャラクターの移動量や方向
+	 * @param	blockPosition     当たり判定をとるブロックの座標
 	 */
 	bool HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size characterSize, Vec2 vector, const Vec2& blockPosition);
+	
+	/**
+	 * @brief	キャラクターがブロックと当たっているか判定する関数
+	 * @param	characterPrevious キャラクターの前の位置
+	 * @param	characterSize     キャラクターのサイズ
+	 * @param	vector            キャラクターの移動量や方向
+	 * @param	blockPosition     当たり判定をとるブロックの座標
+	 * @return 当たっているかどうか
+	 */
+	bool  HitCheck(Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, const Vec2& blockPosition);
+
+
+
 }
 
 #endif

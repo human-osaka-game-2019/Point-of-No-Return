@@ -49,21 +49,7 @@ void Collision::CheckBlock(Character& character, Vec2 characterPrevious, Size ch
 
 	for (auto blockPosition: blockPositions)
 	{
-		float characterLeft = characterPosition.x.value;
-		float characterRight = characterPosition.x.value + characterSize.width.value;
-		float characterTop = characterPosition.y.value;
-		float characterBottom = characterPosition.y.value + characterSize.height.value;
-	
-		float blockLeft = blockPosition.x.value;
-		float blockRight = blockPosition.x.value + MapChipInfo::chip_size;
-		float blockTop = blockPosition.y.value;
-		float blockBottom = blockPosition.y.value + MapChipInfo::chip_size;
-
-
-		if ((blockLeft < characterRight) &&
-			(characterLeft < blockRight) &&
-			(blockTop < characterBottom) &&
-			(characterTop < blockBottom))
+		if (HitCheck(characterPrevious,characterSize,characterPosition,blockPosition))
 		{
 			Direction correction;
 
@@ -73,7 +59,6 @@ void Collision::CheckBlock(Character& character, Vec2 characterPrevious, Size ch
 			}
 		}
 	}
-
 }
 
 bool Collision::HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size characterSize, Vec2 vector, const Vec2& blockPosition)
@@ -106,3 +91,24 @@ bool Collision::HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size 
 	return true;
 	
 }
+
+bool Collision::HitCheck(Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, const Vec2& blockPosition)
+{
+	float characterLeft = characterPosition.x.value;
+	float characterRight = characterPosition.x.value + characterSize.width.value;
+	float characterTop = characterPosition.y.value;
+	float characterBottom = characterPosition.y.value + characterSize.height.value;
+
+	float blockLeft = blockPosition.x.value;
+	float blockRight = blockPosition.x.value + MapChipInfo::chip_size;
+	float blockTop = blockPosition.y.value;
+	float blockBottom = blockPosition.y.value + MapChipInfo::chip_size;
+	
+	return (blockLeft < characterRight) &&
+		(characterLeft < blockRight) &&
+		(blockTop < characterBottom) &&
+		(characterTop < blockBottom);
+}
+
+
+
