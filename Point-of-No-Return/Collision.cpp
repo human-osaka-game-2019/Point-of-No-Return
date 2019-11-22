@@ -4,23 +4,26 @@
 
 #include "Object.h"
 
-std::vector<Vec2> Collision::SearchBlock(const Vec2& character_pos,const Size& size,int** map)
+namespace Collision
 {
-	Vec2 vec2(0,0);
+
+std::vector<Vec2> SearchBlock(const Vec2& character_pos, const Size& size, int** map)
+{
+	Vec2 vec2(0, 0);
 	std::vector<Vec2> mapdata;
 
 	int center_x = character_pos.x.value + size.width.value / 2;
 	int center_y = character_pos.y.value + size.height.value / 2;
 
-	Matrix search_start = 
+	Matrix search_start =
 	{
 		Col(center_x / MapChipInfo::chip_size - 2),
 		Row(center_y / MapChipInfo::chip_size - 2)
 	};
-	
-	for (int i = 0; i < 5;i++)
+
+	for (int i = 0; i < 5; i++)
 	{
-		for (int j = 0;j < 5;j++)
+		for (int j = 0; j < 5; j++)
 		{
 			int current_col = search_start.col.value + j;
 			int current_row = search_start.row.value + i;
@@ -37,7 +40,7 @@ std::vector<Vec2> Collision::SearchBlock(const Vec2& character_pos,const Size& s
 }
 
 
-void Collision::CheckBlock(Character& character, Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, std::vector<Vec2> blockPositions)
+void CheckBlock(Character& character, Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, std::vector<Vec2> blockPositions)
 {
 	Vec2 vector =
 	{
@@ -47,9 +50,9 @@ void Collision::CheckBlock(Character& character, Vec2 characterPrevious, Size ch
 
 	// 修正する方向を入れる変数
 
-	for (auto blockPosition: blockPositions)
+	for (auto blockPosition : blockPositions)
 	{
-		if (isHItBlock(characterPrevious,characterSize,characterPosition,blockPosition))
+		if (isHItBlock(characterPrevious, characterSize, characterPosition, blockPosition))
 		{
 			Direction correction;
 
@@ -61,7 +64,7 @@ void Collision::CheckBlock(Character& character, Vec2 characterPrevious, Size ch
 	}
 }
 
-bool Collision::HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size characterSize, Vec2 vector, const Vec2& blockPosition)
+bool HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size characterSize, Vec2 vector, const Vec2& blockPosition)
 {
 	float characterTop = characterPrevious.y.value;
 	float characterBottom = characterTop + characterSize.height.value;
@@ -76,9 +79,9 @@ bool Collision::HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size 
 		{
 			return false;
 		}
-		
+
 		*direction = (vector.y < CoordinateY(0)) ? Direction::Up : Direction::Down;
-	
+
 		return true;
 	}
 
@@ -87,14 +90,14 @@ bool Collision::HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size 
 	{
 		return false;
 	}
-	
+
 	*direction = (vector.x < CoordinateX(0)) ? Direction::Left : Direction::Right;
 
 	return true;
-	
+
 }
 
-bool Collision::isHItBlock(Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, const Vec2& blockPosition)
+bool isHItBlock(Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, const Vec2& blockPosition)
 {
 	float characterLeft = characterPosition.x.value;
 	float characterRight = characterLeft + characterSize.width.value;
@@ -105,7 +108,7 @@ bool Collision::isHItBlock(Vec2 characterPrevious, Size characterSize, Vec2 char
 	float blockRight = blockLeft + MapChipInfo::chip_size;
 	float blockTop = blockPosition.y.value;
 	float blockBottom = blockTop + MapChipInfo::chip_size;
-	
+
 	return (blockLeft < characterRight) &&
 		(characterLeft < blockRight) &&
 		(blockTop < characterBottom) &&
@@ -113,4 +116,4 @@ bool Collision::isHItBlock(Vec2 characterPrevious, Size characterSize, Vec2 char
 }
 
 
-
+}
