@@ -8,16 +8,16 @@
 class Mapchip {
 public:
 	// ワールドのサイズ
-	static const int world_size_width = 480;
-	static const int world_size_height = 17;
+	static const int WORLD_SIZE_WIDTH = 480;
+	static const int WORLD_SIZE_HEIGHT = 17;
 	// 一つのチップのサイズ
-	static const int chip_size = 64;
+	static const int CHIP_SIZE = 64;
 	// テクスチャのサイズ
-	static const int texture_width = 256;
-	static const int texture_height = 256;
+	static const int TEXTURE_WIDTH = 256;
+	static const int TEXTURE_HEIGHT = 256;
 	// テクスチャ一つに対するチップの番号
-	static const int chip_width_num = texture_width / 4;
-	static const int chip_height_num = texture_height / 4;
+	static const int CHIP_WIDTH_NUM = TEXTURE_WIDTH / 4;
+	static const int CHIP_HEIGHT_NUM = TEXTURE_HEIGHT / 4;
 
 	/**
 	 * @brief  マップチップを描画する関数
@@ -53,11 +53,11 @@ public:
 	int CalcMapNumber(int x, int y);
 
 	//! マップの情報を保存するポインタ配列
-	int* map_[world_size_height];
+	int* map_[WORLD_SIZE_HEIGHT];
 
 private:
 	//! マップの二重配列
-	int map[world_size_height][world_size_width] = {};
+	int map[WORLD_SIZE_HEIGHT][WORLD_SIZE_WIDTH] = {};
 
 };
 

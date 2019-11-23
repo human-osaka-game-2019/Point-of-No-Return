@@ -39,9 +39,9 @@ void Mapchip::TexturePrint(int drawpos_x, int drawpos_y, int mapcip_width, int m
 void Mapchip::InitMap()
 {
 	//α用のマップ
-	for (int i = 0; i < world_size_height; i++)
+	for (int i = 0; i < WORLD_SIZE_HEIGHT; i++)
 	{
-		for (int j = 0; j < world_size_width; j++)
+		for (int j = 0; j < WORLD_SIZE_WIDTH; j++)
 		{
 			if (i == 14 || i == 15)
 			{
@@ -50,7 +50,7 @@ void Mapchip::InitMap()
 		}
 	}
 	
-	for (int i = 0; i < world_size_height; i++)
+	for (int i = 0; i < WORLD_SIZE_HEIGHT; i++)
 	{
 		map_[i] = map[i];
 	}
@@ -60,8 +60,8 @@ void Mapchip::InitMap()
 
 int Mapchip::CalcMapNumber(int x, int y)
 {
-	int col = (x / chip_size) * chip_size;
-	int row = (y / chip_size) * chip_size;
+	int col = (x / CHIP_SIZE) * CHIP_SIZE;
+	int row = (y / CHIP_SIZE) * CHIP_SIZE;
 	
 	return map[row][col];
 }
