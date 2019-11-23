@@ -30,7 +30,7 @@ void Game::Draw()
 {
 	float a = 1.0f / 16.0f;
 	dx.DrawEx(0, 0, 0, 1920, 1080, 0, 1, 0, "game_back", 0, 0, a, 1);
-	mapchip.DrawMapchip(MapChipInfo::world_size_width, MapChipInfo::world_size_height, MapChipInfo::texture_width, MapChipInfo::texture_height, MapChipInfo::chip_width_num, MapChipInfo::chip_height_num, MapChipInfo::chip_size, MapChipInfo::chip_size, 0, 0, "blocks", mapchip.map_);
+	mapchip.DrawMapchip(world_size_width, world_size_height, texture_width, texture_height, chip_width_num, chip_height_num, chip_size, chip_size, 0, 0, "blocks", mapchip.map_);
 	hero.Draw();
 
 	// ----------- 当たり判定の為の仮置き --------------
