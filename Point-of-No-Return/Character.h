@@ -38,11 +38,6 @@ class NPC :public Character
 
 };
 
-//敵クラス
-class Enemy :public Character
-{
-
-};
 
 
 
