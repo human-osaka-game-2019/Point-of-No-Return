@@ -21,22 +21,25 @@ void Mapchip::DrawMapchip(float draw_start_pos_x, float draw_start_pos_y, std::s
 
 			float draw_pos_x = draw_start_pos_x + CHIP_SIZE * j;
 			float draw_pos_y = draw_start_pos_y + CHIP_SIZE * i;
-			float chip_pos_x = (float)(chip_id % width_num) * CHIP_WIDTH_NUM / TEXTURE_WIDTH;
-			float chip_pos_y = (float)(chip_id / height_num) * CHIP_HEIGHT_NUM / TEXTURE_HEIGHT;
-			TexturePrint(draw_pos_x, draw_pos_y, chip_pos_x, chip_pos_y, texturename);
+			float tu = (float)(chip_id % width_num) * CHIP_WIDTH_NUM / TEXTURE_WIDTH;
+			float tv = (float)(chip_id / height_num) * CHIP_HEIGHT_NUM / TEXTURE_HEIGHT;
+			TexturePrint(draw_pos_x, draw_pos_y, tu, tv, texturename);
 		}
 	}
 }
 
 //マップチップ描画
-void Mapchip::TexturePrint(float drawpos_x, float drawpos_y, float chip_pos_x, float chip_pos_y, std::string texturename)
+void Mapchip::TexturePrint(float drawpos_x, float drawpos_y, float tu, float tv, std::string texturename)
 {
 	DirectX& dx = DirectX::GetInstance();
 
-	float width_num = static_cast<float>(CHIP_WIDTH_NUM) / TEXTURE_WIDTH;
-	float height_num = static_cast<float>(CHIP_HEIGHT_NUM) / TEXTURE_HEIGHT;
+	float width = static_cast<float>(CHIP_SIZE);
+	float height = static_cast<float>(CHIP_SIZE);
 
-	dx.DrawEx(drawpos_x, drawpos_y, 0, CHIP_SIZE, CHIP_SIZE, 0, 1.f, false, texturename, chip_pos_x, chip_pos_y, width_num, height_num);
+	float tu_width = static_cast<float>(CHIP_WIDTH_NUM) / TEXTURE_WIDTH;
+	float tv_height = static_cast<float>(CHIP_HEIGHT_NUM) / TEXTURE_HEIGHT;
+
+	dx.DrawEx(drawpos_x, drawpos_y, 0.0f, width, height, 0.0f, 1.0f, false, texturename, tu, tv, tu_width, tv_height);
 }
 
 

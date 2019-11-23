@@ -35,7 +35,7 @@ public:
 	 * @param  
 	 * @details 
 	 */
-	void TexturePrint(float drawpos_x, float drawpos_y, float chip_pos_x, float chip_pos_y, std::string texturename);
+	void TexturePrint(float drawpos_x, float drawpos_y, float tu, float tv, std::string texturename);
 
 	/**
 	 * @brief	マップの初期化
