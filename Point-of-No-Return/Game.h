@@ -7,8 +7,6 @@
 #include "Character.h"
 #include "Collision.h"
 
-using namespace MapChipInfo;
-
 /**
  * @brief ゲームシーン
  */

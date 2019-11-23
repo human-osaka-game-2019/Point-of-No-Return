@@ -4,7 +4,6 @@
 #include "Main.h"
 #include "string"
 
-
 void Mapchip::DrawMapchip(int map_size_width, int map_size_height, float texture_width, float texture_height, float mapchip_width, float mapchip_height, float draw_width, float draw_height, float draw_pos_x, float draw_pos_y, std::string texturename, int** map)
 {
 	int width_num = texture_width / mapchip_width;
@@ -40,9 +39,9 @@ void Mapchip::TexturePrint(int drawpos_x, int drawpos_y, int mapcip_width, int m
 void Mapchip::InitMap()
 {
 	//α用のマップ
-	for (int i = 0; i < MapChipInfo::world_size_height; i++)
+	for (int i = 0; i < world_size_height; i++)
 	{
-		for (int j = 0; j < MapChipInfo::world_size_width; j++)
+		for (int j = 0; j < world_size_width; j++)
 		{
 			if (i == 14 || i == 15)
 			{
@@ -51,7 +50,7 @@ void Mapchip::InitMap()
 		}
 	}
 	
-	for (int i = 0; i < MapChipInfo::world_size_height; i++)
+	for (int i = 0; i < world_size_height; i++)
 	{
 		map_[i] = map[i];
 	}
@@ -61,8 +60,8 @@ void Mapchip::InitMap()
 
 int Mapchip::CalcMapNumber(int x, int y)
 {
-	int col = (x / MapChipInfo::chip_size) * MapChipInfo::chip_size;
-	int row = (y / MapChipInfo::chip_size) * MapChipInfo::chip_size;
+	int col = (x / chip_size) * chip_size;
+	int row = (y / chip_size) * chip_size;
 	
 	return map[row][col];
 }

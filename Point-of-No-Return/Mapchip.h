@@ -4,24 +4,21 @@
 #include<iostream>
 #include<stdio.h>
 
-namespace MapChipInfo
-{
-	// ワールドのサイズ
-	const int world_size_width = 480;
-	const int world_size_height = 17;
-	// 一つのチップのサイズ
-	const int chip_size = 64;
-	// テクスチャのサイズ
-	const int texture_width = 256;
-	const int texture_height = 256;
-	// テクスチャ一つに対するチップの番号
-	const int chip_width_num = texture_width / 4;
-	const int chip_height_num = texture_height / 4;
-}
-
 // TODO: 引数などを修正したいので、doxygenコメントはリファクタリング時に記入する
 class Mapchip {
 public:
+	// ワールドのサイズ
+	static const int world_size_width = 480;
+	static const int world_size_height = 17;
+	// 一つのチップのサイズ
+	static const int chip_size = 64;
+	// テクスチャのサイズ
+	static const int texture_width = 256;
+	static const int texture_height = 256;
+	// テクスチャ一つに対するチップの番号
+	static const int chip_width_num = texture_width / 4;
+	static const int chip_height_num = texture_height / 4;
+
 	/**
 	 * @brief  マップチップを描画する関数
 	 * @param  
@@ -56,11 +53,11 @@ public:
 	int CalcMapNumber(int x, int y);
 
 	//! マップの情報を保存するポインタ配列
-	int* map_[MapChipInfo::world_size_height];
+	int* map_[world_size_height];
 
 private:
 	//! マップの二重配列
-	int map[MapChipInfo::world_size_height][MapChipInfo::world_size_width] = {};
+	int map[world_size_height][world_size_width] = {};
 
 };
 

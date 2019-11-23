@@ -4,9 +4,6 @@
 
 #include "Object.h"
 
-
-
-
 namespace
 {
 
@@ -25,7 +22,7 @@ bool HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size characterSi
 	float characterTop = characterPrevious.y.value;
 	float characterBottom = characterTop + characterSize.height.value;
 	float blockTop = blockPosition.y.value;
-	float blockBottom = blockTop + MapChipInfo::chip_size;
+	float blockBottom = blockTop + Mapchip::chip_size;
 
 	// キャラクターが前のフレームでブロックの上下にいるとき
 	if ((characterBottom <= blockTop) || (characterTop >= blockBottom))
@@ -68,9 +65,9 @@ bool isHItBlock(Vec2 characterPrevious, Size characterSize, Vec2 characterPositi
 	float characterBottom = characterTop + characterSize.height.value;
 
 	float blockLeft = blockPosition.x.value;
-	float blockRight = blockLeft + MapChipInfo::chip_size;
+	float blockRight = blockLeft + Mapchip::chip_size;
 	float blockTop = blockPosition.y.value;
-	float blockBottom = blockTop + MapChipInfo::chip_size;
+	float blockBottom = blockTop + Mapchip::chip_size;
 
 	return (blockLeft < characterRight) &&
 		(characterLeft < blockRight) &&
@@ -96,8 +93,8 @@ std::vector<Vec2> SearchBlock(const Vec2& character_pos, const Size& size, int**
 
 	Matrix search_start =
 	{
-		Col(center_x / MapChipInfo::chip_size - 2),
-		Row(center_y / MapChipInfo::chip_size - 2)
+		Col(center_x / Mapchip::chip_size - 2),
+		Row(center_y / Mapchip::chip_size - 2)
 	};
 
 	for (int i = 0; i < 5; i++)
@@ -109,8 +106,8 @@ std::vector<Vec2> SearchBlock(const Vec2& character_pos, const Size& size, int**
 
 			if (map[current_row][current_col] != 0)
 			{
-				vec2.x.value = current_col * MapChipInfo::chip_size;
-				vec2.y.value = current_row * MapChipInfo::chip_size;
+				vec2.x.value = current_col * Mapchip::chip_size;
+				vec2.y.value = current_row * Mapchip::chip_size;
 				mapdata.push_back(vec2);
 			}
 		}

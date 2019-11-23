@@ -89,13 +89,13 @@ void Hero::CorrectCoordinate(Direction direction, const Vec2& blockPosition)
 		position.y.value = blockPosition.y.value - size.height.value;
 		break;			  
 	case Direction::Down:
-		position.y.value = blockPosition.y.value + MapChipInfo::chip_size;
+		position.y.value = blockPosition.y.value + Mapchip::chip_size;
 		break;			  
 	case Direction::Left:
 		position.x.value = blockPosition.x.value - size.width.value;
 		break;			  
 	case Direction::Right:
-		position.x.value = blockPosition.x.value + MapChipInfo::chip_size;
+		position.x.value = blockPosition.x.value + Mapchip::chip_size;
 		break;
 	default:
 
