@@ -4,6 +4,85 @@
 
 #include "Object.h"
 
+
+
+
+namespace
+{
+
+// TODO: collision引数Hero修正しないといけない
+/**
+ * @brief	どの辺で当たっているのかの確認関数
+ * @param	direction         座標修正する方向
+ * @param	characterPrevious キャラクターの前の位置
+ * @param	characterSize     キャラクターのサイズ
+ * @param	vector            キャラクターの移動量や方向
+ * @param	blockPosition     当たり判定をとるブロックの座標
+ * @return キャラクターが動いているか
+ */
+bool HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size characterSize, Vec2 vector, const Vec2& blockPosition)
+{
+	float characterTop = characterPrevious.y.value;
+	float characterBottom = characterTop + characterSize.height.value;
+	float blockTop = blockPosition.y.value;
+	float blockBottom = blockTop + MapChipInfo::chip_size;
+
+	// キャラクターが前のフレームでブロックの上下にいるとき
+	if ((characterBottom <= blockTop) || (characterTop >= blockBottom))
+	{
+		//キャラクターがy方向に動いていないとき
+		if (vector.y == CoordinateY(0))
+		{
+			return false;
+		}
+
+		*direction = (vector.y < CoordinateY(0)) ? Direction::Up : Direction::Down;
+
+		return true;
+	}
+
+	//キャラクターがx方向に動いていないとき
+	if (vector.x == CoordinateX(0))
+	{
+		return false;
+	}
+
+	*direction = (vector.x < CoordinateX(0)) ? Direction::Left : Direction::Right;
+
+	return true;
+
+}
+
+/**
+ * @brief	キャラクターがブロックと当たっているか判定する関数
+ * @param	characterPrevious キャラクターの前の位置
+ * @param	characterSize     キャラクターのサイズ
+ * @param	blockPosition     当たり判定をとるブロックの座標
+ * @return 当たっているかどうか
+ */
+bool isHItBlock(Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, const Vec2& blockPosition)
+{
+	float characterLeft = characterPosition.x.value;
+	float characterRight = characterLeft + characterSize.width.value;
+	float characterTop = characterPosition.y.value;
+	float characterBottom = characterTop + characterSize.height.value;
+
+	float blockLeft = blockPosition.x.value;
+	float blockRight = blockLeft + MapChipInfo::chip_size;
+	float blockTop = blockPosition.y.value;
+	float blockBottom = blockTop + MapChipInfo::chip_size;
+
+	return (blockLeft < characterRight) &&
+		(characterLeft < blockRight) &&
+		(blockTop < characterBottom) &&
+		(characterTop < blockBottom);
+}
+
+
+}
+
+
+
 namespace Collision
 {
 
@@ -64,56 +143,5 @@ void CheckBlock(Character& character, Vec2 characterPrevious, Size characterSize
 	}
 }
 
-bool HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size characterSize, Vec2 vector, const Vec2& blockPosition)
-{
-	float characterTop = characterPrevious.y.value;
-	float characterBottom = characterTop + characterSize.height.value;
-	float blockTop = blockPosition.y.value;
-	float blockBottom = blockTop + MapChipInfo::chip_size;
-
-	// キャラクターが前のフレームでブロックの上下にいるとき
-	if ((characterBottom <= blockTop) || (characterTop >= blockBottom))
-	{
-		//キャラクターがy方向に動いていないとき
-		if (vector.y == CoordinateY(0))
-		{
-			return false;
-		}
-
-		*direction = (vector.y < CoordinateY(0)) ? Direction::Up : Direction::Down;
-
-		return true;
-	}
-
-	//キャラクターがx方向に動いていないとき
-	if (vector.x == CoordinateX(0))
-	{
-		return false;
-	}
-
-	*direction = (vector.x < CoordinateX(0)) ? Direction::Left : Direction::Right;
-
-	return true;
-
 }
 
-bool isHItBlock(Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, const Vec2& blockPosition)
-{
-	float characterLeft = characterPosition.x.value;
-	float characterRight = characterLeft + characterSize.width.value;
-	float characterTop = characterPosition.y.value;
-	float characterBottom = characterTop + characterSize.height.value;
-
-	float blockLeft = blockPosition.x.value;
-	float blockRight = blockLeft + MapChipInfo::chip_size;
-	float blockTop = blockPosition.y.value;
-	float blockBottom = blockTop + MapChipInfo::chip_size;
-
-	return (blockLeft < characterRight) &&
-		(characterLeft < blockRight) &&
-		(blockTop < characterBottom) &&
-		(characterTop < blockBottom);
-}
-
-
-}
