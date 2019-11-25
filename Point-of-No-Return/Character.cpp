@@ -4,6 +4,25 @@
 
 #include "Mapchip.h"
 
+namespace
+{
+/**
+ * @brief	衝突時のコールバッククラス
+ */
+class CollisionCallback :public Collision::ICollisionCallback
+{
+public:
+	/**
+	 * @brief	衝突時のコールバック関数
+	 *
+	 * @param	direction　　　座標修正する方向
+	 * @param	blockPosition　当たっているブロックの座標
+	 */
+	virtual void OnCollided(Direction direction, const Vec2& blockPosition) override
+	{
+	}
+}
+
 void Hero::Initialize()
 {
 	position =
