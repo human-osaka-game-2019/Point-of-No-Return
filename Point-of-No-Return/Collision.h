@@ -47,7 +47,6 @@ public:
 class CollisionChecker
 {
 public:
-
 	/**
 	 * @brief	コンストラクタ
 	 * @param	mapchip	マップチップクラスのインスタンスのアドレス
@@ -61,7 +60,7 @@ public:
 	 * @param  map  マップの情報のアドレス
 	 * @return 当たり判定をとるブロックの座標の集まり
 	 */
-	std::vector<Vec2> SearchBlock(const Vec2& vec, const Size& size, int** map);
+	std::vector<Vec2> SearchBlock(const Vec2& vec, const Size& size);
 	
 	// TODO: collision引数Hero修正しないといけない
 	/**

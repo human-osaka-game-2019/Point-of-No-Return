@@ -1,9 +1,5 @@
 ﻿#include "Collision.h"
 
-#include <vector>
-
-#include "Object.h"
-
 namespace
 {
 
@@ -83,7 +79,7 @@ bool CharacterCollidesWithBlock(Vec2 characterPrevious, Size characterSize, Vec2
 namespace Collision
 {
 
-std::vector<Vec2> CollisionChecker::SearchBlock(const Vec2& character_pos, const Size& size, int** map)
+std::vector<Vec2> CollisionChecker::SearchBlock(const Vec2& character_pos, const Size& size)
 {
 	Vec2 vec2(CoordinateX(0), CoordinateY(0));
 	std::vector<Vec2> mapdata;
@@ -97,6 +93,7 @@ std::vector<Vec2> CollisionChecker::SearchBlock(const Vec2& character_pos, const
 		Row(center_y / Mapchip::CHIP_SIZE - 2)
 	};
 
+	int** map = mapchip->map_;
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 0; j < 5; j++)
