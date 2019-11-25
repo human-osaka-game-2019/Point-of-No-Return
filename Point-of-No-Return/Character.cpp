@@ -12,6 +12,8 @@ namespace
 class CollisionCallback :public Collision::ICollisionCallback
 {
 public:
+	CollisionCallback(Character* character) :character(character) {}
+
 	/**
 	 * @brief	衝突時のコールバック関数
 	 *
@@ -20,7 +22,12 @@ public:
 	 */
 	virtual void OnCollided(Direction direction, const Vec2& blockPosition) override
 	{
+		character->CorrectCoordinate(direction, blockPosition);
 	}
+
+private:
+	Character* character;
+};
 }
 
 void Hero::Initialize()
