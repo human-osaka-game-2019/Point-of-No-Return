@@ -61,7 +61,7 @@ void Hero::Initialize()
 	is_reverse = IsReverse(false);
 }
 
-void Hero::Update()
+void Hero::Update(const Collision::CollisionChecker& collisionChecker)
 {
 	// 移動させる前に、現在の座標を退避させておく
 	previous = position;
@@ -69,7 +69,12 @@ void Hero::Update()
 	// ひとまず移動
 	Move();
 
+	// 当たり判定を取るブロックを取得する
+	auto mapData = collisionChecker.SearchBlock(position, size);
 
+	// ブロックに当たっているかどうか確認し、当たっていれば座標を修正する
+	CollisionCallback collisionCallback(this);
+	collisionChecker.CheckBlock(&collisionCallback, previous, size, position, mapData);
 }
 
 void Hero::CorrectCoordinate(Direction direction, const Vec2& blockPosition)

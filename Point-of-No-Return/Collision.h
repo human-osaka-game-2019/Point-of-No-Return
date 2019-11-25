@@ -60,7 +60,7 @@ public:
 	 * @param  map  マップの情報のアドレス
 	 * @return 当たり判定をとるブロックの座標の集まり
 	 */
-	std::vector<Vec2> SearchBlock(const Vec2& vec, const Size& size);
+	std::vector<Vec2> SearchBlock(const Vec2& vec, const Size& size) const;
 	
 	// TODO: collision引数Hero修正しないといけない
 	/**
@@ -71,7 +71,7 @@ public:
 	 * @param	characterPosition      キャラクターの位置
 	 * @param	blockPositions         当たり判定をとるブロックの座標の集まり
 	 */
-	void CheckBlock(Character& character, Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, std::vector<Vec2> blockPositions);
+	void CheckBlock(ICollisionCallback* callback, Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, std::vector<Vec2> blockPositions) const;
 
 private:
 	Mapchip* mapchip;

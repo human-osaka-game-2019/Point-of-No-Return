@@ -59,8 +59,9 @@ public:
 
 	/**
 	 * @brief  主人公の情報を更新する
+	 * @param collisionChecker 衝突判定クラスのインスタンス
 	 */
-	void Update();
+	void Update(const Collision::CollisionChecker&);
 
 	/**
 	 * @brief	座標を修正する
