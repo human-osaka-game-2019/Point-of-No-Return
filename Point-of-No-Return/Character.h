@@ -1,22 +1,8 @@
 ﻿#ifndef CHARCTER_H_
 #define CHARCTER_H_
 
+#include "Collision.h"
 #include "Object.h"
-
-/**
- * @brief 方向
- */
-enum class Direction
-{
-	//! 上
-	Up,
-	//! 下
-	Down,
-	//! 右
-	Right,
-	//! 左
-	Left
-};
 
 /**
  * @brief キャラクタークラス

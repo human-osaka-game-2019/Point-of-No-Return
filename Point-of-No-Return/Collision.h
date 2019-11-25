@@ -1,14 +1,45 @@
 ﻿#ifndef COLLISION_H_
 #define COLLISION_H_
 
-#include "Character.h"
+#include <vector>
+
 #include "Mapchip.h"
+#include "Object.h"
+
+// TODO: Character.hとの相互参照によるコンパイルエラーを回避するためにDirectionをここに持ってきた。あくまでも暫定対応。
+/**
+ * @brief 方向
+ */
+enum class Direction
+{
+	//! 上
+	Up,
+	//! 下
+	Down,
+	//! 右
+	Right,
+	//! 左
+	Left
+};
 
 /**
  * @brief 当たり判定をする関数を纏めた名前空間
  */
 namespace Collision
 {
+/**
+ * @brief	衝突時のコールバックインターフェイス
+ */
+class ICollisionCallback {
+public:
+	/**
+	 * @brief	衝突時のコールバック関数
+	 *
+	 * @param	direction　　　座標修正する方向
+	 * @param	blockPosition　当たっているブロックの座標
+	 */
+	virtual void OnCollided(Direction direction, const Vec2& blockPosition) = 0;
+};
 
 /**
  * @brief	衝突判定クラス
