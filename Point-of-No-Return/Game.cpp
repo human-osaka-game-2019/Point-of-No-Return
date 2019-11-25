@@ -14,11 +14,11 @@ void Game::Update()
 	// 当たり判定を取るブロックを取得する
 	auto currentPos = hero.GetPos();
 	auto size = hero.GetSize();
-	auto mapData = Collision::SearchBlock(currentPos, size, mapchip.map_);
+	auto mapData = collision_checker.SearchBlock(currentPos, size, mapchip.map_);
 
 	// ブロックに当たっているかどうか確認
 	auto previousPos = hero.GetPrevious();
-	Collision::CheckBlock(hero, previousPos, size, currentPos, mapData);
+	collision_checker.CheckBlock(hero, previousPos, size, currentPos, mapData);
 
 	if (dx.GetKeyState(DIK_SPACE) == dx.PUSH)
 	{

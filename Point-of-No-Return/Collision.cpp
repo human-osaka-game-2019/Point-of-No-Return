@@ -83,7 +83,7 @@ bool CharacterCollidesWithBlock(Vec2 characterPrevious, Size characterSize, Vec2
 namespace Collision
 {
 
-std::vector<Vec2> SearchBlock(const Vec2& character_pos, const Size& size, int** map)
+std::vector<Vec2> CollisionChecker::SearchBlock(const Vec2& character_pos, const Size& size, int** map)
 {
 	Vec2 vec2(CoordinateX(0), CoordinateY(0));
 	std::vector<Vec2> mapdata;
@@ -116,7 +116,7 @@ std::vector<Vec2> SearchBlock(const Vec2& character_pos, const Size& size, int**
 }
 
 
-void CheckBlock(Character& character, Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, std::vector<Vec2> blockPositions)
+void CollisionChecker::CheckBlock(Character& character, Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, std::vector<Vec2> blockPositions)
 {
 	Vec2 vector =
 	{
