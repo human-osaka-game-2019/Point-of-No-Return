@@ -37,28 +37,13 @@ void Hero::Initialize()
 
 void Hero::Update()
 {
+	// 移動させる前に、現在の座標を退避させておく
 	previous = position;
 
-	if (dx.GetKeyState(DIK_D) == dx.ON)
-	{
-		position.x.value += 10.0f;
-	}
+	// ひとまず移動
+	Move();
 
-	if (dx.GetKeyState(DIK_A) == dx.ON)
-	{
-		position.x.value -= 10.0f;
-	}
 
-	if (dx.GetKeyState(DIK_W) == dx.ON)
-	{
-		position.y.value -= 10.0f;
-	}
-
-	if (dx.GetKeyState(DIK_S) == dx.ON)
-	{
-		position.y.value += 10.0f;
-
-	}
 }
 
 void Hero::CorrectCoordinate(Direction direction, const Vec2& blockPosition)
@@ -83,3 +68,28 @@ void Hero::CorrectCoordinate(Direction direction, const Vec2& blockPosition)
 	}
 }
 
+void Hero::Move()
+{
+	// TODO: ここ、もうちょっと抽象化したい
+	//		 HeroクラスがDirectInputKeyのようなlayerを意識すべきでは無い
+
+	if (dx.GetKeyState(DIK_D) == dx.ON)
+	{
+		position.x.value += 10.0f;
+	}
+
+	if (dx.GetKeyState(DIK_A) == dx.ON)
+	{
+		position.x.value -= 10.0f;
+	}
+
+	if (dx.GetKeyState(DIK_W) == dx.ON)
+	{
+		position.y.value -= 10.0f;
+	}
+
+	if (dx.GetKeyState(DIK_S) == dx.ON)
+	{
+		position.y.value += 10.0f;
+	}
+}

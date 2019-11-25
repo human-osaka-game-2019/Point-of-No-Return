@@ -86,6 +86,8 @@ private:
 	 */
 	void Initialize();
 
+	void Move();
+
 	//コピーコンストラクタと演算子オーバーロードの隠蔽
 	Hero(const Hero&);
 	Hero& operator=(const Hero&);
