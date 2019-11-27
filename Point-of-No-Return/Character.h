@@ -1,22 +1,8 @@
 ﻿#ifndef CHARCTER_H_
 #define CHARCTER_H_
 
+#include "Collision.h"
 #include "Object.h"
-
-/**
- * @brief 方向
- */
-enum class Direction
-{
-	//! 上
-	Up,
-	//! 下
-	Down,
-	//! 右
-	Right,
-	//! 左
-	Left
-};
 
 /**
  * @brief キャラクタークラス
@@ -73,8 +59,9 @@ public:
 
 	/**
 	 * @brief  主人公の情報を更新する
+	 * @param collisionChecker 衝突判定クラスのインスタンス
 	 */
-	void Update();
+	void Update(const Collision::CollisionChecker&);
 
 	/**
 	 * @brief	座標を修正する
@@ -99,6 +86,8 @@ private:
 	 * @details コンストラクタで呼び出す
 	 */
 	void Initialize();
+
+	void Move();
 
 	//コピーコンストラクタと演算子オーバーロードの隠蔽
 	Hero(const Hero&);

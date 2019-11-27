@@ -37,7 +37,7 @@ public:
 private:
 
 	Mapchip mapchip;
-
+	Collision::CollisionChecker collision_checker = Collision::CollisionChecker(&mapchip);
 	Hero hero{ "Player" };
 };
 

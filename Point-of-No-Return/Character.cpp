@@ -4,6 +4,32 @@
 
 #include "Mapchip.h"
 
+namespace
+{
+/**
+ * @brief	衝突時のコールバッククラス
+ */
+class CollisionCallback :public Collision::ICollisionCallback
+{
+public:
+	CollisionCallback(Character* character) :character(character) {}
+
+	/**
+	 * @brief	衝突時のコールバック関数
+	 *
+	 * @param	direction　　　座標修正する方向
+	 * @param	blockPosition　当たっているブロックの座標
+	 */
+	virtual void OnCollided(Direction direction, const Vec2& blockPosition) override
+	{
+		character->CorrectCoordinate(direction, blockPosition);
+	}
+
+private:
+	Character* character;
+};
+}
+
 void Hero::Initialize()
 {
 	position =
@@ -35,30 +61,20 @@ void Hero::Initialize()
 	is_reverse = IsReverse(false);
 }
 
-void Hero::Update()
+void Hero::Update(const Collision::CollisionChecker& collisionChecker)
 {
+	// 移動させる前に、現在の座標を退避させておく
 	previous = position;
 
-	if (dx.GetKeyState(DIK_D) == dx.ON)
-	{
-		position.x.value += 10.0f;
-	}
+	// ひとまず移動
+	Move();
 
-	if (dx.GetKeyState(DIK_A) == dx.ON)
-	{
-		position.x.value -= 10.0f;
-	}
+	// 当たり判定を取るブロックを取得する
+	auto mapData = collisionChecker.SearchBlock(position, size);
 
-	if (dx.GetKeyState(DIK_W) == dx.ON)
-	{
-		position.y.value -= 10.0f;
-	}
-
-	if (dx.GetKeyState(DIK_S) == dx.ON)
-	{
-		position.y.value += 10.0f;
-
-	}
+	// ブロックに当たっているかどうか確認し、当たっていれば座標を修正する
+	CollisionCallback collisionCallback(this);
+	collisionChecker.CheckBlock(&collisionCallback, previous, size, position, mapData);
 }
 
 void Hero::CorrectCoordinate(Direction direction, const Vec2& blockPosition)
@@ -83,3 +99,28 @@ void Hero::CorrectCoordinate(Direction direction, const Vec2& blockPosition)
 	}
 }
 
+void Hero::Move()
+{
+	// TODO: ここ、もうちょっと抽象化したい
+	//		 HeroクラスがDirectInputKeyのようなlayerを意識すべきでは無い
+
+	if (dx.GetKeyState(DIK_D) == dx.ON)
+	{
+		position.x.value += 10.0f;
+	}
+
+	if (dx.GetKeyState(DIK_A) == dx.ON)
+	{
+		position.x.value -= 10.0f;
+	}
+
+	if (dx.GetKeyState(DIK_W) == dx.ON)
+	{
+		position.y.value -= 10.0f;
+	}
+
+	if (dx.GetKeyState(DIK_S) == dx.ON)
+	{
+		position.y.value += 10.0f;
+	}
+}
