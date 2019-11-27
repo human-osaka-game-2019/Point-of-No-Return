@@ -32,19 +32,45 @@ private:
 	Hero& operator=(const Hero&&);
 };
 
-//NPCクラス
-class NPC :public Character
+
+/**
+ * @brief UIクラス
+ */
+class UI : public Object
 {
 
 };
 
-//敵クラス
-class Enemy :public Character
+/**
+ * @brief スクロールステージクラス
+ */
+class ScrollStage : public Object
 {
 
 };
 
+/**
+ * @brief ステージクラス
+ */
+class Stage : public Object
+{
 
+};
 
+/**
+ * @brief NPCクラス
+ */
+class NPC : public Character
+{
+
+};
+
+/**
+ * @brief 敵クラス
+ */
+class Enemy : public Character
+{
+
+};
 
 #endif // !CHARCTER_H_
