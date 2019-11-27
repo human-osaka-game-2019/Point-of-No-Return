@@ -300,7 +300,18 @@ public:
 	Object(const Object&&);
 	Object& operator =(const Object&&);
 
+	Vec2 GetPos()
+	{
+		return position;
+	}
+
+	Size GetSize()
+	{
+		return size;
+	}
+
 protected:
+
 	DX::DirectX& dx = DX::DirectX::GetInstance();
 
 	Vec2 position =

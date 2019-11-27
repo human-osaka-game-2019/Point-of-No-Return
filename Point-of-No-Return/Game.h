@@ -3,7 +3,9 @@
 
 #include "Scene.h"
 #include "Mapchip.h"
+#include "Help.h"
 #include "Character.h"
+#include "Collision.h"
 
 /**
  * @brief ゲームシーン

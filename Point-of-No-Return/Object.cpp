@@ -6,5 +6,5 @@
 */
 
 void Object::Draw() {
-	dx.DrawEx(vec.x.value , vec.y.value , 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value );
+	dx.DrawEx(position.x.value , position.y.value , 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value );
 }

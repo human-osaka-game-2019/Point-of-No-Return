@@ -1,38 +1,63 @@
 ﻿#ifndef MAPCHIP_H_
 #define MAPCHIP_H_
 
-
 #include<iostream>
 #include<stdio.h>
 
-// ワールドのサイズ
-const int world_size_width = 480;
-const int world_size_height = 16;
-// 一つのチップのサイズ
-const int chip_size = 64;
-// テクスチャのサイズ
-const int texture_width = 256;
-const int texture_height = 256;
-// テクスチャ一つに対するチップの番号
-const int chip_width_num = texture_width / 4;
-const int chip_height_num = texture_height / 4;
-//
-// const int draw_size = 64;
-
+// TODO: 引数などを修正したいので、doxygenコメントはリファクタリング時に記入する
 class Mapchip {
 public:
+	// ワールドのサイズ
+	static const int WORLD_SIZE_WIDTH = 480;
+	static const int WORLD_SIZE_HEIGHT = 17;
+	// 一つのチップのサイズ
+	static const int CHIP_SIZE = 64;
+	// テクスチャのサイズ
+	static const int TEXTURE_WIDTH = 256;
+	static const int TEXTURE_HEIGHT = 256;
+	// テクスチャ一つに対するチップの番号
+	static const int CHIP_WIDTH_NUM = TEXTURE_WIDTH / 4;
+	static const int CHIP_HEIGHT_NUM = TEXTURE_HEIGHT / 4;
 
-	void DrawMapchip(int map_size_width, int map_size_height, float texture_width, float texture_height, float mapchip_width, float mapchip_height, float draw_width, float draw_height, float draw_pos_x, float draw_pos_y, std::string texturename, int** map);
+	/**
+	 * @brief  マップチップを描画する関数
+	 * @param  
+	 * @param  
+	 * @param  
+	 * @details 
+	 */
+	void DrawMapchip(float draw_start_pos_x, float draw_start_pos_y, std::string texturename, int** map);
 
-	void TexturePrint(int drawpos_x, int drawpos_y, int mapcip_width, int mapchip_height, float chip_pos_x, float chip_pos_y, float width_num, float height_num, std::string texturename);
+	/**
+	 * @brief  
+	 * @param  
+	 * @param  
+	 * @param  
+	 * @details 
+	 */
+	void TexturePrint(float drawpos_x, float drawpos_y, float tu, float tv, std::string texturename);
 
+	/**
+	 * @brief	マップの初期化
+	 * @details	Gameのコンストラクタで呼ぶ
+	 */
 	void InitMap();
 
+	/**
+	 * @brief		マップの位置を割り出す関数
+	 * @param	x	割り出したいX座標の位置
+	 * @param	y	割り出したいY座標の位置
+	 * @param	map	マップのポインタの配列
+	 * @return		
+	 */
+	int CalcMapNumber(int x, int y);
 
-	int* map_[world_size_height];
+	//! マップの情報を保存するポインタ配列
+	int* map_[WORLD_SIZE_HEIGHT];
 
 private:
-	int map[world_size_height][world_size_width] = {};
+	//! マップの二重配列
+	int map[WORLD_SIZE_HEIGHT][WORLD_SIZE_WIDTH] = {};
 
 };
 
