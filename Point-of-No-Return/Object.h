@@ -48,6 +48,18 @@ struct TextureV
 	float value;
 };
 
+struct Col
+{
+	explicit Col(int value) :value(value) {}
+	int value;
+};
+
+struct Row
+{
+	explicit Row(int value) :value(value) {}
+	int value;
+};
+
 struct Degree 
 {
 	Degree(const float value) :value(value) {}
@@ -169,6 +181,13 @@ struct Vec2
 
 	CoordinateX x;
 	CoordinateY y;
+};
+
+struct Matrix
+{
+	Matrix(Col col, Row row) : col(col), row(row) {};
+	Col col;
+	Row row;
 };
 
 struct Size
