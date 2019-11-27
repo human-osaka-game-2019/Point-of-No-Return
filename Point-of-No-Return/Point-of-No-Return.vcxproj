@@ -153,6 +153,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Save.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
@@ -161,6 +162,7 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="Ending.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="Help.h" />
     <ClInclude Include="Load.h" />
     <ClInclude Include="Main.h" />

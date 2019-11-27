@@ -22,6 +22,9 @@
     <Filter Include="Manager">
       <UniqueIdentifier>{cea1f81a-8264-4361-ab38-a34eb0da80c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Feature\横スクロール\当たり判定">
+      <UniqueIdentifier>{fddc3121-9aa7-4a74-9902-513f06404f35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Title.cpp">
@@ -57,6 +60,9 @@
     </ClCompile>
     <ClCompile Include="UI.cpp">
       <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Feature\横スクロール\当たり判定</Filter>
     </ClCompile>
     <ClCompile Include="BackGraund.cpp">
       <Filter>Feature\横スクロール</Filter>
@@ -99,6 +105,9 @@
     </ClInclude>
     <ClInclude Include="UI.h">
       <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Feature\横スクロール\当たり判定</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
