@@ -4,6 +4,21 @@
 #include "Object.h"
 
 /**
+ * @brief 方向
+ */
+enum class Direction
+{
+	//! 上
+	Up,
+	//! 下
+	Down,
+	//! 右
+	Right,
+	//! 左
+	Left
+};
+
+/**
  * @brief キャラクタークラス
  */
 class Character : public Object
@@ -14,6 +29,26 @@ public:
 	 * @param name キャラクターの名前
 	 */
 	explicit Character(const std::string& name) :name(name) {}
+
+	/**
+	 * @brief	座標を修正する
+	 * @param	direction　　　座標修正する方向
+	 * @param	blockPosition　当たっているブロックの座標
+	 * @details	HitCheckの中で呼び出す
+	 */
+	virtual void CorrectCoordinate(Direction direction, const Vec2& blockPosition) {};
+protected:
+
+	//! 前の座標を保存する
+	Vec2 previous =
+	{
+		CoordinateX(0),
+		CoordinateY(0)
+	};
+
+	// TODO: あとでprimitive型wrapします
+	float gravity = 0;
+
 private:
 
 	//! キャラクターの名前
@@ -40,6 +75,22 @@ public:
 	 * @brief  主人公の情報を更新する
 	 */
 	void Update();
+
+	/**
+	 * @brief	座標を修正する
+	 * @param	direction　　　座標修正する方向
+	 * @param	blockPosition　当たっているブロックの座標
+	 * @details	HitCheckの中で呼び出す
+	 */
+	virtual void CorrectCoordinate(Direction direction, const Vec2& blockPosition) override;
+
+	/**
+	 * @brief	previousを取得する
+	 */
+	inline Vec2 GetPrevious()
+	{
+		return previous;
+	};
 
 private:
 
