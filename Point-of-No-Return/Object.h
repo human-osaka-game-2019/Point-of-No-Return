@@ -9,42 +9,42 @@
 //! X座標
 struct CoordinateX
 {
-	CoordinateX(const float value) :value(value) {}
+	explicit CoordinateX(float value) :value(value) {}
 	float value;
 };
 
 //! Y座標
 struct CoordinateY
 {
-	CoordinateY(const float value) :value(value) {}
+	explicit CoordinateY(float value) :value(value) {}
 	float value;
 };
 
 //! 横幅
 struct Width
 {
-	Width(const float value) :value(value) {}
+	explicit Width(float value) :value(value) {}
 	float value;
 };
 
 //! 縦幅
 struct Height
 {
-	Height(const float value) :value(value) {}
+	explicit Height(float value) :value(value) {}
 	float value;
 };
 
 //! TU座標
 struct TextureU
 {
-	TextureU(const float value) :value(value) {}
+	explicit TextureU(float value) :value(value) {}
 	float value;
 };
 
 //! TV座標
 struct TextureV
 {
-	TextureV(const float value) :value(value) {}
+	explicit TextureV(float value) :value(value) {}
 	float value;
 };
 
@@ -62,122 +62,122 @@ struct Row
 
 struct Degree 
 {
-	Degree(const float value) :value(value) {}
+	explicit Degree(float value) :value(value) {}
 	float value;
 };
 
 struct Zoom
 {
-	Zoom(const float value) :value(value) {}
+	explicit Zoom(float value) :value(value) {}
 	float value;
 };
 
 struct IsReverse
 {
-	IsReverse(const bool value) :value(value) {}
+	explicit IsReverse(bool value) :value(value) {}
 	bool value;
 };
 
 //! ヒットポイント
 struct HP
 {
-	HP(const int value) :value(value) {}
+	explicit HP(int value) :value(value) {}
 	int value;
 };
 
 //! マジックポイント
 struct MP
 {
-	MP(const int value) :value(value) {}
+	explicit MP(int value) :value(value) {}
 	int value;
 };
 
 //! イマジナリーポイント/想像力
 struct IP
 {
-	IP(const int value) :value(value) {}
+	explicit IP(int value) :value(value) {}
 	int value;
 };
 
 //! 攻撃力
 struct Attack
 {
-	Attack(const int value) :value(value) {}
+	explicit Attack(int value) :value(value) {}
 	int value;
 };
 
 //! 防御力
 struct Defense
 {
-	Defense(const int value) :value(value) {}
+	explicit Defense(int value) :value(value) {}
 	int value;
 };
 
 //! 素早さ
 struct Speed
 {
-	Speed(const int value) :value(value) {}
+	explicit Speed(int value) :value(value) {}
 	int value;
 };
 
 //! 魔法攻撃力
 struct MagicAttack
 {
-	MagicAttack(const int value) :value(value) {}
+	explicit MagicAttack(int value) :value(value) {}
 	int value;
 };
 
 //! 運
 struct Luck
 {
-	Luck(const int value) :value(value) {}
+	explicit Luck(int value) :value(value) {}
 	int value;
 };
 
 //! 愛情
 struct Love
 {
-	Love(const int value) :value(value) {}
+	explicit Love(int value) :value(value) {}
 	int value;
 };
 
 //! 時間
 struct Time
 {
-	Time(const int value) :value(value) {}
+	explicit Time(int value) :value(value) {}
 	int value;
 };
 
 //! お金
 struct Gold
 {
-	Gold(const int value) :value(value) {}
+	explicit Gold(int value) :value(value) {}
 	int value;
 };
 
 //! 年齢
 struct Age
 {
-	Age(const int value) :value(value) {}
+	explicit Age(int value) :value(value) {}
 	int value;
 };
 
 //! 名前
 struct Name
 {
-	Name(const std::string value) :value(value) {}
+	explicit Name(std::string value) :value(value) {}
 	std::string value;
 };
 
 struct TextureName
 {
-	TextureName(const std::string value) :value(value) {}
+	explicit TextureName(std::string value) :value(value) {}
 	std::string value;
 };
 
 struct Vec2
 {
-	Vec2(const CoordinateX x, const CoordinateY y) : x(x),y(y) {};
+	Vec2(CoordinateX x, CoordinateY y) : x(x),y(y) {};
 
 	CoordinateX x;
 	CoordinateY y;
@@ -192,7 +192,7 @@ struct Matrix
 
 struct Size
 {
-	Size(const Width width,const Height height) : width(width), height(height) {};
+	Size(Width width,Height height) : width(width), height(height) {};
 
 	Width width;
 	Height height;
@@ -200,15 +200,14 @@ struct Size
 
 struct TextureUV
 {
-	TextureUV(const TextureU tu,const TextureV tv) : tu(tu), tv(tv) {};
-
+	TextureUV(TextureU tu,TextureV tv) : tu(tu), tv(tv) {};
 	TextureU tu;
 	TextureV tv;
 };
 
 struct TextureSize
 {
-	TextureSize(const Width width,const Height height) : width(width), height(height) {};
+	TextureSize(Width width,Height height) : width(width), height(height) {};
 
 	Width width;
 	Height height;
@@ -259,14 +258,36 @@ public:
 
 protected:
 	DX::DirectX& dx = DX::DirectX::GetInstance();
-	Vec2 vec = { 0,0 };
-	Size size = { 0,0 };
-	TextureUV uv = {0, 0};
-	TextureSize texture_size = { 0,0 };
-	TextureName texture_name = {"None"};
-	Degree degree = 0;
-	Zoom zoom = 0;
-	IsReverse is_reverse = false;
+
+	Vec2 position =
+	{
+		CoordinateX(0),
+		CoordinateY(0)
+	};
+
+	Size size =
+	{
+		Width(0),
+		Height(0)
+	};
+
+	TextureUV uv =
+	{
+		TextureU(0),
+		TextureV(0)
+	};
+
+	TextureSize texture_size =
+	{
+		Width(0),
+		Height(0)
+	};
+
+	TextureName texture_name = TextureName("None") ;
+
+	Degree degree = Degree(0);
+	Zoom zoom = Zoom(0);
+	IsReverse is_reverse = IsReverse(false);
 };
 
 #endif

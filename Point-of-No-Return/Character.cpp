@@ -1,14 +1,34 @@
 ﻿#include "Character.h"
 
-void Hero::Initialize() {
-	vec = { 500.f, 500.f };
-	size = { 100.f,100.f };
-	uv = { 0.0f,0.0f };
-	texture_size = { 1.0f, 1.0f };
-	texture_name = {"Player"};
-	degree = 0;
-	zoom = 1.0;
-	is_reverse = false;
+void Hero::Initialize()
+{
+	position =
+	{
+		CoordinateX(500.f),
+		CoordinateY(500.f)
+	};
+
+	size =
+	{
+		Width(64.f),
+		Height(128.f)
+	};
+
+	uv =
+	{
+		TextureU(0.0f),
+		TextureV(0.0f)
+	};
+	texture_size =
+	{
+		Width(1.0f),
+		Height(1.0f)
+	};
+
+	texture_name = TextureName("Player");
+	degree = Degree(0);
+	zoom = Zoom(1.0);
+	is_reverse = IsReverse(false);
 }
 
 void Hero::Update() {
