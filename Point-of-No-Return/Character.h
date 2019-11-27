@@ -3,29 +3,53 @@
 
 #include "Object.h"
 
-//キャラクタークラス
-class Character :public Object
+/**
+ * @brief キャラクタークラス
+ */
+class Character : public Object
 {
 public:
-	explicit Character(const std::string& name):name(name) {}
+	/**
+	 * @brief コンストラクタ
+	 * @param name キャラクターの名前
+	 */
+	explicit Character(const std::string& name) :name(name) {}
 private:
-	Name name = { "None" };
+
+	//! キャラクターの名前
+	Name name = Name("None");
 };
 
-//主人公クラス
-class Hero :public Character
+/**
+ * @brief 主人公クラス
+ * @details コピーコンストラクタと演算子オーバーロードの隠蔽
+ */
+class Hero : public Character
 {
 public:
+	/**
+	 * @brief コンストラクタ
+	 * @param name 主人公の名前
+	 */
 	Hero(const std::string& name):Character(name)
 	{
 		Initialize();
 	}
 
+	/**
+	 * @brief  主人公の情報を更新する
+	 */
 	void Update();
 
 private:
+
+	/**
+	 * @brief  主人公の初期化
+	 * @details コンストラクタで呼び出す
+	 */
 	void Initialize();
 
+	//コピーコンストラクタと演算子オーバーロードの隠蔽
 	Hero(const Hero&);
 	Hero& operator=(const Hero&);
 	Hero(const Hero&&);

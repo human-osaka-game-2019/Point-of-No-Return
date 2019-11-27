@@ -5,9 +5,13 @@
 #include "Mapchip.h"
 #include "Character.h"
 
+/**
+ * @brief ゲームシーン
+ */
 class Game : public SceneBase
 {
 public:
+
 	Game()
 	{
 		Load();
@@ -27,8 +31,11 @@ public:
 	void Release();
 
 	HANDLE CreateLoadThread();
+
 private:
+
 	Mapchip mapchip;
+
 	Hero hero{ "Player" };
 };
 
