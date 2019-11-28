@@ -2,7 +2,7 @@
 #define UI_H
 
 #include "../Object.h"
-
+#include"../Character.h"
 
 /**
  * @brief UIクラス
@@ -51,9 +51,13 @@ class GameUI : public UI
 {
 protected:
 
+	virtual void Initialize() {};
+	
+	//Character character;
 
 public:
 
+	
 
 };
 
