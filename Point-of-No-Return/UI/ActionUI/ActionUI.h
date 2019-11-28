@@ -2,7 +2,6 @@
 #define ACTIONUI_H
 
 #include"../UI.h"
-#include"../Object.h"
 
 namespace ActionUI
 {
@@ -15,8 +14,10 @@ namespace ActionUI
 	protected:
 
 
+
 	public:
 
+		float ゲージを減らす関数(const Status& status, Size size);
 
 	};
 
@@ -27,6 +28,7 @@ namespace ActionUI
 	{
 	private:
 
+		void Initialize() {};
 
 	public:
 
@@ -40,7 +42,7 @@ namespace ActionUI
 	{
 	private:
 
-
+		void Initialize();
 
 	public:
 
@@ -53,9 +55,11 @@ namespace ActionUI
 	{
 	private:
 
+		void Initialize();
 
 	public:
 
+		
 	
 	};
 
@@ -66,6 +70,7 @@ namespace ActionUI
 	{
 	private:
 
+		void Initialize();
 
 	public:
 
@@ -78,6 +83,7 @@ namespace ActionUI
 	{
 	private:
 
+		void Initialize();
 
 	public:
 
