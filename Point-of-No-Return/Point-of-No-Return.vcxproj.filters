@@ -67,6 +67,9 @@
     <ClCompile Include="BackGraund.cpp">
       <Filter>Feature\横スクロール</Filter>
     </ClCompile>
+    <ClCompile Include="Hero.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
     <ClCompile Include="Gravity.cpp">
       <Filter>Feature\横スクロール</Filter>
     </ClCompile>
@@ -111,6 +114,9 @@
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Feature\横スクロール\当たり判定</Filter>
+    </ClInclude>
+    <ClInclude Include="Hero.h">
+      <Filter>Feature\横スクロール</Filter>
     </ClInclude>
     <ClInclude Include="Gravity.h">
       <Filter>Feature\横スクロール</Filter>

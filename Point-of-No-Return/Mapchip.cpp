@@ -63,12 +63,31 @@ void Mapchip::InitMap()
 	}
 }
 
-
-
-int Mapchip::CalcMapNumber(int x, int y)
+Matrix Mapchip::CalcMapMatrix(const Vec2& position, const Vec2& offset)
 {
-	int col = (x / CHIP_SIZE) * CHIP_SIZE;
-	int row = (y / CHIP_SIZE) * CHIP_SIZE;
+	int col = (position.x.value + offset.x.value) / CHIP_SIZE;
+	int row = (position.y.value + offset.y.value) / CHIP_SIZE;
 
-	return map[row][col];
+	Matrix matrix =
+	{
+		Col(col),
+		Row(row)
+	};
+
+	return matrix;
+}
+
+
+Vec2 Mapchip::CalcMapPosition(const Matrix& matrix,const Vec2& offset)
+{
+	float coordinatex = (matrix.col.value * CHIP_SIZE) - offset.x.value;
+	float coordinatey = (matrix.row.value * CHIP_SIZE) - offset.y.value;
+
+	Vec2 position =
+	{
+		CoordinateX(coordinatex),
+		CoordinateY(coordinatey)
+	};
+
+	return position;
 }
