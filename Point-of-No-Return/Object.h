@@ -304,6 +304,29 @@ struct Name
 	std::string value;
 };
 
+struct Status
+{
+	Status(HP hp, MP mp, IP ip, Attack at, Defense df, Speed speed, MagicAttack magic_at) : hp(hp), mp(mp), ip(ip), at(at), df(df), speed(speed), magic_at(magic_at) {};
+	HP hp;
+	MP mp;
+	IP ip;
+    Attack at;
+	Defense df;
+	Speed speed;
+	MagicAttack magic_at;
+};
+
+struct Parameter
+{
+	Parameter(Luck luck, Love love, Time time, Gold gold, Age age) : luck(luck), love(love), time(time), gold(gold), age(age) {};
+	Luck luck;
+	Love love;
+	Time time;
+	Gold gold;
+	Age age;
+
+};
+
 struct TextureName
 {
 	explicit TextureName(std::string value) :value(value) {}
