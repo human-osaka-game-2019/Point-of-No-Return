@@ -7,21 +7,15 @@
 #include "Ending.h"
 #include "Mapchip.h"
 
-namespace Display
-{
-	const float DISPLAY_WIDTH = 1920;
-	const float DISPLAY_HEIGHT = 1080;
-
-	RECT DisplayRect
-	{ 0,
-	  0,
-	  static_cast<long>(DISPLAY_WIDTH),
-	  static_cast<long>(DISPLAY_HEIGHT)
-	};
-
-}
-
 SceneBase* SceneManager::scene = nullptr;
+
+
+RECT DisplayRect
+{ 0,
+  0,
+  static_cast<long>(Display::DISPLAY_WIDTH),
+  static_cast<long>(Display::DISPLAY_HEIGHT)
+};
 
 
 INT WINAPI WinMain(
@@ -129,7 +123,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 		switch (wp)
 		{
 		case VK_RETURN:
-			dx.ChangeDisplayMode(hWnd, Display::DisplayRect);
+			dx.ChangeDisplayMode(hWnd, DisplayRect);
 			return 0;
 		case VK_F4:
 			PostMessage(hWnd, WM_CLOSE, 0, 0);

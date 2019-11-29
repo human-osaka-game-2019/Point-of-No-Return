@@ -10,7 +10,7 @@ namespace Accelerator
 const float MaxValue = 5.0f;
 
 //! 加速度に加算する値
-const float AddValue = 0.5f;
+const float AddValue = 0.1f;
 
 /**
 * @class Acceleration
@@ -50,7 +50,7 @@ private:
 class Gravity {
 public:
 
-	explicit Gravity(Vec2* vec):vec(vec) {}
+	explicit Gravity(Position* vec):vec(vec) {}
 
 	~Gravity() {}
 
@@ -74,7 +74,7 @@ public:
 
 private:
 	Accelerator::Acceleration acceleration{ 0 };
-	Vec2* vec;
+	Position* vec;
 };
 
 #endif

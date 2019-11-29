@@ -2,7 +2,7 @@
 
 namespace
 {
-	const float jump = 15;
+	const float jump = 5;
 }
 
 namespace Accelerator
@@ -25,7 +25,7 @@ void Acceleration::Jump()
 
 }
 
-void Gravity::Apply() 
+void Gravity::Apply()
 {
 	vec->y.value += acceleration.GetValue();
 	acceleration.Accelerate();
