@@ -19,6 +19,12 @@
     <Filter Include="Feature\横スクロール">
       <UniqueIdentifier>{c8408ca0-c940-4e49-9c5c-e1c6e7ad308d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{cea1f81a-8264-4361-ab38-a34eb0da80c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feature\横スクロール\当たり判定">
+      <UniqueIdentifier>{fddc3121-9aa7-4a74-9902-513f06404f35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Title.cpp">
@@ -28,9 +34,6 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Result.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Ending.cpp">
@@ -46,6 +49,24 @@
       <Filter>Feature</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Load.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Save.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Feature\横スクロール\当たり判定</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGraund.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Title.h">
@@ -55,9 +76,6 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Result.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Ending.h">
@@ -73,5 +91,23 @@
       <Filter>Feature</Filter>
     </ClInclude>
     <ClInclude Include="Main.h" />
+    <ClInclude Include="Load.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Save.h">
+      <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGraund.h">
+      <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Feature\横スクロール\当たり判定</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

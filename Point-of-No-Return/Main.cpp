@@ -1,8 +1,28 @@
 ﻿#include "Main.h"
+#include "Scene.h"
+#include "Title.h"
+#include "Game.h"
+#include "Load.h"
+#include "Help.h"
+#include "Ending.h"
+#include "Mapchip.h"
 
-#pragma comment(lib,"../Point-of-No-Return/Lib/DirectX.lib")
+namespace Display
+{
+	const float DISPLAY_WIDTH = 1920;
+	const float DISPLAY_HEIGHT = 1080;
 
-DirectX dx;
+	RECT DisplayRect
+	{ 0,
+	  0,
+	  static_cast<long>(DISPLAY_WIDTH),
+	  static_cast<long>(DISPLAY_HEIGHT)
+	};
+
+}
+
+SceneBase* SceneManager::scene = nullptr;
+
 
 INT WINAPI WinMain(
 	_In_ HINSTANCE hInstance,
@@ -10,6 +30,10 @@ INT WINAPI WinMain(
 	_In_ LPSTR CmdLine,
 	_In_ INT nCmdShow)
 {
+
+	DirectX& dx = DirectX::GetInstance();
+
+
 	const TCHAR AppName[] = _T("Point of No Return");
 
 	MSG msg;
@@ -38,20 +62,26 @@ INT WINAPI WinMain(
 		WS_OVERLAPPEDWINDOW | WS_VISIBLE,
 		0,
 		0,
-		DISPLAY_WIDTH,
-		DISPLAY_HEIGHT,
+		static_cast<int>(Display::DISPLAY_WIDTH),
+		static_cast<int>(Display::DISPLAY_HEIGHT),
 		NULL,
 		NULL,
 		hInstance,
 		NULL
 	);
 
+
+
+
 	ShowWindow(hWnd, SW_SHOW);
 	UpdateWindow(hWnd);
 
-	dx.InitDirectX(hWnd, DISPLAY_WIDTH, DISPLAY_HEIGHT);
+	dx.InitDirectX(hWnd, Display::DISPLAY_WIDTH, Display::DISPLAY_HEIGHT);
 
 	timeBeginPeriod(1);
+
+	// 後でTitleIDに変更する
+	SceneManager::Initialize(SceneManager::TitleID);
 
 	while (msg.message != WM_QUIT)
 	{
@@ -66,6 +96,10 @@ INT WINAPI WinMain(
 			if (CurrSync - PrevSync >= 1000 / 60)
 			{
 				dx.BeginScene();
+
+
+				SceneManager::Update();
+				SceneManager::Draw();
 
 
 
@@ -83,15 +117,19 @@ INT WINAPI WinMain(
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 {
+	DirectX& dx = DirectX::GetInstance();
+
 	switch (msg)
 	{
 	case WM_DESTROY:
+		dx.AllRelease();
 		PostQuitMessage(0);
 		break;
 	case WM_SYSKEYDOWN:
 		switch (wp)
 		{
 		case VK_RETURN:
+			dx.ChangeDisplayMode(hWnd, Display::DisplayRect);
 			return 0;
 		case VK_F4:
 			PostMessage(hWnd, WM_CLOSE, 0, 0);

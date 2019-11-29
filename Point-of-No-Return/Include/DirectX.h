@@ -21,6 +21,41 @@ namespace DX {
 	class DirectX {
 
 	private:
+		//! Direct3Dのインターフェイス
+		LPDIRECT3D9 pDirect3D;
+
+		//! Direct3Dのデバイス
+		IDirect3DDevice9* pD3Device;
+
+		LPD3DXEFFECT pD3Effect;
+
+		//! ウィンドウの設定
+		D3DPRESENT_PARAMETERS D3dPresentParameters;
+		D3DPRESENT_PARAMETERS D3dppWin;
+		D3DPRESENT_PARAMETERS D3dppFull;
+
+		//! DirectInputのキーボードデバイス
+		LPDIRECTINPUTDEVICE8 pDxIKeyDevice;
+
+		//! DirectInputのインターフェイス
+		LPDIRECTINPUT8 pDinput;
+
+		//! テクスチャ
+		std::unordered_map<std::string, LPDIRECT3DTEXTURE9> pTexture;
+
+		//! フォント
+		std::unordered_map<std::string, LPD3DXFONT> pFont;
+
+		/*
+		*@brief Constractor
+		*/
+		DirectX();
+
+		/*
+		*@brief Destractor
+		*/
+		~DirectX();
+
 		/*
 		*@brief カスタムバーテックス
 		*/
@@ -81,6 +116,11 @@ namespace DX {
 		VOID UpdateKeyState();
 
 		/*
+		*@brief WindowSizeの変更
+		*/
+		HRESULT ChangeWindowSize(HWND hWnd);
+
+		/*
 		*@brief 回転
 		*@param [in] 回転前の頂点情報
 		*@param [out] 回転後の頂点情報
@@ -136,37 +176,16 @@ namespace DX {
 		VOID MakeVertex(CUSTOMVERTEX customvertex[],FLOAT width,FLOAT height,FLOAT tu,FLOAT tv,FLOAT tw, FLOAT th, BOOL is_Reverse);
 
 	public:
-
-		//! Direct3Dのインターフェイス
-		LPDIRECT3D9 pDirect3D;
-
-		//! Direct3Dのデバイス
-		IDirect3DDevice9* pD3Device;
-
-		LPD3DXEFFECT pD3Effect;
-
-		//! ウィンドウの設定
-		D3DPRESENT_PARAMETERS D3dPresentParameters;
-		D3DPRESENT_PARAMETERS D3dppWin;
-		D3DPRESENT_PARAMETERS D3dppFull;
+		DirectX(const DirectX&) = delete;
+		DirectX& operator=(const DirectX&) = delete;
+		DirectX(DirectX&&) = delete;
+		DirectX& operator=(DirectX&&) = delete;
 
 		//! ウィンドウ(DirectX)がアクティブかどうか
 		bool is_Active;
 
 		//! デバイスをロストしたかどうか
 		bool DeviceLost;
-
-		//! DirectInputのキーボードデバイス
-		LPDIRECTINPUTDEVICE8 pDxIKeyDevice;
-
-		//! DirectInputのインターフェイス
-		LPDIRECTINPUT8 pDinput;
-
-		//! テクスチャ
-		std::unordered_map<std::string, LPDIRECT3DTEXTURE9> pTexture;
-
-		//! フォント
-		std::unordered_map<std::string, LPD3DXFONT> pFont;
 
 		//!ウィンドウモードかどうか(trueでウィンドウモード、falseでフルスクリーンモード)
 		bool WinMode;
@@ -179,6 +198,7 @@ namespace DX {
 			OFF
 		};
 
+		//! フォントの色
 		enum FONT_COLOR {
 			BLACK,
 			WHITE,
@@ -187,6 +207,7 @@ namespace DX {
 			BLUE,
 		};
 
+		//! フォントの揃え方
 		enum BRING {
 			TOP,
 			LEFT,
@@ -199,14 +220,13 @@ namespace DX {
 		KEY_STATE KeyState[256];
 
 		/*
-		*@brief Constractor
+		*@brief インスタンスの取得
+		*@return インスタンスの参照
 		*/
-		DirectX();
-
-		/*
-		*@brief Destractor
-		*/
-		~DirectX();
+		inline static DirectX& GetInstance() {
+			static DirectX instance;
+			return instance;
+		}
 
 		/*
 		*@brief DirectXの初期化
@@ -237,9 +257,9 @@ namespace DX {
 		VOID ChangeDisplayMode(HWND hWnd, RECT WinRect);
 
 		/*
-		*@brief WindowSizeの変更
+		*@brief WindowSizeの変更の可否
 		*/
-		HRESULT ChangeWindowSize(HWND hWnd);
+		bool CanChangeWindowSize(HWND hWnd, WPARAM wp, LPARAM lp);
 
 		/*
 		*@brief シーンの始まりの関数
@@ -258,10 +278,31 @@ namespace DX {
 		*/
 		bool LoadTexture(const CHAR* FileName, std::string TextureName);
 
+		/*
+		*@brief フォント作成
+		*@param フォントのサイズ
+		*@param フォントの名前
+		*@param 登録するフォントのキー
+		*/
 		bool MakeFont(int FontSize, const CHAR FontName[] ,std::string FontKey);
 
+		/*
+		*@brief フォントの描画
+		*@param 表示する文字
+		*@param 表示する文字の位置
+		*@param 表示する文字の色(FONT_COLOR参照)
+		*@param 使用するフォントのキー
+		*/
 		VOID DrawFont(const CHAR text[], RECT textPos, FONT_COLOR color, std::string FontKey);
 
+		/*
+		*@brief フォントの描画
+		*@param 表示する文字
+		*@param 表示する文字の位置
+		*@param 表示する文字の色(FONT_COLOR参照)
+		*@param 表示する文字の揃える位置(BRING参照)
+		*@param 使用するフォントのキー
+		*/
 		VOID DrawFontEx(const CHAR text[], RECT textPos, DWORD color, BRING bring, std::string FontKey);
 
 		/*
