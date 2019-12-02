@@ -13,6 +13,101 @@ namespace ActionUI
 	};
 
 	/**
+	 * @brief BerBaseクラス
+	 */
+	class BerBase
+	{
+	protected:
+
+		Vec2 position =
+		{
+			CoordinateX(0),
+			CoordinateY(0)
+		};
+
+		Size size =
+		{
+			Width(0),
+			Height(0)
+		};
+
+		TextureUV uv =
+		{
+			TextureU(0),
+			TextureV(0)
+		};
+
+		TextureSize texture_size =
+		{
+			Width(0),
+			Height(0)
+		};
+
+		TextureName texture_name = TextureName("Action");
+
+		Degree degree = Degree(0);
+		Zoom zoom = Zoom(0);
+		IsReverse is_reverse = IsReverse(false);
+
+	public:
+
+		virtual void Initialize();
+		virtual void Update();
+		virtual void Draw();
+		BerBase() {};
+		virtual ~BerBase() {};
+
+
+	};
+
+	/**
+	 * @brief FrameBaseクラス
+	 */
+	class FrameBase
+	{
+	protected:
+
+		Vec2 position =
+		{
+			CoordinateX(0),
+			CoordinateY(0)
+		};
+
+		Size size =
+		{
+			Width(0),
+			Height(0)
+		};
+
+		TextureUV uv =
+		{
+			TextureU(0),
+			TextureV(0)
+		};
+
+		TextureSize texture_size =
+		{
+			Width(0),
+			Height(0)
+		};
+
+		TextureName texture_name = TextureName("Action");
+
+		Degree degree = Degree(0);
+		Zoom zoom = Zoom(0);
+		IsReverse is_reverse = IsReverse(false);
+
+	public:
+
+		virtual void Initialize();
+		virtual void Update();
+		virtual void Draw();
+		FrameBase() {};
+		virtual ~FrameBase() {};
+
+	};
+
+	/**
 	 * @brief SatatusUIクラス
 	 */
 	class StatusUI : public GameUI
@@ -23,25 +118,6 @@ namespace ActionUI
 
 	public:
 
-
-	};
-
-	/**
-	 * @brief Gaugeクラス
-	 */
-	class Gauge : public StatusUI
-	{
-	protected:
-
-		void Initialize(float x, float y, float width, float height, float tu, float tv, float tu_size, float tv_size);
-
-		Hero hero;
-
-	public:
-
-		Gauge(float x, float y, float width, float height, float tu, float tv, float tu_size, float tv_size);
-
-		void Update(State state);
 
 	};
 
@@ -102,6 +178,26 @@ namespace ActionUI
 		}
 		
 		~HpUI() {};
+
+		class HpBer : public BerBase
+		{
+		private:
+
+
+		public:
+
+
+		};
+
+		class HpFrame : public FrameBase
+		{
+		private:
+
+
+		public:
+
+
+		};
 	
 	};
 
@@ -123,6 +219,29 @@ namespace ActionUI
 
 		~MpUI() {};
 
+		class MpBer : public BerBase
+		{
+		private:
+
+
+
+		public:
+
+
+
+		};
+
+		class MpFrame : public FrameBase
+		{
+		private:
+
+
+
+		public:
+
+
+
+		};
 	};
 
 	/**
@@ -143,6 +262,29 @@ namespace ActionUI
 
 		~IpUI() {};
 
+		class IpBer : public BerBase
+		{
+		private:
+
+
+
+		public:
+
+
+
+		};
+
+		class IpFrame : public FrameBase
+		{
+		private:
+
+
+
+		public:
+
+
+
+		};
 	};
 
 }
