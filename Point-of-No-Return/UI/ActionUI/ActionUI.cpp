@@ -2,68 +2,32 @@
 
 namespace ActionUI
 {
-	Gauge::Gauge(float x, float y, float width, float height, float tu, float tv, float tu_size, float tv_size)
-	{
-		Initialize(x, y, width, height, tu, tv, tu_size, tv_size);
-	}
 
-	void Gauge::Initialize(float x, float y, float width, float height, float tu, float tv, float tu_size, float tv_size)
-	{
-		position =
-		{
-			CoordinateX(x),
-			CoordinateY(y)
-		};
+	//void Gauge::Update(State state)
+	//{
+	//	float value;
 
-		size =
-		{
-			Width(width),
-			Height(height)
-		};
+	//	Status status = hero.GetStatus();
 
-		uv =
-		{
-			TextureU(tu),
-			TextureV(tv)
-		};
+	//	switch (state)
+	//	{
+	//	case State::HP:
+	//		value = status.hp.value;
+	//		break;
+	//	case State::MP:
+	//		value = status.mp.value;
+	//		break;
+	//	case State::IP:
+	//		value = status.ip.value;
+	//		break;
+	//	default:
+	//		break;
+	//	}
 
-		texture_size =
-		{
-			Width(tu_size),
-			Height(tv_size)
-		};
-
-		texture_name = TextureName("Action");
-		degree = Degree(0);
-		zoom = Zoom(1.0);
-		is_reverse = IsReverse(false);
-	}
-
-	void Gauge::Update(State state)
-	{
-		float value;
-
-		Status status = hero.GetStatus();
-
-		switch (state)
-		{
-		case State::HP:
-			value = status.hp.value;
-			break;
-		case State::MP:
-			value = status.mp.value;
-			break;
-		case State::IP:
-			value = status.ip.value;
-			break;
-		default:
-			break;
-		}
-
-		float drow_size = (size.width.value / 100) * value;
+	//	float drow_size = (size.width.value / 100) * value;
 
 
-	}
+	//}
 
 	void ItemUI::Initialize()
 	{
