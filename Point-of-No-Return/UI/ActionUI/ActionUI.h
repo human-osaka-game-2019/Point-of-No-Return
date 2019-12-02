@@ -5,6 +5,12 @@
 
 namespace ActionUI
 {
+	enum class State
+	{
+		HP,
+		MP,
+		IP
+	};
 
 	/**
 	 * @brief SatatusUIクラス
@@ -17,7 +23,25 @@ namespace ActionUI
 
 	public:
 
-		float ゲージを減らす関数(const Status& status, Size size);
+
+	};
+
+	/**
+	 * @brief Gaugeクラス
+	 */
+	class Gauge : public StatusUI
+	{
+	protected:
+
+		void Initialize(float x, float y, float width, float height, float tu, float tv, float tu_size, float tv_size);
+
+		Hero hero;
+
+	public:
+
+		Gauge(float x, float y, float width, float height, float tu, float tv, float tu_size, float tv_size);
+
+		void Update(State state);
 
 	};
 
@@ -28,10 +52,16 @@ namespace ActionUI
 	{
 	private:
 
-		void Initialize() {};
+		void Initialize();
 
 	public:
 
+		ItemUI()
+		{
+			Initialize();
+		}
+
+		~ItemUI() {};
 
 	};
 
@@ -46,6 +76,13 @@ namespace ActionUI
 
 	public:
 
+		MoneyUI() 
+		{
+			Initialize();
+		}
+
+		~MoneyUI() {};
+
 	};
 
 	/**
@@ -59,7 +96,12 @@ namespace ActionUI
 
 	public:
 
+		HpUI() 
+		{
+			Initialize();
+		}
 		
+		~HpUI() {};
 	
 	};
 
@@ -74,6 +116,13 @@ namespace ActionUI
 
 	public:
 
+		MpUI()
+		{
+			Initialize();
+		}
+
+		~MpUI() {};
+
 	};
 
 	/**
@@ -86,6 +135,13 @@ namespace ActionUI
 		void Initialize();
 
 	public:
+
+		IpUI()
+		{
+			Initialize();
+		}
+
+		~IpUI() {};
 
 	};
 
