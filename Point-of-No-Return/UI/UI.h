@@ -9,12 +9,6 @@
  */
 class UI :public Object
 {
-protected:
-
-
-public:
-
-
 
 };
 
@@ -23,12 +17,6 @@ public:
  */
 class TitleUI : public UI
 {
-protected:
-
-
-public:
-
-
 
 };
 
@@ -37,10 +25,6 @@ public:
  */
 class SelectUI : public UI
 {
-protected:
-
-
-public:
 
 };
 
@@ -49,15 +33,15 @@ public:
  */
 class GameUI : public UI
 {
+public:
+
+	virtual void UpDate() {};
+	virtual void Draw() {};
+
 protected:
 
 	virtual void Initialize() {};
-	
-	//Character character;
 
-public:
-
-	
 
 };
 
@@ -66,11 +50,6 @@ public:
  */
 class HelpUI : public UI
 {
-protected:
-
-
-public:
-
 
 };
 
