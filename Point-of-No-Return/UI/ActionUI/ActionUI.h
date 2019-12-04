@@ -5,50 +5,11 @@
 
 namespace ActionUI
 {
-	enum class State
-	{
-		HP,
-		MP,
-		IP
-	};
-
 	/**
 	 * @brief BerBaseクラス
 	 */
 	class BarBase
 	{
-	protected:
-
-		Vec2 position =
-		{
-			CoordinateX(0),
-			CoordinateY(0)
-		};
-
-		Size size =
-		{
-			Width(0),
-			Height(0)
-		};
-
-		TextureUV uv =
-		{
-			TextureU(0),
-			TextureV(0)
-		};
-
-		TextureSize texture_size =
-		{
-			Width(0),
-			Height(0)
-		};
-
-		TextureName texture_name = TextureName("Action");
-
-		Degree degree = Degree(0);
-		Zoom zoom = Zoom(0);
-		IsReverse is_reverse = IsReverse(false);
-
 	public:
 
 		DX::DirectX& dx = DX::DirectX::GetInstance();
@@ -60,13 +21,6 @@ namespace ActionUI
 		virtual ~BarBase() {};
 
 
-	};
-
-	/**
-	 * @brief FrameBaseクラス
-	 */
-	class FrameBase
-	{
 	protected:
 
 		Vec2 position =
@@ -99,6 +53,14 @@ namespace ActionUI
 		Zoom zoom = Zoom(0);
 		IsReverse is_reverse = IsReverse(false);
 
+	
+	};
+
+	/**
+	 * @brief FrameBaseクラス
+	 */
+	class FrameBase
+	{
 	public:
 
 		DX::DirectX& dx = DX::DirectX::GetInstance();
@@ -107,6 +69,88 @@ namespace ActionUI
 		virtual void Draw() {};
 		FrameBase() {};
 		virtual ~FrameBase() {};
+
+	protected:
+
+		Vec2 position =
+		{
+			CoordinateX(0),
+			CoordinateY(0)
+		};
+
+		Size size =
+		{
+			Width(0),
+			Height(0)
+		};
+
+		TextureUV uv =
+		{
+			TextureU(0),
+			TextureV(0)
+		};
+
+		TextureSize texture_size =
+		{
+			Width(0),
+			Height(0)
+		};
+
+		TextureName texture_name = TextureName("Action");
+
+		Degree degree = Degree(0);
+		Zoom zoom = Zoom(0);
+		IsReverse is_reverse = IsReverse(false);
+
+	};
+
+	/**
+	 * @brief ItemIconBaseクラス
+	 */
+	class IconBase
+	{
+	public:
+
+		DX::DirectX& dx = DX::DirectX::GetInstance();
+
+		virtual void Initialize() {};
+		virtual void Draw() {};
+
+		IconBase() {};
+		virtual ~IconBase() {};
+
+	protected:
+
+		Vec2 position =
+		{
+			CoordinateX(0),
+			CoordinateY(0)
+		};
+
+		Size size =
+		{
+			Width(0),
+			Height(0)
+		};
+
+		TextureUV uv =
+		{
+			TextureU(0),
+			TextureV(0)
+		};
+
+		TextureSize texture_size =
+		{
+			Width(0),
+			Height(0)
+		};
+
+		TextureName texture_name = TextureName("Action");
+
+		Degree degree = Degree(0);
+		Zoom zoom = Zoom(0);
+		IsReverse is_reverse = IsReverse(false);
+
 
 	};
 
@@ -132,6 +176,9 @@ namespace ActionUI
 
 		void UpDate();
 
+		IconBase ItemIcon;
+
+
 	};
 
 	/**
@@ -139,10 +186,6 @@ namespace ActionUI
 	 */
 	class MoneyUI : public GameUI
 	{
-	private:
-
-		void Initialize();
-
 	public:
 
 		MoneyUI() 
@@ -153,6 +196,19 @@ namespace ActionUI
 		~MoneyUI() {};
 
 		void Draw();
+
+		class MoneyIcon : public IconBase
+		{
+		public:
+			void Initialize() {};
+			void Draw() {};
+		
+		};
+
+	private:
+
+		void Initialize();
+		MoneyIcon moneyIcon;
 
 	};
 

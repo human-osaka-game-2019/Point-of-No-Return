@@ -81,6 +81,18 @@ namespace ActionUI
 
 	void MoneyUI::Initialize()
 	{
+		
+	}
+
+	void MoneyUI::Draw()
+	{
+		dx.DrawEx(position.x.value, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value);
+
+		moneyIcon.Draw();
+	}
+
+	void MoneyUI::MoneyIcon::Initialize()
+	{
 		position =
 		{
 			CoordinateX(1088),
@@ -116,7 +128,7 @@ namespace ActionUI
 		is_reverse = IsReverse(false);
 	}
 
-	void MoneyUI::Draw()
+	void MoneyUI::MoneyIcon::Draw()
 	{
 		dx.DrawEx(position.x.value, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value);
 	}
