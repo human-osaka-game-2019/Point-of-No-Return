@@ -200,8 +200,16 @@ namespace ActionUI
 		class MoneyIcon : public IconBase
 		{
 		public:
-			void Initialize() {};
-			void Draw() {};
+
+			MoneyIcon()
+			{
+				Initialize();
+			}
+
+			~MoneyIcon() {}
+
+			void Initialize();
+			void Draw();
 		
 		};
 

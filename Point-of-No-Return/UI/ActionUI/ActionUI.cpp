@@ -81,7 +81,40 @@ namespace ActionUI
 
 	void MoneyUI::Initialize()
 	{
-		
+		position =
+		{
+			CoordinateX(1188),
+			CoordinateY(0)
+		};
+
+		size =
+		{
+			Width(416),
+			Height(64)
+		};
+
+		float tu = 644.f / 2048.f;
+		float tv = 100.f / 514.f;
+
+		uv =
+		{
+			TextureU(tu),
+			TextureV(tv)
+		};
+
+		float tu_size = 416.f / 2048.f;
+		float tv_size = 64.f / 514.f;
+
+		texture_size =
+		{
+			Width(tu_size),
+			Height(tv_size)
+		};
+
+		texture_name = TextureName("ActionUI");
+		degree = Degree(0);
+		zoom = Zoom(1.0);
+		is_reverse = IsReverse(false);
 	}
 
 	void MoneyUI::Draw()
