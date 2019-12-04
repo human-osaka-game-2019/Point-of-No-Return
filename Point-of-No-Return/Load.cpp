@@ -25,6 +25,7 @@ DWORD WINAPI GameThread(HWND hWnd, LPVOID* data)
 	dx.LoadTexture("Player.png", "Player");
 	dx.LoadTexture("unified_block.png", "blocks");
 	dx.LoadTexture("char.jpg", "char");
+	dx.LoadTexture("actionpart_UI.png", "ActionUI");
 	ExitThread(0);
 }
 
