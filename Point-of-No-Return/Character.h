@@ -2,6 +2,7 @@
 #define CHARCTER_H_
 
 #include "Object.h"
+#include "Gravity.h"
 
 /**
  * @brief 方向
@@ -37,6 +38,7 @@ public:
 	 * @details	HitCheckの中で呼び出す
 	 */
 	virtual void CorrectCoordinate(Direction direction, const Vec2& blockPosition) {};
+
 protected:
 
 	//! 前の座標を保存する
@@ -46,8 +48,7 @@ protected:
 		CoordinateY(0)
 	};
 
-	// TODO: あとでprimitive型wrapします
-	float gravity = 0;
+	Gravity gravity{ &position };
 
 private:
 
