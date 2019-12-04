@@ -7,6 +7,9 @@
 #include "Character.h"
 #include "Hero.h"
 #include "Collision.h"
+#include "..//Point-of-No-Return/UI/ActionUI/ActionUI.h"
+
+
 
 /**
  * @brief ゲームシーン
@@ -36,6 +39,12 @@ public:
 	HANDLE CreateLoadThread();
 
 private:
+
+	ActionUI::HpGauge hpGauge;
+	ActionUI::MpGauge mpGauge;
+	ActionUI::IpGauge ipGauge;
+	ActionUI::ItemUI itemUI;
+	ActionUI::MoneyUI moneyUI;
 
 	Mapchip mapchip;
 
