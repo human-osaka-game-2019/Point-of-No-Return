@@ -29,7 +29,7 @@ namespace RPGUI
 	public:
 
 
-	}
+	};
 
 	/**
 	 * @brief HeroWindowUIクラス
