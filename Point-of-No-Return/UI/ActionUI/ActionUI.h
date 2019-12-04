@@ -15,7 +15,7 @@ namespace ActionUI
 	/**
 	 * @brief BerBaseクラス
 	 */
-	class BerBase
+	class BarBase
 	{
 	protected:
 
@@ -51,11 +51,13 @@ namespace ActionUI
 
 	public:
 
-		virtual void Initialize();
-		virtual void Update();
-		virtual void Draw();
-		BerBase() {};
-		virtual ~BerBase() {};
+		DX::DirectX& dx = DX::DirectX::GetInstance();
+
+		virtual void Initialize() {};
+		virtual void UpDate() {};
+		virtual void Draw() {};
+		BarBase() {};
+		virtual ~BarBase() {};
 
 
 	};
@@ -99,25 +101,12 @@ namespace ActionUI
 
 	public:
 
-		virtual void Initialize();
-		virtual void Update();
-		virtual void Draw();
+		DX::DirectX& dx = DX::DirectX::GetInstance();
+
+		virtual void Initialize() {};
+		virtual void Draw() {};
 		FrameBase() {};
 		virtual ~FrameBase() {};
-
-	};
-
-	/**
-	 * @brief SatatusUIクラス
-	 */
-	class StatusUI : public GameUI
-	{
-	protected:
-
-
-
-	public:
-
 
 	};
 
@@ -139,6 +128,10 @@ namespace ActionUI
 
 		~ItemUI() {};
 
+		void Draw();
+
+		void UpDate();
+
 	};
 
 	/**
@@ -159,132 +152,140 @@ namespace ActionUI
 
 		~MoneyUI() {};
 
+		void Draw();
+
 	};
 
 	/**
 	 * @brief HpUIクラス
 	 */
-	class HpUI : public StatusUI
+	class HpGauge : public GameUI
 	{
-	private:
-
-		void Initialize();
-
 	public:
 
-		HpUI() 
+		HpGauge() 
 		{
 			Initialize();
-		}
+		};
 		
-		~HpUI() {};
+		~HpGauge() {};
 
-		class HpBer : public BerBase
+		class HpBar : public BarBase
 		{
-		private:
-
-
 		public:
 
+			void Initialize();
+			void UpDate();
+			void Draw();
 
 		};
 
 		class HpFrame : public FrameBase
 		{
-		private:
-
-
 		public:
 
+			void Initialize();
+			void Draw();
 
 		};
-	
+
+		void UpDate();
+		void Draw();
+
+	private:
+
+		void Initialize();
+		HpBar hpBar;
+		HpFrame hpFrame;
 	};
 
 	/**
 	 * @brief MpUIクラス
 	 */
-	class MpUI : public StatusUI
+	class MpGauge : public GameUI
 	{
-	private:
-
-		void Initialize();
-
 	public:
 
-		MpUI()
+		MpGauge() 
 		{
 			Initialize();
-		}
+		};
 
-		~MpUI() {};
+		~MpGauge() {};
 
-		class MpBer : public BerBase
+		class MpBar : public BarBase
 		{
-		private:
-
-
-
 		public:
 
-
+			void Initialize();
+			void UpDate();
+			void Draw();
 
 		};
 
 		class MpFrame : public FrameBase
 		{
-		private:
-
-
-
 		public:
 
-
+			void Initialize();
+			void Draw();
 
 		};
+
+		void UpDate();
+		void Draw();
+
+	private:
+
+		void Initialize();
+		MpBar mpBar;
+		MpFrame mpFrame;
 	};
 
 	/**
 	 * @brief IpUIクラス
 	 */
-	class IpUI : public StatusUI
+	class IpGauge : public GameUI
 	{
-	private:
-
-		void Initialize();
-
 	public:
 
-		IpUI()
+		IpGauge() 
 		{
 			Initialize();
-		}
+		};
 
-		~IpUI() {};
+		~IpGauge() {};
 
-		class IpBer : public BerBase
+		class IpBar : public BarBase
 		{
-		private:
-
-
-
 		public:
 
-
+			void Initialize();
+			void UpDate();
+			void Draw();
 
 		};
 
 		class IpFrame : public FrameBase
 		{
-		private:
-
-
-
 		public:
 
-
+			void Initialize();
+			void Draw();
 
 		};
+
+		void UpDate();
+		void Draw();
+
+	private:
+
+		void Initialize();
+
+		IpFrame ipFrame;
+		IpBar ipBar;
+		
+
 	};
 
 }
