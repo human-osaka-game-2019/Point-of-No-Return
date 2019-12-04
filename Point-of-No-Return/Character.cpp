@@ -59,6 +59,8 @@ void Hero::Update()
 		position.y.value += 10.0f;
 
 	}
+
+	gravity.Apply();
 }
 
 void Hero::CorrectCoordinate(Direction direction, const Vec2& blockPosition)
@@ -67,6 +69,7 @@ void Hero::CorrectCoordinate(Direction direction, const Vec2& blockPosition)
 	{
 	case Direction::Up:
 		position.y.value = blockPosition.y.value - size.height.value;
+		gravity.AccelerationReset();
 		break;
 	case Direction::Down:
 		position.y.value = blockPosition.y.value + Mapchip::CHIP_SIZE;
