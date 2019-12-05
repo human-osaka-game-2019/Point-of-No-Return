@@ -33,6 +33,11 @@ public:
 	*/
 	void Accelerate();
 
+	/**
+	 * @brief 重力を加速運動させる
+	 */
+	void Jump();
+
 private:
 	float value;
 };
@@ -61,6 +66,11 @@ public:
 	{
 		acceleration.Reset();
 	};
+
+	inline void Jump()
+	{
+		acceleration.Jump();
+	}
 
 private:
 	Accelerator::Acceleration acceleration{ 0 };
