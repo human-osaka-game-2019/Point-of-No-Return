@@ -49,9 +49,9 @@ void Hero::Update()
 		position.x.value -= 10.0f;
 	}
 
-	if (dx.GetKeyState(DIK_W) == dx.ON)
+	if (dx.GetKeyState(DIK_W) == dx.PUSH)
 	{
-		position.y.value -= 10.0f;
+		gravity.Jump();
 	}
 
 	if (dx.GetKeyState(DIK_S) == dx.ON)

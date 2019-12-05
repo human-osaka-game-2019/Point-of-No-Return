@@ -1,5 +1,10 @@
 ﻿#include "Gravity.h"
 
+namespace
+{
+	const float jump = 15;
+}
+
 namespace Accelerator
 {
 
@@ -11,6 +16,11 @@ void Acceleration::Accelerate()
 void Acceleration::Reset()
 {
 	value = 0.0f;
+}
+
+void Acceleration::Jump()
+{
+	value = -jump;
 }
 
 }
