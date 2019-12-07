@@ -182,6 +182,9 @@
     <ClInclude Include="StageScroll.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="UI\ActionUI\ActionUI.h" />
+    <ClInclude Include="UI\ActionUI\BarBase.h" />
+    <ClInclude Include="UI\ActionUI\FrameBase.h" />
+    <ClInclude Include="UI\ActionUI\IconBase.h" />
     <ClInclude Include="UI\RPGUI\RPGUI.h" />
     <ClInclude Include="UI\UI.h" />
   </ItemGroup>

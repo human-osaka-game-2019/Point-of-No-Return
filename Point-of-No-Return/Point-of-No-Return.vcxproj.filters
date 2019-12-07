@@ -151,5 +151,14 @@
     <ClInclude Include="Observer\Observer.h">
       <Filter>Feature\横スクロール\Observer</Filter>
     </ClInclude>
+    <ClInclude Include="UI\ActionUI\BarBase.h">
+      <Filter>Feature\横スクロール\UI\ActionUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\ActionUI\FrameBase.h">
+      <Filter>Feature\横スクロール\UI\ActionUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\ActionUI\IconBase.h">
+      <Filter>Feature\横スクロール\UI\ActionUI</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
