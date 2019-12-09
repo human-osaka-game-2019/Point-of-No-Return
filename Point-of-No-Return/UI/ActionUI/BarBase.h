@@ -2,6 +2,7 @@
 #define BARBASE_H
 
 #include "../UI.h"
+#include "../../Character.h"
 
 /**
  * @brief BerBaseクラス
@@ -20,6 +21,8 @@ public:
 
 
 protected:
+
+	//Character
 
 	Vec2 position =
 	{
@@ -51,6 +54,8 @@ protected:
 	Zoom zoom = Zoom(0);
 	IsReverse is_reverse = IsReverse(false);
 
+	const float MAX_WIDTH = 576;
+	const float HEIGHT = 48;
 
 };
 
