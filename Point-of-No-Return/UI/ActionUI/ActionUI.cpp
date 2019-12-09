@@ -3,43 +3,20 @@
 namespace ActionUI
 {
 
-	//void Gauge::Update(State state)
-	//{
-	//	float value;
-
-	//	Status status = hero.GetStatus();
-
-	//	switch (state)
-	//	{
-	//	case State::HP:
-	//		value = status.hp.value;
-	//		break;
-	//	case State::MP:
-	//		value = status.mp.value;
-	//		break;
-	//	case State::IP:
-	//		value = status.ip.value;
-	//		break;
-	//	default:
-	//		break;
-	//	}
-	//	float drow_size = (size.width.value / 100) * value;
-	//}
-
 	// ----------- ItemUI ---------------------------------------------------------------------------------------------------------
 
 	void ItemUI::Initialize()
 	{
 		position =
 		{
-			CoordinateX(576),
+			CoordinateX(576 + 48),
 			CoordinateY(0)
 		};
 
 		size =
 		{
-			Width(512),
-			Height(128)
+			Width(64 * 10),
+			Height(64 * 2)
 		};
 
 		float tu = 130.f / 2048.f;
@@ -83,14 +60,14 @@ namespace ActionUI
 	{
 		position =
 		{
-			CoordinateX(1188),
-			CoordinateY(0)
+			CoordinateX(1920 - 480),
+			CoordinateY(14)
 		};
 
 		size =
 		{
-			Width(416),
-			Height(64)
+			Width(480),
+			Height(100)
 		};
 
 		float tu = 644.f / 2048.f;
@@ -128,14 +105,14 @@ namespace ActionUI
 	{
 		position =
 		{
-			CoordinateX(1088),
+			CoordinateX(1920 - 608),
 			CoordinateY(0)
 		};
 
 		size =
 		{
-			Width(100),
-			Height(100)
+			Width(128),
+			Height(128)
 		};
 
 		float tv = 100.f / 514.f;
@@ -236,7 +213,7 @@ namespace ActionUI
 
 		size =
 		{
-			Width(576),
+			Width(64 * 9),
 			Height(48)
 		};
 
@@ -302,7 +279,7 @@ namespace ActionUI
 
 		size =
 		{
-			Width(576),
+			Width(64 * 9),
 			Height(48)
 		};
 
@@ -344,7 +321,7 @@ namespace ActionUI
 
 		size =
 		{
-			Width(576),
+			Width(64 * 9),
 			Height(48)
 		};
 

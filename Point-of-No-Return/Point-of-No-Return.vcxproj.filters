@@ -91,7 +91,7 @@
     <ClCompile Include="UI\RPGUI\RPGUI.cpp">
       <Filter>Feature\横スクロール\UI\RPGUI</Filter>
     </ClCompile>
-    <ClCompile Include="Observer\Observer.cpp">
+    <ClCompile Include="Observer\IObserver.cpp">
       <Filter>Feature\横スクロール\Observer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -148,9 +148,6 @@
     <ClInclude Include="UI\RPGUI\RPGUI.h">
       <Filter>Feature\横スクロール\UI\RPGUI</Filter>
     </ClInclude>
-    <ClInclude Include="Observer\Observer.h">
-      <Filter>Feature\横スクロール\Observer</Filter>
-    </ClInclude>
     <ClInclude Include="UI\ActionUI\BarBase.h">
       <Filter>Feature\横スクロール\UI\ActionUI</Filter>
     </ClInclude>
@@ -159,6 +156,9 @@
     </ClInclude>
     <ClInclude Include="UI\ActionUI\IconBase.h">
       <Filter>Feature\横スクロール\UI\ActionUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer\IObserver.h">
+      <Filter>Feature\横スクロール\Observer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
