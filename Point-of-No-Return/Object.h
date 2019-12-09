@@ -216,84 +216,96 @@ struct IsReverse
 //! ヒットポイント
 struct HP
 {
-	explicit HP(int value) :value(value) {}
+	explicit HP(int value,int max_value) :value(value),max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! マジックポイント
 struct MP
 {
-	explicit MP(int value) :value(value) {}
+	explicit MP(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! イマジナリーポイント/想像力
 struct IP
 {
-	explicit IP(int value) :value(value) {}
+	explicit IP(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 攻撃力
 struct Attack
 {
-	explicit Attack(int value) :value(value) {}
+	explicit Attack(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 防御力
 struct Defense
 {
-	explicit Defense(int value) :value(value) {}
+	explicit Defense(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 素早さ
 struct Speed
 {
-	explicit Speed(int value) :value(value) {}
+	explicit Speed(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 魔法攻撃力
 struct MagicAttack
 {
-	explicit MagicAttack(int value) :value(value) {}
+	explicit MagicAttack(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 運
 struct Luck
 {
-	explicit Luck(int value) :value(value) {}
+	explicit Luck(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 愛情
 struct Love
 {
-	explicit Love(int value) :value(value) {}
+	explicit Love(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 時間
 struct Time
 {
-	explicit Time(int value) :value(value) {}
+	explicit Time(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! お金
 struct Gold
 {
-	explicit Gold(int value) :value(value) {}
+	explicit Gold(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 年齢
 struct Age
 {
-	explicit Age(int value) :value(value) {}
+	explicit Age(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
