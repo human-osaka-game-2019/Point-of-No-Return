@@ -153,7 +153,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mapchip.cpp" />
     <ClCompile Include="Object.cpp" />
-    <ClCompile Include="Observer\Observer.cpp" />
+    <ClCompile Include="Observer\IObserver.cpp" />
     <ClCompile Include="Save.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Collision.cpp" />
@@ -176,7 +176,7 @@
     <ClInclude Include="Main.h" />
     <ClInclude Include="Mapchip.h" />
     <ClInclude Include="Object.h" />
-    <ClInclude Include="Observer\Observer.h" />
+    <ClInclude Include="Observer\IObserver.h" />
     <ClInclude Include="Save.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="StageScroll.h" />
