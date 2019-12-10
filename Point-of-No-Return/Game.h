@@ -40,15 +40,17 @@ public:
 
 private:
 
-	ActionUI::HpGauge hpGauge;
-	ActionUI::MpGauge mpGauge;
-	ActionUI::IpGauge ipGauge;
-	ActionUI::ItemUI itemUI;
-	ActionUI::GoldUI moneyUI;
+
 
 	Mapchip mapchip;
 
 	Hero hero{ "Player" };
+	
+	ActionUI::HpGauge hpGauge{ hero };
+	ActionUI::MpGauge mpGauge{ hero };
+	ActionUI::IpGauge ipGauge{ hero };
+	ActionUI::ItemUI itemUI;
+	ActionUI::GoldUI moneyUI;
 };
 
 
