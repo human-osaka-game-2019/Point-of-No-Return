@@ -2,6 +2,7 @@
 #define ACTIONUI_H
 
 #include "../../Observer/IObserver.h"
+#include "../../Character.h"
 
 #include "../UI.h"
 #include "../ActionUI/BarBase.h"
@@ -86,9 +87,9 @@ namespace ActionUI
 	{
 	public:
 
-		HpGauge() 
+		HpGauge(Hero& hero) 
 		{
-			Initialize();
+			Initialize(hero);
 		};
 		
 		~HpGauge() {};
@@ -115,7 +116,7 @@ namespace ActionUI
 
 	private:
 
-		void Initialize();
+		void Initialize(Hero& hero);
 		HpBar hpBar;
 		HpFrame hpFrame;
 	};
@@ -127,9 +128,9 @@ namespace ActionUI
 	{
 	public:
 
-		MpGauge() 
+		MpGauge(Hero& hero) 
 		{
-			Initialize();
+			Initialize(hero);
 		};
 
 		~MpGauge() {};
@@ -157,7 +158,7 @@ namespace ActionUI
 
 	private:
 
-		void Initialize();
+		void Initialize(Hero& hero);
 		MpBar mpBar;
 		MpFrame mpFrame;
 	};
@@ -169,9 +170,9 @@ namespace ActionUI
 	{
 	public:
 
-		IpGauge() 
+		IpGauge(Hero& hero) 
 		{
-			Initialize();
+			Initialize(hero);
 		};
 
 		~IpGauge() {};
@@ -201,7 +202,7 @@ namespace ActionUI
 
 	private:
 
-		void Initialize();
+		void Initialize(Hero& hero);
 
 		IpFrame ipFrame;
 		IpBar ipBar;

@@ -150,10 +150,11 @@ namespace ActionUI
 
 	// ----------- HpGauge ---------------------------------------------------------------------------------------------------------
 
-	void HpGauge::Initialize()
+	void HpGauge::Initialize(Hero& hero)
 	{
 		hpBar.Initialize();
 		hpFrame.Initialize();
+		hero.AddHpChangeObserver(&hpBar);
 	}
 
 	void HpGauge::Draw()
@@ -239,8 +240,6 @@ namespace ActionUI
 		zoom = Zoom(1.0);
 		is_reverse = IsReverse(false);
 
-
-
 	}
 
 	void HpGauge::HpBar::Draw()
@@ -255,10 +254,11 @@ namespace ActionUI
 
 	// ----------- MpGauge ---------------------------------------------------------------------------------------------------------
 
-	void MpGauge::Initialize()
+	void MpGauge::Initialize(Hero& hero)
 	{
 		mpFrame.Initialize();
 		mpBar.Initialize();
+		hero.AddMpChangeObserver(&mpBar);
 	}
 
 	void MpGauge::Draw()
@@ -359,10 +359,11 @@ namespace ActionUI
 
 	// ----------- IpGauge ---------------------------------------------------------------------------------------------------------
 
-	void IpGauge::Initialize()
+	void IpGauge::Initialize(Hero& hero)
 	{
 		ipFrame.Initialize();
 		ipBar.Initialize();
+		hero.AddIpChangeObserver(&ipBar);
 	}
 
 	void IpGauge::Draw()
