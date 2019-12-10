@@ -49,17 +49,17 @@ public:
 		return previousPosition;
 	}
 
-	virtual void HpChangeNotify(const HP& hp);
+	void HpChangeNotify(const HP& hp);
 
-	virtual void AddHpChangeObserver(IHpObserver* pObserver);
+	void AddHpChangeObserver(IHpObserver* pObserver);
 
-	virtual void MpChangeNotify(const MP& mp);
+	void MpChangeNotify(const MP& mp);
 
-	virtual void AddMpChangeObserver(IMpObserver* pObserver);
+	void AddMpChangeObserver(IMpObserver* pObserver);
 
-	virtual void IpChangeNotify(const IP& ip);
+	void IpChangeNotify(const IP& ip);
 
-	virtual void AddIpChangeObserver(IIpObserver* pObserver);
+	void AddIpChangeObserver(IIpObserver* pObserver);
 
 
 	/**
