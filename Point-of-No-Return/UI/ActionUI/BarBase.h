@@ -14,15 +14,16 @@ public:
 	DX::DirectX& dx = DX::DirectX::GetInstance();
 
 	virtual void Initialize() {};
-	virtual void UpDate() {};
 	virtual void Draw() {};
 	BarBase() {};
 	virtual ~BarBase() {};
 
+	inline Size GetDrawSize()
+	{
+		return size;
+	};
 
 protected:
-
-	//Character
 
 	Vec2 position =
 	{
