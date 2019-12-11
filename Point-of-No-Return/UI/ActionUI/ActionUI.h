@@ -16,10 +16,6 @@ namespace ActionUI
 	 */
 	class ItemUI : public GameUI
 	{
-	private:
-
-		void Initialize();
-
 	public:
 
 		ItemUI()
@@ -29,12 +25,24 @@ namespace ActionUI
 
 		~ItemUI() {};
 
+		/**
+		 * @brief 描画関数
+		 */
 		void Draw();
 
+		/**
+		 * @brief 表示しているアイテムを更新する
+		 */
 		void UpDate();
 
 		IconBase ItemIcon;
 
+	private:
+
+		/**
+		 * @brief 初期化関数
+		 */
+		void Initialize();
 
 	};
 
@@ -52,8 +60,16 @@ namespace ActionUI
 
 		~GoldUI() {};
 
+		/**
+		 * @brief 描画関数
+		 */
 		void Draw();
 
+		/**
+		 * @brief 表示している金額を更新する
+		 */
+		void Update(const Gold& gold);
+		
 		class MoneyIcon : public IconBase
 		{
 		public:
@@ -66,16 +82,21 @@ namespace ActionUI
 			~MoneyIcon() {}
 
 			void Initialize();
+
+			/**
+			 * @brief 描画関数
+			 */
 			void Draw();
 		
 		};
 
-		void Update(const Gold& gold);
-
-
 	private:
 
+		/**
+		 * @brief 初期化関数
+		 */
 		void Initialize();
+
 		MoneyIcon moneyIcon;
 
 	};
@@ -94,12 +115,28 @@ namespace ActionUI
 		
 		~HpGauge() {};
 
+		/**
+		 * @brief 描画関数
+		 */
+		void Draw();
+
 		class HpBar : public BarBase,public IHpObserver
 		{
 		public:
 
+			/**
+			 * @brief 初期化関数
+			 */
 			void Initialize();
+
+			/**
+			 * @brief Widthの値を更新する
+			 */
 			void Update(const HP& hp);
+
+			/**
+			 * @brief 描画関数
+			 */
 			void Draw();
 		};
 
@@ -107,16 +144,25 @@ namespace ActionUI
 		{
 		public:
 
+			/**
+			 * @brief 初期化関数
+			 */
 			void Initialize();
+
+			/**
+			 * @brief 描画関数
+			 */
 			void Draw();
 
 		};
 
-		void Draw();
-
 	private:
 
+		/**
+		 * @brief 初期化関数
+		 */
 		void Initialize(Hero& hero);
+
 		HpBar hpBar;
 		HpFrame hpFrame;
 	};
@@ -135,12 +181,28 @@ namespace ActionUI
 
 		~MpGauge() {};
 
+		/**
+		 * @brief 描画関数
+		 */
+		void Draw();
+
 		class MpBar : public BarBase,public IMpObserver
 		{
 		public:
 
+			/**
+			 * @brief 初期化関数
+			*/
 			void Initialize();
+
+			/**
+			 * @brief Widthの値を更新する
+			 */
 			void Update(const MP& mp);
+
+			/**
+			 * @brief 描画関数
+			 */
 			void Draw();
 
 		};
@@ -149,22 +211,31 @@ namespace ActionUI
 		{
 		public:
 
+			/**
+			 * @brief 初期化関数
+			 */
 			void Initialize();
+
+			/**
+			 * @brief 描画関数
+			 */
 			void Draw();
 
 		};
 
-		void Draw();
-
 	private:
 
+		/**
+		 * @brief 初期化関数
+		 */
 		void Initialize(Hero& hero);
+
 		MpBar mpBar;
 		MpFrame mpFrame;
 	};
 
 	/**
-	 * @brief IpUIクラス
+	 * @brief IpGaugeクラス
 	 */
 	class IpGauge : public GameUI
 	{
@@ -177,31 +248,63 @@ namespace ActionUI
 
 		~IpGauge() {};
 
+		/**
+		 * @brief 描画関数
+		 */
+		void Draw();
+
+		/**
+		 * @brief IpBarクラス
+		 */
 		class IpBar : public BarBase,public IIpObserver
 		{
 		public:
 
 			IpBar() {};
+			
 			~IpBar() {};
+
+			/**
+			 * @brief 初期化関数
+			*/
 			void Initialize();
+
+			/**
+			 * @brief Widthの値を更新する
+			 */
 			void Update(const IP& ip);
+
+			/**
+			 * @brief 描画関数
+			 */
 			void Draw();
 
 		};
 
+		/**
+		 * @brief IpFrameクラス
+		 */
 		class IpFrame : public FrameBase
 		{
 		public:
 
+			/**
+			 * @brief 初期化関数
+			 */
 			void Initialize();
+
+			/**
+			 * @brief 描画関数
+			 */
 			void Draw();
 
 		};
 
-		void Draw();
-
 	private:
 
+		/**
+		 * @brief 初期化
+		 */
 		void Initialize(Hero& hero);
 
 		IpFrame ipFrame;

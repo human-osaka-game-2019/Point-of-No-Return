@@ -106,6 +106,7 @@ namespace ActionUI
 	{
 
 	}
+
 	void GoldUI::MoneyIcon::Initialize()
 	{
 		position =
@@ -159,8 +160,8 @@ namespace ActionUI
 
 	void HpGauge::Draw()
 	{
-		hpBar.Draw();
 		hpFrame.Draw();
+		hpBar.Draw();
 	}
 
 	void HpGauge::HpFrame::Initialize()
