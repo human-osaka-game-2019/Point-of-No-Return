@@ -102,6 +102,11 @@ namespace ActionUI
 		moneyIcon.Draw();
 	}
 
+	void GoldUI::NumberDraw(Number number,int digits)
+	{
+
+	}
+
     void GoldUI::Update(const Gold& gold)
 	{
 
