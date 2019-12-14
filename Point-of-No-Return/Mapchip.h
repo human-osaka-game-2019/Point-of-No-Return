@@ -57,15 +57,15 @@ public:
 	 * @param	offset		割り出したいY座標の位置
 	 * @return	Matrix	指定した座標の現在の行と列の詰まったMatrix
 	 */
-	static Matrix CalcMapMatrix(const Vec2& position,const Vec2& offset);
+	static Matrix CalcMapMatrix(const Position& position,const Position& offset);
 
 	/**
 	 * @brief		指定した行と列の座標の詰まったMatrixを返す関数
 	 * @param	matrix		割り出したいX座標の位置
 	 * @param	offset		割り出したいY座標の位置
-	 * @return	Vec2	
+	 * @return	Position	
 	 */
-	static Vec2 CalcMapPosition(const Matrix& matrix,const Vec2& offset);
+	static Position CalcMapPosition(const Matrix& matrix,const Position& offset);
 
 	//! マップの情報を保存するポインタ配列
 	int* map_[WORLD_SIZE_HEIGHT];

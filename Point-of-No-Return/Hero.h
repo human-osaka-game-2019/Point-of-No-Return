@@ -31,7 +31,7 @@ public:
 	 * @param	blockPosition　当たっているブロックの座標
 	 * @details	HitCheckの中で呼び出す
 	 */
-	virtual void CorrectCoordinate(Direction direction, const Vec2& blockPosition) override;
+	virtual void CorrectCoordinate(Direction direction, const Position& blockPosition) override;
 
 private:
 
