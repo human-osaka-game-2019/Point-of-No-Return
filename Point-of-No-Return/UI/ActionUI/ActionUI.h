@@ -66,27 +66,44 @@ namespace ActionUI
 		void Draw();
 
 		/**
-		 * @brief 描画関数
+		 * @brief 所持金描画関数
 		 */
-		void NumberDraw(Number number,int digits);
+		void DrawNumber(Number number,int digits);
 
 		/**
 		 * @brief 表示している金額を更新する
 		 */
 		void Update(const Gold& gold);
-		
 
-
-		class MoneyIcon : public IconBase
+		class GoldFrame : public FrameBase
 		{
 		public:
 
-			MoneyIcon()
+			GoldFrame()
 			{
 				Initialize();
 			}
 
-			~MoneyIcon() {}
+			~GoldFrame() {};
+
+			void Initialize();
+
+			/**
+			 * @brief 描画関数
+			 */
+			void Draw();
+		};
+
+		class GoldIcon : public IconBase
+		{
+		public:
+
+			GoldIcon()
+			{
+				Initialize();
+			}
+
+			~GoldIcon() {}
 
 			void Initialize();
 
@@ -100,13 +117,16 @@ namespace ActionUI
 
 	private:
 
+		std::vector<int> Digit;
+
 		/**
 		 * @brief 初期化関数
 		 */
 		void Initialize();
 
-		MoneyIcon moneyIcon;
+		GoldIcon goldIcon;
 
+		GoldFrame goldFrame;
 	};
 
 	/**
