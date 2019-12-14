@@ -13,18 +13,13 @@ struct CoordinateX
 	float value;
 };
 
-//! Y座標
-struct CoordinateY
-{
-	explicit CoordinateY(float value) :value(value) {}
-	float value;
-};
+//------------operator-CoordinateX----------------------------------------------
 
 /**
- * @brief		自身のX座標の値と引数の値を比べる
- * @param	lhs	自身のX座標
+ * @brief		引数の値を比べる
+ * @param	lhs	比べる値
  * @param	rhs	比べる値
- * @return		引数の値が大きかったらtrueを返す
+ * @return		引数のrhsの値が大きかったらtrueを返す
  */
 inline bool operator <(const CoordinateX& lhs, const CoordinateX& rhs)
 {
@@ -32,21 +27,72 @@ inline bool operator <(const CoordinateX& lhs, const CoordinateX& rhs)
 }
 
 /**
- * @brief		自身のX座標の値と引数の値を比べる
- * @param	lhs	自身のX座標
+ * @brief		引数の値を比べる
+ * @param	lhs	比べる値
  * @param	rhs	比べる値
- * @return		引数の値が大きかったらtrueを返す
+ * @return		引数のrhsの値が0以上ならtrueを返す
+ */
+inline bool operator <=(const CoordinateX& lhs,const CoordinateX& rhs)
+{
+	return lhs.value <= rhs.value;
+}
+
+/**
+ * @brief		引数の値を比べる
+ * @param	lhs	比べる値
+ * @param	rhs	比べる値
+ * @return		引数の値が等しかったらtrueを返す
  */
 inline bool operator ==(const CoordinateX& lhs, const CoordinateX& rhs)
 {
 	return lhs.value == rhs.value;
 }
+/**
+ * @brief		引き算する
+ * @param	lhs	引かれる値
+ * @param	rhs	引く値
+ * @return		計算された値
+ */
+inline float operator -(const CoordinateX& lhs, const CoordinateX& rhs)
+{
+	return lhs.value - rhs.value;
+}
+/**
+ * @brief		引き算してlhsに代入する
+ * @param	lhs	引かれる値
+ * @param	rhs	引く値
+ * @return		計算された値
+ */
+inline float operator -=(CoordinateX& lhs, const CoordinateX& rhs)
+{
+	return lhs.value -= rhs.value;
+}
+/**
+ * @brief		足し算してlhsに代入する
+ * @param	lhs	足される値
+ * @param	rhs	足す値
+ * @return		計算された値
+ */
+inline float operator +=(CoordinateX& lhs, const CoordinateX& rhs)
+{
+	return lhs.value += rhs.value;
+}
+//------------operator-CoordinateX----------------------------------------------
+
+//! Y座標
+struct CoordinateY
+{
+	explicit CoordinateY(float value) :value(value) {}
+	float value;
+};
+
+//------------operator-CoordinateY----------------------------------------------
 
 /**
- * @brief		自身のX座標の値と引数の値を比べる
- * @param	lhs	自身のY座標
+ * @brief		引数の値を比べる
+ * @param	lhs	比べる値
  * @param	rhs	比べる値
- * @return		引数の値が大きかったらtrueを返す
+ * @return		引数のrhsの値が大きかったらtrueを返す
  */
 inline bool operator <(const CoordinateY& lhs, const CoordinateY& rhs)
 {
@@ -54,15 +100,60 @@ inline bool operator <(const CoordinateY& lhs, const CoordinateY& rhs)
 }
 
 /**
- * @brief		自身のX座標の値と引数の値を比べる
- * @param	lhs	自身のY座標
+ * @brief		引数の値を比べる
+ * @param	lhs	比べる値
  * @param	rhs	比べる値
- * @return		引数の値が大きかったらtrueを返す
+ * @return		引数のrhsの値が0以上ならtrueを返す
+ */
+inline bool operator <=(const CoordinateY& lhs, const CoordinateY& rhs)
+{
+	return lhs.value <= rhs.value;
+}
+
+/**
+ * @brief		引数の値を比べる
+ * @param	lhs	比べる値
+ * @param	rhs	比べる値
+ * @return		引数の値が等しかったらtrueを返す
  */
 inline bool operator ==(const CoordinateY& lhs, const CoordinateY& rhs)
 {
 	return lhs.value == rhs.value;
 }
+
+/**
+ * @brief		引き算する
+ * @param	lhs	引かれる値
+ * @param	rhs	引く値
+ * @return		計算された値
+ */
+inline float operator -(const CoordinateY& lhs, const CoordinateY& rhs)
+{
+	return lhs.value - rhs.value;
+}
+/**
+ * @brief		引き算してlhsに代入する
+ * @param	lhs	引かれる値
+ * @param	rhs	引く値
+ * @return		計算された値
+ */
+inline float operator -=(CoordinateY& lhs, const CoordinateY& rhs)
+{
+	return lhs.value -= rhs.value;
+}
+/**
+ * @brief		足し算してlhsに代入する
+ * @param	lhs	足される値
+ * @param	rhs	足す値
+ * @return		計算された値
+ */
+inline float operator +=(CoordinateY& lhs, const CoordinateY& rhs)
+{
+	return lhs.value += rhs.value;
+}
+//------------operator-CoordinateY----------------------------------------------
+
+
 
 //! 横幅
 struct Width
@@ -257,30 +348,34 @@ struct TextureSize
 	Height height;
 };
 
-//リファクタリング時によりまとめるために使用
-//struct Rect
-//{
-//	Vec2 vec;
-//	Size size;
-//};
-//
-//struct Texture 
-//{
-//	TextureUV uv;
-//	TextureSize texture_size;
-//};
-//
-//struct PolygonInfo
-//{
-//	Rect rect;
-//	Texture texture;
-//
-//	PolygonInfo(Rect rect, Texture texture) : rect(rect), texture(texture)
-//	{
-//
-//	};
-//
-//};
+
+//------------operator-CoordinateY-and-Size--------------------------------------------
+
+inline float operator +(CoordinateX lhs,Width rhs)
+{
+	return lhs.value + rhs.value;
+}
+
+inline float operator -(CoordinateX lhs, Width rhs)
+{
+	return lhs.value - rhs.value;
+}
+
+inline float operator +(CoordinateY lhs, Height rhs)
+{
+	return lhs.value + rhs.value;
+}
+
+inline float operator -(CoordinateY lhs, Height rhs)
+{
+	return lhs.value - rhs.value;
+}
+
+//------------operator-CoordinateY-and-Size--------------------------------------------
+
+
+
+
 
 //オブジェクトクラス
 class Object
