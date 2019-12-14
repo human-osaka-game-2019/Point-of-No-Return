@@ -59,6 +59,34 @@ namespace ActionUI
 
 	void GoldUI::Initialize()
 	{
+		for (int a = 0; a < 9; a++)
+		{
+			Digit.push_back(0);
+		}
+	}
+
+	void GoldUI::Draw()
+	{
+
+		goldIcon.Draw();
+		goldFrame.Draw();
+
+	}
+
+	void GoldUI::DrawNumber(Number number,int digits)
+	{
+
+		dx.DrawEx(position.x.value, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value);
+
+	}
+
+    void GoldUI::Update(const Gold& gold)
+	{
+
+	}
+
+	void GoldUI::GoldFrame::Initialize()
+	{
 		position =
 		{
 			CoordinateX(1920 - 480),
@@ -95,24 +123,12 @@ namespace ActionUI
 		is_reverse = IsReverse(false);
 	}
 
-	void GoldUI::Draw()
+	void GoldUI::GoldFrame::Draw()
 	{
 		dx.DrawEx(position.x.value, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value);
-
-		moneyIcon.Draw();
 	}
 
-	void GoldUI::NumberDraw(Number number,int digits)
-	{
-
-	}
-
-    void GoldUI::Update(const Gold& gold)
-	{
-
-	}
-
-	void GoldUI::MoneyIcon::Initialize()
+	void GoldUI::GoldIcon::Initialize()
 	{
 		position =
 		{
@@ -149,7 +165,7 @@ namespace ActionUI
 		is_reverse = IsReverse(false);
 	}
 
-	void GoldUI::MoneyIcon::Draw()
+	void GoldUI::GoldIcon::Draw()
 	{
 		dx.DrawEx(position.x.value, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value);
 	}
@@ -468,4 +484,4 @@ namespace ActionUI
 		size.width.value = (MAX_WIDTH / ip.max_value) * ip.value;
 	}
 
-}
+	
