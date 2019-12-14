@@ -66,10 +66,17 @@ namespace ActionUI
 		void Draw();
 
 		/**
+		 * @brief 描画関数
+		 */
+		void NumberDraw(Number number,int digits);
+
+		/**
 		 * @brief 表示している金額を更新する
 		 */
 		void Update(const Gold& gold);
 		
+
+
 		class MoneyIcon : public IconBase
 		{
 		public:
@@ -89,6 +96,7 @@ namespace ActionUI
 			void Draw();
 		
 		};
+
 
 	private:
 
