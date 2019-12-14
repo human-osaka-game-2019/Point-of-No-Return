@@ -310,12 +310,19 @@ struct TextureName
 	std::string value;
 };
 
-struct Vec2
+struct Position
 {
-	Vec2(CoordinateX x, CoordinateY y) : x(x),y(y) {};
+	Position(CoordinateX x, CoordinateY y) : x(x),y(y) {};
 
 	CoordinateX x;
 	CoordinateY y;
+};
+
+struct Vec2
+{
+	Vec2(Position start,Position end): x(start.x - end.x),y(start.y - end.y) {}
+	float x;
+	float y;
 };
 
 struct Matrix
@@ -395,12 +402,12 @@ public:
 	Object(const Object&&);
 	Object& operator =(const Object&&);
 
-	Vec2 GetPos()
+	const Position GetPos() const
 	{
 		return position;
 	}
 
-	Size GetSize()
+	const Size& GetSize() const 
 	{
 		return size;
 	}
@@ -409,7 +416,7 @@ protected:
 
 	DX::DirectX& dx = DX::DirectX::GetInstance();
 
-	Vec2 position =
+	Position position =
 	{
 		CoordinateX(0),
 		CoordinateY(0)
