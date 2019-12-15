@@ -50,7 +50,7 @@ private:
 	ActionUI::MpGauge mpGauge{ hero };
 	ActionUI::IpGauge ipGauge{ hero };
 	ActionUI::ItemUI itemUI;
-	ActionUI::GoldUI moneyUI;
+	ActionUI::GoldUI goldUI;
 };
 
 
