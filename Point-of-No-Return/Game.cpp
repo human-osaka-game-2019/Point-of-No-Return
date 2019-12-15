@@ -72,6 +72,7 @@ void Game::Release()
 {
 	dx.ReleaseTexture("blocks");
 	dx.ReleaseTexture("game_back");
+	dx.ReleaseTexture("Number");
 }
 
 HANDLE Game::CreateLoadThread()
