@@ -63,6 +63,42 @@ namespace ActionUI
 		{
 			Digit.push_back(0);
 		}
+
+		position =
+		{
+			CoordinateX(1500),
+			CoordinateY(24)
+		};
+
+		size =
+		{
+			Width(40),
+			Height(80)
+		};
+
+		float tu = 60.f / 520.f;
+		float tv = 10.f / 100.f;
+
+		uv =
+		{
+			TextureU(tu),
+			TextureV(tv)
+		};
+
+		float tu_size = 40.f / 520.f;
+		float tv_size = 80.f / 100.f;
+
+		texture_size =
+		{
+			Width(tu_size),
+			Height(tv_size)
+		};
+
+		texture_name = TextureName("Number");
+		degree = Degree(0);
+		zoom = Zoom(1.0);
+		is_reverse = IsReverse(false);
+
 	}
 
 	void GoldUI::Draw()
