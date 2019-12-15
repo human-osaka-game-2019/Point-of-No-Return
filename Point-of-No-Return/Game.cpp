@@ -37,12 +37,13 @@ void Game::Draw()
 
 	hero.Draw();
 
+
 	//-------------------------------------------------
 	// TODO : 仮呼び出し 修正後削除 or 呼び出し位置修正
 	hpGauge.Draw();
 	mpGauge.Draw();
 	ipGauge.Draw();
-	moneyUI.Draw();
+	goldUI.UIDraw();
 	itemUI.Draw();
 	// ------------------------------------------------
 
