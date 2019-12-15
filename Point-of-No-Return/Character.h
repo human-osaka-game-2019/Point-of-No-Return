@@ -63,7 +63,7 @@ public:
 
 	void GoldChangeNotify(const Gold& gold);
 
-	void AddIpChangeObserver(IGoldObserver* pIGoldObserver);
+	void AddGoldChangeObserver(IGoldObserver* pIGoldObserver);
 
 	/**
 	 * @brief	offsetを取得する
