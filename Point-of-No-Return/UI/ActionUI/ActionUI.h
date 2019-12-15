@@ -53,9 +53,9 @@ namespace ActionUI
 	{
 	public:
 
-		GoldUI() 
+		GoldUI(Hero& hero) 
 		{
-			Initialize();
+			Initialize(hero);
 		}
 
 		~GoldUI() {};
@@ -70,8 +70,7 @@ namespace ActionUI
 		 */
 		void DrawNumber();
 
-		void NumberUpdate(const Gold& gold
-		);
+		void NumberUpdate(const Gold& gold);
 
 		/**
 		 * @brief 表示している金額を更新する
@@ -125,7 +124,7 @@ namespace ActionUI
 		/**
 		 * @brief 初期化関数
 		 */
-		void Initialize();
+		void Initialize(Hero& hero);
 
 		GoldIcon goldIcon;
 
