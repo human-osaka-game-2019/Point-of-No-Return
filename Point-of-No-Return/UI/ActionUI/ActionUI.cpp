@@ -129,16 +129,28 @@ namespace ActionUI
 		}
 	}
 
-    void GoldUI::Update(const Gold& gold)
+	void GoldUI::NumberUpdate(const Gold& gold)
 	{
+		int CurrentDigit = GoldUIInfo::MaxDigit;
 
+		for (int i = 0; i < 9; i++)
+		{
+			Digit[i] = gold.value / CurrentDigit;
+
+			CurrentDigit = CurrentDigit / 10;
+		}
+	}
+
+	void GoldUI::Update(const Gold& gold)
+	{
+		NumberUpdate(gold);
 	}
 
 	void GoldUI::GoldFrame::Initialize()
 	{
 		position =
 		{
-			CoordinateX(1920 - 480),
+			CoordinateX(1440),
 			CoordinateY(14)
 		};
 

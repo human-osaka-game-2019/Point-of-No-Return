@@ -63,12 +63,15 @@ namespace ActionUI
 		/**
 		 * @brief 描画関数
 		 */
-		void Draw();
+		void UIDraw();
 
 		/**
 		 * @brief 所持金描画関数
 		 */
-		void DrawNumber(Number number,int digits);
+		void DrawNumber();
+
+		void NumberUpdate(const Gold& gold
+		);
 
 		/**
 		 * @brief 表示している金額を更新する
