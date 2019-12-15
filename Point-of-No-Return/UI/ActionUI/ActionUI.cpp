@@ -57,6 +57,12 @@ namespace ActionUI
 
 	// ----------- MoneyUI ---------------------------------------------------------------------------------------------------------
 
+	namespace GoldUIInfo
+	{
+		const int MaxDigit = 100000000;
+
+	}
+
 	void GoldUI::Initialize()
 	{
 		for (int a = 0; a < 9; a++)
