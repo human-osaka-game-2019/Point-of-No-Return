@@ -59,12 +59,15 @@ namespace ActionUI
 
 	namespace GoldUIInfo
 	{
-		const int MaxDigit = 100000000;
+		const int MaxDigit = 8;
 
 	}
 
-	void GoldUI::Initialize()
+	void GoldUI::Initialize(Hero& hero)
 	{
+
+		hero.AddGoldChangeObserver(this);
+
 		for (int a = 0; a < 9; a++)
 		{
 			Digit.push_back(0);
@@ -131,13 +134,15 @@ namespace ActionUI
 
 	void GoldUI::NumberUpdate(const Gold& gold)
 	{
-		int CurrentDigit = GoldUIInfo::MaxDigit;
+		int GoldValue = gold.value;
 
 		for (int i = 0; i < 9; i++)
 		{
-			Digit[i] = gold.value / CurrentDigit;
+			int CurrentDigit = GoldUIInfo::MaxDigit - i;
 
-			CurrentDigit = CurrentDigit / 10;
+			Digit[CurrentDigit] = GoldValue % 10;
+
+			GoldValue = GoldValue / 10;
 		}
 	}
 
