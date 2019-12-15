@@ -107,19 +107,26 @@ namespace ActionUI
 
 	}
 
-	void GoldUI::Draw()
+	void GoldUI::UIDraw()
 	{
-
 		goldIcon.Draw();
 		goldFrame.Draw();
-
+		DrawNumber();
 	}
 
-	void GoldUI::DrawNumber(Number number,int digits)
+	void GoldUI::DrawNumber()
 	{
+		for (int i = 0; i < 9; i++)
+		{
 
-		dx.DrawEx(position.x.value, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value);
+			float AddWidthSize = (40 * i);
 
+			float AddTuSize = Digit[i] * texture_size.width.value;
+
+			dx.DrawEx(position.x.value + AddWidthSize, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value + AddTuSize, uv.tv.value, texture_size.width.value, texture_size.height.value);
+		
+
+		}
 	}
 
     void GoldUI::Update(const Gold& gold)
@@ -526,4 +533,4 @@ namespace ActionUI
 		size.width.value = (MAX_WIDTH / ip.max_value) * ip.value;
 	}
 
-	
+}
