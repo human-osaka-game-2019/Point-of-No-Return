@@ -3,16 +3,45 @@
 #include <vector>
 
 #include "Mapchip.h"
-/*
 
-	status =
+void Character::HpChangeNotify(const HP& hp)
+{
+	std::list<IHpObserver*>::iterator it;
+	for (it = pHpList.begin(); it != pHpList.end(); it++)
 	{
-		HP(0),
-		MP(0),
-		IP(0),
-		Attack(0),
-		Defense(0),
-		Speed(0),
-		MagicAttack(0)
-	};
-*/
+		(*it)->Update(hp);
+	}
+}
+
+void Character::AddHpChangeObserver(IHpObserver* pIHpObserver)
+{
+	pHpList.push_back(pIHpObserver);
+}
+
+void Character::MpChangeNotify(const MP& mp)
+{
+	std::list<IMpObserver*>::iterator it;
+	for (it = pMpList.begin(); it != pMpList.end(); it++)
+	{
+		(*it)->Update(mp);
+	}
+}
+
+void Character::AddMpChangeObserver(IMpObserver* pMpObserver)
+{
+	pMpList.push_back(pMpObserver);
+}
+
+void Character::IpChangeNotify(const IP& ip)
+{
+	std::list<IIpObserver*>::iterator it;
+	for (it = pIpList.begin(); it != pIpList.end(); it++)
+	{
+		(*it)->Update(ip);
+	}
+}
+
+void Character::AddIpChangeObserver(IIpObserver* pIIpObserver)
+{
+	pIpList.push_back(pIIpObserver);
+}

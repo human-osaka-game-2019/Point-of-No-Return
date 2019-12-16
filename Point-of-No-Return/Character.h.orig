@@ -2,7 +2,12 @@
 #define CHARCTER_H_
 
 #include "Object.h"
+<<<<<<< HEAD
 #include "Gravity.h"
+=======
+#include "../Point-of-No-Return/Observer/IObserver.h"
+#include <list>
+>>>>>>> :sparkles:ObserverPatternの実装
 
 /**
  * @brief 方向
@@ -39,8 +44,22 @@ public:
 	 */
 <<<<<<< HEAD
 	virtual void CorrectCoordinate(Direction direction, const Position& blockPosition) {}
+
 =======
 	virtual void CorrectCoordinate(Direction direction, const Vec2& blockPosition) {};
+
+	virtual void HpChangeNotify(const HP& hp);
+
+	virtual void AddHpChangeObserver(IHpObserver* pObserver);
+
+	virtual void MpChangeNotify(const MP& mp);
+
+	virtual void AddMpChangeObserver(IMpObserver* pObserver);
+
+	virtual void IpChangeNotify(const IP& ip);
+
+	virtual void AddIpChangeObserver(IIpObserver* pObserver);
+
 protected:
 
 	//! 前の座標を保存する
@@ -52,34 +71,49 @@ protected:
 
 	Status status =
 	{
-		HP(0),
-		MP(0),
-		IP(0),
-		Attack(0),
-		Defense(0),
-		Speed(0),
-		MagicAttack(0)
+		HP(0,0),
+		MP(0,0),
+		IP(0,0),
+		Attack(0,0),
+		Defense(0,0),
+		Speed(0,0),
+		MagicAttack(0,0)
 	};
 
 	Parameter parameter =
 	{
-		Luck(0),
-		Love(0),
-		Time(0),
-		Gold(0),
-		Age(0)
+		Luck(0,0),
+		Love(0,0),
+		Time(0,0),
+		Gold(0,0),
+		Age(0,0)
 	};
 
 	// TODO: あとでprimitive型wrapします
 	float gravity = 0;
 
+	// ObserverList
+	std::list<IHpObserver*> pHpList;
+	std::list<IMpObserver*> pMpList;
+	std::list<IIpObserver*> pIpList;
+
 private:
 
 	//! キャラクターの名前
 	Name name = Name("None");
-};
->>>>>>> :sparkles: status構造体とparameter構造体の追加
 
+};
+
+
+
+/**
+ * @brief 主人公クラス
+ * @details コピーコンストラクタと演算子オーバーロードの隠蔽
+ */
+class Hero : public Character
+{
+public:
+>>>>>>> :sparkles:ObserverPatternの実装
 	/**
 	 * @brief	previousPositionを取得する
 	 */
@@ -127,6 +161,26 @@ private:
 			endPosition
 		};
 
+		Status status =
+		{
+			HP(0),
+			MP(0),
+			IP(0),
+			Attack(0),
+			Defense(0),
+			Speed(0),
+			MagicAttack(0)
+		};
+
+		Parameter parameter =
+		{
+			Luck(0),
+			Love(0),
+			Time(0),
+			Gold(0),
+			Age(0)
+		};
+
 		return vector;
 	}
 
@@ -140,19 +194,16 @@ protected:
 	};
 
 <<<<<<< HEAD
-	Position offset = 
+	Position offset =
 	{
 		CoordinateX(0),
 		CoordinateY(0)
 	};
 =======
-	inline Status GetStatus()
-	{
-		return status;
-	};
+	void Notify();
 
 private:
->>>>>>> :sparkles: status構造体とparameter構造体の追加
+>>>>>>> :sparkles:ObserverPatternの実装
 
 	Position previousOffset =
 	{
@@ -160,7 +211,27 @@ private:
 		CoordinateY(0)
 	};
 
+<<<<<<< HEAD
 	Gravity gravity{ &position };
+=======
+	//コピーコンストラクタと演算子オーバーロードの隠蔽
+	Hero(const Hero&);
+	Hero& operator=(const Hero&);
+	Hero(const Hero&&);
+	Hero& operator=(const Hero&&);
+
+	Status previousStatus =
+	{
+		HP(0,0),
+		MP(0,0),
+		IP(0,0),
+		Attack(0,0),
+		Defense(0,0),
+		Speed(0,0),
+		MagicAttack(0,0)
+	};
+};
+>>>>>>> :sparkles:ObserverPatternの実装
 
 private:
 

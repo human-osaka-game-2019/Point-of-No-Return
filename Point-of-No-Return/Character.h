@@ -3,6 +3,8 @@
 
 #include "Object.h"
 #include "Gravity.h"
+#include "../Point-of-No-Return/Observer/IObserver.h"
+#include <list>
 
 /**
  * @brief 方向
@@ -47,6 +49,19 @@ public:
 		return previousPosition;
 	}
 
+	virtual void HpChangeNotify(const HP& hp);
+
+	virtual void AddHpChangeObserver(IHpObserver* pObserver);
+
+	virtual void MpChangeNotify(const MP& mp);
+
+	virtual void AddMpChangeObserver(IMpObserver* pObserver);
+
+	virtual void IpChangeNotify(const IP& ip);
+
+	virtual void AddIpChangeObserver(IIpObserver* pObserver);
+
+
 	/**
 	 * @brief	offsetを取得する
 	 */
@@ -86,30 +101,36 @@ public:
 			endPosition
 		};
 
-		Status status =
-		{
-			HP(0),
-			MP(0),
-			IP(0),
-			Attack(0),
-			Defense(0),
-			Speed(0),
-			MagicAttack(0)
-		};
-
-		Parameter parameter =
-		{
-			Luck(0),
-			Love(0),
-			Time(0),
-			Gold(0),
-			Age(0)
-		};
-
 		return vector;
-	}
+	};
 
 protected:
+
+	// ObserverList
+	std::list<IHpObserver*> pHpList;
+	std::list<IMpObserver*> pMpList;
+	std::list<IIpObserver*> pIpList;
+
+	Status status =
+	{
+		HP(0),
+		MP(0),
+		IP(0),
+		Attack(0),
+		Defense(0),
+		Speed(0),
+		MagicAttack(0)
+	};
+
+
+	Parameter parameter =
+	{
+		Luck(0),
+		Love(0),
+		Time(0),
+		Gold(0),
+		Age(0)
+	};
 
 	//! 前の座標を保存する
 	Position previousPosition =
@@ -137,7 +158,6 @@ private:
 	//! キャラクターの名前
 	Name name = Name("None");
 };
-
 
 /**
  * @brief UIクラス
