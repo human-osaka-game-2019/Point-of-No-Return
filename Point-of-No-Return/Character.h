@@ -51,16 +51,19 @@ public:
 
 	void HpChangeNotify(const HP& hp);
 
-	void AddHpChangeObserver(IHpObserver* pObserver);
+	void AddHpChangeObserver(IHpObserver* pIHpObserver);
 
 	void MpChangeNotify(const MP& mp);
 
-	void AddMpChangeObserver(IMpObserver* pObserver);
+	void AddMpChangeObserver(IMpObserver* pIMpObserver);
 
 	void IpChangeNotify(const IP& ip);
 
-	void AddIpChangeObserver(IIpObserver* pObserver);
+	void AddIpChangeObserver(IIpObserver* pIIpObserver);
 
+	void GoldChangeNotify(const Gold& gold);
+
+	void AddIpChangeObserver(IGoldObserver* pIGoldObserver);
 
 	/**
 	 * @brief	offsetを取得する
@@ -110,6 +113,7 @@ protected:
 	std::list<IHpObserver*> pHpList;
 	std::list<IMpObserver*> pMpList;
 	std::list<IIpObserver*> pIpList;
+	std::list<IGoldObserver*> pGoldList;
 
 	Status status =
 	{
@@ -144,13 +148,13 @@ protected:
 		CoordinateY(0.f)
 	};
 
-
 	Position previousOffset =
 	{
 		CoordinateX(0.f),
 		CoordinateY(0.f)
 	};
 
+	
 	Gravity gravity{ &position };
 
 private:
