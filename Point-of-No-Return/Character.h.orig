@@ -39,6 +39,7 @@ public:
 	 */
 	virtual void CorrectCoordinate(Direction direction, const Position& blockPosition) {}
 
+
 	/**
 	 * @brief	previousPositionを取得する
 	 */
@@ -98,6 +99,7 @@ protected:
 		CoordinateY(0)
 	};
 
+<<<<<<< HEAD
 	Position offset = 
 	{
 		CoordinateX(0),
@@ -113,6 +115,13 @@ protected:
 	Gravity gravity{ &position };
 
 private:
+=======
+/**
+ * @brief スクロールステージクラス
+ */
+class ScrollStage : public Object
+{
+>>>>>>> :sparkles: 各クラスの実装とcpp.h の追加
 
 	//! キャラクターの名前
 	Name name = Name("None");
