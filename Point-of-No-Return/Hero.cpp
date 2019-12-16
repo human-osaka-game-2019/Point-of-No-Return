@@ -18,20 +18,17 @@ namespace
 
 void Hero::Notify()
 {
-	if (previousStatus.hp.value != status.hp.value
-		&& previousStatus.hp.max_value != status.hp.max_value)
+	if (previousStatus.hp.value != status.hp.value)
 	{
 		Character::HpChangeNotify(status.hp);
 	}
 
-	if (previousStatus.mp.value != status.mp.value
-		&& previousStatus.mp.max_value != status.mp.max_value)
+	if (previousStatus.mp.value != status.mp.value)
 	{
 		Character::MpChangeNotify(status.mp);
 	}
 
-	if (previousStatus.ip.value != status.ip.value
-		&& previousStatus.ip.max_value != status.ip.max_value)
+	if (previousStatus.ip.value != status.ip.value)
 	{
 		Character::IpChangeNotify(status.ip);
 	}
