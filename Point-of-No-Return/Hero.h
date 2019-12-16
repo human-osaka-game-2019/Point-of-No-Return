@@ -56,6 +56,15 @@ private:
 		MagicAttack(0,0)
 	};
 
+	Parameter previousParameter =
+	{
+		Luck(0,0),
+		Love(0,0),
+		Time(0,0),
+		Gold(0,0),
+		Age(0,0)
+	};
+
 	/**
 	 * @brief  主人公の初期化
 	 * @details コンストラクタで呼び出す

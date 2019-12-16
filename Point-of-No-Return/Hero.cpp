@@ -29,6 +29,11 @@ void Hero::Notify()
 	{
 		Character::IpChangeNotify(status.ip);
 	}
+
+	if (previousParameter.gold.value != parameter.gold.value)
+	{
+		Character::GoldChangeNotify(parameter.gold);
+	}
 }
 
 void Hero::Initialize()
@@ -81,6 +86,8 @@ void Hero::Update()
 	previousPosition = position;
 	previousOffset = offset;
     previousStatus = status;
+	previousParameter = parameter;
+
 	if (dx.GetKeyState(DIK_D) == dx.ON)
 	{
 		// TODO: if文の長さはリファクタリング時に変数化したりします。

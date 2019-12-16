@@ -4,7 +4,6 @@
 
 #include "Mapchip.h"
 
-
 void Character::HpChangeNotify(const HP& hp)
 {
 	std::list<IHpObserver*>::iterator it;
@@ -45,4 +44,18 @@ void Character::IpChangeNotify(const IP& ip)
 void Character::AddIpChangeObserver(IIpObserver* pIIpObserver)
 {
 	pIpList.push_back(pIIpObserver);
+}
+
+void Character::GoldChangeNotify(const Gold& gold)
+{
+	std::list<IGoldObserver*>::iterator it;
+	for (it = pGoldList.begin(); it != pGoldList.end(); it++)
+	{
+		(*it)->Update(gold);
+	}
+}
+
+void Character::AddIpChangeObserver(IGoldObserver* pIGoldObserver)
+{
+	pGoldList.push_back(pIGoldObserver);
 }
