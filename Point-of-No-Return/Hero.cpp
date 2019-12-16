@@ -18,17 +18,20 @@ namespace
 
 void Hero::Notify()
 {
-	if (previousStatus.hp.value != status.hp.value)
+	if (previousStatus.hp.value != status.hp.value
+		&& previousStatus.hp.max_value != status.hp.max_value)
 	{
 		Character::HpChangeNotify(status.hp);
 	}
 
-	if (previousStatus.mp.value != status.mp.value)
+	if (previousStatus.mp.value != status.mp.value
+		&& previousStatus.mp.max_value != status.mp.max_value)
 	{
 		Character::MpChangeNotify(status.mp);
 	}
 
-	if (previousStatus.ip.value != status.ip.value)
+	if (previousStatus.ip.value != status.ip.value
+		&& previousStatus.ip.max_value != status.ip.max_value)
 	{
 		Character::IpChangeNotify(status.ip);
 	}
@@ -44,8 +47,8 @@ void Hero::Initialize()
 
 	size =
 	{
-		Width(64.f),
-		Height(128.f)
+		Width(192.f),
+		Height(192.f)
 	};
 
 	uv =
@@ -62,13 +65,13 @@ void Hero::Initialize()
 
 	status =
 	{
-		HP(0),
-		MP(0),
-		IP(0),
-		Attack(0),
-		Defense(0),
-		Speed(0),
-		MagicAttack(0)
+		HP(100,100),
+		MP(0,0),
+		IP(0,0),
+		Attack(0,0),
+		Defense(0,0),
+		Speed(0,0),
+		MagicAttack(0,0)
 	};
 
 	texture_name = TextureName("Player");
