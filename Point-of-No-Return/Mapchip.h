@@ -4,6 +4,9 @@
 #include<iostream>
 #include<stdio.h>
 
+
+#include "Character.h"
+
 // TODO: 引数などを修正したいので、doxygenコメントはリファクタリング時に記入する
 class Mapchip {
 public:
@@ -18,6 +21,11 @@ public:
 	// テクスチャ一つに対するチップの番号
 	static const int CHIP_WIDTH_NUM = TEXTURE_WIDTH / 4;
 	static const int CHIP_HEIGHT_NUM = TEXTURE_HEIGHT / 4;
+
+	Mapchip()
+	{
+		InitMap();
+	}
 
 	/**
 	 * @brief  マップチップを描画する関数
@@ -39,18 +47,25 @@ public:
 
 	/**
 	 * @brief	マップの初期化
-	 * @details	Gameのコンストラクタで呼ぶ
+	 * @details	Mapchipのコンストラクタで呼ぶ
 	 */
 	void InitMap();
 
 	/**
-	 * @brief		マップの位置を割り出す関数
-	 * @param	x	割り出したいX座標の位置
-	 * @param	y	割り出したいY座標の位置
-	 * @param	map	マップのポインタの配列
-	 * @return		
+	 * @brief		指定した座標の行と列の詰まったMatrixを返す関数
+	 * @param	position	割り出したいX座標の位置
+	 * @param	offset		割り出したいY座標の位置
+	 * @return	Matrix	指定した座標の現在の行と列の詰まったMatrix
 	 */
-	int CalcMapNumber(int x, int y);
+	static Matrix CalcMapMatrix(const Position& position,const Position& offset);
+
+	/**
+	 * @brief		指定した行と列の座標の詰まったMatrixを返す関数
+	 * @param	matrix		割り出したいX座標の位置
+	 * @param	offset		割り出したいY座標の位置
+	 * @return	Position	
+	 */
+	static Position CalcMapPosition(const Matrix& matrix,const Position& offset);
 
 	//! マップの情報を保存するポインタ配列
 	int* map_[WORLD_SIZE_HEIGHT];

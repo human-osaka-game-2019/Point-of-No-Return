@@ -17,7 +17,7 @@ namespace
  * @param	blockPosition     当たり判定をとるブロックの座標
  * @return キャラクターが動いているか
  */
-bool HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size characterSize, Vec2 vector, const Vec2& blockPosition)
+bool HitCheckEdge(Direction* direction, Position characterPrevious, Size characterSize, Vec2 characterVector, const Position& blockPosition)
 {
 	float characterTop = characterPrevious.y.value;
 	float characterBottom = characterTop + characterSize.height.value;
@@ -28,23 +28,23 @@ bool HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size characterSi
 	if ((characterBottom <= blockTop) || (characterTop >= blockBottom))
 	{
 		//キャラクターがy方向に動いていないとき
-		if (vector.y == CoordinateY(0))
+		if (characterVector.y == 0)
 		{
 			return false;
 		}
 
-		*direction = (vector.y < CoordinateY(0)) ? Direction::Up : Direction::Down;
+		*direction = (characterVector.y <0) ? Direction::Up : Direction::Down;
 
 		return true;
 	}
 
 	//キャラクターがx方向に動いていないとき
-	if (vector.x == CoordinateX(0))
+	if (characterVector.x == 0)
 	{
 		return false;
 	}
 
-	*direction = (vector.x < CoordinateX(0)) ? Direction::Left : Direction::Right;
+	*direction = (characterVector.x < 0) ? Direction::Left : Direction::Right;
 
 	return true;
 
@@ -57,7 +57,7 @@ bool HitCheckEdge(Direction* direction, Vec2 characterPrevious, Size characterSi
  * @param	blockPosition     当たり判定をとるブロックの座標
  * @return 当たっているかどうか
  */
-bool CharacterCollidesWithBlock(Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, const Vec2& blockPosition)
+bool CharacterCollidesWithBlock(Position characterPrevious, Size characterSize, Position characterPosition, const Position& blockPosition)
 {
 	float characterLeft = characterPosition.x.value;
 	float characterRight = characterLeft + characterSize.width.value;
@@ -83,19 +83,28 @@ bool CharacterCollidesWithBlock(Vec2 characterPrevious, Size characterSize, Vec2
 namespace Collision
 {
 
-std::vector<Vec2> SearchBlock(const Vec2& character_pos, const Size& size, int** map)
+std::vector<Position> SearchBlock(Character& character, int** map)
 {
-	Vec2 vec2(CoordinateX(0), CoordinateY(0));
-	std::vector<Vec2> mapdata;
+	auto characterPosition = character.GetPos();
+	auto characterSize = character.GetSize();
+	auto offset = character.GetOffset();
 
-	int center_x = character_pos.x.value + size.width.value / 2;
-	int center_y = character_pos.y.value + size.height.value / 2;
+	Position blockPosition(CoordinateX(0), CoordinateY(0));
+	std::vector<Position> mapdata;
 
-	Matrix search_start =
+	int center_x = characterPosition.x.value + characterSize.width.value / 2;
+	int center_y = characterPosition.y.value + characterSize.height.value / 2;
+
+	Position center =
 	{
-		Col(center_x / Mapchip::CHIP_SIZE - 2),
-		Row(center_y / Mapchip::CHIP_SIZE - 2)
+		CoordinateX(center_x),
+		CoordinateY(center_y)
 	};
+
+	Matrix search_start = Mapchip::CalcMapMatrix(center,offset);
+	
+	search_start.col.value -= 2;
+	search_start.row.value -= 2; 
 
 	for (int i = 0; i < 5; i++)
 	{
@@ -106,9 +115,15 @@ std::vector<Vec2> SearchBlock(const Vec2& character_pos, const Size& size, int**
 
 			if (map[current_row][current_col] != 0)
 			{
-				vec2.x.value = current_col * Mapchip::CHIP_SIZE;
-				vec2.y.value = current_row * Mapchip::CHIP_SIZE;
-				mapdata.push_back(vec2);
+				Matrix current_matrix =
+				{
+					Col(current_col),
+					Row(current_row)
+				};
+
+				blockPosition = Mapchip::CalcMapPosition(current_matrix,offset);
+
+				mapdata.push_back(blockPosition);
 			}
 		}
 	}
@@ -116,15 +131,15 @@ std::vector<Vec2> SearchBlock(const Vec2& character_pos, const Size& size, int**
 }
 
 
-void CheckBlock(Character& character, Vec2 characterPrevious, Size characterSize, Vec2 characterPosition, std::vector<Vec2> blockPositions)
+void CheckBlock(Character* character, std::vector<Position> blockPositions)
 {
-	Vec2 vector =
-	{
-		CoordinateX(characterPrevious.x.value - characterPosition.x.value),
-		CoordinateY(characterPrevious.y.value - characterPosition.y.value)
-	};
+	auto characterPosition = character->GetPos();
+	auto characterPrevious = character->GetPreviousPosition();
+	auto characterSize = character->GetSize();
+	auto offsetPrevious = character->GetPreviousOffset();
+	auto offset = character->GetOffset();
 
-	// 修正する方向を入れる変数
+	auto vector = character->GetVector();
 
 	for (auto blockPosition : blockPositions)
 	{
@@ -134,7 +149,7 @@ void CheckBlock(Character& character, Vec2 characterPrevious, Size characterSize
 
 			if (HitCheckEdge(&correction, characterPrevious, characterSize, vector, blockPosition))
 			{
-				character.CorrectCoordinate(correction, blockPosition);
+				character->CorrectCoordinate(correction, blockPosition);
 			}
 		}
 	}

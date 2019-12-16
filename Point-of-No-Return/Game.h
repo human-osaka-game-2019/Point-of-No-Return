@@ -5,6 +5,7 @@
 #include "Mapchip.h"
 #include "Help.h"
 #include "Character.h"
+#include "Hero.h"
 #include "Collision.h"
 
 /**

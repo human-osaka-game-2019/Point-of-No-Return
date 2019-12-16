@@ -2,6 +2,8 @@
 
 #include "../Point-of-No-Return/Object.h"
 
+// TODO: あとでテストコード書きます
+
 TEST(ObjectTest, LessThan_1) {
 	// Arrange
 	CoordinateX x(0.5f);
