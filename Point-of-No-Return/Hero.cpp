@@ -157,22 +157,22 @@ void Hero::Update()
 	// -------------------------------------------
 	if (dx.GetKeyState(DIK_LEFT) == dx.ON)
 	{
-		status.hp.value -= 1;
+		parameter.gold.value -= 1;
 	}
 
 	if (dx.GetKeyState(DIK_RIGHT) == dx.ON)
 	{
-		status.hp.value += 1;
+		parameter.gold.value += 1;
 	}
 
 	if (dx.GetKeyState(DIK_DOWN) == dx.ON)
 	{
-		status.hp.max_value -= 1;
+		parameter.gold.value -= 1;
 	}
 
 	if (dx.GetKeyState(DIK_UP) == dx.ON)
 	{
-		status.hp.max_value += 1;
+		parameter.gold.value += 1;
 	}
 	// --------------------------------------------
 
