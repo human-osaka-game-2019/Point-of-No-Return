@@ -4,6 +4,7 @@
 
 #include "Mapchip.h"
 
+
 void Character::HpChangeNotify(const HP& hp)
 {
 	std::list<IHpObserver*>::iterator it;
