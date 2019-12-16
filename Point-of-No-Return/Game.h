@@ -44,7 +44,7 @@ private:
 	ActionUI::MpGauge mpGauge;
 	ActionUI::IpGauge ipGauge;
 	ActionUI::ItemUI itemUI;
-	ActionUI::MoneyUI moneyUI;
+	ActionUI::GoldUI moneyUI;
 
 	Mapchip mapchip;
 

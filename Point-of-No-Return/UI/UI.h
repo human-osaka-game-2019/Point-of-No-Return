@@ -2,7 +2,7 @@
 #define UI_H
 
 #include "../Object.h"
-#include"../Character.h"
+#include "../Observer/IObserver.h"
 
 /**
  * @brief UIクラス
