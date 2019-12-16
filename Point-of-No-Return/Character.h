@@ -86,6 +86,26 @@ public:
 			endPosition
 		};
 
+		Status status =
+		{
+			HP(0),
+			MP(0),
+			IP(0),
+			Attack(0),
+			Defense(0),
+			Speed(0),
+			MagicAttack(0)
+		};
+
+		Parameter parameter =
+		{
+			Luck(0),
+			Love(0),
+			Time(0),
+			Gold(0),
+			Age(0)
+		};
+
 		return vector;
 	}
 
@@ -98,7 +118,7 @@ protected:
 		CoordinateY(0.f)
 	};
 
-	Position offset = 
+	Position offset =
 	{
 		CoordinateX(0.f),
 		CoordinateY(0.f)
