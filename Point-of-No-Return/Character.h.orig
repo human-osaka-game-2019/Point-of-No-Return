@@ -37,8 +37,48 @@ public:
 	 * @param	blockPosition　当たっているブロックの座標
 	 * @details	HitCheckの中で呼び出す
 	 */
+<<<<<<< HEAD
 	virtual void CorrectCoordinate(Direction direction, const Position& blockPosition) {}
+=======
+	virtual void CorrectCoordinate(Direction direction, const Vec2& blockPosition) {};
+protected:
 
+	//! 前の座標を保存する
+	Vec2 previous =
+	{
+		CoordinateX(0),
+		CoordinateY(0)
+	};
+
+	Status status =
+	{
+		HP(0),
+		MP(0),
+		IP(0),
+		Attack(0),
+		Defense(0),
+		Speed(0),
+		MagicAttack(0)
+	};
+
+	Parameter parameter =
+	{
+		Luck(0),
+		Love(0),
+		Time(0),
+		Gold(0),
+		Age(0)
+	};
+
+	// TODO: あとでprimitive型wrapします
+	float gravity = 0;
+
+private:
+
+	//! キャラクターの名前
+	Name name = Name("None");
+};
+>>>>>>> :sparkles: status構造体とparameter構造体の追加
 
 	/**
 	 * @brief	previousPositionを取得する
@@ -105,6 +145,14 @@ protected:
 		CoordinateX(0),
 		CoordinateY(0)
 	};
+=======
+	inline Status GetStatus()
+	{
+		return status;
+	};
+
+private:
+>>>>>>> :sparkles: status構造体とparameter構造体の追加
 
 	Position previousOffset =
 	{
@@ -115,13 +163,6 @@ protected:
 	Gravity gravity{ &position };
 
 private:
-=======
-/**
- * @brief スクロールステージクラス
- */
-class ScrollStage : public Object
-{
->>>>>>> :sparkles: 各クラスの実装とcpp.h の追加
 
 	//! キャラクターの名前
 	Name name = Name("None");

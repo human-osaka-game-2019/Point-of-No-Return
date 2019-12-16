@@ -31,10 +31,22 @@ void Hero::Initialize()
 		TextureU(0.0f),
 		TextureV(0.0f)
 	};
+
 	texture_size =
 	{
 		Width(1.0f),
 		Height(1.0f)
+	};
+
+	status =
+	{
+		HP(0),
+		MP(0),
+		IP(0),
+		Attack(0),
+		Defense(0),
+		Speed(0),
+		MagicAttack(0)
 	};
 
 	texture_name = TextureName("Player");
