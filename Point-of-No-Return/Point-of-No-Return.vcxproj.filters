@@ -34,6 +34,12 @@
     <Filter Include="Feature\横スクロール\UI\RPGUI">
       <UniqueIdentifier>{d31f5d85-47a4-46bc-8b2b-123894ba838b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Feature\横スクロール\UI\GaugeManager">
+      <UniqueIdentifier>{e10cd0af-ea6a-4093-9b57-7a9913a5da46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feature\横スクロール\Observer">
+      <UniqueIdentifier>{42933f8c-4c3c-40ad-9590-76aa95dc379f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Title.cpp">
@@ -88,6 +94,12 @@
     <ClCompile Include="UI\RPGUI\RPGUI.cpp">
       <Filter>Feature\横スクロール\UI\RPGUI</Filter>
     </ClCompile>
+    <ClCompile Include="GaugeManager.cpp">
+      <Filter>Feature\横スクロール\UI\GaugeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Observer\Observer.cpp">
+      <Filter>Feature\横スクロール\Observer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Title.h">
@@ -141,6 +153,12 @@
     </ClInclude>
     <ClInclude Include="UI\RPGUI\RPGUI.h">
       <Filter>Feature\横スクロール\UI\RPGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GaugeManager.h">
+      <Filter>Feature\横スクロール\UI\GaugeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer\Observer.h">
+      <Filter>Feature\横スクロール\Observer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
