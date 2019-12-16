@@ -158,7 +158,6 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="StageScroll.cpp" />
-    <ClCompile Include="GaugeManager.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="UI\ActionUI\ActionUI.cpp" />
     <ClCompile Include="UI\RPGUI\RPGUI.cpp" />
@@ -171,7 +170,6 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Gravity.h" />
-    <ClInclude Include="GaugeManager.h" />
     <ClInclude Include="Help.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Load.h" />
