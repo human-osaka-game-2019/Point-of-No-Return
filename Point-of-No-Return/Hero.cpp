@@ -15,6 +15,25 @@ namespace
 	const float MAX_OFFSET_X = (Mapchip::WORLD_HORIZONTAL_NUM - DISPLAY_SIZE_NUM) * Mapchip::CHIP_SIZE;
 }
 
+
+void Hero::Notify()
+{
+	if (previousStatus.hp.value != status.hp.value)
+	{
+		Character::HpChangeNotify(status.hp);
+	}
+
+	if (previousStatus.mp.value != status.mp.value)
+	{
+		Character::MpChangeNotify(status.mp);
+	}
+
+	if (previousStatus.ip.value != status.ip.value)
+	{
+		Character::IpChangeNotify(status.ip);
+	}
+}
+
 void Hero::Initialize()
 {
 	position =

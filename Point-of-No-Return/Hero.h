@@ -37,7 +37,20 @@ public:
 		return status;
 	};
 
+	void Notify();
+
 private:
+
+	Status previousStatus =
+	{
+		HP(0,0),
+		MP(0,0),
+		IP(0,0),
+		Attack(0,0),
+		Defense(0,0),
+		Speed(0,0),
+		MagicAttack(0,0)
+	};
 
 	/**
 	 * @brief  主人公の初期化
