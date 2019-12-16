@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Feature">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Feature\RPG">
+      <UniqueIdentifier>{01398bbb-f031-45c6-9559-b146dfe52129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feature\横スクロール">
+      <UniqueIdentifier>{c8408ca0-c940-4e49-9c5c-e1c6e7ad308d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{cea1f81a-8264-4361-ab38-a34eb0da80c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feature\横スクロール\当たり判定">
+      <UniqueIdentifier>{fddc3121-9aa7-4a74-9902-513f06404f35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feature\横スクロール\UI">
+      <UniqueIdentifier>{20c4a852-a504-41d6-8df8-8b9aa5c620e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feature\横スクロール\UI\ActionUI">
+      <UniqueIdentifier>{cee61d2b-2203-4249-9a34-23fecce926e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feature\横スクロール\UI\RPGUI">
+      <UniqueIdentifier>{d31f5d85-47a4-46bc-8b2b-123894ba838b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Title.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Help.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Ending.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapchip.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Feature</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Load.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Save.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Feature\横スクロール\当たり判定</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGraund.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="Hero.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="Gravity.cpp">
+      <Filter>Feature\横スクロール</Filter>
+=======
+    <ClCompile Include="UI\UI.cpp">
+      <Filter>Feature\横スクロール\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\ActionUI\ActionUI.cpp">
+      <Filter>Feature\横スクロール\UI\ActionUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\RPGUI\RPGUI.cpp">
+      <Filter>Feature\横スクロール\UI\RPGUI</Filter>
+>>>>>>> :truck:  フィルタの追加
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Title.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Help.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Ending.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapchip.h">
+      <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="Load.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Save.h">
+      <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGraund.h">
+      <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Feature\横スクロール\当たり判定</Filter>
+    </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="Hero.h">
+      <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="Gravity.h">
+      <Filter>Feature\横スクロール</Filter>
+=======
+    <ClInclude Include="UI\UI.h">
+      <Filter>Feature\横スクロール\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\ActionUI\ActionUI.h">
+      <Filter>Feature\横スクロール\UI\ActionUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\RPGUI\RPGUI.h">
+      <Filter>Feature\横スクロール\UI\RPGUI</Filter>
+>>>>>>> :truck:  フィルタの追加
+    </ClInclude>
+  </ItemGroup>
+</Project>
