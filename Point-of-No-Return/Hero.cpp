@@ -76,9 +76,11 @@ void Hero::Initialize()
 
 void Hero::Update()
 {
+	Notify();
+	
 	previousPosition = position;
 	previousOffset = offset;
-
+    previousStatus = status;
 	if (dx.GetKeyState(DIK_D) == dx.ON)
 	{
 		// TODO: if文の長さはリファクタリング時に変数化したりします。
@@ -115,11 +117,57 @@ void Hero::Update()
 		}
 	}
 
+	// ----------------------------------------------
 	if (dx.GetKeyState(DIK_W) == dx.ON)
 	{
 		gravity.Jump();
 	}
 	gravity.Apply();
+
+	if (dx.GetKeyState(DIK_D) == dx.ON)
+	{
+		position.x.value += 10.0f;
+	}
+
+	if (dx.GetKeyState(DIK_A) == dx.ON)
+	{
+		position.x.value -= 10.0f;
+	}
+
+	if (dx.GetKeyState(DIK_W) == dx.ON)
+	{
+		position.y.value -= 10.0f;
+	}
+
+	if (dx.GetKeyState(DIK_S) == dx.ON)
+	{
+		position.y.value += 10.0f;
+
+	}
+
+	// TODO : 動作確認用
+	// -------------------------------------------
+	if (dx.GetKeyState(DIK_LEFT) == dx.ON)
+	{
+		status.hp.value -= 1;
+	}
+
+	if (dx.GetKeyState(DIK_RIGHT) == dx.ON)
+	{
+		status.hp.value += 1;
+	}
+
+	if (dx.GetKeyState(DIK_DOWN) == dx.ON)
+	{
+		status.hp.max_value -= 1;
+	}
+
+	if (dx.GetKeyState(DIK_UP) == dx.ON)
+	{
+		status.hp.max_value += 1;
+	}
+	// --------------------------------------------
+
 
 }
 

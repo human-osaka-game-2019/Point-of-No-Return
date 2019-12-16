@@ -33,6 +33,9 @@ public:
 	 */
 	virtual void CorrectCoordinate(Direction direction, const Position& blockPosition) override;
 
+	/**
+	 * @brief	Statusを取得する
+	 */
 	inline Status GetStatus()
 	{
 		return status;
