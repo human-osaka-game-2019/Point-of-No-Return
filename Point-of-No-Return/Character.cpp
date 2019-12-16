@@ -55,7 +55,7 @@ void Character::GoldChangeNotify(const Gold& gold)
 	}
 }
 
-void Character::AddIpChangeObserver(IGoldObserver* pIGoldObserver)
+void Character::AddGoldChangeObserver(IGoldObserver* pIGoldObserver)
 {
 	pGoldList.push_back(pIGoldObserver);
 }
