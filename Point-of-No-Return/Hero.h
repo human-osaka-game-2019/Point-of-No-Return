@@ -33,6 +33,11 @@ public:
 	 */
 	virtual void CorrectCoordinate(Direction direction, const Position& blockPosition) override;
 
+	inline Status GetStatus()
+	{
+		return status;
+	};
+
 private:
 
 	/**
