@@ -131,27 +131,6 @@ void Hero::Update()
 	}
 	gravity.Apply();
 
-	if (dx.GetKeyState(DIK_D) == dx.ON)
-	{
-		position.x.value += 10.0f;
-	}
-
-	if (dx.GetKeyState(DIK_A) == dx.ON)
-	{
-		position.x.value -= 10.0f;
-	}
-
-	if (dx.GetKeyState(DIK_W) == dx.ON)
-	{
-		position.y.value -= 10.0f;
-	}
-
-	if (dx.GetKeyState(DIK_S) == dx.ON)
-	{
-		position.y.value += 10.0f;
-
-	}
-
 	// TODO : 動作確認用
 	// -------------------------------------------
 	if (dx.GetKeyState(DIK_LEFT) == dx.ON)
