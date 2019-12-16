@@ -3,9 +3,28 @@
 #include <vector>
 
 #include "Mapchip.h"
-
 <<<<<<< HEAD
+/*
 =======
+
+void Hero::Notify()
+{
+	if (previousStatus.hp.value != status.hp.value)
+	{
+		Character::HpChangeNotify(status.hp);
+	}
+
+	if (previousStatus.mp.value != status.mp.value)
+	{
+		Character::MpChangeNotify(status.mp);
+	}
+
+	if (previousStatus.ip.value != status.ip.value)
+	{
+		Character::IpChangeNotify(status.ip);
+	}
+}
+
 void Hero::Initialize()
 {
 	position =
@@ -16,8 +35,8 @@ void Hero::Initialize()
 
 	size =
 	{
-		Width(64.f),
-		Height(128.f)
+		Width(192.f),
+		Height(192.f)
 	};
 
 	uv =
@@ -25,22 +44,27 @@ void Hero::Initialize()
 		TextureU(0.0f),
 		TextureV(0.0f)
 	};
+
 	texture_size =
 	{
 		Width(1.0f),
 		Height(1.0f)
 	};
+>>>>>>> :sparkles:ObserverPatternの実装
 
 	status =
 	{
-		HP(0),
-		MP(0),
-		IP(0),
-		Attack(0),
-		Defense(0),
-		Speed(0),
-		MagicAttack(0)
+		HP(0,0),
+		MP(0,0),
+		IP(0,0),
+		Attack(0,0),
+		Defense(0,0),
+		Speed(0,0),
+		MagicAttack(0,0)
 	};
+<<<<<<< HEAD
+*/
+=======
 
 	texture_name = TextureName("Player");
 	degree = Degree(0);
@@ -51,6 +75,8 @@ void Hero::Initialize()
 void Hero::Update()
 {
 	previous = position;
+
+	previousStatus = status;
 
 	if (dx.GetKeyState(DIK_D) == dx.ON)
 	{
@@ -96,4 +122,45 @@ void Hero::CorrectCoordinate(Direction direction, const Vec2& blockPosition)
 	}
 }
 
->>>>>>> :sparkles: status構造体とparameter構造体の追加
+void Character::HpChangeNotify(const HP& hp)
+{
+	std::list<IHpObserver*>::iterator it;
+	for (it = pHpList.begin(); it != pHpList.end(); it++)
+	{
+		(*it)->Update(hp);
+	}
+}
+
+void Character::AddHpChangeObserver(IHpObserver* pIHpObserver)
+{
+	pHpList.push_back(pIHpObserver);
+}
+
+void Character::MpChangeNotify(const MP& mp)
+{
+	std::list<IMpObserver*>::iterator it;
+	for (it = pMpList.begin(); it != pMpList.end(); it++)
+	{
+		(*it)->Update(mp);
+	}
+}
+
+void Character::AddMpChangeObserver(IMpObserver* pMpObserver)
+{
+	pMpList.push_back(pMpObserver);
+}
+
+void Character::IpChangeNotify(const IP& ip)
+{
+	std::list<IIpObserver*>::iterator it;
+	for (it = pIpList.begin(); it != pIpList.end(); it++)
+	{
+		(*it)->Update(ip);
+	}
+}
+
+void Character::AddIpChangeObserver(IIpObserver* pIIpObserver)
+{
+	pIpList.push_back(pIIpObserver);
+}
+>>>>>>> :sparkles:ObserverPatternの実装

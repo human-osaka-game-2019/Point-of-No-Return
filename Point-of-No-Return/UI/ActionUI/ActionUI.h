@@ -1,6 +1,8 @@
 ﻿#ifndef ACTIONUI_H
 #define ACTIONUI_H
 
+#include "../../Observer/IObserver.h"
+
 #include "../UI.h"
 #include "../ActionUI/BarBase.h"
 #include "../ActionUI/FrameBase.h"
@@ -38,16 +40,16 @@ namespace ActionUI
 	/**
 	 * @brief MoneyUIクラス
 	 */
-	class MoneyUI : public GameUI
+	class GoldUI : public GameUI,public IGoldObserver
 	{
 	public:
 
-		MoneyUI() 
+		GoldUI() 
 		{
 			Initialize();
 		}
 
-		~MoneyUI() {};
+		~GoldUI() {};
 
 		void Draw();
 
@@ -66,6 +68,9 @@ namespace ActionUI
 			void Draw();
 		
 		};
+
+		void Update(const Gold& gold);
+
 
 	private:
 
@@ -88,14 +93,13 @@ namespace ActionUI
 		
 		~HpGauge() {};
 
-		class HpBar : public BarBase
+		class HpBar : public BarBase,public IHpObserver
 		{
 		public:
 
 			void Initialize();
-			void UpDate();
+			void Update(const HP& hp);
 			void Draw();
-
 		};
 
 		class HpFrame : public FrameBase
@@ -107,7 +111,6 @@ namespace ActionUI
 
 		};
 
-		void UpDate();
 		void Draw();
 
 	private:
@@ -131,12 +134,12 @@ namespace ActionUI
 
 		~MpGauge() {};
 
-		class MpBar : public BarBase
+		class MpBar : public BarBase,public IMpObserver
 		{
 		public:
 
 			void Initialize();
-			void UpDate();
+			void Update(const MP& mp);
 			void Draw();
 
 		};
@@ -150,7 +153,6 @@ namespace ActionUI
 
 		};
 
-		void UpDate();
 		void Draw();
 
 	private:
@@ -174,12 +176,14 @@ namespace ActionUI
 
 		~IpGauge() {};
 
-		class IpBar : public BarBase
+		class IpBar : public BarBase,public IIpObserver
 		{
 		public:
 
+			IpBar() {};
+			~IpBar() {};
 			void Initialize();
-			void UpDate();
+			void Update(const IP& ip);
 			void Draw();
 
 		};
@@ -193,7 +197,6 @@ namespace ActionUI
 
 		};
 
-		void UpDate();
 		void Draw();
 
 	private:

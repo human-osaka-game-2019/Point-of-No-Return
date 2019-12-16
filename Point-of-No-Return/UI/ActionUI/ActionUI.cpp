@@ -1,4 +1,5 @@
 ﻿#include"../ActionUI/ActionUI.h"
+#include "../../Character.h"
 
 namespace ActionUI
 {
@@ -56,7 +57,7 @@ namespace ActionUI
 
 	// ----------- MoneyUI ---------------------------------------------------------------------------------------------------------
 
-	void MoneyUI::Initialize()
+	void GoldUI::Initialize()
 	{
 		position =
 		{
@@ -94,14 +95,18 @@ namespace ActionUI
 		is_reverse = IsReverse(false);
 	}
 
-	void MoneyUI::Draw()
+	void GoldUI::Draw()
 	{
 		dx.DrawEx(position.x.value, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value);
 
 		moneyIcon.Draw();
 	}
 
-	void MoneyUI::MoneyIcon::Initialize()
+    void GoldUI::Update(const Gold& gold)
+	{
+
+	}
+	void GoldUI::MoneyIcon::Initialize()
 	{
 		position =
 		{
@@ -138,7 +143,7 @@ namespace ActionUI
 		is_reverse = IsReverse(false);
 	}
 
-	void MoneyUI::MoneyIcon::Draw()
+	void GoldUI::MoneyIcon::Draw()
 	{
 		dx.DrawEx(position.x.value, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value);
 	}
@@ -149,11 +154,6 @@ namespace ActionUI
 	{
 		hpBar.Initialize();
 		hpFrame.Initialize();
-	}
-
-	void HpGauge::UpDate()
-	{
-		hpBar.UpDate();
 	}
 
 	void HpGauge::Draw()
@@ -213,8 +213,8 @@ namespace ActionUI
 
 		size =
 		{
-			Width(64 * 9),
-			Height(48)
+			Width(MAX_WIDTH),
+			Height(HEIGHT)
 		};
 
 		float tv = 50.f / 514.f;
@@ -225,19 +225,22 @@ namespace ActionUI
 			TextureV(tv)
 		};
 
-		float tu_size = 576.f / 2048.f;
-		float tv_size = 48.f / 514.f;
+		float tu_width = 576.f / 2048.f;
+		float tv_height = 48.f / 514.f;
 
 		texture_size =
 		{
-			Width(tu_size),
-			Height(tv_size)
+			Width(tu_width),
+			Height(tv_height)
 		};
 
 		texture_name = TextureName("ActionUI");
 		degree = Degree(0);
 		zoom = Zoom(1.0);
 		is_reverse = IsReverse(false);
+
+
+
 	}
 
 	void HpGauge::HpBar::Draw()
@@ -245,9 +248,9 @@ namespace ActionUI
 		dx.DrawEx(position.x.value, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value);
 	}
 
-	void HpGauge::HpBar::UpDate()
+	void HpGauge::HpBar::Update(const HP& hp)
 	{
-		// float drow_size = (size.width.value / 100) * status.hp.value;
+		size.width.value = (MAX_WIDTH / hp.max_value) * hp.value;
 	}
 
 	// ----------- MpGauge ---------------------------------------------------------------------------------------------------------
@@ -256,11 +259,6 @@ namespace ActionUI
 	{
 		mpFrame.Initialize();
 		mpBar.Initialize();
-	}
-
-	void MpGauge::UpDate()
-	{
-		mpBar.UpDate();
 	}
 
 	void MpGauge::Draw()
@@ -321,8 +319,8 @@ namespace ActionUI
 
 		size =
 		{
-			Width(64 * 9),
-			Height(48)
+			Width(MAX_WIDTH),
+			Height(HEIGHT)
 		};
 
 		float tu = 578.f / 2048.f;
@@ -354,9 +352,9 @@ namespace ActionUI
 		dx.DrawEx(position.x.value, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value);
 	}
 
-	void MpGauge::MpBar::UpDate()
+	void MpGauge::MpBar::Update(const MP& mp)
 	{
-		// float drow_size = (size.width.value / 100) * status.mp.value;
+		size.width.value = (MAX_WIDTH / mp.max_value) * mp.value;
 	}
 
 	// ----------- IpGauge ---------------------------------------------------------------------------------------------------------
@@ -365,11 +363,6 @@ namespace ActionUI
 	{
 		ipFrame.Initialize();
 		ipBar.Initialize();
-	}
-
-	void IpGauge::UpDate()
-	{
-		ipBar.UpDate();
 	}
 
 	void IpGauge::Draw()
@@ -430,8 +423,8 @@ namespace ActionUI
 
 		size =
 		{
-			Width(576),
-			Height(48)
+			Width(MAX_WIDTH),
+			Height(HEIGHT)
 		};
 
 		float tu = 1156.f / 2048.f;
@@ -463,9 +456,9 @@ namespace ActionUI
 		dx.DrawEx(position.x.value, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value);
 	}
 
-	void IpGauge::IpBar::UpDate()
+	void IpGauge::IpBar::Update(const IP& ip)
 	{
-		// float drow_size = (size.width.value / 100) * status.ip.value;
+		size.width.value = (MAX_WIDTH / ip.max_value) * ip.value;
 	}
 
 }
