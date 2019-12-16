@@ -2,9 +2,8 @@
 #define ACTIONUI_H
 
 #include "../../Observer/IObserver.h"
-#include "../../Character.h"
-
 #include "../UI.h"
+#include "../../Hero.h"
 #include "../ActionUI/BarBase.h"
 #include "../ActionUI/FrameBase.h"
 #include "../ActionUI/IconBase.h"

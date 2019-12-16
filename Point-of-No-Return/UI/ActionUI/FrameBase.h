@@ -19,7 +19,7 @@ public:
 
 protected:
 
-	Vec2 position =
+	Position position =
 	{
 		CoordinateX(0),
 		CoordinateY(0)
