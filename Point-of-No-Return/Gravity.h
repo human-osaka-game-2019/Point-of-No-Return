@@ -16,7 +16,8 @@ const float AddValue = 0.1f;
 * @class Acceleration
 * @brief 加速度のラッパークラス
 */
-class Acceleration {
+class Acceleration 
+{
 public:
 	explicit Acceleration(float value) :value(value) {};
 	~Acceleration() {}
@@ -50,7 +51,7 @@ private:
 class Gravity {
 public:
 
-	explicit Gravity(Position* vec):vec(vec) {}
+	explicit Gravity(Position* characterPosition):characterPosition(characterPosition) {}
 
 	~Gravity() {}
 
@@ -74,7 +75,8 @@ public:
 
 private:
 	Accelerator::Acceleration acceleration{ 0 };
-	Position* vec;
+	Position* characterPosition;
+	int jump_counter = 0;
 };
 
 #endif
