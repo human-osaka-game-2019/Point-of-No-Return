@@ -95,20 +95,20 @@ protected:
 	//! 前の座標を保存する
 	Position previousPosition =
 	{
-		CoordinateX(0),
-		CoordinateY(0)
+		CoordinateX(0.f),
+		CoordinateY(0.f)
 	};
 
 	Position offset = 
 	{
-		CoordinateX(0),
-		CoordinateY(0)
+		CoordinateX(0.f),
+		CoordinateY(0.f)
 	};
 
 	Position previousOffset =
 	{
-		CoordinateX(0),
-		CoordinateY(0)
+		CoordinateX(0.f),
+		CoordinateY(0.f)
 	};
 
 	Gravity gravity{ &position };

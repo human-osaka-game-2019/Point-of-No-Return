@@ -8,7 +8,7 @@ namespace
 {
 	const int DISPLAY_SIZE_WIDTH = 30;
 	const float WINDOW_CENTER_X = Display::DISPLAY_WIDTH / 2;
-	const float MIN_OFFSET_X = 0;
+	const float MIN_OFFSET_X = 0.f;
 	const float MAX_OFFSET_X = (Mapchip::WORLD_SIZE_WIDTH - DISPLAY_SIZE_WIDTH) * Mapchip::CHIP_SIZE;
 }
 
@@ -28,18 +28,18 @@ void Hero::Initialize()
 
 	uv =
 	{
-		TextureU(0.0f),
-		TextureV(0.0f)
+		TextureU(0.f),
+		TextureV(0.f)
 	};
 	texture_size =
 	{
-		Width(1.0f),
-		Height(1.0f)
+		Width(1.f),
+		Height(1.f)
 	};
 
 	texture_name = TextureName("Player");
-	degree = Degree(0);
-	zoom = Zoom(1.0);
+	degree = Degree(0.f);
+	zoom = Zoom(1.f);
 	is_reverse = IsReverse(false);
 }
 
@@ -54,11 +54,11 @@ void Hero::Update()
 		if (position.x <= CoordinateX(WINDOW_CENTER_X) || 
 			(CoordinateX(WINDOW_CENTER_X) < position.x && offset.x == CoordinateX(MAX_OFFSET_X)) && position.x + size.width < Display::DISPLAY_WIDTH)
 		{
-			position.x += CoordinateX(10.0f);
+			position.x += CoordinateX(10.f);
 		}
 		else
 		{
-			offset.x += CoordinateX(10.0f);
+			offset.x += CoordinateX(10.f);
 		}
 		if (CoordinateX(MAX_OFFSET_X) < offset.x)
 		{
@@ -72,15 +72,15 @@ void Hero::Update()
 		if (position.x + size.width >= WINDOW_CENTER_X ||
 			(position.x + size.width < WINDOW_CENTER_X && offset.x == CoordinateX(MIN_OFFSET_X)) && CoordinateX(MIN_OFFSET_X) < position.x)
 		{
-			position.x -= CoordinateX(10.0f);
+			position.x -= CoordinateX(10.f);
 		}
 		else
 		{
-			offset.x -= CoordinateX(10.0f);
+			offset.x -= CoordinateX(10.f);
 		}
-		if (offset.x < CoordinateX(0))
+		if (offset.x < CoordinateX(0.f))
 		{
-			offset.x = CoordinateX(0);
+			offset.x = CoordinateX(0.f);
 		}
 	}
 
