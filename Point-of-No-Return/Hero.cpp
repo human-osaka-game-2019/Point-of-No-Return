@@ -17,22 +17,22 @@ void Hero::Notify()
 {
 	if (previousStatus.hp.value != status.hp.value)
 	{
-		Character::HpChangeNotify(status.hp);
+		HpChangeNotify(status.hp);
 	}
 
 	if (previousStatus.mp.value != status.mp.value)
 	{
-		Character::MpChangeNotify(status.mp);
+		MpChangeNotify(status.mp);
 	}
 
 	if (previousStatus.ip.value != status.ip.value)
 	{
-		Character::IpChangeNotify(status.ip);
+		IpChangeNotify(status.ip);
 	}
 
 	if (previousParameter.gold.value != parameter.gold.value)
 	{
-		Character::GoldChangeNotify(parameter.gold);
+		GoldChangeNotify(parameter.gold);
 	}
 }
 
