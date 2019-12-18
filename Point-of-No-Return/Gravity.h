@@ -7,10 +7,10 @@ namespace Accelerator
 {
 
 //! 加速度の最大値
-const float MaxValue = 5.0f;
+const float MAX_VALUE = 5.f;
 
 //! 加速度に加算する値
-const float AddValue = 0.1f;
+const float ADD_VALUE = 0.1f;
 
 /**
 * @class Acceleration
@@ -19,7 +19,8 @@ const float AddValue = 0.1f;
 class Acceleration 
 {
 public:
-	explicit Acceleration(float value) :value(value) {};
+	explicit Acceleration(float value) :value(value) {}
+
 	~Acceleration() {}
 
 	float GetValue() { return value; }
@@ -51,7 +52,7 @@ private:
 class Gravity {
 public:
 
-	explicit Gravity(Position* characterPosition):characterPosition(characterPosition) {}
+	explicit Gravity(Position* characterPosition) :characterPosition(characterPosition) {}
 
 	~Gravity() {}
 
@@ -68,24 +69,36 @@ public:
 		acceleration.Reset();
 	};
 
+	/**
+	* @brief ジャンプする
+	*/
 	inline void Jump()
 	{
-		if (jump_counter == 0)
+		if (can_jump)
 		{
 			acceleration.Jump();
 		}
-		jump_counter++;
+		can_jump = false;
 	}
 
+	/**
+	* @brief ジャンプをできる状態に戻す
+	*/
 	inline void JumpReset()
 	{
-		jump_counter = 0;
+		can_jump = true;
 	}
 
 private:
-	Accelerator::Acceleration acceleration{ 0 };
+
+	//! accelerationのインスタンス
+	Accelerator::Acceleration acceleration{ 0.f };
+
+	//! コンストラクタで受け取ったcharacterPositionのアドレス
 	Position* characterPosition;
-	int jump_counter = 0;
+
+	//! ジャンプできるか判断する
+	bool can_jump = true;
 };
 
 #endif

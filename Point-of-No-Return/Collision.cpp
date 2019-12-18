@@ -31,23 +31,23 @@ bool HitCheckEdge(Direction* direction, Position characterPrevious, Size charact
 	if ((characterBottom <= blockTop) || (characterTop >= blockBottom))
 	{
 		//キャラクターがy方向に動いていないとき
-		if (characterVector.y == 0)
+		if (characterVector.y == 0.f)
 		{
 			return false;
 		}
 
-		*direction = (characterVector.y <0) ? Direction::Up : Direction::Down;
+		*direction = (characterVector.y < 0.f) ? Direction::Up : Direction::Down;
 
 		return true;
 	}
 
 	//キャラクターがx方向に動いていないとき
-	if (characterVector.x == 0)
+	if (characterVector.x == 0.f)
 	{
 		return false;
 	}
 
-	*direction = (characterVector.x < 0) ? Direction::Left : Direction::Right;
+	*direction = (characterVector.x < 0.f) ? Direction::Left : Direction::Right;
 
 	return true;
 

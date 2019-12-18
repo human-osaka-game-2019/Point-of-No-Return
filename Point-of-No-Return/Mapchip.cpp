@@ -39,7 +39,7 @@ void Mapchip::TexturePrint(float drawpos_x, float drawpos_y, float tu, float tv,
 	float tu_width = static_cast<float>(CHIP_WIDTH_NUM) / TEXTURE_WIDTH;
 	float tv_height = static_cast<float>(CHIP_HEIGHT_NUM) / TEXTURE_HEIGHT;
 
-	dx.DrawEx(drawpos_x, drawpos_y, 0.0f, width, height, 0.0f, 1.0f, false, texturename, tu, tv, tu_width, tv_height);
+	dx.DrawEx(drawpos_x, drawpos_y, 0.f, width, height, 0.f, 1.f, false, texturename, tu, tv, tu_width, tv_height);
 }
 
 
