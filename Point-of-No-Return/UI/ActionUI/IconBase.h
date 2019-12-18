@@ -12,10 +12,8 @@ public:
 
 	DX::DirectX& dx = DX::DirectX::GetInstance();
 
-	virtual void Initialize() {};
-	virtual void Draw() {};
-
-	IconBase() {};
+	virtual void Initialize() = 0;
+	virtual void Draw()  =0;
 	virtual ~IconBase() {};
 
 protected:
