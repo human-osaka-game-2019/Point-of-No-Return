@@ -2,7 +2,7 @@
 
 namespace
 {
-	const float jump = 5;
+	const float jump = 10;
 }
 
 namespace Accelerator
@@ -10,6 +10,11 @@ namespace Accelerator
 
 void Acceleration::Accelerate() 
 {
+	if (value > MaxValue)
+	{
+		return;
+	}
+
 	value += Accelerator::AddValue;
 }
 
