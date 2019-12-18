@@ -70,7 +70,16 @@ public:
 
 	inline void Jump()
 	{
-		acceleration.Jump();
+		if (jump_counter == 0)
+		{
+			acceleration.Jump();
+		}
+		jump_counter++;
+	}
+
+	inline void JumpReset()
+	{
+		jump_counter = 0;
 	}
 
 private:
