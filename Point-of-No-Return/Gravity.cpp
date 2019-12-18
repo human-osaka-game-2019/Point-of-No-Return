@@ -27,7 +27,7 @@ void Acceleration::Jump()
 
 void Gravity::Apply()
 {
-	vec->y.value += acceleration.GetValue();
+	characterPosition->y.value += acceleration.GetValue();
 	acceleration.Accelerate();
 }
 
