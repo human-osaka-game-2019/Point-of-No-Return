@@ -22,8 +22,6 @@ namespace ActionUI
 			Initialize();
 		}
 
-		~ItemUI() {};
-
 		/**
 		 * @brief 描画関数
 		 */
@@ -57,8 +55,6 @@ namespace ActionUI
 			Initialize(hero);
 		}
 
-		~GoldUI() {};
-
 		/**
 		 * @brief 描画関数
 		 */
@@ -85,8 +81,6 @@ namespace ActionUI
 				Initialize();
 			}
 
-			~GoldFrame() {};
-
 			void Initialize();
 
 			/**
@@ -103,8 +97,6 @@ namespace ActionUI
 			{
 				Initialize();
 			}
-
-			~GoldIcon() {}
 
 			void Initialize();
 
@@ -141,8 +133,6 @@ namespace ActionUI
 		{
 			Initialize(hero);
 		};
-		
-		~HpGauge() {};
 
 		/**
 		 * @brief 描画関数
@@ -207,8 +197,6 @@ namespace ActionUI
 		{
 			Initialize(hero);
 		};
-
-		~MpGauge() {};
 
 		/**
 		 * @brief 描画関数
@@ -275,8 +263,6 @@ namespace ActionUI
 			Initialize(hero);
 		};
 
-		~IpGauge() {};
-
 		/**
 		 * @brief 描画関数
 		 */
@@ -290,8 +276,6 @@ namespace ActionUI
 		public:
 
 			IpBar() {};
-			
-			~IpBar() {};
 
 			/**
 			 * @brief 初期化関数
