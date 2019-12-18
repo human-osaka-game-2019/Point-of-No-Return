@@ -5,7 +5,7 @@
 #include "../../Character.h"
 
 /**
- * @brief BerBaseクラス
+ * @brief BarBaseクラス
  */
 class BarBase
 {

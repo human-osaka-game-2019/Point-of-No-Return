@@ -4,7 +4,7 @@
 #include "../UI.h"
 
 /**
- * @brief ItemIconBaseクラス
+ * @brief IconBaseクラス
  */
 class IconBase
 {
