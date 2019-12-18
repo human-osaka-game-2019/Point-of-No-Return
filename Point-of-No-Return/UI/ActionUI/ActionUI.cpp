@@ -132,7 +132,7 @@ namespace ActionUI
 		}
 	}
 
-	void GoldUI::NumberUpdate(const Gold& gold)
+	void GoldUI::UpdateNumber(const Gold& gold)
 	{
 		int GoldValue = gold.value;
 
@@ -148,7 +148,7 @@ namespace ActionUI
 
 	void GoldUI::Update(const Gold& gold)
 	{
-		NumberUpdate(gold);
+		UpdateNumber(gold);
 	}
 
 	void GoldUI::GoldFrame::Initialize()
