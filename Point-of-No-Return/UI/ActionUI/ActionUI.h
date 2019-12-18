@@ -44,7 +44,7 @@ namespace ActionUI
 	};
 
 	/**
-	 * @brief MoneyUIクラス
+	 * @brief GoldUIクラス
 	 */
 	class GoldUI : public GameUI,public IGoldObserver
 	{
@@ -123,7 +123,7 @@ namespace ActionUI
 	};
 
 	/**
-	 * @brief HpUIクラス
+	 * @brief HpGaugeクラス
 	 */
 	class HpGauge : public GameUI
 	{
@@ -187,7 +187,7 @@ namespace ActionUI
 	};
 
 	/**
-	 * @brief MpUIクラス
+	 * @brief MpGaugeクラス
 	 */
 	class MpGauge : public GameUI
 	{
