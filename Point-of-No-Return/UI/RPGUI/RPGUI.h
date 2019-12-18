@@ -10,12 +10,6 @@ namespace RPGUI
 	 */
 	class TextWindow : public GameUI
 	{
-    private:
-
-
-	public:
-
-
 	};
 
 	/**
@@ -23,12 +17,6 @@ namespace RPGUI
 	 */
 	class CharacterWindow : public GameUI
 	{
-	protected:
-
-
-	public:
-
-
 	};
 
 	/**
@@ -36,12 +24,6 @@ namespace RPGUI
 	 */
 	class HeroWindow : public CharacterWindow
 	{
-	private:
-
-
-
-	public:
-
 	};
 
 	/**
@@ -49,12 +31,6 @@ namespace RPGUI
 	 */
 	class HeroineWindow : public CharacterWindow
 	{
-	private:
-
-
-
-	public:
-
 	};
 
 	/**
@@ -62,12 +38,6 @@ namespace RPGUI
 	 */
 	class SonWindow : public CharacterWindow
 	{
-	private:
-
-
-
-	public:
-
 	};
 
 
@@ -76,12 +46,6 @@ namespace RPGUI
 	 */
 	class DaughterWindow : public CharacterWindow
 	{
-	private:
-
-
-
-	public:
-
 	};
 
 
