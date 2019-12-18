@@ -4,7 +4,7 @@
 #include "Object.h"
 #include "Gravity.h"
 #include "../Point-of-No-Return/Observer/IObserver.h"
-#include <list>
+#include <vector>
 
 /**
  * @brief 方向
@@ -110,10 +110,10 @@ public:
 protected:
 
 	// ObserverList
-	std::list<IHpObserver*> pHpList;
-	std::list<IMpObserver*> pMpList;
-	std::list<IIpObserver*> pIpList;
-	std::list<IGoldObserver*> pGoldList;
+	std::vector<IHpObserver*> HpObservers;
+	std::vector<IMpObserver*> MpObservers;
+	std::vector<IIpObserver*> IpObservers;
+	std::vector<IGoldObserver*> GoldObservers;
 
 	Status status =
 	{
