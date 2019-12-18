@@ -9,6 +9,9 @@ void Mapchip::DrawMapchip(float draw_start_pos_x, float draw_start_pos_y, std::s
 	int width_num = TEXTURE_WIDTH / CHIP_WIDTH_NUM;
 	int height_num = TEXTURE_HEIGHT / CHIP_HEIGHT_NUM;
 
+	float draw_min_position = -CHIP_SIZE;
+	float draw_max_position = Display::DISPLAY_WIDTH + CHIP_SIZE;
+
 	for (int i = 0; i < WORLD_SIZE_HEIGHT; i++)
 	{
 		for (int j = 0; j < WORLD_SIZE_WIDTH; j++)
@@ -21,6 +24,12 @@ void Mapchip::DrawMapchip(float draw_start_pos_x, float draw_start_pos_y, std::s
 
 			float draw_pos_x = draw_start_pos_x + CHIP_SIZE * j;
 			float draw_pos_y = draw_start_pos_y + CHIP_SIZE * i;
+
+			if (draw_pos_x < draw_min_position || draw_max_position < draw_pos_x)
+			{
+				continue;
+			}
+
 			float tu = (float)(chip_id % width_num) * CHIP_WIDTH_NUM / TEXTURE_WIDTH;
 			float tv = (float)(chip_id / height_num) * CHIP_HEIGHT_NUM / TEXTURE_HEIGHT;
 			TexturePrint(draw_pos_x, draw_pos_y, tu, tv, texturename);

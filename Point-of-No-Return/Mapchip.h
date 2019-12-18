@@ -71,6 +71,14 @@ public:
 	int* map_[WORLD_SIZE_HEIGHT];
 
 private:
+
+	// 
+	const int HORIZONTAL_NUM = TEXTURE_WIDTH / CHIP_WIDTH_NUM;
+	const int VERTICAL_NUM = TEXTURE_HEIGHT / CHIP_HEIGHT_NUM;
+	// 描画する範囲
+	const float DRAW_MIN = -CHIP_SIZE;
+	const float DRAW_MAX = Display::WIDTH + CHIP_SIZE;
+
 	//! マップの二重配列
 	int map[WORLD_SIZE_HEIGHT][WORLD_SIZE_WIDTH] = {};
 
