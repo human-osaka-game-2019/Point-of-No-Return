@@ -84,7 +84,7 @@ void Hero::Update()
 		}
 	}
 
-	if (dx.GetKeyState(DIK_W) == dx.ON)
+	if (dx.GetKeyState(DIK_W) == dx.PUSH)
 	{
 		gravity.Jump();
 	}
@@ -99,9 +99,11 @@ void Hero::CorrectCoordinate(Direction direction, const Position& blockPosition)
 	case Direction::Up:
 		position.y.value = blockPosition.y.value - size.height.value;
 		gravity.AccelerationReset();
+		gravity.JumpReset();
 		break;
 	case Direction::Down:
 		position.y.value = blockPosition.y.value + Mapchip::CHIP_SIZE;
+		gravity.AccelerationReset();
 		break;
 	case Direction::Left:
 		position.x.value = blockPosition.x.value - size.width.value;
