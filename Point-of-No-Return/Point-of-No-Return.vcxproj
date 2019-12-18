@@ -153,7 +153,6 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mapchip.cpp" />
     <ClCompile Include="Object.cpp" />
-    <ClCompile Include="Observer\IObserver.cpp" />
     <ClCompile Include="Save.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Collision.cpp" />

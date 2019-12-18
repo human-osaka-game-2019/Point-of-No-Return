@@ -91,8 +91,8 @@
     <ClCompile Include="UI\RPGUI\RPGUI.cpp">
       <Filter>Feature\横スクロール\UI\RPGUI</Filter>
     </ClCompile>
-    <ClCompile Include="Observer\IObserver.cpp">
-      <Filter>Feature\横スクロール\Observer</Filter>
+    <ClCompile Include="StageScroll.cpp">
+      <Filter>Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +159,9 @@
     </ClInclude>
     <ClInclude Include="Observer\IObserver.h">
       <Filter>Feature\横スクロール\Observer</Filter>
+    </ClInclude>
+    <ClInclude Include="StageScroll.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
