@@ -82,16 +82,16 @@ void Hero::Initialize()
 void Hero::Update()
 {
 	Notify();
-	
+
 	previousPosition = position;
 	previousOffset = offset;
-    previousStatus = status;
+	previousStatus = status;
 	previousParameter = parameter;
 
 	if (dx.GetKeyState(DIK_D) == dx.ON)
 	{
 		// TODO: if文の長さはリファクタリング時に変数化したりします。
-		if (position.x <= CoordinateX(WINDOW_CENTER_X) || 
+		if (position.x <= CoordinateX(WINDOW_CENTER_X) ||
 			(CoordinateX(WINDOW_CENTER_X) < position.x && offset.x == CoordinateX(MAX_OFFSET_X)) && position.x + size.width < Display::DISPLAY_WIDTH)
 		{
 			position.x += CoordinateX(10.0f);
