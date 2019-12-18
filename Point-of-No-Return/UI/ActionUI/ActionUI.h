@@ -32,8 +32,6 @@ namespace ActionUI
 		 */
 		void UpDate();
 
-		IconBase ItemIcon;
-
 	private:
 
 		/**
@@ -46,7 +44,7 @@ namespace ActionUI
 	/**
 	 * @brief GoldUIクラス
 	 */
-	class GoldUI : public GameUI,public IGoldObserver
+	class GoldUI : public GameUI, public IGoldObserver
 	{
 	public:
 
@@ -65,7 +63,7 @@ namespace ActionUI
 		 */
 		void DrawNumber();
 
-		void NumberUpdate(const Gold& gold);
+		void UpdateNumber(const Gold& gold);
 
 		/**
 		 * @brief 表示している金額を更新する
@@ -139,7 +137,7 @@ namespace ActionUI
 		 */
 		void Draw();
 
-		class HpBar : public BarBase,public IHpObserver
+		class HpBar : public BarBase, public IHpObserver
 		{
 		public:
 
@@ -203,7 +201,7 @@ namespace ActionUI
 		 */
 		void Draw();
 
-		class MpBar : public BarBase,public IMpObserver
+		class MpBar : public BarBase, public IMpObserver
 		{
 		public:
 
@@ -271,7 +269,7 @@ namespace ActionUI
 		/**
 		 * @brief IpBarクラス
 		 */
-		class IpBar : public BarBase,public IIpObserver
+		class IpBar : public BarBase, public IIpObserver
 		{
 		public:
 
