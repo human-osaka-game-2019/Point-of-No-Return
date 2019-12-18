@@ -7,7 +7,7 @@ class IHpObserver
 {
 public:
 	virtual ~IHpObserver() {};
-    virtual void Update(const HP& hp) = 0;
+	virtual void Update(const HP& hp) = 0;
 };
 
 class IMpObserver
