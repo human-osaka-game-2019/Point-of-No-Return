@@ -6,8 +6,8 @@
 
 void Character::HpChangeNotify(const HP& hp)
 {
-	std::list<IHpObserver*>::iterator it;
-	for (it = pHpList.begin(); it != pHpList.end(); it++)
+	std::vector<IHpObserver*>::iterator it;
+	for (it = HpObservers.begin(); it != HpObservers.end(); it++)
 	{
 		(*it)->Update(hp);
 	}
@@ -15,13 +15,13 @@ void Character::HpChangeNotify(const HP& hp)
 
 void Character::AddHpChangeObserver(IHpObserver* pIHpObserver)
 {
-	pHpList.push_back(pIHpObserver);
+	HpObservers.push_back(pIHpObserver);
 }
 
 void Character::MpChangeNotify(const MP& mp)
 {
-	std::list<IMpObserver*>::iterator it;
-	for (it = pMpList.begin(); it != pMpList.end(); it++)
+	std::vector<IMpObserver*>::iterator it;
+	for (it = MpObservers.begin(); it != MpObservers.end(); it++)
 	{
 		(*it)->Update(mp);
 	}
@@ -29,13 +29,13 @@ void Character::MpChangeNotify(const MP& mp)
 
 void Character::AddMpChangeObserver(IMpObserver* pMpObserver)
 {
-	pMpList.push_back(pMpObserver);
+	MpObservers.push_back(pMpObserver);
 }
 
 void Character::IpChangeNotify(const IP& ip)
 {
-	std::list<IIpObserver*>::iterator it;
-	for (it = pIpList.begin(); it != pIpList.end(); it++)
+	std::vector<IIpObserver*>::iterator it;
+	for (it = IpObservers.begin(); it != IpObservers.end(); it++)
 	{
 		(*it)->Update(ip);
 	}
@@ -43,13 +43,13 @@ void Character::IpChangeNotify(const IP& ip)
 
 void Character::AddIpChangeObserver(IIpObserver* pIIpObserver)
 {
-	pIpList.push_back(pIIpObserver);
+	IpObservers.push_back(pIIpObserver);
 }
 
 void Character::GoldChangeNotify(const Gold& gold)
 {
-	std::list<IGoldObserver*>::iterator it;
-	for (it = pGoldList.begin(); it != pGoldList.end(); it++)
+	std::vector<IGoldObserver*>::iterator it;
+	for (it = GoldObservers.begin(); it != GoldObservers.end(); it++)
 	{
 		(*it)->Update(gold);
 	}
@@ -57,5 +57,5 @@ void Character::GoldChangeNotify(const Gold& gold)
 
 void Character::AddGoldChangeObserver(IGoldObserver* pIGoldObserver)
 {
-	pGoldList.push_back(pIGoldObserver);
+	GoldObservers.push_back(pIGoldObserver);
 }
