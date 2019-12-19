@@ -2,24 +2,32 @@
 #define MAPCHIP_H_
 
 #include<iostream>
-#include<stdio.h>
-
 
 #include "Character.h"
+#include "Main.h"
 
 // TODO: 引数などを修正したいので、doxygenコメントはリファクタリング時に記入する
 class Mapchip {
 public:
-	// ワールドのサイズ
-	static const int WORLD_SIZE_WIDTH = 480;
-	static const int WORLD_SIZE_HEIGHT = 17;
-	// 一つのチップのサイズ
+	//! ワールドの横のブロック数
+	static const int WORLD_HORIZONTAL_NUM = 480;
+
+	//! ワールドの縦のブロック数
+	static const int WORLD_VERTICAL_NUM = 17;
+
+	//! 一つのチップのサイズ
 	static const int CHIP_SIZE = 64;
-	// テクスチャのサイズ
+
+	//! テクスチャの横幅
 	static const int TEXTURE_WIDTH = 256;
+
+	//! テクスチャの縦幅
 	static const int TEXTURE_HEIGHT = 256;
-	// テクスチャ一つに対するチップの番号
+
+	//! テクスチャ一つに対するチップの横の番号
 	static const int CHIP_WIDTH_NUM = TEXTURE_WIDTH / 4;
+
+	//! テクスチャ一つに対するチップの縦の番号
 	static const int CHIP_HEIGHT_NUM = TEXTURE_HEIGHT / 4;
 
 	Mapchip()
@@ -68,19 +76,24 @@ public:
 	static Position CalcMapPosition(const Matrix& matrix,const Position& offset);
 
 	//! マップの情報を保存するポインタ配列
-	int* map_[WORLD_SIZE_HEIGHT];
+	int* map_[WORLD_VERTICAL_NUM];
 
 private:
 
-	// 
+	// テクスチャの横のブロック数
 	const int HORIZONTAL_NUM = TEXTURE_WIDTH / CHIP_WIDTH_NUM;
+
+	// テクスチャの縦のブロック数
 	const int VERTICAL_NUM = TEXTURE_HEIGHT / CHIP_HEIGHT_NUM;
-	// 描画する範囲
+
+	//! 描画する最小値
 	const float DRAW_MIN = -CHIP_SIZE;
+
+	//! 描画する最大値
 	const float DRAW_MAX = Display::WIDTH + CHIP_SIZE;
 
 	//! マップの二重配列
-	int map[WORLD_SIZE_HEIGHT][WORLD_SIZE_WIDTH] = {};
+	int map[WORLD_VERTICAL_NUM][WORLD_HORIZONTAL_NUM] = {};
 
 };
 

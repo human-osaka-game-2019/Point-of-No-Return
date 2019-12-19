@@ -1,20 +1,13 @@
 ﻿#include "MapChip.h"
 
 #include "Character.h"
-#include "Main.h"
 #include "string"
 
 void Mapchip::DrawMapchip(float draw_start_pos_x, float draw_start_pos_y, std::string texturename, int** map)
 {
-	int width_num = TEXTURE_WIDTH / CHIP_WIDTH_NUM;
-	int height_num = TEXTURE_HEIGHT / CHIP_HEIGHT_NUM;
-
-	float draw_min_position = -CHIP_SIZE;
-	float draw_max_position = Display::DISPLAY_WIDTH + CHIP_SIZE;
-
-	for (int i = 0; i < WORLD_SIZE_HEIGHT; i++)
+	for (int i = 0; i < WORLD_VERTICAL_NUM; i++)
 	{
-		for (int j = 0; j < WORLD_SIZE_WIDTH; j++)
+		for (int j = 0; j < WORLD_HORIZONTAL_NUM; j++)
 		{
 			int chip_id = map[i][j];
 			if (chip_id == 0)
@@ -25,13 +18,13 @@ void Mapchip::DrawMapchip(float draw_start_pos_x, float draw_start_pos_y, std::s
 			float draw_pos_x = draw_start_pos_x + CHIP_SIZE * j;
 			float draw_pos_y = draw_start_pos_y + CHIP_SIZE * i;
 
-			if (draw_pos_x < draw_min_position || draw_max_position < draw_pos_x)
+			if (draw_pos_x < DRAW_MIN || DRAW_MAX < draw_pos_x)
 			{
 				continue;
 			}
 
-			float tu = (float)(chip_id % width_num) * CHIP_WIDTH_NUM / TEXTURE_WIDTH;
-			float tv = (float)(chip_id / height_num) * CHIP_HEIGHT_NUM / TEXTURE_HEIGHT;
+			float tu = (float)(chip_id % HORIZONTAL_NUM) * CHIP_WIDTH_NUM / TEXTURE_WIDTH;
+			float tv = (float)(chip_id / VERTICAL_NUM) * CHIP_HEIGHT_NUM / TEXTURE_HEIGHT;
 			TexturePrint(draw_pos_x, draw_pos_y, tu, tv, texturename);
 		}
 	}
@@ -51,13 +44,12 @@ void Mapchip::TexturePrint(float drawpos_x, float drawpos_y, float tu, float tv,
 	dx.DrawEx(drawpos_x, drawpos_y, 0.f, width, height, 0.f, 1.f, false, texturename, tu, tv, tu_width, tv_height);
 }
 
-
 void Mapchip::InitMap()
 {
 	//α用のマップ
-	for (int i = 0; i < WORLD_SIZE_HEIGHT; i++)
+	for (int i = 0; i < WORLD_VERTICAL_NUM; i++)
 	{
-		for (int j = 0; j < WORLD_SIZE_WIDTH; j++)
+		for (int j = 0; j < WORLD_HORIZONTAL_NUM; j++)
 		{
 			if (i == 14 || i == 15)
 			{
@@ -66,7 +58,7 @@ void Mapchip::InitMap()
 		}
 	}
 	
-	for (int i = 0; i < WORLD_SIZE_HEIGHT; i++)
+	for (int i = 0; i < WORLD_VERTICAL_NUM; i++)
 	{
 		map_[i] = map[i];
 	}
@@ -85,7 +77,6 @@ Matrix Mapchip::CalcMapMatrix(const Position& position, const Position& offset)
 
 	return matrix;
 }
-
 
 Position Mapchip::CalcMapPosition(const Matrix& matrix,const Position& offset)
 {
