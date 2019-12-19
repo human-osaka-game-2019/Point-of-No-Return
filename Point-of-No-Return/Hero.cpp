@@ -3,13 +3,16 @@
 #include "Main.h"
 #include "Mapchip.h"
 
-
 namespace
 {
-	const int DISPLAY_SIZE_WIDTH = 30;
-	const float WINDOW_CENTER_X = Display::DISPLAY_WIDTH / 2;
+	//! Displayに入る横のブロックの個数
+	const int DISPLAY_HORIZONTAL_NUM = 30;
+	//! Displayの横の真ん中
+	const float DISPLAY_CENTER_X = Display::WIDTH / 2.f;
+	//! offsetの最小値
 	const float MIN_OFFSET_X = 0.f;
-	const float MAX_OFFSET_X = (Mapchip::WORLD_SIZE_WIDTH - DISPLAY_SIZE_WIDTH) * Mapchip::CHIP_SIZE;
+	//! offsetの最大値
+	const float MAX_OFFSET_X = (Mapchip::WORLD_HORIZONTAL_NUM - DISPLAY_SIZE_NUM) * Mapchip::CHIP_SIZE;
 }
 
 void Hero::Initialize()
@@ -51,8 +54,8 @@ void Hero::Update()
 	if (dx.GetKeyState(DIK_D) == dx.ON)
 	{
 		// TODO: if文の長さはリファクタリング時に変数化したりします。
-		if (position.x <= CoordinateX(WINDOW_CENTER_X) || 
-			(CoordinateX(WINDOW_CENTER_X) < position.x && offset.x == CoordinateX(MAX_OFFSET_X)) && position.x + size.width < Display::DISPLAY_WIDTH)
+		if (position.x <= CoordinateX(DISPLAY_CENTER_X) ||
+			(CoordinateX(DISPLAY_CENTER_X) < position.x && offset.x == CoordinateX(MAX_OFFSET_X)) && position.x + size.width < Display::WIDTH)
 		{
 			position.x += CoordinateX(10.f);
 		}
@@ -69,8 +72,8 @@ void Hero::Update()
 	if (dx.GetKeyState(DIK_A) == dx.ON)
 	{
 		// TODO: if文の長さはリファクタリング時に変数化したりします。
-		if (position.x + size.width >= WINDOW_CENTER_X ||
-			(position.x + size.width < WINDOW_CENTER_X && offset.x == CoordinateX(MIN_OFFSET_X)) && CoordinateX(MIN_OFFSET_X) < position.x)
+		if (position.x + size.width >= DISPLAY_CENTER_X ||
+			(position.x + size.width < DISPLAY_CENTER_X && offset.x == CoordinateX(MIN_OFFSET_X)) && CoordinateX(MIN_OFFSET_X) < position.x)
 		{
 			position.x -= CoordinateX(10.f);
 		}

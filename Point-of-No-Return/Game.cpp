@@ -29,11 +29,10 @@ void Game::Draw()
 
 	float  game_back_tu = 1.f / 16.f;
 
-
-	dx.DrawEx(0.f, 0.f, 0.f, Display::DISPLAY_WIDTH, Display::DISPLAY_HEIGHT, 0.f, 1.f, 0.f, "game_back", 0.f, 0.f, game_back_tu, 1);
+	dx.DrawEx(0.f, 0.f, 0.f, Display::WIDTH, Display::HEIGHT, 0.f, 1.f, 0.f, "game_back", 0.f, 0.f, game_back_tu, 1);
 	mapchip.DrawMapchip(-currentOffset.x.value, -currentOffset.y.value, "blocks", mapchip.map_);
 
-	dx.DrawEx(Display::DISPLAY_WIDTH/2.f -50.f, 0.f, 0.f, 100.f, 100.f, 0.f, 1.f, 0.f, "game_back", 0.f, 0.f, game_back_tu, 1);
+	dx.DrawEx(Display::WIDTH/2.f -50.f, 0.f, 0.f, 100.f, 100.f, 0.f, 1.f, 0.f, "game_back", 0.f, 0.f, game_back_tu, 1);
 
 	hero.Draw();
 

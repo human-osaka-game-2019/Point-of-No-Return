@@ -6,15 +6,14 @@
 
 using DX::DirectX;
 
-
-
 namespace Display
 {
-	const float DISPLAY_WIDTH = 1920;
-	const float DISPLAY_HEIGHT = 1080;
+	//! Displayの横幅
+	const float WIDTH = 1920.f;
 
+	//! Displayの縦幅
+	const float HEIGHT = 1080.f;
 }
-
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
 
