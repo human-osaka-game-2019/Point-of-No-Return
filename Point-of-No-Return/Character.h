@@ -49,22 +49,6 @@ public:
 		return previousPosition;
 	}
 
-	void HpChanged(const HP& hp);
-
-	void AddHpChangeObserver(IHpObserver* pIHpObserver);
-
-	void MpChanged(const MP& mp);
-
-	void AddMpChangeObserver(IMpObserver* pIMpObserver);
-
-	void IpChanged(const IP& ip);
-
-	void AddIpChangeObserver(IIpObserver* pIIpObserver);
-
-	void GoldChanged(const Gold& gold);
-
-	void AddGoldChangeObserver(IGoldObserver* pIGoldObserver);
-
 	/**
 	 * @brief	offsetを取得する
 	 */
@@ -106,8 +90,25 @@ public:
 
 		return vector;
 	};
+	void AddGoldChangeObserver(IGoldObserver* pIGoldObserver);
+
+	void AddHpChangeObserver(IHpObserver* pIHpObserver);
+
+	void AddMpChangeObserver(IMpObserver* pIMpObserver);
+
+	void AddIpChangeObserver(IIpObserver* pIIpObserver);
 
 protected:
+
+	void HpChanged(const HP& hp);
+
+	void MpChanged(const MP& mp);
+
+	void IpChanged(const IP& ip);
+
+	void GoldChanged(const Gold& gold);
+
+
 
 	// ObserverList
 	std::vector<IHpObserver*> HpObservers;
@@ -154,7 +155,6 @@ protected:
 		CoordinateY(0.f)
 	};
 
-	
 	Gravity gravity{ &position };
 
 private:
