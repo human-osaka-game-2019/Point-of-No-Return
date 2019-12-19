@@ -3,10 +3,10 @@
 
 #include "../../Observer/IObserver.h"
 #include "../UI.h"
-#include "../../Hero.h"
-#include "../ActionUI/BarBase.h"
-#include "../ActionUI/FrameBase.h"
-#include "../ActionUI/IconBase.h"
+#include "../../Character.h"
+#include "BarBase.h"
+#include "FrameBase.h"
+#include "IconBase.h"
 
 namespace ActionUI
 {
