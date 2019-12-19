@@ -36,12 +36,12 @@ public:
 	/**
 	 * @brief	Statusを取得する
 	 */
-	inline Status GetStatus()
+	inline const Status& GetStatus() const
 	{
 		return status;
 	};
 
-	void Notify();
+	void NotifyObservers();
 
 private:
 

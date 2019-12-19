@@ -146,7 +146,7 @@ namespace ActionUI
 		}
 	}
 
-	void GoldUI::Update(const Gold& gold)
+	void GoldUI::OnGoldChanged(const Gold& gold)
 	{
 		UpdateNumber(gold);
 	}
@@ -335,7 +335,7 @@ namespace ActionUI
 		dx.DrawEx(position.x.value, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value);
 	}
 
-	void HpGauge::HpBar::Update(const HP& hp)
+	void HpGauge::HpBar::OnHpChanged(const HP& hp)
 	{
 		size.width.value = (MAX_WIDTH / hp.max_value) * hp.value;
 	}
@@ -440,7 +440,7 @@ namespace ActionUI
 		dx.DrawEx(position.x.value, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value);
 	}
 
-	void MpGauge::MpBar::Update(const MP& mp)
+	void MpGauge::MpBar::OnMpChanged(const MP& mp)
 	{
 		size.width.value = (MAX_WIDTH / mp.max_value) * mp.value;
 	}
@@ -545,7 +545,7 @@ namespace ActionUI
 		dx.DrawEx(position.x.value, position.y.value, 0, size.width.value, size.height.value, degree.value, zoom.value, is_reverse.value, texture_name.value, uv.tu.value, uv.tv.value, texture_size.width.value, texture_size.height.value);
 	}
 
-	void IpGauge::IpBar::Update(const IP& ip)
+	void IpGauge::IpBar::OnIpChanged(const IP& ip)
 	{
 		size.width.value = (MAX_WIDTH / ip.max_value) * ip.value;
 	}
