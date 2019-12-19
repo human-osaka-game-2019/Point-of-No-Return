@@ -68,7 +68,7 @@ namespace ActionUI
 		/**
 		 * @brief 表示している金額を更新する
 		 */
-		void Update(const Gold& gold);
+		void OnGoldChanged(const Gold& gold);
 
 		class GoldFrame : public FrameBase
 		{
@@ -149,7 +149,7 @@ namespace ActionUI
 			/**
 			 * @brief Widthの値を更新する
 			 */
-			void Update(const HP& hp);
+			void OnHpChanged(const HP& hp);
 
 			/**
 			 * @brief 描画関数
@@ -213,7 +213,7 @@ namespace ActionUI
 			/**
 			 * @brief Widthの値を更新する
 			 */
-			void Update(const MP& mp);
+			void OnMpChanged(const MP& mp);
 
 			/**
 			 * @brief 描画関数
@@ -283,7 +283,7 @@ namespace ActionUI
 			/**
 			 * @brief Widthの値を更新する
 			 */
-			void Update(const IP& ip);
+			void OnIpChanged(const IP& ip);
 
 			/**
 			 * @brief 描画関数

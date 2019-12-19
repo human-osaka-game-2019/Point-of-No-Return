@@ -49,19 +49,19 @@ public:
 		return previousPosition;
 	}
 
-	void HpChangeNotify(const HP& hp);
+	void HpChanged(const HP& hp);
 
 	void AddHpChangeObserver(IHpObserver* pIHpObserver);
 
-	void MpChangeNotify(const MP& mp);
+	void MpChanged(const MP& mp);
 
 	void AddMpChangeObserver(IMpObserver* pIMpObserver);
 
-	void IpChangeNotify(const IP& ip);
+	void IpChanged(const IP& ip);
 
 	void AddIpChangeObserver(IIpObserver* pIIpObserver);
 
-	void GoldChangeNotify(const Gold& gold);
+	void GoldChanged(const Gold& gold);
 
 	void AddGoldChangeObserver(IGoldObserver* pIGoldObserver);
 

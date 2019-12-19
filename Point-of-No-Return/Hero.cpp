@@ -16,26 +16,26 @@ namespace
 }
 
 
-void Hero::Notify()
+void Hero::NotifyObservers()
 {
 	if (previousStatus.hp.value != status.hp.value)
 	{
-		HpChangeNotify(status.hp);
+		HpChanged(status.hp);
 	}
 
 	if (previousStatus.mp.value != status.mp.value)
 	{
-		MpChangeNotify(status.mp);
+		MpChanged(status.mp);
 	}
 
 	if (previousStatus.ip.value != status.ip.value)
 	{
-		IpChangeNotify(status.ip);
+		IpChanged(status.ip);
 	}
 
 	if (previousParameter.gold.value != parameter.gold.value)
 	{
-		GoldChangeNotify(parameter.gold);
+		GoldChanged(parameter.gold);
 	}
 }
 
@@ -84,7 +84,7 @@ void Hero::Initialize()
 
 void Hero::Update()
 {
-	Notify();
+	NotifyObservers();
 
 	previousPosition = position;
 	previousOffset = offset;

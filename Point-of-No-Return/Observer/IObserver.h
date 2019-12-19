@@ -7,28 +7,28 @@ class IHpObserver
 {
 public:
 	virtual ~IHpObserver() {};
-	virtual void Update(const HP& hp) = 0;
+	virtual void OnHpChanged(const HP& hp) = 0;
 };
 
 class IMpObserver
 {
 public:
 	virtual ~IMpObserver() {};
-	virtual void Update(const MP& mp) = 0;
+	virtual void OnMpChanged(const MP& mp) = 0;
 };
 
 class IIpObserver
 {
 public:
 	virtual ~IIpObserver() {};
-	virtual void Update(const IP& ip) = 0;
+	virtual void OnIpChanged(const IP& ip) = 0;
 };
 
 class IGoldObserver
 {
 public:
 	virtual ~IGoldObserver() {};
-	virtual void Update(const Gold& gold) = 0;
+	virtual void OnGoldChanged(const Gold& gold) = 0;
 };
 
 #endif
