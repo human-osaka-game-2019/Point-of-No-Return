@@ -63,10 +63,10 @@ namespace ActionUI
 
 	}
 
-	void GoldUI::Initialize(Hero& hero)
+	void GoldUI::Initialize(Character* character)
 	{
 
-		hero.AddGoldChangeObserver(this);
+		character->AddGoldChangeObserver(this);
 
 		for (int a = 0; a < 9; a++)
 		{
@@ -238,11 +238,11 @@ namespace ActionUI
 
 	// ----------- HpGauge ---------------------------------------------------------------------------------------------------------
 
-	void HpGauge::Initialize(Hero& hero)
+	void HpGauge::Initialize(Character* character)
 	{
 		hpBar.Initialize();
 		hpFrame.Initialize();
-		hero.AddHpChangeObserver(&hpBar);
+		character->AddHpChangeObserver(&hpBar);
 	}
 
 	void HpGauge::Draw()
@@ -342,11 +342,11 @@ namespace ActionUI
 
 	// ----------- MpGauge ---------------------------------------------------------------------------------------------------------
 
-	void MpGauge::Initialize(Hero& hero)
+	void MpGauge::Initialize(Character* character)
 	{
 		mpFrame.Initialize();
 		mpBar.Initialize();
-		hero.AddMpChangeObserver(&mpBar);
+		character->AddMpChangeObserver(&mpBar);
 	}
 
 	void MpGauge::Draw()
@@ -447,11 +447,11 @@ namespace ActionUI
 
 	// ----------- IpGauge ---------------------------------------------------------------------------------------------------------
 
-	void IpGauge::Initialize(Hero& hero)
+	void IpGauge::Initialize(Character* character)
 	{
 		ipFrame.Initialize();
 		ipBar.Initialize();
-		hero.AddIpChangeObserver(&ipBar);
+		character->AddIpChangeObserver(&ipBar);
 	}
 
 	void IpGauge::Draw()

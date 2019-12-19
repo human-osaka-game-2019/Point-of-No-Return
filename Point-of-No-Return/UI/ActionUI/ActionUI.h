@@ -48,9 +48,9 @@ namespace ActionUI
 	{
 	public:
 
-		GoldUI(Hero& hero) 
+		explicit GoldUI(Character* character)
 		{
-			Initialize(hero);
+			Initialize(character);
 		}
 
 		/**
@@ -113,7 +113,7 @@ namespace ActionUI
 		/**
 		 * @brief 初期化関数
 		 */
-		void Initialize(Hero& hero);
+		void Initialize(Character* character);
 
 		GoldIcon goldIcon;
 
@@ -127,9 +127,9 @@ namespace ActionUI
 	{
 	public:
 
-		HpGauge(Hero& hero) 
+		explicit HpGauge(Character* character)
 		{
-			Initialize(hero);
+			Initialize(character);
 		};
 
 		/**
@@ -178,7 +178,7 @@ namespace ActionUI
 		/**
 		 * @brief 初期化関数
 		 */
-		void Initialize(Hero& hero);
+		void Initialize(Character* character);
 
 		HpBar hpBar;
 		HpFrame hpFrame;
@@ -191,9 +191,9 @@ namespace ActionUI
 	{
 	public:
 
-		MpGauge(Hero& hero) 
+		explicit MpGauge(Character* character)
 		{
-			Initialize(hero);
+			Initialize(character);
 		};
 
 		/**
@@ -243,7 +243,7 @@ namespace ActionUI
 		/**
 		 * @brief 初期化関数
 		 */
-		void Initialize(Hero& hero);
+		void Initialize(Character* character);
 
 		MpBar mpBar;
 		MpFrame mpFrame;
@@ -256,9 +256,9 @@ namespace ActionUI
 	{
 	public:
 
-		IpGauge(Hero& hero) 
+		explicit IpGauge(Character* character)
 		{
-			Initialize(hero);
+			Initialize(character);
 		};
 
 		/**
@@ -316,7 +316,7 @@ namespace ActionUI
 		/**
 		 * @brief 初期化
 		 */
-		void Initialize(Hero& hero);
+		void Initialize(Character* character);
 
 		IpFrame ipFrame;
 		IpBar ipBar;

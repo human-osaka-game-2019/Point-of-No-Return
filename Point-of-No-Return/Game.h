@@ -45,12 +45,13 @@ private:
 	Mapchip mapchip;
 
 	Hero hero{ "Player" };
-	
-	ActionUI::HpGauge hpGauge{ hero };
-	ActionUI::MpGauge mpGauge{ hero };
-	ActionUI::IpGauge ipGauge{ hero };
+	Character character{ "player" };
+
+	ActionUI::HpGauge hpGauge{ &character };
+	ActionUI::MpGauge mpGauge{ &character };
+	ActionUI::IpGauge ipGauge{ &character };
 	ActionUI::ItemUI itemUI;
-	ActionUI::GoldUI goldUI{ hero };
+	ActionUI::GoldUI goldUI{ &character };
 };
 
 
