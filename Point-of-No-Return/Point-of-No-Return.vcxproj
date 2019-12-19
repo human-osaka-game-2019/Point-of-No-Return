@@ -78,7 +78,7 @@
     <LibraryPath>$(DXSDK_DIR)Lib\$(PlatformTarget);$(LibraryPath);Lib;Lib\$(PlatformTarget)\$(Configuration)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(DXSDK_DIR)Include;$(IncludePath);Include</IncludePath>
+    <IncludePath>$(DXSDK_DIR)Include;C:\保存用\デスクトップ\後期制作\Point-of-No-Return\UI\ActionUI;$(IncludePath)</IncludePath>
     <LibraryPath>$(DXSDK_DIR)Lib\$(PlatformTarget);$(LibraryPath);Lib;Lib\$(PlatformTarget)\$(Configuration)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
