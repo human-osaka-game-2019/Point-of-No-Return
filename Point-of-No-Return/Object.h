@@ -216,7 +216,7 @@ struct IsReverse
 //! ヒットポイント
 struct HP
 {
-	explicit HP(int value,int max_value) :value(value),max_value(max_value) {}
+	HP(int value,int max_value) :value(value),max_value(max_value) {}
 	int max_value;
 	int value;
 };
@@ -224,7 +224,7 @@ struct HP
 //! マジックポイント
 struct MP
 {
-	explicit MP(int value, int max_value) :value(value), max_value(max_value) {}
+	MP(int value, int max_value) :value(value), max_value(max_value) {}
 	int max_value;
 	int value;
 };
@@ -232,7 +232,7 @@ struct MP
 //! イマジナリーポイント/想像力
 struct IP
 {
-	explicit IP(int value, int max_value) :value(value), max_value(max_value) {}
+	IP(int value, int max_value) :value(value), max_value(max_value) {}
 	int max_value;
 	int value;
 };
@@ -240,7 +240,7 @@ struct IP
 //! 攻撃力
 struct Attack
 {
-	explicit Attack(int value, int max_value) :value(value), max_value(max_value) {}
+	Attack(int value, int max_value) :value(value), max_value(max_value) {}
 	int max_value;
 	int value;
 };
@@ -248,7 +248,7 @@ struct Attack
 //! 防御力
 struct Defense
 {
-	explicit Defense(int value, int max_value) :value(value), max_value(max_value) {}
+	Defense(int value, int max_value) :value(value), max_value(max_value) {}
 	int max_value;
 	int value;
 };
@@ -256,7 +256,7 @@ struct Defense
 //! 素早さ
 struct Speed
 {
-	explicit Speed(int value, int max_value) :value(value), max_value(max_value) {}
+	Speed(int value, int max_value) :value(value), max_value(max_value) {}
 	int max_value;
 	int value;
 };
@@ -264,7 +264,7 @@ struct Speed
 //! 魔法攻撃力
 struct MagicAttack
 {
-	explicit MagicAttack(int value, int max_value) :value(value), max_value(max_value) {}
+	MagicAttack(int value, int max_value) :value(value), max_value(max_value) {}
 	int max_value;
 	int value;
 };
@@ -272,7 +272,7 @@ struct MagicAttack
 //! 運
 struct Luck
 {
-	explicit Luck(int value, int max_value) :value(value), max_value(max_value) {}
+	Luck(int value, int max_value) :value(value), max_value(max_value) {}
 	int max_value;
 	int value;
 };
@@ -280,7 +280,7 @@ struct Luck
 //! 愛情
 struct Love
 {
-	explicit Love(int value, int max_value) :value(value), max_value(max_value) {}
+	Love(int value, int max_value) :value(value), max_value(max_value) {}
 	int max_value;
 	int value;
 };
@@ -288,7 +288,7 @@ struct Love
 //! 時間
 struct Time
 {
-	explicit Time(int value, int max_value) :value(value), max_value(max_value) {}
+	Time(int value, int max_value) :value(value), max_value(max_value) {}
 	int max_value;
 	int value;
 };
@@ -296,7 +296,7 @@ struct Time
 //! お金
 struct Gold
 {
-	explicit Gold(int value, int max_value) :value(value), max_value(max_value) {}
+	Gold(int value, int max_value) :value(value), max_value(max_value) {}
 	int max_value;
 	int value;
 };
@@ -304,7 +304,7 @@ struct Gold
 //! 年齢
 struct Age
 {
-	explicit Age(int value, int max_value) :value(value), max_value(max_value) {}
+	Age(int value, int max_value) :value(value), max_value(max_value) {}
 	int max_value;
 	int value;
 };
