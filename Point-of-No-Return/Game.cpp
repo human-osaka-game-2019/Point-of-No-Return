@@ -37,6 +37,12 @@ void Game::Draw()
 
 	hero.Draw();
 
+	hpGauge.Draw();
+	mpGauge.Draw();
+	ipGauge.Draw();
+	goldUI.UIDraw();
+	itemUI.Draw();
+
 	// ----------- 当たり判定の為の仮置き --------------
 	// TODO : 検証後削除
 	mapchip.map_[11][10] = 1;
@@ -57,13 +63,13 @@ void Game::Draw()
 	mapchip.map_[6][50] = 1;
 
 	// ---------------------------
-
 }
 
 void Game::Release()
 {
 	dx.ReleaseTexture("blocks");
 	dx.ReleaseTexture("game_back");
+	dx.ReleaseTexture("Number");
 }
 
 HANDLE Game::CreateLoadThread()

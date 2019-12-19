@@ -33,7 +33,37 @@ public:
 	 */
 	virtual void CorrectCoordinate(Direction direction, const Position& blockPosition) override;
 
+	/**
+	 * @brief	Statusを取得する
+	 */
+	inline const Status& GetStatus() const
+	{
+		return status;
+	};
+
+	void NotifyObservers();
+
 private:
+
+	Status previousStatus =
+	{
+		HP(0,0),
+		MP(0,0),
+		IP(0,0),
+		Attack(0,0),
+		Defense(0,0),
+		Speed(0,0),
+		MagicAttack(0,0)
+	};
+
+	Parameter previousParameter =
+	{
+		Luck(0,0),
+		Love(0,0),
+		Time(0,0),
+		Gold(0,0),
+		Age(0,0)
+	};
 
 	/**
 	 * @brief  主人公の初期化

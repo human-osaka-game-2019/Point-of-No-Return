@@ -216,84 +216,96 @@ struct IsReverse
 //! ヒットポイント
 struct HP
 {
-	explicit HP(int value) :value(value) {}
+	HP(int value,int max_value) :value(value),max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! マジックポイント
 struct MP
 {
-	explicit MP(int value) :value(value) {}
+	MP(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! イマジナリーポイント/想像力
 struct IP
 {
-	explicit IP(int value) :value(value) {}
+	IP(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 攻撃力
 struct Attack
 {
-	explicit Attack(int value) :value(value) {}
+	Attack(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 防御力
 struct Defense
 {
-	explicit Defense(int value) :value(value) {}
+	Defense(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 素早さ
 struct Speed
 {
-	explicit Speed(int value) :value(value) {}
+	Speed(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 魔法攻撃力
 struct MagicAttack
 {
-	explicit MagicAttack(int value) :value(value) {}
+	MagicAttack(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 運
 struct Luck
 {
-	explicit Luck(int value) :value(value) {}
+	Luck(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 愛情
 struct Love
 {
-	explicit Love(int value) :value(value) {}
+	Love(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 時間
 struct Time
 {
-	explicit Time(int value) :value(value) {}
+	Time(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! お金
 struct Gold
 {
-	explicit Gold(int value) :value(value) {}
+	Gold(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
 //! 年齢
 struct Age
 {
-	explicit Age(int value) :value(value) {}
+	Age(int value, int max_value) :value(value), max_value(max_value) {}
+	int max_value;
 	int value;
 };
 
@@ -302,6 +314,29 @@ struct Name
 {
 	explicit Name(std::string value) :value(value) {}
 	std::string value;
+};
+
+struct Status
+{
+	Status(HP hp, MP mp, IP ip, Attack at, Defense df, Speed speed, MagicAttack magic_at) : hp(hp), mp(mp), ip(ip), at(at), df(df), speed(speed), magic_at(magic_at) {};
+	HP hp;
+	MP mp;
+	IP ip;
+	Attack at;
+	Defense df;
+	Speed speed;
+	MagicAttack magic_at;
+};
+
+struct Parameter
+{
+	Parameter(Luck luck, Love love, Time time, Gold gold, Age age) : luck(luck), love(love), time(time), gold(gold), age(age) {};
+	Luck luck;
+	Love love;
+	Time time;
+	Gold gold;
+	Age age;
+
 };
 
 struct TextureName

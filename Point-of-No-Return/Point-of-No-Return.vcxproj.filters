@@ -25,6 +25,18 @@
     <Filter Include="Feature\横スクロール\当たり判定">
       <UniqueIdentifier>{fddc3121-9aa7-4a74-9902-513f06404f35}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Feature\横スクロール\UI">
+      <UniqueIdentifier>{20c4a852-a504-41d6-8df8-8b9aa5c620e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feature\横スクロール\UI\ActionUI">
+      <UniqueIdentifier>{cee61d2b-2203-4249-9a34-23fecce926e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feature\横スクロール\UI\RPGUI">
+      <UniqueIdentifier>{d31f5d85-47a4-46bc-8b2b-123894ba838b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feature\横スクロール\Observer">
+      <UniqueIdentifier>{42933f8c-4c3c-40ad-9590-76aa95dc379f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Title.cpp">
@@ -58,9 +70,6 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="UI.cpp">
-      <Filter>Feature\横スクロール</Filter>
-    </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>Feature\横スクロール\当たり判定</Filter>
     </ClCompile>
@@ -72,6 +81,18 @@
     </ClCompile>
     <ClCompile Include="Gravity.cpp">
       <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\UI.cpp">
+      <Filter>Feature\横スクロール\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\ActionUI\ActionUI.cpp">
+      <Filter>Feature\横スクロール\UI\ActionUI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\RPGUI\RPGUI.cpp">
+      <Filter>Feature\横スクロール\UI\RPGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="StageScroll.cpp">
+      <Filter>Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -109,9 +130,6 @@
     <ClInclude Include="BackGraund.h">
       <Filter>Feature\横スクロール</Filter>
     </ClInclude>
-    <ClInclude Include="UI.h">
-      <Filter>Feature\横スクロール</Filter>
-    </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Feature\横スクロール\当たり判定</Filter>
     </ClInclude>
@@ -120,6 +138,30 @@
     </ClInclude>
     <ClInclude Include="Gravity.h">
       <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\UI.h">
+      <Filter>Feature\横スクロール\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\ActionUI\ActionUI.h">
+      <Filter>Feature\横スクロール\UI\ActionUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\RPGUI\RPGUI.h">
+      <Filter>Feature\横スクロール\UI\RPGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\ActionUI\BarBase.h">
+      <Filter>Feature\横スクロール\UI\ActionUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\ActionUI\FrameBase.h">
+      <Filter>Feature\横スクロール\UI\ActionUI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\ActionUI\IconBase.h">
+      <Filter>Feature\横スクロール\UI\ActionUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer\IObserver.h">
+      <Filter>Feature\横スクロール\Observer</Filter>
+    </ClInclude>
+    <ClInclude Include="StageScroll.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

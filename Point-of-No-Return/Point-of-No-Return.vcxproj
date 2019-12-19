@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -78,7 +78,7 @@
     <LibraryPath>$(DXSDK_DIR)Lib\$(PlatformTarget);$(LibraryPath);Lib;Lib\$(PlatformTarget)\$(Configuration)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(DXSDK_DIR)Include;$(IncludePath);Include</IncludePath>
+    <IncludePath>$(DXSDK_DIR)Include;C:\保存用\デスクトップ\後期制作\Point-of-No-Return\UI\ActionUI;$(IncludePath)</IncludePath>
     <LibraryPath>$(DXSDK_DIR)Lib\$(PlatformTarget);$(LibraryPath);Lib;Lib\$(PlatformTarget)\$(Configuration)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -158,7 +158,9 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="StageScroll.cpp" />
     <ClCompile Include="Title.cpp" />
-    <ClCompile Include="UI.cpp" />
+    <ClCompile Include="UI\ActionUI\ActionUI.cpp" />
+    <ClCompile Include="UI\RPGUI\RPGUI.cpp" />
+    <ClCompile Include="UI\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGraund.h" />
@@ -173,11 +175,17 @@
     <ClInclude Include="Main.h" />
     <ClInclude Include="Mapchip.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Observer\IObserver.h" />
     <ClInclude Include="Save.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="StageScroll.h" />
     <ClInclude Include="Title.h" />
-    <ClInclude Include="UI.h" />
+    <ClInclude Include="UI\ActionUI\ActionUI.h" />
+    <ClInclude Include="UI\ActionUI\BarBase.h" />
+    <ClInclude Include="UI\ActionUI\FrameBase.h" />
+    <ClInclude Include="UI\ActionUI\IconBase.h" />
+    <ClInclude Include="UI\RPGUI\RPGUI.h" />
+    <ClInclude Include="UI\UI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

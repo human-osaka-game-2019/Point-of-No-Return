@@ -7,6 +7,9 @@
 #include "Character.h"
 #include "Hero.h"
 #include "Collision.h"
+#include "ActionUI.h"
+
+
 
 /**
  * @brief ゲームシーン
@@ -37,9 +40,18 @@ public:
 
 private:
 
+
+
 	Mapchip mapchip;
 
 	Hero hero{ "Player" };
+	Character character{ "player" };
+
+	ActionUI::HpGauge hpGauge{ &character };
+	ActionUI::MpGauge mpGauge{ &character };
+	ActionUI::IpGauge ipGauge{ &character };
+	ActionUI::ItemUI itemUI;
+	ActionUI::GoldUI goldUI{ &character };
 };
 
 

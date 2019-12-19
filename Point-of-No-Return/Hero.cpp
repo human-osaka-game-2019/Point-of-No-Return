@@ -12,6 +12,30 @@ namespace
 	const float MAX_OFFSET_X = (Mapchip::WORLD_SIZE_WIDTH - DISPLAY_SIZE_WIDTH) * Mapchip::CHIP_SIZE;
 }
 
+
+void Hero::NotifyObservers()
+{
+	if (previousStatus.hp.value != status.hp.value)
+	{
+		HpChanged(status.hp);
+	}
+
+	if (previousStatus.mp.value != status.mp.value)
+	{
+		MpChanged(status.mp);
+	}
+
+	if (previousStatus.ip.value != status.ip.value)
+	{
+		IpChanged(status.ip);
+	}
+
+	if (previousParameter.gold.value != parameter.gold.value)
+	{
+		GoldChanged(parameter.gold);
+	}
+}
+
 void Hero::Initialize()
 {
 	position =
@@ -22,8 +46,8 @@ void Hero::Initialize()
 
 	size =
 	{
-		Width(64.f),
-		Height(128.f)
+		Width(192.f),
+		Height(192.f)
 	};
 
 	uv =
@@ -31,10 +55,22 @@ void Hero::Initialize()
 		TextureU(0.0f),
 		TextureV(0.0f)
 	};
+
 	texture_size =
 	{
 		Width(1.0f),
 		Height(1.0f)
+	};
+
+	status =
+	{
+		HP(100,100),
+		MP(0,0),
+		IP(0,0),
+		Attack(0,0),
+		Defense(0,0),
+		Speed(0,0),
+		MagicAttack(0,0)
 	};
 
 	texture_name = TextureName("Player");
@@ -45,13 +81,17 @@ void Hero::Initialize()
 
 void Hero::Update()
 {
+	NotifyObservers();
+
 	previousPosition = position;
 	previousOffset = offset;
+	previousStatus = status;
+	previousParameter = parameter;
 
 	if (dx.GetKeyState(DIK_D) == dx.ON)
 	{
 		// TODO: if文の長さはリファクタリング時に変数化したりします。
-		if (position.x <= CoordinateX(WINDOW_CENTER_X) || 
+		if (position.x <= CoordinateX(WINDOW_CENTER_X) ||
 			(CoordinateX(WINDOW_CENTER_X) < position.x && offset.x == CoordinateX(MAX_OFFSET_X)) && position.x + size.width < Display::DISPLAY_WIDTH)
 		{
 			position.x += CoordinateX(10.0f);
@@ -84,11 +124,36 @@ void Hero::Update()
 		}
 	}
 
+	// ----------------------------------------------
 	if (dx.GetKeyState(DIK_W) == dx.ON)
 	{
 		gravity.Jump();
 	}
 	gravity.Apply();
+
+	// TODO : 動作確認用
+	// -------------------------------------------
+	if (dx.GetKeyState(DIK_LEFT) == dx.ON)
+	{
+		parameter.gold.value -= 1;
+	}
+
+	if (dx.GetKeyState(DIK_RIGHT) == dx.ON)
+	{
+		parameter.gold.value += 1;
+	}
+
+	if (dx.GetKeyState(DIK_DOWN) == dx.ON)
+	{
+		parameter.gold.value -= 1;
+	}
+
+	if (dx.GetKeyState(DIK_UP) == dx.ON)
+	{
+		parameter.gold.value += 1;
+	}
+	// --------------------------------------------
+
 
 }
 
