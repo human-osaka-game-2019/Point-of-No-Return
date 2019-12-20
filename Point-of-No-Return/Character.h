@@ -122,7 +122,6 @@ protected:
 		MagicAttack(0)
 	};
 
-
 	Parameter parameter =
 	{
 		Luck(0),
@@ -144,6 +143,7 @@ protected:
 		CoordinateX(0.f),
 		CoordinateY(0.f)
 	};
+
 
 	Position previousOffset =
 	{
