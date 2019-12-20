@@ -7,7 +7,7 @@
 #include "Character.h"
 #include "Hero.h"
 #include "Collision.h"
-
+#include "Background.h"
 /**
  * @brief ゲームシーン
  */
@@ -40,6 +40,8 @@ private:
 	Mapchip mapchip;
 
 	Hero hero{ "Player" };
+
+	Background background;
 };
 
 
