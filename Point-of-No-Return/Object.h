@@ -213,100 +213,84 @@ struct IsReverse
 	bool value;
 };
 
-//! ヒットポイント
-struct HP
+// TODO: 名前は仮。「最大値を持つパラメータ」みたいにすべき？
+struct PointBase
 {
-	HP(int value,int max_value) :value(value),max_value(max_value) {}
+	PointBase(int value, int max_value) :value(value), max_value(max_value) {}
 	int max_value;
 	int value;
+};
+
+//! ヒットポイント
+struct HP : public PointBase
+{
+	HP(int value, int max_value) :PointBase(value, max_value) {}
 };
 
 //! マジックポイント
-struct MP
+struct MP : public PointBase
 {
-	MP(int value, int max_value) :value(value), max_value(max_value) {}
-	int max_value;
-	int value;
+	MP(int value, int max_value) :PointBase(value, max_value) {}
 };
 
 //! イマジナリーポイント/想像力
-struct IP
+struct IP : public PointBase
 {
-	IP(int value, int max_value) :value(value), max_value(max_value) {}
-	int max_value;
-	int value;
+	IP(int value, int max_value) :PointBase(value, max_value) {}
 };
 
 //! 攻撃力
-struct Attack
+struct Attack : public PointBase
 {
-	Attack(int value, int max_value) :value(value), max_value(max_value) {}
-	int max_value;
-	int value;
+	Attack(int value, int max_value) :PointBase(value, max_value) {}
 };
 
 //! 防御力
-struct Defense
+struct Defense : public PointBase
 {
-	Defense(int value, int max_value) :value(value), max_value(max_value) {}
-	int max_value;
-	int value;
+	Defense(int value, int max_value) :PointBase(value, max_value) {}
 };
 
 //! 素早さ
-struct Speed
+struct Speed : public PointBase
 {
-	Speed(int value, int max_value) :value(value), max_value(max_value) {}
-	int max_value;
-	int value;
+	Speed(int value, int max_value) :PointBase(value, max_value) {}
 };
 
 //! 魔法攻撃力
-struct MagicAttack
+struct MagicAttack : public PointBase
 {
-	MagicAttack(int value, int max_value) :value(value), max_value(max_value) {}
-	int max_value;
-	int value;
+	MagicAttack(int value, int max_value) :PointBase(value, max_value) {}
 };
 
 //! 運
-struct Luck
+struct Luck : public PointBase
 {
-	Luck(int value, int max_value) :value(value), max_value(max_value) {}
-	int max_value;
-	int value;
+	Luck(int value, int max_value) :PointBase(value, max_value) {}
 };
 
 //! 愛情
-struct Love
+struct Love : public PointBase
 {
-	Love(int value, int max_value) :value(value), max_value(max_value) {}
-	int max_value;
-	int value;
+	Love(int value, int max_value) :PointBase(value, max_value) {}
 };
 
 //! 時間
-struct Time
+struct Time : public PointBase
 {
-	Time(int value, int max_value) :value(value), max_value(max_value) {}
-	int max_value;
-	int value;
+	Time(int value, int max_value) :PointBase(value, max_value) {}
 };
 
 //! お金
-struct Gold
+struct Gold : public PointBase
 {
-	Gold(int value, int max_value) :value(value), max_value(max_value) {}
-	int max_value;
-	int value;
+	Gold(int value, int max_value) :PointBase(value, max_value) {}
 };
 
 //! 年齢
-struct Age
+struct Age : public PointBase
 {
-	Age(int value, int max_value) :value(value), max_value(max_value) {}
-	int max_value;
-	int value;
+	Age(int value, int max_value) :PointBase(value, max_value) {}
 };
 
 //! 名前
