@@ -70,11 +70,11 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>Feature\横スクロール\当たり判定</Filter>
-    </ClCompile>
-    <ClCompile Include="BackGraund.cpp">
-      <Filter>Feature\横スクロール</Filter>
     </ClCompile>
     <ClCompile Include="Hero.cpp">
       <Filter>Feature\横スクロール</Filter>
@@ -93,6 +93,18 @@
     </ClCompile>
     <ClCompile Include="StageScroll.cpp">
       <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="Ghost.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +174,15 @@
     </ClInclude>
     <ClInclude Include="StageScroll.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="Ghost.h">
+      <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

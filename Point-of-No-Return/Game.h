@@ -6,11 +6,11 @@
 #include "Help.h"
 #include "Character.h"
 #include "Hero.h"
+#include "Enemy.h"
+#include "Ghost.h"
 #include "Collision.h"
+#include "Background.h"
 #include "ActionUI.h"
-
-
-
 /**
  * @brief ゲームシーン
  */
@@ -44,7 +44,7 @@ private:
 
 	Hero hero{ "Player" };
 	Character character{ "player" };
-
+	Background background;
 	ActionUI::HpGauge hpGauge{ &character };
 	ActionUI::MpGauge mpGauge{ &character };
 	ActionUI::IpGauge ipGauge{ &character };
