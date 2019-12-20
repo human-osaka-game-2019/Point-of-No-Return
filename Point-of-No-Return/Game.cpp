@@ -37,27 +37,6 @@ void Game::Draw()
 
 	hero.Draw();
 
-	// ----------- 当たり判定の為の仮置き --------------
-	// TODO : 検証後削除
-	mapchip.map_[11][10] = 1;
-	mapchip.map_[11][11] = 1;
-	mapchip.map_[10][10] = 1;
-	mapchip.map_[10][11] = 1;
-
-	mapchip.map_[3][13] = 1;
-	mapchip.map_[4][12] = 1;
-	mapchip.map_[5][11] = 1;
-
-	mapchip.map_[0][50] = 1;
-	mapchip.map_[1][50] = 1;
-	mapchip.map_[2][50] = 1;
-	mapchip.map_[3][50] = 1;
-	mapchip.map_[4][50] = 1;
-	mapchip.map_[5][50] = 1;
-	mapchip.map_[6][50] = 1;
-
-	// ---------------------------
-
 }
 
 void Game::Release()

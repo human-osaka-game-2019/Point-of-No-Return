@@ -18,7 +18,7 @@ void Mapchip::DrawMapchip(float draw_start_pos_x, float draw_start_pos_y, std::s
 			float draw_pos_x = draw_start_pos_x + CHIP_SIZE * j;
 			float draw_pos_y = draw_start_pos_y + CHIP_SIZE * i;
 
-			if (draw_pos_x < DRAW_MIN || DRAW_MAX < draw_pos_x)
+			if (draw_pos_x < DRAW_X_MIN || DRAW_X_MAX < draw_pos_x || draw_pos_y < DRAW_Y_MIN || DRAW_Y_MAX < draw_pos_y)
 			{
 				continue;
 			}
@@ -46,17 +46,17 @@ void Mapchip::TexturePrint(float drawpos_x, float drawpos_y, float tu, float tv,
 
 void Mapchip::InitMap()
 {
-	//α用のマップ
-	for (int i = 0; i < WORLD_VERTICAL_NUM; i++)
-	{
-		for (int j = 0; j < WORLD_HORIZONTAL_NUM; j++)
-		{
-			if (i == 14 || i == 15)
-			{
-				map[i][j] = 1;
-			}
-		}
-	}
+	////α用のマップ
+	//for (int i = 0; i < WORLD_VERTICAL_NUM; i++)
+	//{
+	//	for (int j = 0; j < WORLD_HORIZONTAL_NUM; j++)
+	//	{
+	//		if (i == 14 || i == 15)
+	//		{
+	//			map[i][j] = 1;
+	//		}
+	//	}
+	//}
 	
 	for (int i = 0; i < WORLD_VERTICAL_NUM; i++)
 	{

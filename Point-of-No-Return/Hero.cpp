@@ -13,6 +13,8 @@ namespace
 	const float MIN_OFFSET_X = 0.f;
 	//! offsetの最大値
 	const float MAX_OFFSET_X = (Mapchip::WORLD_HORIZONTAL_NUM - DISPLAY_HORIZONTAL_NUM) * Mapchip::CHIP_SIZE;
+	//! 
+	int tu_framcount = 0;
 }
 
 void Hero::Initialize()
@@ -63,16 +65,18 @@ void Hero::Update()
 		if (position.x <= CoordinateX(DISPLAY_CENTER_X) ||
 			(CoordinateX(DISPLAY_CENTER_X) < position.x && offset.x == CoordinateX(MAX_OFFSET_X)) && position.x + size.width < Display::WIDTH)
 		{
-			position.x += CoordinateX(3.f);
+			position.x += CoordinateX(2.f);
 		}
 		else
 		{
-			offset.x += CoordinateX(3.f);
+			offset.x += CoordinateX(2.f);
+
+			if (CoordinateX(MAX_OFFSET_X) < offset.x)
+			{
+				offset.x = CoordinateX(MAX_OFFSET_X);
+			}
 		}
-		if (CoordinateX(MAX_OFFSET_X) < offset.x)
-		{
-			offset.x = CoordinateX(MAX_OFFSET_X);
-		}
+	
 	}
 
 	if (dx.GetKeyState(DIK_A) == dx.ON)
@@ -81,16 +85,16 @@ void Hero::Update()
 		if (position.x + size.width >= DISPLAY_CENTER_X ||
 			(position.x + size.width < DISPLAY_CENTER_X && offset.x == CoordinateX(MIN_OFFSET_X)) && CoordinateX(MIN_OFFSET_X) < position.x)
 		{
-			position.x -= CoordinateX(3.f);
+			position.x -= CoordinateX(2.f);
 		}
 		else
 		{
-			offset.x -= CoordinateX(3.f);
-		}
+			offset.x -= CoordinateX(2.f);
 
-		if (offset.x < CoordinateX(0.f))
-		{
-			offset.x = CoordinateX(0.f);
+			if (offset.x < CoordinateX(0.f))
+			{
+				offset.x = CoordinateX(0.f);
+			}
 		}
 	}
 
@@ -99,8 +103,6 @@ void Hero::Update()
 		gravity.Jump();
 	}
 	gravity.Apply();
-
-	ReverseMotion();
 
 	Motion();
 
@@ -135,59 +137,78 @@ void Hero::Motion()
 {
 	Vec2 vecter = GetVector();
 
+	//動いてない
 	if (vecter.x == 0)
 	{
 		uv.tu.value = 0.f;
-	}
-	else
+	}else // 右
+	if (vecter.x < 0)
 	{
-		AddTime();
+		ChangeTu();
+		float tv = 0.f / 1024.f;
+		uv.tv.value = tv;
 
-		float tu;
+	}else // 左
+	if (vecter.x > 0)
+	{
+		ChangeTu();
+		float tv = 322.f / 1024.f;
+		uv.tv.value = tv;
+	}
 
-		switch (time.value)
-		{
-		case 8:
+	
+	
+}
 
-			tu = (190.f * 2.f) / 2048.f;
-			uv.tu.value = tu;
 
-			break;
-		case 16:
+void Hero::ChangeTu()
+{
+	float tu;
+	tu_framcount++;
+	switch (tu_framcount)
+	{
+	case 0:
 
-			tu = (190.f * 3.f) / 2048.f;
-			uv.tu.value = tu;
+		tu = (190.f * 1.f + 1.f) / 2048.f;
+		uv.tu.value = tu;
 
-			break;
-		case 24:
+		break;
+	case 10:
 
-			tu = (190.f * 4.f) / 2048.f;
-			uv.tu.value = tu;
+		tu = (190.f * 2.f + 1.f) / 2048.f;
+		uv.tu.value = tu;
 
-			break;
-		case 32:
+		break;
+	case 20:
 
-			tu = (190.f * 5.f) / 2048.f;
-			uv.tu.value = tu;
+		tu = (190.f * 3.f + 1.f) / 2048.f;
+		uv.tu.value = tu;
 
-			break;
-		case 40:
+		break;
+	case 30:
 
-			tu = (190.f * 6.f) / 2048.f;
-			uv.tu.value = tu;
+		tu = (190.f * 4.f + 1.f) / 2048.f;
+		uv.tu.value = tu;
 
-			break;
-		default:
+		break;
+	case 40:
 
-			if (time.value > 40)
-			{
-				time.value = 0;
-				tu = 0;
-				uv.tu.value = tu;
-			}
+		tu = (190.f * 5.f + 1.f) / 2048.f;
+		uv.tu.value = tu;
 
-			break;
-		}
+		break;
+	case 50:
 
+		tu = (190.f * 6.f + 1.f) / 2048.f;
+		uv.tu.value = tu;
+
+		break;
+	default:
+
+		break;
+	}
+	if (tu_framcount >= 60)
+	{
+		tu_framcount = 0;
 	}
 }

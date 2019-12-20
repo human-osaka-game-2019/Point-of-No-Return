@@ -24,7 +24,7 @@ DWORD WINAPI GameThread(HWND hWnd, LPVOID* data)
 	dx.LoadTexture("仮Game_Back.jpg","game_back");
 	dx.LoadTexture("character_motion.png", "Player");
 	dx.LoadTexture("backillustration.png","game_back");
-	dx.LoadTexture("unified_block.png", "blocks");
+	dx.LoadTexture("足場ブロック整理後.png", "blocks");
 	ExitThread(0);
 }
 

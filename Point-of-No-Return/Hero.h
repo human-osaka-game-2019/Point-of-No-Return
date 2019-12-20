@@ -32,32 +32,9 @@ public:
 	 */
 	virtual void CorrectCoordinate(Direction direction, const Position& blockPosition) override;
 
-	inline void AddTime()
-	{
-		time.value += 1;
-	}
-
 	void Motion();
 
-	inline void ReverseMotion()
-	{
-		Vec2 vecter = GetVector();
-
-		// 右
-		if (vecter.x < 0)
-		{
-			float tv = 0.f / 1024.f;
-			uv.tv.value = tv;
-
-		}
-
-		//左
-		if (vecter.x > 0)
-		{
-			float tv = 322.f / 1024.f;
-			uv.tv.value = tv;
-		}
-	}
+	void ChangeTu();
 
 private:
 
