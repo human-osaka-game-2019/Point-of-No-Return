@@ -6,6 +6,9 @@
 
 namespace
 {
+	//! 当たり判定する列の順番を保存する配列
+	const int COLLISION_JUDGEMENT_ORDER[5] = { 2,1,3,0,4 };
+
 
 // TODO: collision引数Hero修正しないといけない
 /**
@@ -28,23 +31,23 @@ bool HitCheckEdge(Direction* direction, Position characterPrevious, Size charact
 	if ((characterBottom <= blockTop) || (characterTop >= blockBottom))
 	{
 		//キャラクターがy方向に動いていないとき
-		if (characterVector.y == 0)
+		if (characterVector.y == 0.f)
 		{
 			return false;
 		}
 
-		*direction = (characterVector.y <0) ? Direction::Up : Direction::Down;
+		*direction = (characterVector.y < 0.f) ? Direction::Up : Direction::Down;
 
 		return true;
 	}
 
 	//キャラクターがx方向に動いていないとき
-	if (characterVector.x == 0)
+	if (characterVector.x == 0.f)
 	{
 		return false;
 	}
 
-	*direction = (characterVector.x < 0) ? Direction::Left : Direction::Right;
+	*direction = (characterVector.x < 0.f) ? Direction::Left : Direction::Right;
 
 	return true;
 
@@ -111,7 +114,7 @@ std::vector<Position> SearchBlock(Character& character, int** map)
 		for (int j = 0; j < 5; j++)
 		{
 			int current_col = search_start.col.value + j;
-			int current_row = search_start.row.value + i;
+			int current_row = search_start.row.value + COLLISION_JUDGEMENT_ORDER[i];
 
 			if (map[current_row][current_col] != 0)
 			{
@@ -133,16 +136,15 @@ std::vector<Position> SearchBlock(Character& character, int** map)
 
 void CheckBlock(Character* character, std::vector<Position> blockPositions)
 {
-	auto characterPosition = character->GetPos();
 	auto characterPrevious = character->GetPreviousPosition();
 	auto characterSize = character->GetSize();
-	auto offsetPrevious = character->GetPreviousOffset();
-	auto offset = character->GetOffset();
-
 	auto vector = character->GetVector();
 
 	for (auto blockPosition : blockPositions)
 	{
+		// キャラクターの位置だけ毎回更新する
+		auto characterPosition = character->GetPos();
+
 		if (CharacterCollidesWithBlock(characterPrevious, characterSize, characterPosition, blockPosition))
 		{
 			Direction correction;

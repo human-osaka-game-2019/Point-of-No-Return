@@ -9,14 +9,13 @@
 
 SceneBase* SceneManager::scene = nullptr;
 
-
 RECT DisplayRect
-{ 0,
-  0,
-  static_cast<long>(Display::DISPLAY_WIDTH),
-  static_cast<long>(Display::DISPLAY_HEIGHT)
+{
+	0,
+	0,
+	static_cast<long>(Display::WIDTH),
+	static_cast<long>(Display::HEIGHT)
 };
-
 
 INT WINAPI WinMain(
 	_In_ HINSTANCE hInstance,
@@ -24,9 +23,7 @@ INT WINAPI WinMain(
 	_In_ LPSTR CmdLine,
 	_In_ INT nCmdShow)
 {
-
 	DirectX& dx = DirectX::GetInstance();
-
 
 	const TCHAR AppName[] = _T("Point of No Return");
 
@@ -56,21 +53,18 @@ INT WINAPI WinMain(
 		WS_OVERLAPPEDWINDOW | WS_VISIBLE,
 		0,
 		0,
-		static_cast<int>(Display::DISPLAY_WIDTH),
-		static_cast<int>(Display::DISPLAY_HEIGHT),
+		static_cast<int>(Display::WIDTH),
+		static_cast<int>(Display::HEIGHT),
 		NULL,
 		NULL,
 		hInstance,
 		NULL
 	);
 
-
-
-
 	ShowWindow(hWnd, SW_SHOW);
 	UpdateWindow(hWnd);
 
-	dx.InitDirectX(hWnd, Display::DISPLAY_WIDTH, Display::DISPLAY_HEIGHT);
+	dx.InitDirectX(hWnd, Display::WIDTH, Display::HEIGHT);
 
 	timeBeginPeriod(1);
 
@@ -91,11 +85,8 @@ INT WINAPI WinMain(
 			{
 				dx.BeginScene();
 
-
 				SceneManager::Update();
 				SceneManager::Draw();
-
-
 
 				dx.EndScene();
 			}

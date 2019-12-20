@@ -64,13 +64,16 @@
     <ClCompile Include="Collision.cpp">
       <Filter>Feature\横スクロール\当たり判定</Filter>
     </ClCompile>
-    <ClCompile Include="BackGraund.cpp">
-      <Filter>Feature\横スクロール</Filter>
-    </ClCompile>
     <ClCompile Include="Hero.cpp">
       <Filter>Feature\横スクロール</Filter>
     </ClCompile>
     <ClCompile Include="Gravity.cpp">
+      <Filter>Feature\横スクロール</Filter>
+    </ClCompile>
+    <ClCompile Include="StageScroll.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
       <Filter>Feature\横スクロール</Filter>
     </ClCompile>
   </ItemGroup>
@@ -106,9 +109,6 @@
     <ClInclude Include="Scene.h">
       <Filter>Manager</Filter>
     </ClInclude>
-    <ClInclude Include="BackGraund.h">
-      <Filter>Feature\横スクロール</Filter>
-    </ClInclude>
     <ClInclude Include="UI.h">
       <Filter>Feature\横スクロール</Filter>
     </ClInclude>
@@ -118,7 +118,13 @@
     <ClInclude Include="Hero.h">
       <Filter>Feature\横スクロール</Filter>
     </ClInclude>
+    <ClInclude Include="StageScroll.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
     <ClInclude Include="Gravity.h">
+      <Filter>Feature\横スクロール</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
       <Filter>Feature\横スクロール</Filter>
     </ClInclude>
   </ItemGroup>

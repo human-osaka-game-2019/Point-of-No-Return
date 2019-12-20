@@ -3,7 +3,6 @@
 
 #include "Character.h"
 
-
 /**
  * @brief 主人公クラス
  * @details コピーコンストラクタと演算子オーバーロードの隠蔽

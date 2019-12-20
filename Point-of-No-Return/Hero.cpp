@@ -3,13 +3,16 @@
 #include "Main.h"
 #include "Mapchip.h"
 
-
 namespace
 {
-	const int DISPLAY_SIZE_WIDTH = 30;
-	const float WINDOW_CENTER_X = Display::DISPLAY_WIDTH / 2;
-	const float MIN_OFFSET_X = 0;
-	const float MAX_OFFSET_X = (Mapchip::WORLD_SIZE_WIDTH - DISPLAY_SIZE_WIDTH) * Mapchip::CHIP_SIZE;
+	//! Displayに入る横のブロックの個数
+	const int DISPLAY_HORIZONTAL_NUM = 30;
+	//! Displayの横の真ん中
+	const float DISPLAY_CENTER_X = Display::WIDTH / 2.f;
+	//! offsetの最小値
+	const float MIN_OFFSET_X = 0.f;
+	//! offsetの最大値
+	const float MAX_OFFSET_X = (Mapchip::WORLD_HORIZONTAL_NUM - DISPLAY_HORIZONTAL_NUM) * Mapchip::CHIP_SIZE;
 }
 
 void Hero::Initialize()
@@ -28,18 +31,18 @@ void Hero::Initialize()
 
 	uv =
 	{
-		TextureU(0.0f),
-		TextureV(0.0f)
+		TextureU(0.f),
+		TextureV(0.f)
 	};
 	texture_size =
 	{
-		Width(1.0f),
-		Height(1.0f)
+		Width(1.f),
+		Height(1.f)
 	};
 
 	texture_name = TextureName("Player");
-	degree = Degree(0);
-	zoom = Zoom(1.0);
+	degree = Degree(0.f);
+	zoom = Zoom(1.f);
 	is_reverse = IsReverse(false);
 }
 
@@ -51,14 +54,14 @@ void Hero::Update()
 	if (dx.GetKeyState(DIK_D) == dx.ON)
 	{
 		// TODO: if文の長さはリファクタリング時に変数化したりします。
-		if (position.x <= CoordinateX(WINDOW_CENTER_X) || 
-			(CoordinateX(WINDOW_CENTER_X) < position.x && offset.x == CoordinateX(MAX_OFFSET_X)) && position.x + size.width < Display::DISPLAY_WIDTH)
+		if (position.x <= CoordinateX(DISPLAY_CENTER_X) ||
+			(CoordinateX(DISPLAY_CENTER_X) < position.x && offset.x == CoordinateX(MAX_OFFSET_X)) && position.x + size.width < Display::WIDTH)
 		{
-			position.x += CoordinateX(10.0f);
+			position.x += CoordinateX(10.f);
 		}
 		else
 		{
-			offset.x += CoordinateX(10.0f);
+			offset.x += CoordinateX(10.f);
 		}
 		if (CoordinateX(MAX_OFFSET_X) < offset.x)
 		{
@@ -69,22 +72,22 @@ void Hero::Update()
 	if (dx.GetKeyState(DIK_A) == dx.ON)
 	{
 		// TODO: if文の長さはリファクタリング時に変数化したりします。
-		if (position.x + size.width >= WINDOW_CENTER_X ||
-			(position.x + size.width < WINDOW_CENTER_X && offset.x == CoordinateX(MIN_OFFSET_X)) && CoordinateX(MIN_OFFSET_X) < position.x)
+		if (position.x + size.width >= DISPLAY_CENTER_X ||
+			(position.x + size.width < DISPLAY_CENTER_X && offset.x == CoordinateX(MIN_OFFSET_X)) && CoordinateX(MIN_OFFSET_X) < position.x)
 		{
-			position.x -= CoordinateX(10.0f);
+			position.x -= CoordinateX(10.f);
 		}
 		else
 		{
-			offset.x -= CoordinateX(10.0f);
+			offset.x -= CoordinateX(10.f);
 		}
-		if (offset.x < CoordinateX(0))
+		if (offset.x < CoordinateX(0.f))
 		{
-			offset.x = CoordinateX(0);
+			offset.x = CoordinateX(0.f);
 		}
 	}
 
-	if (dx.GetKeyState(DIK_W) == dx.ON)
+	if (dx.GetKeyState(DIK_W) == dx.PUSH)
 	{
 		gravity.Jump();
 	}
@@ -99,9 +102,11 @@ void Hero::CorrectCoordinate(Direction direction, const Position& blockPosition)
 	case Direction::Up:
 		position.y.value = blockPosition.y.value - size.height.value;
 		gravity.AccelerationReset();
+		gravity.JumpReset();
 		break;
 	case Direction::Down:
 		position.y.value = blockPosition.y.value + Mapchip::CHIP_SIZE;
+		gravity.AccelerationReset();
 		break;
 	case Direction::Left:
 		position.x.value = blockPosition.x.value - size.width.value;
