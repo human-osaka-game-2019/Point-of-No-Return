@@ -100,6 +100,10 @@ void Hero::Update()
 	}
 	gravity.Apply();
 
+	ReverseMotion();
+
+	Motion();
+
 }
 
 void Hero::CorrectCoordinate(Direction direction, const Position& blockPosition)
@@ -127,3 +131,63 @@ void Hero::CorrectCoordinate(Direction direction, const Position& blockPosition)
 	}
 }
 
+void Hero::Motion()
+{
+	Vec2 vecter = GetVector();
+
+	if (vecter.x == 0)
+	{
+		uv.tu.value = 0.f;
+	}
+	else
+	{
+		AddTime();
+
+		float tu;
+
+		switch (time.value)
+		{
+		case 8:
+
+			tu = (190.f * 2.f) / 2048.f;
+			uv.tu.value = tu;
+
+			break;
+		case 16:
+
+			tu = (190.f * 3.f) / 2048.f;
+			uv.tu.value = tu;
+
+			break;
+		case 24:
+
+			tu = (190.f * 4.f) / 2048.f;
+			uv.tu.value = tu;
+
+			break;
+		case 32:
+
+			tu = (190.f * 5.f) / 2048.f;
+			uv.tu.value = tu;
+
+			break;
+		case 40:
+
+			tu = (190.f * 6.f) / 2048.f;
+			uv.tu.value = tu;
+
+			break;
+		default:
+
+			if (time.value > 40)
+			{
+				time.value = 0;
+				tu = 0;
+				uv.tu.value = tu;
+			}
+
+			break;
+		}
+
+	}
+}
