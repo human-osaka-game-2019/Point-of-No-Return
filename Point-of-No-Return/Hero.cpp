@@ -67,13 +67,13 @@ void Hero::Initialize()
 
 	status =
 	{
-		HP(100,100),
-		MP(0,0),
-		IP(0,0),
-		Attack(0,0),
-		Defense(0,0),
-		Speed(0,0),
-		MagicAttack(0,0)
+		HP(100, 100),
+		MP(0, 0),
+		IP(0, 0),
+		Attack(0, 0),
+		Defense(0, 0),
+		Speed(0, 0),
+		MagicAttack(0, 0)
 	};
 
 	texture_name = TextureName("Player");

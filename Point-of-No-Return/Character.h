@@ -118,22 +118,22 @@ protected:
 
 	Status status =
 	{
-		HP(0,0),
-		MP(0,0),
-		IP(0,0),
-		Attack(0,0),
-		Defense(0,0),
-		Speed(0,0),
-		MagicAttack(0,0)
+		HP(0, 0),
+		MP(0, 0),
+		IP(0, 0),
+		Attack(0, 0),
+		Defense(0, 0),
+		Speed(0, 0),
+		MagicAttack(0, 0)
 	};
 
 	Parameter parameter =
 	{
-		Luck(0,0),
-		Love(0,0),
-		Time(0,0),
-		Gold(0,0),
-		Age(0,0)
+		Luck(0, 0),
+		Love(0, 0),
+		Time(0, 0),
+		Gold(0, 0),
+		Age(0, 0)
 	};
 
 	//! 前の座標を保存する
