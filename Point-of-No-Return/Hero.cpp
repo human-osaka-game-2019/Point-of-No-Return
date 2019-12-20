@@ -25,7 +25,7 @@ void Hero::Initialize()
 
 	size =
 	{
-		Width(64.f),
+		Width(75.52f),
 		Height(128.f)
 	};
 
@@ -34,11 +34,17 @@ void Hero::Initialize()
 		TextureU(0.f),
 		TextureV(0.f)
 	};
+
+	float tu_size = 190.f / 2048.f;
+	float tv_size = 320.f / 1024.f;
+
 	texture_size =
 	{
-		Width(1.f),
-		Height(1.f)
+		Width(tu_size),
+		Height(tv_size)
 	};
+
+	time = Time(0);
 
 	texture_name = TextureName("Player");
 	degree = Degree(0.f);
