@@ -29,9 +29,13 @@ namespace DX {
 
 		LPD3DXEFFECT pD3Effect;
 
-		//! ウィンドウの設定
+		//! パラメータの設定
 		D3DPRESENT_PARAMETERS D3dPresentParameters;
-		D3DPRESENT_PARAMETERS D3dppWin;
+
+		//! WindowsModeのPresentPrameter
+		D3DPRESENT_PARAMETERS D3dppWin; 
+
+		//! FullScreenModeのPresentParameter
 		D3DPRESENT_PARAMETERS D3dppFull;
 
 		//! DirectInputのキーボードデバイス
@@ -46,18 +50,13 @@ namespace DX {
 		//! フォント
 		std::unordered_map<std::string, LPD3DXFONT> pFont;
 
-		/*
-		*@brief Constractor
+		/**
+		* @brief Constractor
 		*/
 		DirectX();
 
-		/*
-		*@brief Destractor
-		*/
-		~DirectX();
-
-		/*
-		*@brief カスタムバーテックス
+		/**
+		* @brief カスタムバーテックス
 		*/
 		struct CUSTOMVERTEX {
 			//! 座標と除算数
@@ -74,108 +73,120 @@ namespace DX {
 		//! マスク値
 		const INT MASK_NUM = 0x80;
 
-		/*
-		*@brief D3Deviceの初期化
-		*@param hWnd ウィンドウハンドル
-		*@return 成功したかどうか
+		/**
+		* @brief D3Deviceの初期化
+		* @param hWnd ウィンドウハンドル
+		* @return 成功したかどうか
 		*/
 		HRESULT InitD3Device(HWND hWnd, FLOAT Width, FLOAT Height);
 
-		/*
-		*@brief Dinputの初期化
-		*@param hWnd ウィンドウハンドル
-		*@return 成功したかどうか
+		/**
+		* @brief Dinputの初期化
+		* @param hWnd ウィンドウハンドル
+		* @return 成功したかどうか
 		*/
 		HRESULT InitDinput(HWND hWnd);
 
+		/**
+		* @brief RenderStateの設定
+		*/
 		VOID SetRenderState();
 
+		/**
+		* @brief TextureStageの設定
+		*/
 		VOID SetTextureStage();
 
+		/**
+		* @brief SamplerStateの設定
+		*/
 		VOID SetSampler();
 
-		/*
-		*@brief PresentParametersの初期化
-		*@param hWnd ウィンドウハンドル
+		/**
+		* @brief PresentParametersの初期化
+		* @param hWnd ウィンドウハンドル
 		*/
 		VOID InitPresentParameters(HWND hWnd, FLOAT WIDTH, FLOAT HEIGHT);
 
-		/*
-		*@brief テクスチャの解放
+		/**
+		* @brief テクスチャの解放
 		*/
 		VOID AllTextureRelease();
 
-		/*
-		*@brief フォントの解放
+		/**
+		* @brief フォントの解放
 		*/
 		VOID AllFontRelease();
 
-		/*
-		*@brief キーの状態の更新
+		/**
+		* @brief キーの状態の更新
 		*/
 		VOID UpdateKeyState();
 
-		/*
-		*@brief WindowSizeの変更
+		/**
+		* @brief WindowSizeの変更
 		*/
 		HRESULT ChangeWindowSize(HWND hWnd);
 
-		/*
-		*@brief 回転
-		*@param [in] 回転前の頂点情報
-		*@param [out] 回転後の頂点情報
-		*@param [in] 回転角度(初期値が0)
+		/**
+		* @brief 回転
+		* @param [in] 回転前の頂点情報
+		* @param [out] 回転後の頂点情報
+		* @param [in] 回転角度(初期値が0)
 		*/
 		VOID Rotate(CUSTOMVERTEX original[], CUSTOMVERTEX ret[], FLOAT degree);
 
-		/*
-		*@brief 拡大・縮小
-		*@param [in] 元の頂点情報のx座標
-		*@param [in] 元の頂点情報のy座標
-		*@param [in] 元の頂点情報の横幅
-		*@param [in] 元の頂点情報の高さ
-		*@param [in] 座標がセンターかどうか
-		*@param [out] 拡縮後の頂点情報
+		/**
+		* @brief 拡大・縮小
+		* @param [in] 元の頂点情報のx座標
+		* @param [in] 元の頂点情報のy座標
+		* @param [in] 元の頂点情報の横幅
+		* @param [in] 元の頂点情報の高さ
+		* @param [in] 座標がセンターかどうか
+		* @param [out] 拡縮後の頂点情報
 		*/
 		VOID Scaling(FLOAT x, FLOAT y, FLOAT dw, FLOAT dh, BOOL is_Center, CUSTOMVERTEX result[]);
 
-		/*
-		*@brief オブジェクトの生成
-		*@param テクスチャ情報の名前
-		*@param 頂点情報
-		*@param 回転角度
+		/**
+		* @brief オブジェクトの生成
+		* @param テクスチャ情報の名前
+		* @param 頂点情報
+		* @param 回転角度
 		*/
 		VOID DrawObject(std::string TextureName, CUSTOMVERTEX customvertex[], FLOAT degree);
 
-		/*
-		*@brief 頂点情報の設定
-		*@param 左上のx座標
-		*@param 左上のy座標
-		*@param 横幅
-		*@param 高さ
-		*@param 拡大率
-		*@param 反転するかどうか(trueで反転、falseで通常)
-		*@param 座標がセンターかどうか
-		*@param テクスチャUVの左上のx座標
-		*@param テクスチャUVの左上のy座標
-		*@param テクスチャUVの横幅
-		*@param テクスチャUVの高さ
+		/**
+		* @brief 頂点情報の設定
+		* @param 左上のx座標
+		* @param 左上のy座標
+		* @param 横幅
+		* @param 高さ
+		* @param 拡大率
+		* @param 反転するかどうか(trueで反転、falseで通常)
+		* @param 座標がセンターかどうか
+		* @param テクスチャUVの左上のx座標
+		* @param テクスチャUVの左上のy座標
+		* @param テクスチャUVの横幅
+		* @param テクスチャUVの高さ
 		*/
 		CUSTOMVERTEX* SetVertex(FLOAT x, FLOAT y, FLOAT width, FLOAT height, FLOAT zoom, BOOL is_Reverse, BOOL is_Center, FLOAT tu, FLOAT tv, FLOAT tw, FLOAT th);
 
-		/*
-		*@brief 頂点情報の生成
-		*@param 横幅
-		*@param 高さ
-		*@param テクスチャUVの左上のx座標
-		*@param テクスチャUVの左上のy座標
-		*@param テクスチャUVの横幅
-		*@param テクスチャUVの高さ
-		*@param 反転するかどうか(trueで反転、falseで通常)
+		/**
+		* @brief 頂点情報の生成
+		* @param 横幅
+		* @param 高さ
+		* @param テクスチャUVの左上のx座標
+		* @param テクスチャUVの左上のy座標
+		* @param テクスチャUVの横幅
+		* @param テクスチャUVの高さ
+		* @param 反転するかどうか(trueで反転、falseで通常)
 		*/
 		VOID MakeVertex(CUSTOMVERTEX customvertex[],FLOAT width,FLOAT height,FLOAT tu,FLOAT tv,FLOAT tw, FLOAT th, BOOL is_Reverse);
 
 	public:
+		/**
+		* @brief コピーコンストラクタの削除
+		*/
 		DirectX(const DirectX&) = delete;
 		DirectX& operator=(const DirectX&) = delete;
 		DirectX(DirectX&&) = delete;
@@ -189,6 +200,11 @@ namespace DX {
 
 		//!ウィンドウモードかどうか(trueでウィンドウモード、falseでフルスクリーンモード)
 		bool WinMode;
+
+		/**
+		* @brief Destractor
+		*/
+		~DirectX();
 
 		//! キーの状態
 		enum KEY_STATE {
@@ -219,135 +235,135 @@ namespace DX {
 		//! キーの保存変数
 		KEY_STATE KeyState[256];
 
-		/*
-		*@brief インスタンスの取得
-		*@return インスタンスの参照
+		/**
+		* @brief インスタンスの取得
+		* @return インスタンスの参照
 		*/
 		inline static DirectX& GetInstance() {
 			static DirectX instance;
 			return instance;
 		}
 
-		/*
-		*@brief DirectXの初期化
-		*@param hWnd ウィンドウハンドル
+		/**
+		* @brief DirectXの初期化
+		* @param hWnd ウィンドウハンドル
 		*/
 		HRESULT InitDirectX(HWND hWnd, FLOAT Window_width, FLOAT Window_height);
 
-		/*
-		*@brief キーの状態の取得
-		*@param キーの情報
+		/**
+		* @brief キーの状態の取得
+		* @param キーの情報
 		*/
 		KEY_STATE GetKeyState(INT diks);
 
-		/*
-		*@brief 全て解放する
+		/**
+		* @brief 全て解放する
 		*/
 		VOID AllRelease();
 
-		/*
-		*@brief 一つのテクスチャを解放する
-		*@param テクスチャ名
+		/**
+		* @brief 一つのテクスチャを解放する
+		* @param テクスチャ名
 		*/
 		VOID ReleaseTexture(std::string TextureName);
 
-		/*
-		*@brief WindowMode切替
+		/**
+		* @brief WindowMode切替
 		*/
 		VOID ChangeDisplayMode(HWND hWnd, RECT WinRect);
 
-		/*
-		*@brief WindowSizeの変更の可否
+		/**
+		* @brief WindowSizeの変更の可否
 		*/
 		bool CanChangeWindowSize(HWND hWnd, WPARAM wp, LPARAM lp);
 
-		/*
-		*@brief シーンの始まりの関数
+		/**
+		* @brief シーンの始まりの関数
 		*/
 		VOID BeginScene();
 
-		/*
-		*@brief シーンの終わりの関数
+		/**
+		* @brief シーンの終わりの関数
 		*/
 		VOID EndScene();
 
-		/*
-		*@brief テクスチャの読み込み
-		*@param [in] ファイルの名前(char)
-		*@param [out] pTextureに入る配列の名前(char)
+		/**
+		* @brief テクスチャの読み込み
+		* @param [in] ファイルの名前(char)
+		* @param [out] pTextureに入る配列の名前(char)
 		*/
 		bool LoadTexture(const CHAR* FileName, std::string TextureName);
 
-		/*
-		*@brief フォント作成
-		*@param フォントのサイズ
-		*@param フォントの名前
-		*@param 登録するフォントのキー
+		/**
+		* @brief フォント作成
+		* @param フォントのサイズ
+		* @param フォントの名前
+		* @param 登録するフォントのキー
 		*/
 		bool MakeFont(int FontSize, const CHAR FontName[] ,std::string FontKey);
 
-		/*
-		*@brief フォントの描画
-		*@param 表示する文字
-		*@param 表示する文字の位置
-		*@param 表示する文字の色(FONT_COLOR参照)
-		*@param 使用するフォントのキー
+		/**
+		* @brief フォントの描画
+		* @param 表示する文字
+		* @param 表示する文字の位置
+		* @param 表示する文字の色(FONT_COLOR参照)
+		* @param 使用するフォントのキー
 		*/
 		VOID DrawFont(const CHAR text[], RECT textPos, FONT_COLOR color, std::string FontKey);
 
-		/*
-		*@brief フォントの描画
-		*@param 表示する文字
-		*@param 表示する文字の位置
-		*@param 表示する文字の色(FONT_COLOR参照)
-		*@param 表示する文字の揃える位置(BRING参照)
-		*@param 使用するフォントのキー
+		/**
+		* @brief フォントの描画
+		* @param 表示する文字
+		* @param 表示する文字の位置
+		* @param 表示する文字の色(FONT_COLOR参照)
+		* @param 表示する文字の揃える位置(BRING参照)
+		* @param 使用するフォントのキー
 		*/
 		VOID DrawFontEx(const CHAR text[], RECT textPos, DWORD color, BRING bring, std::string FontKey);
 
-		/*
-		*@brief 描画する
-		*@param x座標
-		*@param y座標
-		*@param 横幅
-		*@param 高さ
-		*@param 角度
-		*@param 拡縮
-		*@param 反転
-		*@param テクスチャ情報の名前
+		/**
+		* @brief 描画する
+		* @param x座標
+		* @param y座標
+		* @param 横幅
+		* @param 高さ
+		* @param 角度
+		* @param 拡縮
+		* @param 反転
+		* @param テクスチャ情報の名前
 		*/
 		VOID Draw(FLOAT x, FLOAT y, FLOAT width, FLOAT height, FLOAT degree, FLOAT zoom, BOOL is_Reverse, std::string TextureName);
 
-		/*
-		*@brief 描画する(座標は中央)
-		*@param x座標
-		*@param y座標
-		*@param 横幅
-		*@param 高さ
-		*@param 角度
-		*@param 拡縮
-		*@param 反転
-		*@param テクスチャ情報の名前
+		/**
+		* @brief 描画する(座標は中央)
+		* @param x座標
+		* @param y座標
+		* @param 横幅
+		* @param 高さ
+		* @param 角度
+		* @param 拡縮
+		* @param 反転
+		* @param テクスチャ情報の名前
 		*/
 		VOID DrawCenter(FLOAT CenterX, FLOAT CenterY, FLOAT width, FLOAT height, FLOAT degree, FLOAT zoom, BOOL is_Reverse, std::string TextureName);
 
-		/*
-		*@brief 描画する(EX)
-		*@param x座標
-		*@param y座標
-		*@param z座標
-		*@param 横幅
-		*@param 高さ
-		*@param 角度
-		*@param 拡縮
-		*@param 反転
-		*@param pTextureに保存されているテクスチャ情報の名前
-		*@param テクスチャの左上のx座標
-		*@param テクスチャの左上のy座標
-		*@param テクスチャの横幅
-		*@param テクスチャの高さ
-		*@param 除算数
-		*@param 色
+		/**
+		* @brief 描画する(EX)
+		* @param x座標
+		* @param y座標
+		* @param z座標
+		* @param 横幅
+		* @param 高さ
+		* @param 角度
+		* @param 拡縮
+		* @param 反転
+		* @param pTextureに保存されているテクスチャ情報の名前
+		* @param テクスチャの左上のx座標
+		* @param テクスチャの左上のy座標
+		* @param テクスチャの横幅
+		* @param テクスチャの高さ
+		* @param 除算数
+		* @param 色
 		*/
 		VOID DrawEx(
 			FLOAT x,
@@ -366,23 +382,23 @@ namespace DX {
 			FLOAT rhw = 0.0f,
 			DWORD color = 0xFFFFFFFF);
 
-		/*
-		*@brief 描画する(EX)
-		*@param x座標
-		*@param y座標
-		*@param z座標
-		*@param 横幅
-		*@param 高さ
-		*@param 角度
-		*@param 拡縮
-		*@param 反転
-		*@param pTextureに保存されているテクスチャ情報の名前
-		*@param テクスチャの左上のx座標
-		*@param テクスチャの左上のy座標
-		*@param テクスチャの横幅
-		*@param テクスチャの高さ
-		*@param 除算数
-		*@param 色
+		/**
+		* @brief 描画する(EX)
+		* @param x座標
+		* @param y座標
+		* @param z座標
+		* @param 横幅
+		* @param 高さ
+		* @param 角度
+		* @param 拡縮
+		* @param 反転
+		* @param pTextureに保存されているテクスチャ情報の名前
+		* @param テクスチャの左上のx座標
+		* @param テクスチャの左上のy座標
+		* @param テクスチャの横幅
+		* @param テクスチャの高さ
+		* @param 除算数
+		* @param 色
 		*/
 		VOID DrawCenterEx(
 			FLOAT CenterX,
@@ -403,4 +419,4 @@ namespace DX {
 	};
 }
 
-#endif
+#endif //! DirectX.h
