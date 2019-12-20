@@ -61,25 +61,25 @@ void SceneBase::Load()
 	{
 		Curr = timeGetTime();
 		if (Curr - Prev >= 1000 / 60) {
+
 			dx.BeginScene();
 			
 			framecount++;
-			dx.DrawEx(100, 100, 0, 200, 200, 0, 1, 0, "load", 0, 0, 1, 0.25);
-			
 
-			
-			
+			dx.DrawEx(100.f, 100.f, 0.f, 200.f, 200.f, 0.f, 1.f, 0.f, "load", 0.f, 0.f, 1.f, 0.25f);
 
-			//スレッドが終わったかチェック
 			GetExitCodeThread(thread, &result);
-			//終わったかどうか返す関数
-			if (STILL_ACTIVE != result && framecount == 60*5)
+			if (STILL_ACTIVE != result && framecount == 60*1)
 			{
-				//closehandleで閉じる。
 				CloseHandle(thread);
-				//ループを抜ける。
 				break;
 			}
+
+			if (framecount == 60)
+			{
+				framecount = 0;
+			}
+			
 			dx.EndScene();
 			Prev = Curr;
 		}

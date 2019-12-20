@@ -12,7 +12,7 @@ namespace
 	//! offsetの最小値
 	const float MIN_OFFSET_X = 0.f;
 	//! offsetの最大値
-	const float MAX_OFFSET_X = (Mapchip::WORLD_HORIZONTAL_NUM - DISPLAY_SIZE_NUM) * Mapchip::CHIP_SIZE;
+	const float MAX_OFFSET_X = (Mapchip::WORLD_HORIZONTAL_NUM - DISPLAY_HORIZONTAL_NUM) * Mapchip::CHIP_SIZE;
 }
 
 void Hero::Initialize()

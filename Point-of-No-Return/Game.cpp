@@ -16,6 +16,8 @@ void Game::Update()
 
 	Collision::CheckBlock(&hero, mapData);
 
+	background.Update(hero);
+
 	if (dx.GetKeyState(DIK_SPACE) == dx.PUSH)
 	{
 		SceneManager::ChangeScene(SceneManager::EndingID);
@@ -29,10 +31,9 @@ void Game::Draw()
 
 	float  game_back_tu = 1.f / 16.f;
 
-	dx.DrawEx(0.f, 0.f, 0.f, Display::WIDTH, Display::HEIGHT, 0.f, 1.f, 0.f, "game_back", 0.f, 0.f, game_back_tu, 1);
+	background.Draw();
 	mapchip.DrawMapchip(-currentOffset.x.value, -currentOffset.y.value, "blocks", mapchip.map_);
 
-	dx.DrawEx(Display::WIDTH/2.f -50.f, 0.f, 0.f, 100.f, 100.f, 0.f, 1.f, 0.f, "game_back", 0.f, 0.f, game_back_tu, 1);
 
 	hero.Draw();
 
