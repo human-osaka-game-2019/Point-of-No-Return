@@ -90,6 +90,16 @@ public:
 
 		return vector;
 	};
+
+
+	/**
+	 * @brief	Statusを取得する
+	 */
+	inline const Status& GetStatus() const
+	{
+		return status;
+	};
+
 	void AddGoldChangeObserver(IGoldObserver* pIGoldObserver);
 
 	void AddHpChangeObserver(IHpObserver* pIHpObserver);

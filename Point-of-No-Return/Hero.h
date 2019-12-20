@@ -32,14 +32,6 @@ public:
 	 */
 	virtual void CorrectCoordinate(Direction direction, const Position& blockPosition) override;
 
-	/**
-	 * @brief	Statusを取得する
-	 */
-	inline const Status& GetStatus() const
-	{
-		return status;
-	};
-
 	void NotifyObservers();
 
 private:
