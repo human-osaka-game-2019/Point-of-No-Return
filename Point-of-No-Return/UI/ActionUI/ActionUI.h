@@ -1,7 +1,7 @@
 ﻿#ifndef ACTIONUI_H
 #define ACTIONUI_H
 
-#include "../../Observer/IObserver.h"
+#include "IObserver.h"
 #include "../UI.h"
 #include "../../Character.h"
 #include "BarBase.h"

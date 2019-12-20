@@ -40,8 +40,6 @@ public:
 
 private:
 
-
-
 	Mapchip mapchip;
 
 	Hero hero{ "Player" };
