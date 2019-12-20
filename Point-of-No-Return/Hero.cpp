@@ -85,10 +85,10 @@ void Hero::Initialize()
 void Hero::Update()
 {
 	Notify();
-	
+
 	previousPosition = position;
 	previousOffset = offset;
-    previousStatus = status;
+	previousStatus = status;
 	previousParameter = parameter;
 
 	if (dx.GetKeyState(DIK_D) == dx.ON)

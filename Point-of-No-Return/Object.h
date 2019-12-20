@@ -322,7 +322,7 @@ struct Status
 	HP hp;
 	MP mp;
 	IP ip;
-    Attack at;
+	Attack at;
 	Defense df;
 	Speed speed;
 	MagicAttack magic_at;
