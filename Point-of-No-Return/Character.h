@@ -111,10 +111,10 @@ protected:
 
 
 	// ObserverList
-	std::vector<IHpObserver*> HpObservers;
-	std::vector<IMpObserver*> MpObservers;
-	std::vector<IIpObserver*> IpObservers;
-	std::vector<IGoldObserver*> GoldObservers;
+	std::vector<IHpObserver*> hpObservers;
+	std::vector<IMpObserver*> mpObservers;
+	std::vector<IIpObserver*> ipObservers;
+	std::vector<IGoldObserver*> goldObservers;
 
 	Status status =
 	{

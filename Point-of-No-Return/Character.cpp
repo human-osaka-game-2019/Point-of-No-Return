@@ -7,55 +7,55 @@
 void Character::HpChanged(const HP& hp)
 {
 	std::vector<IHpObserver*>::iterator it;
-	for (it = HpObservers.begin(); it != HpObservers.end(); it++)
+	for (it = hpObservers.begin(); it != hpObservers.end(); it++)
 	{
 		(*it)->OnHpChanged(hp);
 	}
 }
 
-void Character::AddHpChangeObserver(IHpObserver* pIHpObserver)
+void Character::AddHpChangeObserver(IHpObserver* HpObserver)
 {
-	HpObservers.push_back(pIHpObserver);
+	hpObservers.push_back(HpObserver);
 }
 
 void Character::MpChanged(const MP& mp)
 {
 	std::vector<IMpObserver*>::iterator it;
-	for (it = MpObservers.begin(); it != MpObservers.end(); it++)
+	for (it = mpObservers.begin(); it != mpObservers.end(); it++)
 	{
 		(*it)->OnMpChanged(mp);
 	}
 }
 
-void Character::AddMpChangeObserver(IMpObserver* pMpObserver)
+void Character::AddMpChangeObserver(IMpObserver* MpObserver)
 {
-	MpObservers.push_back(pMpObserver);
+	mpObservers.push_back(MpObserver);
 }
 
 void Character::IpChanged(const IP& ip)
 {
 	std::vector<IIpObserver*>::iterator it;
-	for (it = IpObservers.begin(); it != IpObservers.end(); it++)
+	for (it = ipObservers.begin(); it != ipObservers.end(); it++)
 	{
 		(*it)->OnIpChanged(ip);
 	}
 }
 
-void Character::AddIpChangeObserver(IIpObserver* pIIpObserver)
+void Character::AddIpChangeObserver(IIpObserver* IpObserver)
 {
-	IpObservers.push_back(pIIpObserver);
+	ipObservers.push_back(IpObserver);
 }
 
 void Character::GoldChanged(const Gold& gold)
 {
 	std::vector<IGoldObserver*>::iterator it;
-	for (it = GoldObservers.begin(); it != GoldObservers.end(); it++)
+	for (it = goldObservers.begin(); it != goldObservers.end(); it++)
 	{
 		(*it)->OnGoldChanged(gold);
 	}
 }
 
-void Character::AddGoldChangeObserver(IGoldObserver* pIGoldObserver)
+void Character::AddGoldChangeObserver(IGoldObserver* GoldObserver)
 {
-	GoldObservers.push_back(pIGoldObserver);
+	goldObservers.push_back(GoldObserver);
 }
