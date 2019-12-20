@@ -216,7 +216,7 @@ struct IsReverse
 //! ヒットポイント
 struct HP
 {
-	HP(int value,int max_value) :value(value),max_value(max_value) {}
+	HP(int value, int max_value) :value(value),max_value(max_value) {}
 	int max_value;
 	int value;
 };
@@ -336,7 +336,6 @@ struct Parameter
 	Time time;
 	Gold gold;
 	Age age;
-
 };
 
 struct TextureName
@@ -416,6 +415,15 @@ inline float operator -(CoordinateY lhs, Height rhs)
 //------------operator-CoordinateY-and-Size--------------------------------------------
 
 
+inline int operator +=(Gold lhs, int rhs)
+{
+	return lhs.value + rhs;
+}
+
+inline int operator -=(Gold lhs, int rhs)
+{
+	return lhs.value + rhs;
+}
 
 
 

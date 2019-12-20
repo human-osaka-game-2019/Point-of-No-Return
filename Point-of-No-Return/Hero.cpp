@@ -12,7 +12,7 @@ namespace
 	//! offsetの最小値
 	const float MIN_OFFSET_X = 0.f;
 	//! offsetの最大値
-	const float MAX_OFFSET_X = (Mapchip::WORLD_HORIZONTAL_NUM - DISPLAY_SIZE_NUM) * Mapchip::CHIP_SIZE;
+	const float MAX_OFFSET_X = (Mapchip::WORLD_HORIZONTAL_NUM - DISPLAY_HORIZONTAL_NUM) * Mapchip::CHIP_SIZE;
 }
 
 
@@ -126,7 +126,7 @@ void Hero::Update()
 			offset.x = CoordinateX(0.f);
 		}
 	}
- 	if (dx.GetKeyState(DIK_W) == dx.PUSH)
+		if (dx.GetKeyState(DIK_W) == dx.PUSH)
 	{
 		gravity.Jump();
 	}
@@ -136,22 +136,22 @@ void Hero::Update()
 	// -------------------------------------------
 	if (dx.GetKeyState(DIK_LEFT) == dx.ON)
 	{
-		parameter.gold.value -= 1;
+		parameter.gold -= 1;
 	}
 
 	if (dx.GetKeyState(DIK_RIGHT) == dx.ON)
 	{
-		parameter.gold.value += 1;
+		parameter.gold += 1;
 	}
 
 	if (dx.GetKeyState(DIK_DOWN) == dx.ON)
 	{
-		parameter.gold.value -= 1;
+		parameter.gold -= 1;
 	}
 
 	if (dx.GetKeyState(DIK_UP) == dx.ON)
 	{
-		parameter.gold.value += 1;
+		parameter.gold += 1;
 	}
 	// --------------------------------------------
 
