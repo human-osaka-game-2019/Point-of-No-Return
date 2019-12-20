@@ -57,11 +57,11 @@ void Hero::Update()
 		if (position.x <= CoordinateX(DISPLAY_CENTER_X) ||
 			(CoordinateX(DISPLAY_CENTER_X) < position.x && offset.x == CoordinateX(MAX_OFFSET_X)) && position.x + size.width < Display::WIDTH)
 		{
-			position.x += CoordinateX(10.f);
+			position.x += CoordinateX(3.f);
 		}
 		else
 		{
-			offset.x += CoordinateX(10.f);
+			offset.x += CoordinateX(3.f);
 		}
 		if (CoordinateX(MAX_OFFSET_X) < offset.x)
 		{
@@ -75,12 +75,13 @@ void Hero::Update()
 		if (position.x + size.width >= DISPLAY_CENTER_X ||
 			(position.x + size.width < DISPLAY_CENTER_X && offset.x == CoordinateX(MIN_OFFSET_X)) && CoordinateX(MIN_OFFSET_X) < position.x)
 		{
-			position.x -= CoordinateX(10.f);
+			position.x -= CoordinateX(3.f);
 		}
 		else
 		{
-			offset.x -= CoordinateX(10.f);
+			offset.x -= CoordinateX(3.f);
 		}
+
 		if (offset.x < CoordinateX(0.f))
 		{
 			offset.x = CoordinateX(0.f);

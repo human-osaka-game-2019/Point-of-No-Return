@@ -3,7 +3,7 @@
 namespace
 {
 	//! 初速度
-	const float INITIAL_VELOCITY = 10.f;
+	const float INITIAL_VELOCITY = 6.f;
 }
 
 namespace Accelerator

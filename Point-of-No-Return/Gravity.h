@@ -10,7 +10,7 @@ namespace Accelerator
 const float MAX_VALUE = 5.f;
 
 //! 加速度に加算する値
-const float ADD_VALUE = 0.1f;
+const float ADD_VALUE = 0.07f;
 
 /**
 * @class Acceleration
